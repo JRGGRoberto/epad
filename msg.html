@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+html,
+body {
+    background-color:lightblue;
+}
+
+#big_container {
+ position: absolute;
+ width: 1920px;
+ height: 1080px;
+ background-color:slateblueX;
+left:50%;
+top:50%;
+margin:-540px 0 0 -960px;
+opacity:1;   }
+
+#static_text {
+position:absolute;
+left:50%;
+width: 1000px;
+ height: 200px;
+ margin:0 0 0 -500px;
+    top:350px;
+    font-size: 80px;
+	text-align: center ;
+    color: white;
+     opacity: 0;
+    
+}
+
+
+#crawl_container {
+     position: absolute;
+    top: 30%;
+    left: 50%;
+    width: 1800px;
+    margin: 0 0 0 -900px;
+    top: 200px;
+    bottom: 0;
+    height: 50em;
+	background-color:transparent;
+	overflow: hidden#;
+    -webkit-transform-origin: center bottom;
+    -webkit-transform: perspective(200px) rotateX(15deg);
+	
+}
+
+#crawl_content {
+    position: absolute;
+	color: white;    
+    font-size: 150px;
+    text-align: center;
+	font-family:arial;
+	opacity:0;
+        }
+
+
+</style>
+</head>
+<body data-control="40:30">
+<div id="big_container">
+
+
+
+    <div id="crawl_container" >
+    <div id="crawl_content" class='webvfx' data-animate='{start: 0, end: 1, ease: "linearTween",
+	0% : 	{top:  90%;  opacity: 0.8;},
+	95% : 	{top: -400%;  opacity: 0.8;},
+	100% : 	{top: -400%;  opacity: 0;}
+}' >
+	
+            <p>
+            UNESPAR
+
+A Universidade Estadual do Parana inicia hoje, o aulão do ENEM.
+Com o Intuito de auxiliá-lo a se preparar para esta prova tão importante de sua vida.
+Hoje nossa equipa.. </p>
+		
+		
+			</div>
+			
+        </div>
+    </div>
+	</body>
+	<script src="WebVfx.js"></script>
+	</html>
