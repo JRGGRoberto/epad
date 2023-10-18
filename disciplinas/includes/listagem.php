@@ -14,42 +14,6 @@
     $estiloD = '';
 
 
-  //VERIFICA PERMISSAO
-  $acessoOk = false;
-  if ($user['adm'] == '1' ) {
-    $acessoOk = true;
-  } elseif($user['id'] == $_GET['id']){
-    $acessoOk = true;
-  } elseif ( in_array($user['niveln'], [1, 2, 3])  ) {
-    
-    switch ($user['niveln']) {
-      case 1:
-        if ($user['ca_id'] == $prof->ca_id ){
-          $acessoOk = true;
-        }
-        break;
-  
-      case 2:
-        if ($user['ce_id'] == $prof->ce_id ){
-          $acessoOk = true;
-        }
-        break;
-  
-      case 3:
-        if ($user['co_id'] == $prof->co_id ){
-          $acessoOk = true;
-        }
-        break;
-      
-      default:
-        $acessoOk = false;
-        break;
-    }
-  
-  } else {
-    $acessoOk = false;
-  }
-  
     $colegNome = Colegiado::getRegistro($prof->id_colegiado);
     if($prof->ativo == 0){
       $estiloD = 'style="color: #721c24;
@@ -170,7 +134,7 @@
         </div> 
       </div>
     </div>
-    
+
         <div class="col-1 d-flex align-items-end">
           <button type="submit" class="btn btn-primary btn-sm mr-2">Filtrar</button>
           <a href="./" id="limpar"><span class="badge badge-primary">x</span></a>
