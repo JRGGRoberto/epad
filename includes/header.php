@@ -132,7 +132,7 @@ img.remover {
                     Pró-Reitoria de
                   </div>
                   <div class="text-left">
-                      <a  href="../" style="color: #002661;"><strong>Extensão e Cultura - PROEC</strong></a>
+                      <a  href="../" style="color: #002661;"><strong><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GRAD</span> Pró-Reitoria de Ensino de Graduação</strong></a>
                   </div>
                   <div class="text-left">
                     Universidade Estadual do Paraná
@@ -144,12 +144,12 @@ img.remover {
             <div class="col">
                   
                   <div>
-                      <span class="badge badge-success">SisGP <?=$clock[$horas]?></span>
+                      <span class="badge badge-success">ePAD <?=$clock[$horas]?></span>
                   </div>
                   <div>
-                    Sistema para Gerir Projetos
+                  Plano de Atividades Docentes
                   </div>
-                  <div><sup>ver<strong>1.5b</strong></sup></div>
+                  <div><sup>ver<strong>0.0.01b</strong></sup></div>
 
                   
               </div>
@@ -159,30 +159,20 @@ img.remover {
       ?>
       <div class="btn-group btn-group-sm float-right">   
       <div class="btn-group btn-group-sm">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Propostas
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item btn-sm" href="../projetos/cadastrar.php?t=4">Novo Programa</a>
-          <a class="dropdown-item btn-sm" href="../projetos/cadastrar.php?t=5">Novo Projeto</a>
-          <a class="dropdown-item btn-sm" href="../projetos/cadastrar.php?t=3">Nova Prestação de Serviço</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item btn-sm" href="../projetos/cadastrar.php?t=1">Novo Curso</a>
-          <a class="dropdown-item btn-sm" href="../projetos/cadastrar.php?t=2">Novo Evento</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item btn-sm" href="../projetos">Listar minhas propostas</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item btn-sm" href="../projetostb">Listar todos os projetos aprovados</a>
-        </div>
+        <a type="button" class="btn btn-primary" href="../disciplinas" style="text-align: center;">
+        Disciplinas
+    </a>
+        
       </div>
 
       <div class="btn-group btn-group-sm">
         <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-        Avaliações
+        PAD
         </button>
         <div class="dropdown-menu">
-          <a class="dropdown-item btn-sm" href="../avalareal">A realizar</a>
-          <a class="dropdown-item btn-sm" href="../avalfeitas">Realizadas</a>
+          <a class="dropdown-item btn-sm" href="../cnfpad">Configurar PAD</a>
+          <a class="dropdown-item btn-sm" href="../cnfdisc">Configurar disciplinas</a>
+          <a class="dropdown-item btn-sm" href="../preench">Preencher</a>
         </div>
       </div>
 

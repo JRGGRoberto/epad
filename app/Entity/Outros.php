@@ -11,11 +11,7 @@ class Outros{
 retorna um valor
 */
 public static function hierCol($id){
-  $sql = 'select * from ca_ce_co ccc ';
-  $where = 'where ccc.co_id  = "' . $id . '"';
-
-  !is_null($id) ? $sql += $where : null;
-  
+  $sql = 'select * from ca_ce_co ccc  where ccc.co_id  = "' . $id . '"';
   return (new Database())->selectJ($sql)
     ->fetchObject(self::class);  
 }

@@ -13,8 +13,8 @@
         <img src="../imgs/logo_unespar.png" width="150" height="160">
         <hr>
         <h3>PLANO DE ATIVIDADES DOCENTES</h3>
-        <h4><span class="badge badge-warning">Envio de Projetos</span></h4>  
-        <span>ePAD</span>
+        <h4><span class="badge badge-warning">ePAD</span></h4>  
+        <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GRAD</span></span>
 
     </div>
 
