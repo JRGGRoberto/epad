@@ -1,6 +1,4 @@
-<body>
-
-  <div class="container mt-3">
+<div class="container mt-3">
     <h1>Matrizes de Disciplinas</h1>
 
     <hr>
@@ -54,7 +52,6 @@
       </table>
     </div>
 
-
     <!-- TABLE -->
     <div class="form-group table-responsive-sm">
       <table id="tabelaMatD" class="table table-bordered table-sm">
@@ -72,7 +69,6 @@
         </tbody>
       </table>
     </div>
-
 
     <!-- The Modal -->
     <div class="modal fade" id="modalDis">
@@ -171,4 +167,3 @@
     <!-- The Modal Fim-->
 
   </div>
-

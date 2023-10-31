@@ -94,6 +94,16 @@ function post_MD() {
   document.frmMatriz.submit();
 }
 
+function noDataInfo(){
+  tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
+  newLinha = tabela.insertRow();
+  newCel = newLinha.insertCell();
+  newCel.textContent = "Dados não atribuidos";
+  newCel.colSpan = 5;
+  newCel.style.textAlign = "center";
+  exit;
+}
+
 function deleteAllRows() {
   $("#tabelaMatD tbody tr").remove();
 }
@@ -150,8 +160,12 @@ async function getDBMD() {
   let id = document.getElementById('co').value;
   let a = id + ano;
   matrizDisc = await fetch(`../api/matriz.php?md=${a}`).then(resp => resp.json()).catch(error => false);
-  if (!matrizDisc) return;
-  matrizDisc.forEach(e => insereTable(e));
+  if (matrizDisc.length > 0){
+    matrizDisc.forEach(e => insereTable(e));
+    
+  } else {
+    noDataInfo();
+  }
 }
 
 function desabilitar() {
