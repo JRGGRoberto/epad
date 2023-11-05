@@ -25,7 +25,7 @@ class MatrizDisc {
 
    public function cadastrar(){
     //INSERIR A REGISTRO NO BANCO
-    $newId = exec('uuidgen -r');
+    $newId = uniqid();
     $obDatabase = new Database('matriz_disc');
     $obDatabase->insert([
                          'id'           => $newId,
@@ -78,7 +78,7 @@ class MatrizDisc {
    * @return array
    */
   public static function get($where = null, $order = null, $limit = null){
-    return (new Database('matriz_cur'))->select($where,$order,$limit)
+    return (new Database('matriz_disc'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   }
 

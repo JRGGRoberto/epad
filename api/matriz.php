@@ -2,8 +2,8 @@
 
 require '../vendor/autoload.php';
 
-use \App\Session\Login;
-Login::requireLogin();
+//Login::requireLogin();
+//use \App\Session\Login;
 
 use \App\Entity\MatrizDisc;
 

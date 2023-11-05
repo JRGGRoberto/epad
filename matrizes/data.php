@@ -2,9 +2,6 @@
 
 require '../vendor/autoload.php';
 
-use \App\Session\Login;
-Login::requireLogin();
-
 use \App\Entity\MatrizDisc;
 
 $toDo = $_POST["to_do"];

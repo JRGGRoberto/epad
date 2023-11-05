@@ -10,33 +10,33 @@ class Disciplinas {
   public $nome;
   public $ch;
   public $serie;
-  public $id_curso;
+  public $id_matriz;
   public $created_at;
   public $updated_at;
 
   public $user;
   
-/**
+  /**
    * Método responsável por cadastrar um novo registro
-   * @return boolean
+   * @return varchar
    */
 
    public function cadastrar(){
     //INSERIR A REGISTRO NO BANCO
-    $newId = exec('uuidgen -r');
+    $newId = uniqid(); //exec('uuidgen -r');
     $obDatabase = new Database('disciplinas');
     $obDatabase->insert([
                          'id'        => $newId,
                          'nome'      => $this->nome,
                          'ch'        => $this->ch,
                          'serie'     => $this->serie,
-                         'id_curso'  => $this->id_curso,
+                         'id_matriz'  => $this->id_matriz,
                          //'updated_at' => date("Y-m-d H:i:s"),
                          'user' => $this->user
                        ]);
 
     //RETORNAR SUCESSO
-    return true;
+    return $newId;
   }
 
   /**
@@ -48,7 +48,7 @@ class Disciplinas {
                                                                 'nome'      => $this->nome,
                                                                 'ch'        => $this->ch,
                                                                 'serie'     => $this->serie,
-                                                                'id_curso'  => $this->id_curso,
+                                                                'id_matriz'  => $this->id_matriz,
                                                                 'updated_at'   => date("Y-m-d H:i:s"),
                                                                 'user'         => $this->user
                                                               ]);
@@ -59,7 +59,8 @@ class Disciplinas {
    * @return boolean
    */
   public function excluir(){
-    return (new Database('disciplinas'))->delete('id = '.$this->id);
+    return (new Database('disciplinas'))->delete('id = "'.$this->id .'"');
+
   }
 
   /**
@@ -79,7 +80,7 @@ class Disciplinas {
    * @param  string $where
    * @param  string $order
    * @param  string $limit
-   * @return array
+   * @return Disciplinas
    */
   public static function getById($id){
     $where = ' id = "'.$id.'" ';
