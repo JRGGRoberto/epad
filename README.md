@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/github/languages/count/JRGGRoberto/epad "> <img src="https://img.shields.io/github/repo-size/JRGGRoberto/epad "> <img src="https://img.shields.io/github/last-commit/JRGGRoberto/epad "> <img src="https://img.shields.io/github/issues/JRGGRoberto/epad ">
+<img src="https://img.shields.io/github/languages/count/JRGGRoberto/epad"> <img src="https://img.shields.io/github/repo-size/JRGGRoberto/epad "> <img src="https://img.shields.io/github/last-commit/JRGGRoberto/epad "> <img src="https://img.shields.io/github/issues/JRGGRoberto/epad">
 
 </div>
 
