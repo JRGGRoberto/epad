@@ -84,7 +84,30 @@
             <th>Disciplina</th>
             <th>Carga horária</th>
             <th>Série</th>
-            <th style="text-align: center;"><button type="button" class="btn btn-primary btn-sm" onclick="formAddDis()" id="btnAdicionarD">Adicionar</button></th>
+            <th style="text-align: center;">
+            <div class="row">
+                <div class="col-2">
+                  <button type="button" class="btn btn-primary btn-sm" onclick="formAddDis()" id="btnAdicionarD">Adicionar</button>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown">
+                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                      Importar
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">
+                         <form method="post" action="./import.php">
+                            <textarea name="import_json" name="import_json" cols="30" rows="10"></textarea>
+                            <input type="submit" value="Importar">
+                            <input type="hidden" name="id_master" id="id_master" value="<?= $matriz->id ?>">
+                            <input type="hidden" name="url_corrente" id="url_corrente" value="<?=$_SERVER["REQUEST_URI"]?>">
+                         </form>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </th>
           </tr>
         </thead>
         <tbody>
