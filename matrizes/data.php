@@ -33,7 +33,7 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
     $obMatDis->vagas        = $vagas;
     $obMatDis->cadastrar();
 
-    header('location: ./');
+    header('location: ../disciplinas/index.php?id='. $obMatDis->id);
     $script = 'function preenche("'. $ca  .'", "'. $ce  .'", "'. $co  .'", "'. $ano  .'") ';
     exit;
 
@@ -48,7 +48,7 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
     $obMatDis->vagas        = $vagas;
     $obMatDis->atualizar();
 
-    header('location: ./');
+    header('location: ../disciplinas/index.php?id='. $obMatDis->id);
     $script = 'function preenche("'. $ca  .'", "'. $ce  .'", "'. $co  .'", "'. $ano  .'") ';
     exit;
 

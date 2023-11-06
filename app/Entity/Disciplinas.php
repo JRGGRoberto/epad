@@ -23,7 +23,7 @@ class Disciplinas {
 
    public function cadastrar(){
     //INSERIR A REGISTRO NO BANCO
-    $newId = uniqid(); //exec('uuidgen -r');
+    $newId = exec('uuidgen -r');
     $obDatabase = new Database('disciplinas');
     $obDatabase->insert([
                          'id'        => $newId,

@@ -84,21 +84,21 @@
             <th>Disciplina</th>
             <th>Carga horária</th>
             <th>Série</th>
-            <th style="text-align: center;">
+            <th style="text-align: center; width:130px" >
             <div class="row">
-                <div class="col-2">
-                  <button type="button" class="btn btn-primary btn-sm" onclick="formAddDis()" id="btnAdicionarD">Adicionar</button>
+                <div class="col">
+                  <button type="button" class="btn btn-primary btn-sm" onclick="formAddDis()" id="btnAdicionarD">➕</button>
                 </div>
-                <div class="col-2">
+                <div class="col">
                     <div class="dropdown">
                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                      Importar
+                    📥 
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu dropdown-menu-right">
                       <a class="dropdown-item" href="#">
                          <form method="post" action="./import.php">
                             <textarea name="import_json" name="import_json" cols="30" rows="10"></textarea>
-                            <input type="submit" value="Importar">
+                            <input type="submit" value="⚡" id="importacao_json">
                             <input type="hidden" name="id_master" id="id_master" value="<?= $matriz->id ?>">
                             <input type="hidden" name="url_corrente" id="url_corrente" value="<?=$_SERVER["REQUEST_URI"]?>">
                          </form>
