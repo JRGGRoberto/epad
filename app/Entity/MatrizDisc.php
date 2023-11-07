@@ -9,6 +9,7 @@ class MatrizDisc {
   public $id;
   public $id_curso;
   public $ano;
+  public $nome;
   public $ch;
   public $habilitacao;
   public $oferta;
@@ -32,6 +33,7 @@ class MatrizDisc {
                          'id_curso'     => $this->id_curso,
                          'ch'           => $this->ch,
                          'ano'          => $this->ano,
+                         'nome'         => $this->nome,
                          'habilitacao'  => $this->habilitacao,
                          'oferta'       => $this->oferta,
                          'turno'        => $this->turno,
@@ -52,6 +54,7 @@ class MatrizDisc {
     return (new Database('matriz_disc'))->update('id = "'.$this->id.'" ',[
                                                                 'id_curso'     => $this->id_curso,
                                                                 'ano'          => $this->ano,
+                                                                'nome'         => $this->nome,
                                                                 'ch'           => $this->ch,
                                                                 'habilitacao'  => $this->habilitacao,
                                                                 'oferta'       => $this->oferta,

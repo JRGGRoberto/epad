@@ -60,6 +60,7 @@
             <th style="display: none;">ID</th>
             <th>Ano</th>
             <th>Curso</th>
+            <th>Nome</th>
             <th>Período</th>
             <th>Carga horária</th>
             <th style="text-align: center;"><button type="button" class="btn btn-warning" disabled=""></button></th>
@@ -103,6 +104,12 @@
                   </div>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" readonly>
+              </div>
+
               <div class="row">
                 <div class="col">
                   <div class="form-group">

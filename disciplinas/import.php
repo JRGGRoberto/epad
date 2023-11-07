@@ -20,6 +20,5 @@ $dados =  $_POST['import_json'];
     $index++;
   }
 
-
   header('location: '.$url_corrente);
   exit;

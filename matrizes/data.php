@@ -17,6 +17,7 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
   $ce  = $_POST["id_cen"];
   $co  = $_POST["id_cur"];
   $ano = $_POST["ano"];   
+  $nome        = $_POST["nome"];   
   $ch          = $_POST["ch"];
   $habilitacao = $_POST["habilitacao"];
   $oferta      = $_POST["oferta"];
@@ -26,14 +27,15 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
   if (!strcmp($toDo, 'add')) {
     $obMatDis->id_curso     = $co;
     $obMatDis->ano          = $ano;
+    $obMatDis->nome         = $nome;
     $obMatDis->ch           = $ch;
     $obMatDis->habilitacao  = $habilitacao;
     $obMatDis->oferta       = $oferta;
     $obMatDis->turno        = $periodo;
     $obMatDis->vagas        = $vagas;
-    $obMatDis->cadastrar();
+    $id = $obMatDis->cadastrar();
 
-    header('location: ../disciplinas/index.php?id='. $obMatDis->id);
+    header('location: ../disciplinas/index.php?id='. $id);
     $script = 'function preenche("'. $ca  .'", "'. $ce  .'", "'. $co  .'", "'. $ano  .'") ';
     exit;
 
@@ -41,6 +43,7 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
     $obMatDis = $obMatDis::getById($id_md);
     $obMatDis->id_curso     = $co;
     $obMatDis->ano          = $ano;
+    $obMatDis->nome         = $nome;
     $obMatDis->ch           = $ch;
     $obMatDis->habilitacao  = $habilitacao;
     $obMatDis->oferta       = $oferta;

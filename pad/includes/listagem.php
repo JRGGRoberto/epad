@@ -8,51 +8,9 @@
         </div>
         <div id="dadosDoc" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
-
-                <table class="table table-bordered table-sm">
-
-                    <tr>
-                        <th>Ano letivo</th>
-                        <td colspan="2">2023</td>
-
-                    </tr>
-                    <tr>
-                        <th>Nome</th>
-                        <td></td>
-                        <th>Regime de Trabalho</th>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <th>Campus</th>
-                        <td></td>
-                        <th>Centro de área</th>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <th>Colegiado</th>
-                        <td></td>
-                        <th>Área de concurso</th>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <th>Maior Titulação</th>
-                        <td></td>
-                        <th>Data de obtenção do título</th>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <th>Tempo de docência nos
-                            componentes curriculares</th>
-                        <td></td>
-                        <th>Tempo efetivo de docência no
-                            ensino superior na UNESPAR</th>
-                        <td></td>
-                    </tr>
-                </table>
+<?php
+  include './includes/tbla10.php';
+?>
 
             </div>
         </div>
@@ -68,28 +26,16 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false"><strong>2.1. Atividades Didáticas</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática: <strong> 0</strong></div>
+                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática:  <strong><span id="total2">0</span></strong></div>
                 </div>
             </div>
 
             <div id="ativ21" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
 
-                    <table id="tabela-equipe" class="table table-bordered table-sm">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>N</th>
-                                <th>Nome</th>
-                                <th>Instituição</th>
-                                <th>Formação</th>
-                                <th>Função na equipe</th>
-                                <th>Telefone</th>
-                                <th style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddEquipe()">Adicionar</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+<?php
+  include './includes/tbla21.php';
+?>
 
                 </div>
             </div>
@@ -108,49 +54,36 @@
 
             <div id="ativ22" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-                    <table id="tabela-equipe" class="table table-bordered table-sm">
-                        <thead class="thead-light">
-                            <tr>
-                                <th>Atividade</th>
-                                <th>Nome do(a) estudante</th>
-                                <th>Curso</th>
-                                <th>Série</th>
-                                <th>C H semanal(1o sem)</th>
-                                <th>C H semanal(2o sem)</th>
-                                <th style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddEquipe()">Adicionar</button></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+<?php
+  include './includes/tbla22.php';
+?>
 
 
                 </div>
             </div>
         </div>
-
-
-
 
 
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><a class="card-link" data-toggle="collapse" href="#ativ3" aria-expanded="false"><strong>3. ATIVIDADES DE PESQUISA / EXTENSÃO / CULTURA E PROGRAMAS ESPECIAIS</strong></a></div>
+                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false"><strong>3. ATIVIDADES DE PESQUISA / EXTENSÃO / CULTURA E PROGRAMAS ESPECIAIS</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal pesquisa/extensão/cultura/programas especiais: <strong> 0</strong></div>
+                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS: <strong><span id="total3">0</span></strong></div>
                 </div>
             </div>
 
             <div id="ativ3" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-                    teste
+<?php
+  include './includes/tbla30.php';
+?>
+
 
                 </div>
             </div>
         </div>
-
 
 
         <div class="card mt-2">
@@ -166,7 +99,9 @@
             <div id="ativ4" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
 
-                    teste
+<?php
+  include './includes/tbla40.php';
+?>
 
                 </div>
             </div>

@@ -209,9 +209,10 @@
 let disciplinas = [ ];
 let noData = true;
 
+
 function deleteAllRows(){
     $("#tabelaMatD tbody tr").remove(); 
-  }
+}
 
 function removeLinhaSemDados(){
   let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
