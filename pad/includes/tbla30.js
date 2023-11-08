@@ -1,5 +1,6 @@
 let data3 = [
     {
+        'idx3': '0',
         'id3': '1',
         'tpProj3': '1',
         'nome3': 'Estudos sobre recursos tecnológicos digitais e seus usos por professores em suas práticas profissionais e em seus processos formativos',
@@ -8,6 +9,7 @@ let data3 = [
         'cargah3': '8'
     },
     {
+        'idx3': '1',
         'id3': '2',
         'tpProj3': '1',
         'nome3': 'Estudos sobre recursos tecnológicos',
