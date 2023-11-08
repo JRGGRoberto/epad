@@ -358,7 +358,6 @@ function updateDisciplina(receiveData){
     serie: data.serie,
     id: data.id
   };
-
   let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
   let linha = tabela.rows[data.idx];
   linha.cells[1].innerHTML = data.nome;

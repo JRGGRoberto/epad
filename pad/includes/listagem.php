@@ -4,7 +4,7 @@
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>1. DADOS DO DOCENTE</strong>
+            <strong>1. Dados do Docente</strong>
         </div>
         <div id="dadosDoc" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
@@ -26,7 +26,7 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false"><strong>2.1. Atividades Didáticas</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática:  <strong><span id="total2">0</span></strong></div>
+                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática:  <strong><span id="total2" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ22" aria-expanded="false"><strong>2.2. Atividades de Supervisão e Orientação</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária de orientação e supervisão: <strong> 0</strong></div>
+                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária de orientação e supervisão: <strong><span id="total22" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
@@ -67,10 +67,10 @@
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false"><strong>3. ATIVIDADES DE PESQUISA / EXTENSÃO / CULTURA E PROGRAMAS ESPECIAIS</strong></a></div>
+                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false"><strong>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS: <strong><span id="total3">0</span></strong></div>
+                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal Pesquisa/Extensão/Cultura/Programas Especiais: <strong><span id="total3" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
@@ -89,10 +89,10 @@
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ4" aria-expanded="false"><strong>4. ATIVIDADES DE GESTÃO INSTITUCIONAL</strong></a></div>
+                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ4" aria-expanded="false"><strong>4. Atividades de Gestão Institucional</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal de gestão institucional: <strong> 0</strong></div>
+                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal de gestão institucional: <strong><span id="total4" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
@@ -112,39 +112,43 @@
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>5. RESUMO DAS ATIVIDES E TOTALIZAÇÃO</strong>
+            <strong>5. Resumo das atividades e totalização</strong>
         </div>
         <div id="resumo" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
                 <table class="table table-bordered table-sm">
 
                     <tr>
-                        <th>1</th>
+                        <th>2.1</th>
                         <th>Total de média semanal anual de carga horária didática</th>
-                        <td>0h</td>
+                        <td style="text-align: right">
+                          <strong><span id="rtotal21" style="padding-left: 20px;">0</span>h</strong>
+                        </td>
                     <tr>
-                        <th>2</th>
+                        <th>2.2</th>
                         <th>Total de média semanal anual de carga horária supervisão e orientação</th>
-                        <td>0h</td>
+                        <td style="text-align: right">
+                          <strong><span id="rtotal22" style="padding-left: 20px;">0</span>h</strong>
+                        </td>
                     <tr>
                         <th>3</th>
                         <th>Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</th>
-                        <td>0h</td>
+                        <td style="text-align: right">
+                          <strong><span id="rtotal3" style="padding-left: 20px;">0</span>h</strong>
+                        </td>
                     <tr>
                         <th>4</th>
                         <th>Total de carga horária semanal de gestão institucional</th>
-                        <td>0h</td>
-                    </tr>
-
-                    <tr>
-                        <th>4</th>
-                        <th>Total de carga horária semanal de gestão institucional</th>
-                        <td>0h</td>
+                        <td style="text-align: right">
+                            <strong><span id="rtotal4" style="padding-left: 20px;">0</span>h</strong>
+                        </td>
                     </tr>
 
                     <tr>
                         <th colspan="2">Total de carga horária semanal</th>
-                        <td>0h</td>
+                        <td style="text-align: right">
+                            <strong><span id="rtotal" style="padding-left: 20px;">0</span>h</strong>
+                        </td>
                     </tr>
 
 
@@ -157,7 +161,7 @@
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>6. OUTRAS OBSERVAÇÕES</strong>
+            <strong>6. Outras Observações</strong>
         </div>
         <div id="resumo" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
@@ -171,32 +175,23 @@
 
 </section>
 
+<script>
 
+function somaTotais(){
+  let total2 = document.getElementById('total2').innerHTML;
+  let total22 = document.getElementById('total22').innerHTML;
+  let total3 = document.getElementById('total3').innerHTML;
+  let total4 = document.getElementById('total4').innerHTML;
 
+  document.getElementById('rtotal21').innerHTML = total2;
+  document.getElementById('rtotal22').innerHTML = total22;
+  document.getElementById('rtotal3').innerHTML  = total3;
+  document.getElementById('rtotal4').innerHTML  = total4;
 
-<!-- The Modal -->
-<div class="modal fade" id="modalSub">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" id="modalTitle">Título</h4>
-          <button type="button" class="close" data-dismiss="modal">×</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body" id="modalBody">
-          
+  soma = (parseFloat(total2) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
+  
+  document.getElementById('rtotal').innerHTML = soma;
+  
+}
 
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer" id="modalFooter">
-          
-        </div>
-        
-      </div>
-    </div>
-  </div>
-  <!-- The Modal -->
+</script>

@@ -8,7 +8,6 @@
             <th>Série</th>
             <th>CH semanal 1ºsem</th>
             <th>CH semanal 2ºsem</th>
-            <th style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddEquipe()">Adicionar</button></th>
         </tr>
     </thead>
     <tbody>

@@ -68,6 +68,7 @@ matrizDisc = [{
   "id": "123132132132",
   "id_curso": "c3bbf72b-3b64-11ed-9793-0266ad9885af",
   "ano": 2005,
+  "nome": "Matriz xpto",
   "curso": "Ciência da Computação",
   "turno": "Noturno",
   "ch": 3600,
@@ -80,6 +81,7 @@ matrizDisc = [{
   "id": "96382741",
   "id_curso": "c3bbf72b-3b64-11ed-9793-0266ad9885af",
   "ano": 2005,
+  "nome": "Bla bla bla",
   "curso": "Português",
   "turno": "Matutino",
   "ch": 3600,
@@ -121,16 +123,19 @@ function insereTable(newData) {
   let celId = novaLinha.insertCell(0);
   let celAno = novaLinha.insertCell(1);
   let celCurso = novaLinha.insertCell(2);
-  let celTurno = novaLinha.insertCell(3);
-  let celCh = novaLinha.insertCell(4);
-  let celDelete = novaLinha.insertCell(5);
+  let celNome = novaLinha.insertCell(3);
+  let celTurno = novaLinha.insertCell(4);
+  let celCh = novaLinha.insertCell(5);
+  let celDelete = novaLinha.insertCell(6);
   
   celId.innerHTML = newData.id;
   
   celId.style.display = 'none';
-  
+  celCh.style.textAlign = 'right';
+
   celAno.innerHTML = newData.ano;
   celCurso.innerHTML = newData.curso;
+  celNome.innerHTML = newData.nome;
   
   let turno;
   switch (newData.turno) {
