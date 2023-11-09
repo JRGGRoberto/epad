@@ -13,14 +13,13 @@
               <div class="form-group">
                 <label for="nome3">Nome</label>
                 <input type="text" name="nome3" id="nome3" class="form-control">
-                id3
-                <input type="text" name="id3" id="id3">
-                idx3
-                <input type="text" name="idx3" id="idx3">
+                <input type="hidden" name="id3" id="id3">
+                <input type="hidden" name="idx3" id="idx3">
+                <input type="hidden" name="vinc3" id="vinc3">
               </div>
 
               <div class="form-group">
-                <label for="funcao3">Tipo de projeto</label>
+                <label for="funcao3">Função</label>
                 <select name="funcao3" id="funcao3" class="form-control" require>
                   <option value="">Selecione</option>
                   <option value="1">Coordenador</option>
@@ -30,7 +29,7 @@
               </div>
 
               <div class="form-group">
-                <label for="orientandos3">Nome dos orientandos<sub>(Se houver)</sub></label>
+                <label for="orientandos3">Nome dos orientandos <sub>(Se houver)</sub></label>
                 <textarea name="orientandos3" id="orientandos3" cols="30" rows="5" class="form-control"></textarea>
               </div>
 

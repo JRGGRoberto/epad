@@ -6,13 +6,13 @@ use \App\Db\Database;
 use \PDO;
 
 
-class Ativ21 {
+class Ativ3 {
   public $id;
   public $id_vin;
   public $tp;
   public $nome;
   public $func;
-  public $num_ato;
+  public $orientandos;
   public $chs;
   public $created_at;
   public $updated_at;
@@ -27,7 +27,7 @@ class Ativ21 {
         'tp'         => $this->tp,
         'nome'       => $this->nome,
         'func'       => $this->func,
-        'num_ato'    => $this->num_ato,
+        'orientandos'=> $this->orientandos,
         'chs'        => $this->chs,
         'created_at' => $this->created_at,
       //'updated_at' => $this->updated_at,
@@ -43,9 +43,9 @@ class Ativ21 {
         'tp'         => $this->tp,
         'nome'       => $this->nome,
         'func'       => $this->func,
-        'num_ato'    => $this->num_ato,
+        'orientandos'=> $this->orientandos,
         'chs'        => $this->chs,
-        'updated_at' => $this->updated_at,
+        'updated_at' => date("Y-m-d H:i:s"),
         'user'       => $this->user
 
     ]);

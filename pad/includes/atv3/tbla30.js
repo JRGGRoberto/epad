@@ -1,4 +1,8 @@
-let data3 = [
+let data3 = [ ];
+let noData3 = true;
+
+/*
+
     {
         'id3': '1',
         'tpProj3': '1',
@@ -15,8 +19,11 @@ let data3 = [
         'orientandos3': 'Joãozinho',
         'cargah3': '2'
     }
- ];
+    */
 
+function deleteAllRows3(){
+  $("#tbl3 tbody tr").remove(); 
+}
 
 function insereTable3(newDisc){
   // Adicionar uma nova linha na tabela
@@ -30,7 +37,7 @@ function insereTable3(newDisc){
     let celCH         = newLinha.insertCell(4);
     let celDelet      = newLinha.insertCell(5);
     let tipo = '';
-    switch (newDisc.tpProj3) {
+    switch (newDisc.tp) {
       case '1':
         tipo = 'Pesquisa';
         break;
@@ -45,7 +52,7 @@ function insereTable3(newDisc){
     };
 
     let func = '';
-    switch (newDisc.funcao3) {
+    switch (newDisc.func) {
       case '1':
         func = 'Coordenador';
         break;
@@ -58,16 +65,16 @@ function insereTable3(newDisc){
       default:
         func = 'Não definido';
     };
-
-  celId.innerHTML         = newDisc.id3;
-  celNome.innerHTML       = tipo +': '+ newDisc.nome3;
+  
+  celId.innerHTML         = newDisc.id;
+  celNome.innerHTML       = tipo +': '+ newDisc.nome;
   celFunc.innerHTML       = func;
-  celNomeOrient.innerHTML = newDisc.orientandos3;
-  celCH.innerHTML         = newDisc.cargah3;
+  celNomeOrient.innerHTML = newDisc.orientandos;
+  celCH.innerHTML         = newDisc.chs;
   celDelet.innerHTML  = 
   `<center>
-    <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow3('${newDisc.id3}')">⛔</button>
-    <button type="button" class="btn btn-light btn-sm" onclick="formEditar3('${newDisc.id3}')">✏️</button>
+    <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow3('${newDisc.id}')">⛔</button>
+    <button type="button" class="btn btn-light btn-sm" onclick="formEditar3('${newDisc.id}')">✏️</button>
   </center>`;
   celId.style.display = 'none'; 
 }
@@ -127,13 +134,13 @@ function addAtividade3(receiveData) {
 
 function updateAtividade3(receiveData){
   data = receiveData.data;
-  disciplinas[data.idx3] = {
+  data3[data.idx3] = {
     nome: data.nome,
     ch: data.ch,
     serie: data.serie,
     id: data.id
   };
-  let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
+  let tabela = document.getElementById("tbl3").getElementsByTagName("tbody")[0];
   let linha = tabela.rows[data.idx];
   linha.cells[1].innerHTML = data.nome;
   linha.cells[2].innerHTML = data.ch;
@@ -145,5 +152,29 @@ frmAtv3.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(frmAtv3);
   const data = Object.fromEntries(formData);
+  
+  
   addAtividade3(data);
+
+
 })
+
+async function getDBMD3() {
+  deleteAllRows3();
+  let id_vinc = document.getElementById('id_vinc').value;
+  data3 = await fetch(`../api/ativ3.php?at3=${id_vinc}`).then(resp => resp.json()).catch(error => false);
+  
+  if (data3.length > 0){
+    data3.forEach(e => insereTable3(e));
+    noData3 = false;
+  } else {
+    noDataInfo();
+    noData3 = true;
+  }
+  total3.innerHTML = data3.reduce((a, b) => a + parseInt(b.chs), 0);
+  
+  //dadosCH();
+}
+
+
+getDBMD3();

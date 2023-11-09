@@ -29,7 +29,7 @@
           <div class="modal-body">
 
 <?php
-  include './includes/tbla30form.php';
+  include './includes/atv3/tbla30form.php';
 ?>
             
           </div>
@@ -37,10 +37,6 @@
       </div>
     </div>
     <!--  The Modal ADD / EDT Fim-->
-
-    
-
-
 
 
     <!-- The Modal DELET-->
@@ -75,4 +71,4 @@
     </div>
     <!--  The Modal DELET Fim-->
 
-    <script src="./includes/tbla30.js"></script>
+    <script src="./includes/atv3/tbla30.js"></script>

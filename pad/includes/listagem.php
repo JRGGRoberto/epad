@@ -1,4 +1,5 @@
 <section>
+    <input type="hidden" name="id_vinc" id="id_vinc" value="<?= $vinc->id ?>" >
 
     <div class="card mt-2">
         <div class="card-header">
@@ -6,9 +7,9 @@
         </div>
         <div id="dadosDoc" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
-<?php
-  include './includes/tbla10.php';
-?>
+                <?php
+                include './includes/tbla10.php';
+                ?>
 
             </div>
         </div>
@@ -24,16 +25,16 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false"><strong>2.1. Atividades Didáticas</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática:  <strong><span id="total2" style="padding-left: 20px;">0</span></strong></div>
+                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática: <strong><span id="total2" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
             <div id="ativ21" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
 
-<?php
-  include './includes/tbla21.php';
-?>
+                    <?php
+                    include './includes/tbla21.php';
+                    ?>
 
                 </div>
             </div>
@@ -52,9 +53,9 @@
 
             <div id="ativ22" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-<?php
-  include './includes/tbla22.php';
-?>
+                    <?php
+                    include './includes/tbla22.php';
+                    ?>
 
 
                 </div>
@@ -74,9 +75,9 @@
 
             <div id="ativ3" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-<?php
-  include './includes/tbla30.php';
-?>
+                    <?php
+                    include './includes/atv3/tbla30.php';
+                    ?>
 
 
                 </div>
@@ -97,9 +98,9 @@
             <div id="ativ4" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
 
-<?php
-  include './includes/tbla40.php';
-?>
+                    <?php
+                    include './includes/tbla40.php';
+                    ?>
 
                 </div>
             </div>
@@ -120,19 +121,19 @@
                         <th>2.1</th>
                         <th>Total de média semanal anual de carga horária didática</th>
                         <td style="text-align: right">
-                          <strong><span id="rtotal21" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal21" style="padding-left: 20px;">0</span>h</strong>
                         </td>
                     <tr>
                         <th>2.2</th>
                         <th>Total de média semanal anual de carga horária supervisão e orientação</th>
                         <td style="text-align: right">
-                          <strong><span id="rtotal22" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal22" style="padding-left: 20px;">0</span>h</strong>
                         </td>
                     <tr>
                         <th>3</th>
                         <th>Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</th>
                         <td style="text-align: right">
-                          <strong><span id="rtotal3" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal3" style="padding-left: 20px;">0</span>h</strong>
                         </td>
                     <tr>
                         <th>4</th>
@@ -163,38 +164,36 @@
         </div>
         <div id="resumo" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
-                <input type="text" name="" id="" value="<?=$vinc->obs?>">
+                <input type="text" name="" id="" value="<?= $vinc->obs ?>">
             </div>
         </div>
     </div>
-
-
-
 
 </section>
 
 <script>
 
-function somaTotais(){
-  let total2 = document.getElementById('total2').innerHTML;
-  let total22 = document.getElementById('total22').innerHTML;
-  let total3 = document.getElementById('total3').innerHTML;
-  let total4 = document.getElementById('total4').innerHTML;
 
-  document.getElementById('rtotal21').innerHTML = total2;
-  document.getElementById('rtotal22').innerHTML = total22;
-  document.getElementById('rtotal3').innerHTML  = total3;
-  document.getElementById('rtotal4').innerHTML  = total4;
+    function somaTotais() {
+        let total2 = document.getElementById('total2').innerHTML;
+        let total22 = document.getElementById('total22').innerHTML;
+        let total3 = document.getElementById('total3').innerHTML;
+        let total4 = document.getElementById('total4').innerHTML;
 
-  soma = (parseFloat(total2) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
-  
-  document.getElementById('rtotal').innerHTML = soma;
-  
-}
+        document.getElementById('rtotal21').innerHTML = total2;
+        document.getElementById('rtotal22').innerHTML = total22;
+        document.getElementById('rtotal3').innerHTML = total3;
+        document.getElementById('rtotal4').innerHTML = total4;
+
+        soma = (parseFloat(total2) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
+
+        document.getElementById('rtotal').innerHTML = soma;
+
+    }
 
 
-const myInterval = window.setInterval(function(){
-    somaTotais()
-}, 5000);
-
+    const myInterval = window.setInterval(function() {
+        somaTotais()
+    }, 5000);
 </script>
+
