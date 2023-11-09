@@ -426,8 +426,6 @@ formM.addEventListener('submit', e => {
       .then( data => updateDisciplina(data));
       fecharModalDis();
     }
-
-
 });
 
 getDBMD();

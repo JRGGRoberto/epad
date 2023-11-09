@@ -1,7 +1,5 @@
 <section>
 
-
-
     <div class="card mt-2">
         <div class="card-header">
             <strong>1. Dados do Docente</strong>
@@ -165,7 +163,7 @@
         </div>
         <div id="resumo" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
-                <input type="text" name="" id="">
+                <input type="text" name="" id="" value="<?=$vinc->obs?>">
             </div>
         </div>
     </div>
@@ -193,5 +191,10 @@ function somaTotais(){
   document.getElementById('rtotal').innerHTML = soma;
   
 }
+
+
+const myInterval = window.setInterval(function(){
+    somaTotais()
+}, 5000);
 
 </script>
