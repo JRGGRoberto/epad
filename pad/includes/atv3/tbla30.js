@@ -5,6 +5,11 @@ function deleteAllRows3(){
   $("#tbl3 tbody tr").remove(); 
 }
 
+
+function calculaSubt(){
+  total3.innerHTML = data3.reduce((a, b) => a + parseInt(b.chs), 0);
+}
+
 function insereTable3(newDisc){
   // Adicionar uma nova linha na tabela
   let tabela = document.getElementById("tbl3").getElementsByTagName("tbody")[0];
@@ -53,7 +58,7 @@ function insereTable3(newDisc){
   celCH.innerHTML         = newDisc.chs;
   celDelet.innerHTML  = 
   `<center>
-    <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow3('${newDisc.id}')">⛔</button>
+    <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow3('t3${newDisc.id}')">⛔</button>
     <button type="button" class="btn btn-light btn-sm" onclick="formEditar3('${newDisc.id}')">✏️</button>
   </center>`;
   celId.style.display = 'none'; 
@@ -162,6 +167,7 @@ function updateAtividade3(receiveData){
   linha.cells[4].innerHTML = data.chs;
 
   fecharModalAtv3();
+  
 
 }
 
@@ -177,6 +183,7 @@ frmAtv3.addEventListener('submit', e => {
   }else{
     updateAtividade3(data);
   }
+  calculaSubt();
 })
 
 async function getDBMD3() {
@@ -191,7 +198,7 @@ async function getDBMD3() {
     noDataInfo();
     noData3 = true;
   }
-  total3.innerHTML = data3.reduce((a, b) => a + parseInt(b.chs), 0);
+  calculaSubt();
   
   //dadosCH();
 }

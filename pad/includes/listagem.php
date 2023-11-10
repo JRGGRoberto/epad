@@ -25,7 +25,7 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false"><strong>2.1. Atividades Didáticas</strong></a></div>
                 </div>
                 <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática: <strong><span id="total2" style="padding-left: 20px;">0</span></strong></div>
+                    <div class="col-sm d-flex justify-content-end">Média semanal anual da carga horária didática: <strong><span id="total21" style="padding-left: 20px;">0</span></strong></div>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
                 <div class="card-body">
 
                     <?php
-                    include './includes/tbla21.php';
+                    include './includes/atv21/tbla21.php';
                     ?>
 
                 </div>
@@ -54,7 +54,7 @@
             <div id="ativ22" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
                     <?php
-                    include './includes/tbla22.php';
+                    include './includes/atv22/tbla22.php';
                     ?>
 
 
@@ -99,7 +99,7 @@
                 <div class="card-body">
 
                     <?php
-                    include './includes/tbla40.php';
+                    include './includes/atv4/tbla40.php';
                     ?>
 
                 </div>
@@ -168,32 +168,83 @@
             </div>
         </div>
     </div>
-
 </section>
+
+    <!-- The Modal DELET-->
+    <div class="modal fade" id="modalDel">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title" >Remover atividade</h4>
+            <button type="button" class="close" data-dismiss="modal">×</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
+              <div class="form-group">
+                Tem certeza que deseja apagar a atividade abaixo? 
+                <div class="d-flex justify-content-center mb-3" id="nomeDisDel"></div>
+                <input type="hidden" name="idAtivDel" id="idAtivDel">
+                <input type="hidden" name="idAtivDelOrigem" id="idAtivDelOrigem">
+              </div>
+
+              <center>
+                <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
+                <button type="submit" class="btn btn-danger btn-sm" >Apagar</button>
+              </center>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  The Modal DELET Fim-->
+
+
+
 
 <script>
 
-
-    function somaTotais() {
-        let total2 = document.getElementById('total2').innerHTML;
-        let total22 = document.getElementById('total22').innerHTML;
-        let total3 = document.getElementById('total3').innerHTML;
-        let total4 = document.getElementById('total4').innerHTML;
-
-        document.getElementById('rtotal21').innerHTML = total2;
-        document.getElementById('rtotal22').innerHTML = total22;
-        document.getElementById('rtotal3').innerHTML = total3;
-        document.getElementById('rtotal4').innerHTML = total4;
-
-        soma = (parseFloat(total2) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
-
-        document.getElementById('rtotal').innerHTML = soma;
-
-    }
+/*
+function frmExcluirShow(id){
+  $('#modalDel').modal('show');
 
 
-    const myInterval = window.setInterval(function() {
-        somaTotais()
-    }, 5000);
+  let nomeDisDel = document.getElementById('nomeDisDel');
+  let id_disDel = document.getElementById('id_disDel');
+  let index = disciplinas.findIndex(e => e.id === id);
+  let myObj = disciplinas[index];
+  nomeDisDel.innerHTML =  myObj.nome;
+  id_disDel.value = myObj.id;
+}
+*/
+
+
+function somaTotais() {
+    
+
+    let total21 = document.getElementById('total21').innerHTML;
+    let total22 = document.getElementById('total22').innerHTML;
+    let total3 = document.getElementById('total3').innerHTML;
+    let total4 = document.getElementById('total4').innerHTML;
+
+    document.getElementById('rtotal21').innerHTML = total21;
+    document.getElementById('rtotal22').innerHTML = total22;
+    document.getElementById('rtotal3').innerHTML = total3;
+    document.getElementById('rtotal4').innerHTML = total4;
+    soma = (parseFloat(total21) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
+
+    document.getElementById('rtotal').innerHTML = soma;
+}
+
+
+const myInterval = window.setInterval(function() {
+    somaTotais()
+}, 5000);
+
+getDBMD21();
 </script>
 

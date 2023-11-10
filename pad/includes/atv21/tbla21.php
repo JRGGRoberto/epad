@@ -13,3 +13,5 @@
     <tbody>
     </tbody>
 </table>
+
+<script src="./includes/atv21/tbla21.js"></script>
