@@ -121,32 +121,32 @@
                         <th>2.1</th>
                         <th>Total de média semanal anual de carga horária didática</th>
                         <td style="text-align: right">
-                            <strong><span id="rtotal21" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal21" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
                         </td>
                     <tr>
                         <th>2.2</th>
                         <th>Total de média semanal anual de carga horária supervisão e orientação</th>
                         <td style="text-align: right">
-                            <strong><span id="rtotal22" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal22" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
                         </td>
                     <tr>
                         <th>3</th>
                         <th>Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</th>
                         <td style="text-align: right">
-                            <strong><span id="rtotal3" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal3" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
                         </td>
                     <tr>
                         <th>4</th>
                         <th>Total de carga horária semanal de gestão institucional</th>
                         <td style="text-align: right">
-                            <strong><span id="rtotal4" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal4" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
                         </td>
                     </tr>
 
                     <tr>
                         <th colspan="2">Total de carga horária semanal</th>
                         <td style="text-align: right">
-                            <strong><span id="rtotal" style="padding-left: 20px;">0</span>h</strong>
+                            <strong><span id="rtotal" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
                         </td>
                     </tr>
 

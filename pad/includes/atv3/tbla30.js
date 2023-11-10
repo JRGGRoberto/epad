@@ -1,26 +1,6 @@
 let data3 = [ ];
 let noData3 = true;
 
-/*
-
-    {
-        'id3': '1',
-        'tpProj3': '1',
-        'nome3': 'Estudos sobre recursos tecnológicos digitais e seus usos por professores em suas práticas profissionais e em seus processos formativos',
-        'funcao3': '1',
-        'orientandos3': 'Débora Rengel, Noeli Teresinha Valério de Almeida, Suzana Pereira do Prado, Suely Maria de Souza',
-        'cargah3': '8'
-    },
-    {
-        'id3': '2',
-        'tpProj3': '1',
-        'nome3': 'Estudos sobre recursos tecnológicos',
-        'funcao3': '1',
-        'orientandos3': 'Joãozinho',
-        'cargah3': '2'
-    }
-    */
-
 function deleteAllRows3(){
   $("#tbl3 tbody tr").remove(); 
 }
@@ -79,13 +59,6 @@ function insereTable3(newDisc){
   celId.style.display = 'none'; 
 }
 
-function formTeste(){
-    data3.forEach(e => insereTable3(e));
-    let total3 = document.getElementById('total3');
-    total3.innerHTML = data3.reduce((a, b) => a + parseInt(b.ch), 0);
-    somaTotais();
-}
-
 function formAddAtv3() {
   clearModal3();
   document.getElementById("titleMotal3").innerHTML = 'Adicionar atividade';
@@ -102,15 +75,15 @@ function clearModal3(){
 }
 
 function formEditar3(id) {
-  let idx3 = data3.findIndex(d =>d.id3 === id);
+  let idx3 = data3.findIndex(d =>d.id === id);
   let myObj = data3[idx3];
   document.getElementById("idx3").value = idx3;
-  document.getElementById("id3").value  = myObj.id3;
-  document.getElementById('tpProj3').value = myObj.tpProj3;
-  document.getElementById('nome3').value = myObj.nome3;
-  document.getElementById('funcao3').value =myObj.funcao3;
-  document.getElementById('orientandos3').value = myObj.orientandos3;
-  document.getElementById('cargah3').value = myObj.cargah3;
+  document.getElementById("id3").value  = myObj.id;
+  document.getElementById('tpProj3').value = myObj.tp;
+  document.getElementById('nome3').value = myObj.nome;
+  document.getElementById('funcao3').value =myObj.func;
+  document.getElementById('orientandos3').value = myObj.orientandos;
+  document.getElementById('cargah3').value = myObj.chs;
 
   document.getElementById("titleMotal3").innerHTML = 'Editar atividade';
   document.getElementById("addAtv3").innerHTML = "Alterar";
@@ -124,27 +97,72 @@ function fecharModalAtv3() {
   $('#modalAtv3').modal('hide');
 }
 
+function tradaDados3(receiveData){
+  return dados = {
+    id      : receiveData.id3,
+    id_vin  : receiveData.vinc3, 		
+    tp	    : receiveData.tpProj3,
+    nome	  : receiveData.nome3,
+    func	  : receiveData.funcao3,
+    orientandos : receiveData.orientandos3,
+    chs         : receiveData.cargah3
+  };
+}
+
+
 function addAtividade3(receiveData) {
-  console.log(receiveData);
  // data = receiveData.data;
+  receiveData = tradaDados3(receiveData);
   data3.push(receiveData);
   insereTable3(receiveData);
   fecharModalAtv3();
 }
 
 function updateAtividade3(receiveData){
-  data = receiveData.data;
-  data3[data.idx3] = {
-    nome: data.nome,
-    ch: data.ch,
-    serie: data.serie,
-    id: data.id
-  };
+  data = tradaDados3(receiveData);
+
+  data3[receiveData.idx3] = data;
+
   let tabela = document.getElementById("tbl3").getElementsByTagName("tbody")[0];
-  let linha = tabela.rows[data.idx];
-  linha.cells[1].innerHTML = data.nome;
-  linha.cells[2].innerHTML = data.ch;
-  linha.cells[3].innerHTML = data.serie;
+  let linha = tabela.rows[receiveData.idx3];
+
+  let tipo;
+  switch (data.tp) {
+    case '1':
+      tipo = 'Pesquisa';
+      break;
+    case '2':
+      tipo = 'Extensão e cultura';
+      break;
+    case '3':
+      tipo = 'Outro - informar em observações';
+      break;
+    default:
+      tipo = 'Não definido';
+  };
+
+  let func = '';
+  switch (data.func) {
+    case '1':
+      func = 'Coordenador';
+      break;
+    case '2':
+      func = 'Membro';
+      break;
+    case '3':
+      func = 'Programas especiais';
+      break;
+    default:
+      func = 'Não definido';
+  };
+
+  linha.cells[1].innerHTML = tipo +': '+ data.nome;
+  linha.cells[2].innerHTML = func;
+  linha.cells[3].innerHTML = data.orientandos;
+  linha.cells[4].innerHTML = data.chs;
+
+  fecharModalAtv3();
+
 }
 
 const frmAtv3 = document.getElementById('frmAtv3');
@@ -152,11 +170,13 @@ frmAtv3.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(frmAtv3);
   const data = Object.fromEntries(formData);
-  
-  
-  addAtividade3(data);
 
-
+  const id = document.getElementById('id3').value;
+  if(id === ''){
+    addAtividade3(data);
+  }else{
+    updateAtividade3(data);
+  }
 })
 
 async function getDBMD3() {
