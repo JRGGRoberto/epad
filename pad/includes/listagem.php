@@ -224,7 +224,6 @@ function frmExcluirShow(id){
 
 
 function somaTotais() {
-    
 
     let total21 = document.getElementById('total21').innerHTML;
     let total22 = document.getElementById('total22').innerHTML;

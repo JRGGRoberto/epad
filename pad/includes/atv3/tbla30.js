@@ -203,5 +203,4 @@ async function getDBMD3() {
   //dadosCH();
 }
 
-
 getDBMD3();

@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <h1>Matrize de Disciplinas</h1>
+    <h1>Matriz de Disciplinas</h1>
 
     <hr>
 
@@ -228,29 +228,17 @@ function noDataInfo(){
   newCel.style.textAlign = "center";
 }
 
-async function getDBMD() {
-  deleteAllRows();
-  let mat = document.getElementById('id_matriz').value;
-  disciplinas = await fetch(`../api/discip.php?mat=${mat}`).then(resp => resp.json()).catch(error => false);
-  
-  if (disciplinas.length > 0){
-    disciplinas.forEach(e => insereTable(e));
-    noData = false;
-  } else {
-    noDataInfo();
-    noData = true;
-  }
-  dadosCH();
-}
-
 function frmExcluirShow(id){
   $('#modalDel').modal('show');
+  alert(id);
+  /*
   let nomeDisDel = document.getElementById('nomeDisDel');
   let id_disDel = document.getElementById('id_disDel');
   let index = disciplinas.findIndex(e => e.id === id);
   let myObj = disciplinas[index];
   nomeDisDel.innerHTML =  myObj.nome;
   id_disDel.value = myObj.id;
+  */
 }
 
 const frmDEL = document.getElementById('frmDiscDel');
@@ -400,6 +388,8 @@ formM.addEventListener('submit', e => {
     const formData = new FormData(formM);
     const data = Object.fromEntries(formData);
 
+
+    // Se tiver ID é uma edição se não ADD
     const id = document.getElementById('id').value;
     if(id === '') {
       fetch('./dml/insert.php', {
@@ -427,6 +417,21 @@ formM.addEventListener('submit', e => {
       fecharModalDis();
     }
 });
+
+async function getDBMD() {
+  deleteAllRows();
+  let mat = document.getElementById('id_matriz').value;
+  disciplinas = await fetch(`../api/discip.php?mat=${mat}`).then(resp => resp.json()).catch(error => false);
+  
+  if (disciplinas.length > 0){
+    disciplinas.forEach(e => insereTable(e));
+    noData = false;
+  } else {
+    noDataInfo();
+    noData = true;
+  }
+  dadosCH();
+}
 
 getDBMD();
 
