@@ -32,6 +32,10 @@
       </div>
     </div>
 
+    <div class="form-group">
+      Nome: <?= $matriz->nome ?>
+    </div>
+
 
     <div class="form-group">  
                   <div class="row">

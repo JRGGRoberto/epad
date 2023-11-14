@@ -182,18 +182,34 @@ function desabilitar() {
 
 function ativaEdtAno() {
   var anoLetivoEdt = document.getElementById('anoLetivo');
-  var colegiadocur = document.getElementById('co').value;
+  anoLetivoEdt.value = '2024';
+  let btnListarAnosL = document.getElementById('btnListarAnosL');
+  let btnAdicionarAnosL = document.getElementById('btnAdicionarAnosL');
+  btnListarAnosL.disabled = false;
+  btnAdicionarAnosL.disabled = false;
+  carregarDados();
+
+
+  /*
+
+  let btnListarAnosL = document.getElementById('btnListarAnosL');
+  let btnAdicionarAnosL = document.getElementById('btnAdicionarAnosL');
   if (!anoLetivo.value) {
     anoLetivoEdt.disabled = false;
   } else {
     desabilitar();
   }
-}
 
+  btnListarAnosL.disabled = false;
+  btnAdicionarAnosL.disabled = false;
+  */
+}
+/*
 function ativaBTNsLA() {
   let btnListarAnosL = document.getElementById('btnListarAnosL');
   let btnAdicionarAnosL = document.getElementById('btnAdicionarAnosL');
-  var anoLetivoEdt = document.getElementById('anoLetivo').value;
+  var anoLetivoEdt = document.getElementById('anoLetivo');
+  anoLetivoEdt.value = 2024;
   if (anoLetivoEdt.length = 4) {
     btnListarAnosL.disabled = false;
     btnAdicionarAnosL.disabled = false;
@@ -202,6 +218,10 @@ function ativaBTNsLA() {
     btnAdicionarAnosL.disabled = true;
   }
 }
+ativaEdtAno();
+btnListarAnosL.disabled = false;
+    btnAdicionarAnosL.disabled = false;
+*/
 
 function fecharModalDis() {
   clearModal();
@@ -216,6 +236,7 @@ function preencheForm(id){
   document.getElementById("anoLet").value = myObj.ano;
   document.getElementById("nomeCurso").value = myObj.curso;
   document.getElementById("chTotal").value = myObj.ch;
+  document.getElementById("nome").value = myObj.nome;
   document.getElementById("habilitacao").value = myObj.habilitacao;
   document.getElementById("oferta").value = myObj.oferta;
   document.getElementById("vagas").value = myObj.vagas;
