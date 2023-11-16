@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <h1>Matrizes de Disciplinas</h1>
+    <h1>Vinculo de professores com o ano letivo</h1>
 
     <hr>
 
@@ -58,11 +58,10 @@
         <thead class="thead-light">
           <tr>
             <th style="display: none;">ID</th>
-            <th>Ano</th>
-            <th>Curso</th>
             <th>Nome</th>
-            <th>Período</th>
-            <th>Carga horária</th>
+            <th>Titulação</th>
+            <th>Área de consurso</th>
+            <th>RT</th>
             <th style="text-align: center;"><button type="button" class="btn btn-warning" disabled=""></button></th>
           </tr>
         </thead>
@@ -100,7 +99,6 @@
                     <input type="hidden" name="id_cam" id="id_camp_form">
                     <input type="hidden" name="id_cen" id="id_cent_form">
                     <input type="hidden" name="id_cur" id="id_curs_form">
-                    <input type="hidden" name="uid" id="uid" value="<?=$uid?>">
                     <input type="hidden" name="to_do" id="to_do">
                   </div>
                 </div>

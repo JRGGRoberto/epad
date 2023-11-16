@@ -38,10 +38,46 @@ class Vinculo {
     ]);
   }
 
-  public static function getVinculo($id){
+  public function atualizar(){ 
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+                                                          'ano'           =>  $this->ano,
+                                                          'rt'            =>  $this->rt,
+                                                          'id_prof'       =>  $this->id_prof,
+                                                          'area_concurso' =>  $this->area_concurso,
+                                                          'dt_obtn_tit'   =>  $this->dt_obtn_tit,
+                                                          'tempo_cc'      =>  $this->tempo_cc,
+                                                          'tempo_esu'     =>  $this->tempo_esu,
+                                                          'obs'           =>  $this->obs,
+                                                          'updated_at'    => date("Y-m-d H:i:s"),
+                                                          'user'          => $this->user
+                                                        ]);
+  }
+
+  public function excluir(){
+    return (new Database('vinculo'))->delete('id = "'.$this->id .'"');
+
+  }
+
+  public static function get($id){
     $where = ' id = "'.$id.'" ';
     return (new Database('vinculov'))->select($where)
                                      ->fetchObject(self::class);
+  }
+
+  public static function gets($where = null, $order = null, $limit = null){
+    return (new Database('vinculov'))->select($where,$order,$limit)
+                                  ->fetchAll(PDO::FETCH_CLASS,self::class);
+  }
+
+    /**
+   * Método responsável por obter a quantidade de registros
+   * @param  integer $id
+   * @return integer
+   */
+  public static function getQntd($where = null){
+    return (new Database('vinculov'))->select($where, null, null, 'COUNT(*) as qtd')
+                                  ->fetchObject()
+                                  ->qtd;
   }
 
 }

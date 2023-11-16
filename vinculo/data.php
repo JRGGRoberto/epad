@@ -33,7 +33,6 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
     $obMatDis->oferta       = $oferta;
     $obMatDis->turno        = $periodo;
     $obMatDis->vagas        = $vagas;
-    $obMatDis->user         = $uid;
     $id = $obMatDis->cadastrar();
 
     header('location: ../disciplinas/index.php?id='. $id);
@@ -50,7 +49,6 @@ if( isset($_POST['ano']) and isset($_POST['id_cur']) and isset($_POST["to_do"]) 
     $obMatDis->oferta       = $oferta;
     $obMatDis->turno        = $periodo;
     $obMatDis->vagas        = $vagas;
-    $obMatDis->user         = $uid;
     $obMatDis->atualizar();
 
     header('location: ../disciplinas/index.php?id='. $obMatDis->id);

@@ -2,7 +2,6 @@
 
 require '../vendor/autoload.php';
 
-
 use \App\Entity\Usuario;
 use \App\Session\Login;
 
@@ -11,7 +10,6 @@ use \App\Session\Login;
 
 $alertaLogin = '';
 $alertaCadastro = '';
-
 
 //Validação do post
 if(isset($_POST['acao'])){
@@ -30,20 +28,13 @@ if(isset($_POST['acao'])){
         break;
       }
 
+      /*
       if($obUsuario->ativo != 1){
         $alertaLogin = "Conta desativada";
         break;
       }
-
-      
-
-
-      /*
-      echo "<pre>";
-      print_r($obUsuario);
-      echo "</pre>"; exit;
       */
-      
+
       //Loga usuário
       Login::login($obUsuario);
 

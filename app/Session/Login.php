@@ -25,7 +25,7 @@ class Login{
     self::init();
 
     //retorna dados do usuário
-    return self::isLogged() ? $_SESSION['proecunespar'] : null;
+    return self::isLogged() ? $_SESSION['unesparpad2'] : null;
 
   }
 
@@ -37,22 +37,15 @@ class Login{
     self::init();
 
     //sessão de usuário
-    $_SESSION['proecunespar'] =[
-      'id'    => $obUsuario->id,
-      'nome'  => $obUsuario->nome,
-      'email' => $obUsuario->email,
-      'telefone' => $obUsuario->telefone,
-      'ca_id' => $obUsuario->ca_id,
-      'campus' => $obUsuario->campus,
-      'ce_id' => $obUsuario->ce_id,
-      'centros' => $obUsuario->centros,
-      'co_id' => $obUsuario->co_id,
-      'colegiado' => $obUsuario->colegiado,
-      'ativo' => $obUsuario->ativo,
-      'adm' => $obUsuario->adm,
-      'nivel' => $obUsuario->nivel,
-      'niveln' => $obUsuario->niveln,
-      'tpnivel' => $obUsuario->tpnivel
+    $_SESSION['unesparpad2'] =[
+      'id'        => $obUsuario->id,
+      'nome'      => $obUsuario->nome,
+      'email'     => $obUsuario->email,
+      'lota_id'   => $obUsuario->lota_id,
+      'lota_nome' => $obUsuario->lota_nome,
+      'senha'     => $obUsuario->senha,
+      'config'    => $obUsuario->config,
+      'tipo'      => $obUsuario->tipo
     ];
 
     // redireciona usuário para Index
@@ -69,8 +62,8 @@ class Login{
     self::init();
 
     //remove a sessão de usuário
-    unset($_SESSION['proecunespar']);
-    session_destroy('proecunespar');
+    unset($_SESSION['unesparpad2']);
+    session_destroy('unesparpad2');
 
     header('location: ../login/login.php');
     exit;
@@ -86,7 +79,7 @@ class Login{
     self::init();
 
     //validação da sessão
-    return isset($_SESSION['proecunespar']['id']);
+    return isset($_SESSION['unesparpad2']['id']);
   }
 
   /**
