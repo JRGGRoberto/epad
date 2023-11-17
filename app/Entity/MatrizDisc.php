@@ -9,6 +9,7 @@ class MatrizDisc {
   public $id;
   public $id_curso;
   public $ano;
+  public $categ;
   public $nome;
   public $ch;
   public $habilitacao;
@@ -33,6 +34,7 @@ class MatrizDisc {
                          'id_curso'     => $this->id_curso,
                          'ch'           => $this->ch,
                          'ano'          => $this->ano,
+                         'categ'        => $this->categ,
                          'nome'         => $this->nome,
                          'habilitacao'  => $this->habilitacao,
                          'oferta'       => $this->oferta,
@@ -54,6 +56,7 @@ class MatrizDisc {
     return (new Database('matriz_disc'))->update('id = "'.$this->id.'" ',[
                                                                 'id_curso'     => $this->id_curso,
                                                                 'ano'          => $this->ano,
+                                                                'categ'        => $this->categ,
                                                                 'nome'         => $this->nome,
                                                                 'ch'           => $this->ch,
                                                                 'habilitacao'  => $this->habilitacao,
@@ -81,7 +84,7 @@ class MatrizDisc {
    * @return array
    */
   public static function get($where = null, $order = null, $limit = null){
-    return (new Database('matriz_cur'))->select($where,$order,$limit)
+    return (new Database('matriz_v'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   }
 
@@ -94,7 +97,7 @@ class MatrizDisc {
    */
   public static function getById($id){
     $where = ' id = "'.$id.'" ';
-    return (new Database('matriz_disc'))->select($where)
+    return (new Database('matriz_v'))->select($where)
                                      ->fetchObject(self::class);
   }
 

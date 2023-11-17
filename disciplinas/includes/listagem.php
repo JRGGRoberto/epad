@@ -47,19 +47,21 @@
                       Vagas: <?= $matriz->vagas ?>
                     </div>
 
-                    <div class="form-group col">
+                    <div class="form-group col" hidden>
                       Carga horária informada: <span id="chInfo"><?= $matriz->ch ?></span>
                     </div>
 
-                    <div class="form-group col">
+                    <div class="form-group col" hidden>
                       Carga horária atribuída: <span id="chAtt">0</span>
                     </div>
                     
-                    <div class="form-group col">
+                    <div class="form-group col" hidden>
                       <span id="chResult"></span>
                     </div>
 
-                    
+                    <div class="form-group col" >
+                      Categoria: <span ><?= $matriz->catego ?></span>
+                    </div>
                     
                   </div>
     
@@ -104,6 +106,7 @@
                             <textarea name="import_json" name="import_json" cols="30" rows="10"></textarea>
                             <input type="submit" value="⚡" id="importacao_json">
                             <input type="hidden" name="id_master" id="id_master" value="<?= $matriz->id ?>">
+                            <input type="hidden" name="uid_imp" id="uid_imp" value="<?=$user['id']?>">
                             <input type="hidden" name="url_corrente" id="url_corrente" value="<?=$_SERVER["REQUEST_URI"]?>">
                          </form>
                       </a>
@@ -141,6 +144,7 @@
                     <input type="hidden" name="id_matriz" id="id_matriz" value="<?= $matriz->id ?>">
                     <input type="hidden" name="id" id="id">
                     <input type="hidden" name="idx" id ="idx">
+                    <input type="hidden" name="uid" id="uid" value="<?=$user['id']?>">
                   </div>
                 </div>
               </div>

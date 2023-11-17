@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $dis->nome      = $data["disc"];
     $dis->ch        = $data["ch"];
     $dis->serie     = $data["serie"];
+    $dis->user      = $data["uid"];
     if(!$dis->atualizar()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
         echo json_encode($response);

@@ -114,10 +114,10 @@
               <div class="row">
               <div class="col">
                   <div class="form-group">
-                    <label for="categoria">Categoria</label>
-                    <select name="categoria" id="categoria" class="form-control" require="">
+                    <label for="categ">Categoria</label>
+                    <select name="categ" id="categ" class="form-control" require="">
                       <option value="">Selecione</option>
-                      <option value="a">Graduação;</option>
+                      <option value="a">Graduação</option>
                       <option value="b">Pós-graduação Lato Sensu gratuita</option>
                       <option value="c">Pós-graduação Stricto Sensu</option>
                     </select>

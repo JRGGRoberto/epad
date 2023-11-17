@@ -64,33 +64,7 @@ const inserirCO = (data) => {
 }
 
 
-matrizDisc = [{
-  "id": "123132132132",
-  "id_curso": "c3bbf72b-3b64-11ed-9793-0266ad9885af",
-  "ano": 2005,
-  "nome": "Matriz xpto",
-  "curso": "Ciência da Computação",
-  "turno": "Noturno",
-  "ch": 3600,
-  "habilitacao": "b",
-  "regime": "s",
-  "vagas": 50
-},
-{
-
-  "id": "96382741",
-  "id_curso": "c3bbf72b-3b64-11ed-9793-0266ad9885af",
-  "ano": 2005,
-  "nome": "Bla bla bla",
-  "curso": "Português",
-  "turno": "Matutino",
-  "ch": 3600,
-  "habilitacao": "l",
-  "regime": "a",
-  "vagas": 50
-
-}
-];
+matrizDisc = [];
 
 function post_MD() {
   document.frmMatriz.submit();
@@ -234,6 +208,7 @@ function preencheForm(id){
   document.getElementById("id_md").value = id;
   // Preenche os inputs
   document.getElementById("anoLet").value = myObj.ano;
+  document.getElementById("categ").value = myObj.categ;
   document.getElementById("nomeCurso").value = myObj.curso;
   document.getElementById("chTotal").value = myObj.ch;
   document.getElementById("nome").value = myObj.nome;
@@ -305,6 +280,7 @@ function formAddMatDis() {
 function clearModal() {
   document.getElementById("id_md").value = '';
   document.getElementById("to_do").value = '';
+  document.getElementById("categ").value = '';
   document.getElementById("chTotal").value = "";
   document.getElementById("habilitacao").selectedIndex = 0;
   document.getElementById("oferta").selectedIndex = 0;

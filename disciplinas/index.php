@@ -4,6 +4,10 @@ require '../vendor/autoload.php';
 
 use \App\Entity\MatrizDisc;
 use \App\Entity\Outros;
+use \App\Session\Login;
+
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 $matriz = new MatrizDisc();
 $matriz = $matriz::getById($_GET['id']);
@@ -57,5 +61,4 @@ switch ($matriz->turno) {
 
 include '../includes/header.php';
 include __DIR__.'/includes/listagem.php';
-include '../includes/footer.php'; 
-
+include '../includes/footer.php';

@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dis->nome      = $data["disc"];
     $dis->ch        = $data["ch"];
     $dis->serie     = $data["serie"];
+    $dis->user      = $data["uid"];
     $id = $dis->cadastrar();
     
     $responseData = array( 
