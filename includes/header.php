@@ -165,7 +165,7 @@ img.remover {
       echo 
                    "<span class='badge badge-primary' id='bca'>",   $obUsuario['tipo'],
         "</span><span class='badge badge-secondary' id='bce'>", $obUsuario['lota_nome'],
-        "</span><span class='badge badge-success' id='bco'>",   $obUsuario['colegiado'],
+       // "</span><span class='badge badge-success' id='bco'>",   $obUsuario['colegiado'],
         "</span><span class='badge badge-info'>",      $obUsuario['nome'],"</span></a>";
 /*
       if($obUsuario['niveln'] > 0){

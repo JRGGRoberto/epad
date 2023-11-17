@@ -13,7 +13,7 @@ class Disciplinas {
   public $id_matriz;
   public $created_at;
   public $updated_at;
-
+  public $vinculo;
   public $user;
   
   /**
