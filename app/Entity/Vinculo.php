@@ -58,6 +58,11 @@ class Vinculo {
 
   }
 
+  public static function getByAnoProf($idprof, $ano){
+    return (new Database('vinculov'))->select('(id_prof, ano) = ("'.$idprof.'", '. $ano .')')
+                                  ->fetchObject(self::class);
+  }
+
   public static function get($id){
     $where = ' id = "'.$id.'" ';
     return (new Database('vinculov'))->select($where)

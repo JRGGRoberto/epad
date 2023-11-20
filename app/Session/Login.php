@@ -45,7 +45,8 @@ class Login{
       'lota_nome' => $obUsuario->lota_nome,
       'senha'     => $obUsuario->senha,
       'config'    => $obUsuario->config,
-      'tipo'      => $obUsuario->tipo
+      'tipo'      => $obUsuario->tipo,
+      'co_id'     => $obUsuario->co_id
     ];
 
     // redireciona usuário para Index

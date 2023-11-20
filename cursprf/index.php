@@ -9,7 +9,7 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-if($user['tipo'] != 'agente'){
+if($user['tipo'] != 'prof'){
   header('location: ../home/');
   exit;
 }
@@ -17,7 +17,9 @@ if($user['tipo'] != 'agente'){
 $matriz = new MatrizDisc();
 $matriz = $matriz::getById($_GET['id']);
 
+
 $inf = Outros::hierCol($matriz->id_curso);
+
 
 $oferta = '';
 switch ($matriz->oferta) {

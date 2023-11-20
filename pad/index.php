@@ -15,25 +15,17 @@ if($user['tipo'] != 'prof') {
     header('location: ../matrizes/');
     exit;
 }
+
 $idprof = $user['id'];
-$where = `(id_prof, ano) = ('$idprof', '2024' )`;
-$vinc = Vinculo::gets($where);
-
-    echo '<pre>';
-    print_r($user);
-    echo '</pre>';
-
+$vinc = Vinculo::getByAnoProf($idprof, '2024');
 
 include '../includes/header.php';
-if(!$vinc instanceof Vinculo){
-    echo '<pre>';
-    print_r($vinc);
-    echo '</pre>';
-
-    $vinc = $vinc[0];
+if(!$vinc == null){
     include __DIR__.'/includes/listagem.php';
+    
 } else {
-    echo 'Seu vinculo com o ano letivo de 2024 ainda não foi realizado, favor entrar em contato com o seu coordenador.';
+    include __DIR__.'/includes/msgnovinc.php';
+    
 }
 
 

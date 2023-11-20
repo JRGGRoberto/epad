@@ -121,39 +121,46 @@ img.remover {
                       <span class="badge badge-success">ePAD <?=$clock[$horas]?></span>
                   </div>
                   <div>
-                  Plano de Atividades Docentes
+                     Plano de Atividades Docentes
                   </div>
                   <div><sup>ver<strong>0.0.01b</strong></sup></div>
 
                   
               </div>
-
-            <?php 
+<?php 
     if (!is_null($obUsuario['nome'])){
-      ?>
+?>
 
-      <div class="btn-group btn-group-sm float-right">   
-          <a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>  
-
-          <?php 
-            if(1>2){
-              echo `<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>`;
-            }
-          ?>
-        <div class="btn-group btn-group-sm">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
-          <div class="dropdown-menu dropdown-menu-right">
-          <!--  <a class="dropdown-item btn-sm" href="../< ?=$obUsuario['tipo']?>/editar.php?id=< ?=$obUsuario['id']?>">Perfil</a> 
-            <div class="dropdown-divider"></div>
-         -->   <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
-          </div>
-        </div>
-    </div>
+              <div class="btn-group btn-group-sm float-right">  
+                    <?php
+                       if($obUsuario['tipo'] === 'prof'){
+                         echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
+         
+                         if($obUsuario['config'] === '1'){
+                           echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Cursos</a>';
+                           echo '<a type="button" class="btn btn-primary" href="../orientacao" style="text-align: center;">Orientações</a>';
+                         } 
+                       } elseif($obUsuario['tipo'] === 'agente'){
+                         echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                       }
+         
+                   
+                       if(1>2){
+                         echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
+                       }
+                    ?>
+                  <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                     <!--  <a class="dropdown-item btn-sm" href="../< ?=$obUsuario['tipo']?>/editar.php?id=< ?=$obUsuario['id']?>">Perfil</a> 
+                       <div class="dropdown-divider"></div>
+                    -->   <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
+                    </div>
+                  </div>
+              </div>
 <?php 
     }
-  ?>
-
-
+?>
          </div>
     </div>     
   </nav>
@@ -177,5 +184,7 @@ img.remover {
       }
 */
     }
+    
+
 
   ?>

@@ -1,70 +1,46 @@
 <?php
 
-header('location: ./home');
-exit;
-/*
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
-// use \App\Entity\Menu;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 use \App\Session\Login;
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
+use \App\Entity\Vinculo;
 
-$usuarioLogado = Login::getUsuarioLogado();
-
-$usuario = $usuarioLogado ? $usuarioLogado['nome'].' <a href="../login/logout.php" class"text-light front-weight-bold ml-2">Sair</a>':
-'Visitante <a href="login.php" class"text-light front-weight-bold ml-2">Entrar</a>' ;
-
-//$menu = Menu::getRegistros();
-$menus = '';
-foreach($menu as  $regs){
-   $menus.=
-   '<div class="col mb-4">
-      <div class="card">
-        <img src="imgs/logo_unespar.png" width="80" height="80" class="img">
-        <div class="card-body">
-          <h5 class="card-title"><a href="./'.$regs->path.'">'.$regs->titulo.'</a></h5>
-          <p class="card-text">'.$regs->descr.'</p>
-        </div>
-      </div>
-    </div>
-';
+if($user['tipo'] != 'prof') {
+    header('location: ../matrizes/');
+    exit;
 }
 
-?>
+    echo '<pre>';
+    print_r($user);
+    echo '</pre>';
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+$idprof = $user['id'];
+$vinc = Vinculo::getByAnoProf($idprof, '2024');
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>SisGP PROEC</title>
-  </head>
-  <body class="bg-light text-dark">
-  <nav class="navbar navbar-light text-center p-3" style="background-image: linear-gradient(#000000 5%, #D8D8D8 5%, #FFFFFF 75%); ">
-    <div style="width: 50%;">
-         
-
-    </div>     
-  </nav>
-    <div class="container">
-       <p></p>
+if($vinc == null){
+    echo 'nada';
+    exit;
+}
+echo '<pre>';
+print_r($vinc);
+echo '</pre>';
 
 
-  <h1><?=$usuarioLogado['nome']?></h1>
-  <a href="login/logout.php">LogOut</a> <br>
+include '../includes/header.php';
+if(!$vinc instanceof Vinculo){
+    $vinc = $vinc;
+    include __DIR__.'/includes/listagem.php';
+} else {
+    echo 'Seu vinculo com o ano letivo de 2024 ainda não foi realizado, favor entrar em contato com o seu coordenador.';
+}
 
-<p><br></p>
-  <div class="row row-cols-1 row-cols-md-3">
-   <?=$menus?>
-</div>
 
-<?php
-
-include './includes/footer.php';
-
+include '../includes/footer.php';
 
 

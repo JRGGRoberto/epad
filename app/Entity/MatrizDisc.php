@@ -88,6 +88,11 @@ class MatrizDisc {
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   }
 
+  public static function getsByCursoAno($id_curso, $ano){
+    return (new Database('matriz_v'))->select('(id_curso, ano) = ("'.$id_curso.'", '. $ano .')')
+                                  ->fetchAll(PDO::FETCH_CLASS,self::class);
+  }
+
   /**
    * Método responsável por obter registro do banco de dados
    * @param  string $where
