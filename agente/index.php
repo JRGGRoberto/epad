@@ -11,6 +11,9 @@ $user = Login::getUsuarioLogado();
 use \App\Entity\Agente;
 use \App\Db\Pagination;
 
+header('location: ../matrizes/');
+exit;
+
 //Busca
 $busca = filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_STRING);
 $campus = filter_input(INPUT_GET, 'campus', FILTER_SANITIZE_STRING);

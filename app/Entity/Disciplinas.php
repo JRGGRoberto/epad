@@ -11,9 +11,11 @@ class Disciplinas {
   public $ch;
   public $serie;
   public $id_matriz;
+  public $vinculo;
+  public $vinclogchuser;
+  public $vinclogchdate;
   public $created_at;
   public $updated_at;
-  public $vinculo;
   public $user;
   
   /**
@@ -38,6 +40,19 @@ class Disciplinas {
     //RETORNAR SUCESSO
     return $newId;
   }
+
+/**
+   * Método responsável por atualizar REGISTRO no banco
+   * @return boolean
+   */
+  public function atribuir(){ 
+    return (new Database('disciplinas'))->update('id = "'.$this->id.'" ',[
+                                                                'vinculo'       => $this->vinculo,
+                                                                'vinclogchuser' => $this->vinclogchuser,
+                                                                'vinclogchdate' => date("Y-m-d H:i:s")
+                                                              ]);
+  }
+
 
   /**
    * Método responsável por atualizar REGISTRO no banco

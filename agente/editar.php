@@ -10,24 +10,35 @@ use \App\Entity\Agente;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+use \App\Entity\Campi;
+
+$ca = Campi::getRegistros();
+$opts = '';
+foreach($ca as $c){
+  $opts .= '<option value="'.$c->id .'">'. $c->nome.'</option>';
+}
+
 
 define('TITLE','Editar dados do Agente');
 
 //VALIDAÇÃO DO ID
 if(!isset($_GET['id']) ){
-    header('location: index.php?status=error');
-    exit;
+  header('location: ../matrizes/');
+  exit;
+  
 }
 
-//CONSULTA AO PROJETO
+//CONSULTA AO PROJETOecho '<pre>';
 $obAgente = new Agente();
 $obAgente = $obAgente::get($_GET['id']);
 
 
 //VALIDAÇÃO DA TIPO
 if(!$obAgente instanceof Agente){
-  header('location: ../index.php?status=error');
-  exit;
+ // header('location: ../index.php?status=error');
+ header('location: ../matrizes/');
+ exit;
+ 
 }
 
 $msg = '?';
@@ -42,27 +53,18 @@ if(isset($_POST['nome'])){
   $obAgente->ativo = $_POST['ativo'];
   $obAgente->lotacao = $_POST['lotacao'];
   $obAgente->config = $_POST['config'];
-/*  if ($obAgente->niveln> 0){
-    $obAgente->ativo = 1;
-  }
-*/
   $obAgente->updated_at =  date('Y-m-d H:i:s');
-  $obAgente->user = $_POST['user'];
+  $obAgente->user = $user['id'];
   if(strlen($_POST['senha']) > 0 ){
      $obAgente->senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
   }
   $obAgente->atualizar();
 
-  header('location: index.php?status=success');
-  exit;
+ // header('location: index.php?status=success');
+ header('location: ../matrizes/');
+ exit;
+ 
 }
-
-echo '<pre>';
-print_r($user);
-echo '<hr>';
-print_r($obAgente);
-echo '</pre>';
-exit;
 
 include '../includes/header.php';
 include __DIR__.'/includes/formulario.php';

@@ -2,6 +2,10 @@
 
 require '../vendor/autoload.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 use \App\Entity\MatrizDisc;
 use \App\Entity\Outros;
 use \App\Session\Login;
@@ -65,6 +69,12 @@ switch ($matriz->turno) {
     default:
       $turno = 'Não definido';
 }
+
+$script = 
+" <script> 
+    getDBMD('". $matriz->id ."');
+ </script>";
+
 
 include '../includes/header.php';
 include __DIR__.'/includes/listagem.php';

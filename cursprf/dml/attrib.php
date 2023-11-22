@@ -2,25 +2,21 @@
 
 require '../../vendor/autoload.php';
 use \App\Entity\Disciplinas;
+use \App\Session\Login;
+
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true); 
-
-    if($data["id"] == '' or $data["idx"] == '') {
-        $response = array("status" => "error", "message" => "Método de requisição inválido 1.");
-        echo json_encode($response);
-        exit;
-    }
-
+     
     $dis = new Disciplinas();
-    $dis = $dis::getById($data['id']);
-    $dis->nome      = $data["disc"];
-    $dis->ch        = $data["ch"];
-    $dis->serie     = $data["serie"];
-    $dis->user      = $data["uid"];
-    if(!$dis->atualizar()){
+    $dis =  $dis::getById($data['id_dis']);
+    $dis->vinculo       = $data["id_prof"];
+    $dis->vinclogchuser = $user['id'];
+    if(!$dis->atribuir()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
         echo json_encode($response);
         exit;

@@ -20,7 +20,7 @@ $user = Login::getUsuarioLogado();
     
     <div class="row">
                           
-    <input id="idprf" name="idprf" type="text" hidden value="<?= $obAgente->id ?>">
+     <input id="idprf" name="idprf" type="text" hidden value="<?= $obAgente->id ?>">
 
       <div class="col-8">
         <div class="form-group">
@@ -37,7 +37,8 @@ $user = Login::getUsuarioLogado();
 
         </div>
       </div>
-
+    </div>
+    <div class="row">
       <div class="col">
         <div class="form-group">
           <label>E-mail</label>
@@ -45,34 +46,12 @@ $user = Login::getUsuarioLogado();
         </div>
       </div>
 
-
-    </div>
-
-    <div class="row">
-
-     <div class="row">
-
-      
-
       <div class="col">
-        
-        <div class="form-group">
-          <label>Telefone</label>
-          <input type="tel" class="form-control" name="telefone" maxlength="16" value="<?=$obProfessor->telefone?>">
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="row">
-      <div class="col-2">
         <div class="form-group">
           <label for="ca">Campus</label>
-          <select name="id_campus" id="ca" class="form-control" required>
-          <?php
-            echo $CAop; 
-          ?>
+          <select name="lotacao" id="ca" class="form-control" required>
+             <option value="">Selecione</option>
+             <?= $opts ?>
           </select>
         </div> 
       </div>
@@ -88,13 +67,13 @@ $user = Login::getUsuarioLogado();
           <div>
               <div class="form-check form-check-inline">
                 <label class="form-control">
-                  <input type="radio" name="cat_func" value="e" <?=$obProfessor->cat_func == 'e' ? 'checked' : ''?>> Efetivo
+                  <input type="radio" name="cat_func" value="e" <?=$obAgente->cat_func == 'e' ? 'checked' : ''?>> Efetivo
                 </label>
               </div>
     
               <div class="form-check form-check-inline">
                 <label class="form-control">
-                  <input type="radio" name="cat_func" value="c" <?=$obProfessor->cat_func == 'c' ? 'checked' : ''?>> Colaborador
+                  <input type="radio" name="cat_func" value="c" <?=$obAgente->cat_func == 'c' ? 'checked' : ''?>> Colaborador
                 </label>
               </div>
           </div>
@@ -103,27 +82,14 @@ $user = Login::getUsuarioLogado();
 
       <div class="col-2">
         <div class="form-group">
-<?php
-  if($obProfessor->niveln> 0){
-     echo '<a href="#" title="Opção não permitida. Esta conta contém a atribuição de '.$obProfessor->nivel.'" data-toggle="popover" data-trigger="hover" data-content="Esta conta contém a atribuição de '.$obProfessor->nivel.' ">';
-  }
-?>
+
         <label>Estado da conta 
                     <label for="ativo" class="form-control">Ativa
                         <input type="checkbox" 
-<?php
-  if($obProfessor->niveln > 0){
-     echo 'disabled';
-  }
-?>
-                        name="ativo" value="1" <?=($obProfessor->ativo==1) ? 'checked': '' ?> >
+
+                        name="ativo" value="1" checked>
                     </label>
                </label>
-<?php
-  if($obProfessor->niveln> 1){
-     echo '</a>';
-  }
-?>
         </div>
       </div>
 
@@ -153,5 +119,4 @@ $user = Login::getUsuarioLogado();
     </div>
 
   </form>
-<?=$script?>
 </main>

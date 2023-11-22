@@ -129,6 +129,15 @@ img.remover {
               </div>
 <?php 
     if (!is_null($obUsuario['nome'])){
+
+    $tpuser;
+    if($obUsuario['tipo'] == 'prof'){
+      $tpuser = 'professor';
+    } elseif($obUsuario['tipo'] == 'agente'){
+      $tpuser = 'agente';
+    } else {
+
+    }
 ?>
 
               <div class="btn-group btn-group-sm float-right">  
@@ -152,9 +161,9 @@ img.remover {
                   <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
-                     <!--  <a class="dropdown-item btn-sm" href="../< ?=$obUsuario['tipo']?>/editar.php?id=< ?=$obUsuario['id']?>">Perfil</a> 
+                       <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
                        <div class="dropdown-divider"></div>
-                    -->   <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
+                       <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
                     </div>
                   </div>
               </div>

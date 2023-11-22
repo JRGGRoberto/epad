@@ -174,7 +174,8 @@ if(isset($_POST['nome'])){
   }
   $obProfessor->atualizar();
 
-  header('location: index.php?status=success');
+ // header('location: index.php?status=success');
+  header('location: ../home/index.php?status=success');
   exit;
 }
 
