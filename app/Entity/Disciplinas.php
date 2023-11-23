@@ -86,7 +86,7 @@ class Disciplinas {
    * @return array
    */
   public static function get($where = null, $order = null, $limit = null){
-    return (new Database('disciplinas'))->select($where,$order,$limit)
+    return (new Database('disciplinasv'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   }
 
