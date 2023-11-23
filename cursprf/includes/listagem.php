@@ -3,7 +3,6 @@
     <form id="frmatrib">
       <input type="text" name="id_dis" id="id_dis">
       <input type="text" name="id_prof" id="id_prof">
-      <input type="submit" value="enviar">
     </form>
 
     <hr>
@@ -265,9 +264,8 @@ tbodyMatD.onclick = function (e) {
     
 };
 
-const formAttrib = document.getElementById('frmatrib');
-formAttrib.addEventListener('submit', e => {
-    e.preventDefault();
+function atualizar(){
+    const formAttrib = document.getElementById('frmatrib');
     const formData = new FormData(formAttrib);
     const data = Object.fromEntries(formData);
 
@@ -280,8 +278,8 @@ formAttrib.addEventListener('submit', e => {
         body: JSON.stringify(data)
     })
     .then( res => res.json());
-});
-
+}
+ 
 </script>
 
 <?= $script ?>
