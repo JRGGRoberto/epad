@@ -163,42 +163,6 @@ function addDisciplina(receiveData) {
 }
 
 
-/*
-formM.addEventListener('submit', e => {
-    e.preventDefault();
-    const formData = new FormData(formM);
-    const data = Object.fromEntries(formData);
-
-
-    // Se tiver ID é uma edição se não ADD
-    const id = document.getElementById('id').value;
-    if(id === '') {
-      fetch('./dml/insert.php', {
-          method:'POST',
-          headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      })
-      .then(res => res.json())
-      .then( data => addDisciplina(data));
-      fecharModalDis();
-    } else {
-      fetch('./dml/update.php', {
-          method:'PUT',
-          headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      })
-      .then( res => res.json())
-      .then( data => updateDisciplina(data));
-      fecharModalDis();
-    }
-});
-*/
 
 
 async function getDBMD(id) {
@@ -224,6 +188,16 @@ var profSelected = document.getElementById("profSelected")
 var tblProfs = document.getElementById("tblProfs");
 var tbodyProf = tblProfs.getElementsByTagName("tbody")[0];
 
+function verifica(){
+  const l1 = id_dis.value.length;
+  const l2 = id_prof.value.length;
+  if((l1 > 0) && (l2 > 0)){
+    atualizar();
+    return true;
+  } else return false;
+}
+
+//Click na tabela PROFESSORES
 tbodyProf.onclick = function (e) {
     e = e || window.event;
     var data = [];
@@ -235,13 +209,21 @@ tbodyProf.onclick = function (e) {
         var cells = target.getElementsByTagName("td");
         id_prof.value = cells[0].innerHTML;
         data.push(cells[2].innerHTML);
+        profSelected.innerHTML = data;
     }
-    profSelected.innerHTML = data;
-    if(id_dis.value !== ''){
-      document.getElementById(id_dis.value).innerHTML = cells[2].innerHTML;
+    
+    if(verifica()){
+      var cedulaNomeProfInDisc = document.getElementById(id_dis.value);
+      cedulaNomeProfInDisc.innerHTML = cells[2].innerHTML;
+      id_dis.value   = '';
+      id_prof.value = '';
+      var trDaCedula  = cedulaNomeProfInDisc.parentNode;
+      trDaCedula.classList.add("table-success");
+      
     }
 };
 
+//Click na tabela DISCIPLINAS
 tbodyMatD.onclick = function (e) {
     e = e || window.event;
     var data = [];
@@ -251,16 +233,16 @@ tbodyMatD.onclick = function (e) {
     }
     if (target) {
         var cells = target.getElementsByTagName("td");
+        id_dis.value = cells[0].innerHTML;
         data.push(cells[1].innerHTML);
+        profDisciplina.innerHTML = data;
     }
-    profDisciplina.innerHTML = data;
-    
-    if(profSelected.innerHTML !== 'Professor'){
-      id_dis.value = cells[0].innerHTML;
+    if(verifica()){
       cells[4].innerHTML = profSelected.innerHTML;  
       target.classList.add("table-success");
+      id_dis.value   = '';
+      id_prof.value = '';
     } 
-
     
 };
 
@@ -268,6 +250,8 @@ function atualizar(){
     const formAttrib = document.getElementById('frmatrib');
     const formData = new FormData(formAttrib);
     const data = Object.fromEntries(formData);
+
+    console.log(data);
 
     fetch('./dml/attrib.php', {
         method:'PUT',
