@@ -7,7 +7,7 @@ function deleteAllRows3(){
 
 
 function calculaSubt(){
-  total3.innerHTML = data3.reduce((a, b) => a + parseInt(b.chs), 0);
+  total3.innerHTML = data3.reduce((a, b) => a + parseFloat(b.chs), 0);
 }
 
 function insereTable3(newDisc){
