@@ -17,6 +17,20 @@ if($user['tipo'] != 'prof'){
   header('location: ../home/');
   exit;
 }
+$ok = false;
+
+if($user['tipo'] === 'prof' ){
+   if($user['config'] == '1'){
+      $ok = true;
+   }
+}
+
+if(!$ok){
+   header('location: ../home/');
+   exit;
+}
+
+
 
 $matriz = new MatrizDisc();
 $matriz = $matriz::getById($_GET['id']);

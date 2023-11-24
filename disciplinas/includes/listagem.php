@@ -1,5 +1,8 @@
-<div class="container mt-3">
-    <h1>Matriz de Disciplinas</h1>
+<div class="container mt-3"  style="margin-bottom: 0px;">
+    <div class="row">
+      <div class="col"><h3>Matriz de Disciplinas</h3></div>
+      <div class="col"  style="text-align:right"><a href="../matrizes/">voltar</a></div>
+    </div>
 
     <hr>
 

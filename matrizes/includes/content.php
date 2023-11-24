@@ -1,5 +1,5 @@
 <div class="container mt-3">
-    <h1>Matrizes de Disciplinas</h1>
+    <h3>Matrizes de Disciplinas</h3>
 
     <hr>
 

@@ -33,13 +33,15 @@ function insereTable(newData) {
   let celCurso = novaLinha.insertCell(2);
   let celNome = novaLinha.insertCell(3);
   let celTurno = novaLinha.insertCell(4);
-  let celCh = novaLinha.insertCell(5);
+  //let celCh = novaLinha.insertCell(5);
+  let clPreenc = novaLinha.insertCell(5);
   let celDelete = novaLinha.insertCell(6);
   
   celId.innerHTML = newData.id;
   
   celId.style.display = 'none';
-  celCh.style.textAlign = 'right';
+  clPreenc.style.textAlign = 'center';
+  //celCh.style.textAlign = 'right';
 
   celAno.innerHTML = newData.ano;
   celCurso.innerHTML = newData.curso;
@@ -64,8 +66,22 @@ function insereTable(newData) {
   };
   
   celTurno.innerHTML = turno;
-  celCh.innerHTML = newData.ch;
-  celDelete.innerHTML = `<center><button type="button" class="btn btn-light btn-sm" onclick="configDisc('${newData.id}')" data-toggle="tooltip" data-placement="right" title="Configurar">⚙️</button></center>`;
+  //celCh.innerHTML = newData.ch;
+  
+  if (newData.qnt_dis == 0) {
+    clPreenc.innerHTML = 'Sem disciplinas';
+    celDelete.innerHTML = '<center>◽</center>';
+
+  } else {
+    clPreenc.innerHTML = newData.qnt_pre + '/' + newData.qnt_dis;
+    celDelete.innerHTML = `<center><button type="button" class="btn btn-light btn-sm" onclick="configDisc('${newData.id}')" data-toggle="tooltip" data-placement="right" title="Configurar">⚙️</button></center>`;
+  }
+
+  if(newData.qnt_dis > 0){
+    if (newData.qnt_pre == newData.qnt_dis){
+      novaLinha.classList.add("table-success");
+    }
+  } 
 }
 
 async function getDBMD(id) {
