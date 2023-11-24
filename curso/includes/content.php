@@ -19,7 +19,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+</div>
 <script src="./ccc1.js"></script>
 <?php
 echo " <script> getDBMD('". $user['co_id'] ."') </script>";

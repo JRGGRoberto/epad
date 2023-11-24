@@ -1,3 +1,5 @@
+<div class="container mt-3">
+    <h3>PAD <?=$vinc->ano?></h3>
 <section>
     <input type="hidden" name="id_vinc" id="id_vinc" value="<?= $vinc->id ?>" >
 
@@ -53,7 +55,8 @@
 
             <div id="ativ22" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-                    <?php
+                <div class="container mt-3">
+    <h3>Matrizes de Cursos</h3>         <?php
                     include './includes/atv22/tbla22.php';
                     ?>
 
@@ -111,7 +114,10 @@
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>5. Resumo das atividades e totalização</strong>
+            <div class="row">
+                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#resumo" aria-expanded="false"><strong>5. Resumo das atividades e totalização</strong></a></div>
+            </div>
+        
         </div>
         <div id="resumo" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
@@ -160,16 +166,18 @@
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>6. Outras Observações</strong>
+            <div class="row">
+                <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#outobs" aria-expanded="false"><strong>6. Outras Observações</strong></a></div>
+            </div>
         </div>
-        <div id="resumo" class="collapse show" data-parent="#accordion" style="">
+        <div id="outobs" class="collapse show" data-parent="#accordion" style="">
             <div class="card-body">
                 <input type="text" name="" id="" value="<?= $vinc->obs ?>">
             </div>
         </div>
     </div>
-</section>
-
+  </section>
+</div>  
     <!-- The Modal DELET-->
     <div class="modal fade" id="modalDel">
       <div class="modal-dialog">
