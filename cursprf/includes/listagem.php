@@ -1,5 +1,8 @@
-<div class="container mt-3">
-    <h3>Atribuição de professores as disciplinas</h3>
+<div class="container mt-3"  style="margin-bottom: 0px;">
+    <div class="row">
+      <div class="col"><h3>Atribuição de professores as disciplinas</h3></div>
+      <div class="col"  style="text-align:right"><a href="../curso/">voltar</a></div>
+    </div>
     <form id="frmatrib" hidden>
       <input type="text" name="id_dis" id="id_dis">
       <input type="text" name="id_prof" id="id_prof">
@@ -12,13 +15,13 @@
         <div>
             <?= $matriz->nome ?> - <?=  $turno ?>
 
-          <div class="progress" style="height:7px; width:150px" hidden>
+          <div class="progress" style="height:7px; width:150px" >
               <div class="progress-bar" id="progressBar"></div>
           </div>
         </div>    
       </div>
       <div class="col">
-        <ul class="pagination pagination-sm" style="height:7px;" hidden id="indicativo">
+        <ul class="pagination pagination-sm" style="height:7px;" hidden id="indicativo" fade>
           <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina">Disciplina</small></a></li>
           <li class="page-item"><a class="page-link" href="#"><small id="profSelected">Professor</small></a></li>
         </ul>
@@ -87,11 +90,10 @@ var tblProfs = document.getElementById("tblProfs");
 var tbodyProf = tblProfs.getElementsByTagName("tbody")[0];
 
 
-function chProgressBar(){
-  preenchido = disciplinas.reduce((a, b) => a + (b.professor!=null? 1: 0)  ,0);
-  var perc = (preenchido*100)/total;
+function chProgressBar(pre){
+  var perc = (pre*100)/total;
   progressBar.style=`width:${perc}%`;
-  progressBar.innerHTML = preenchido +  ' / ' + total;
+  progressBar.innerHTML = pre +  ' / ' + total;
 }
 
 
@@ -120,7 +122,7 @@ function noDataInfo(){
 
 function insereTable(newDisc){
   // Adicionar uma nova linha na tabela
-  let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
+    let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
   let newLinha = tabela.insertRow();
     let celId    = newLinha.insertCell(0);
     let celDisc  = newLinha.insertCell(1);
@@ -135,11 +137,10 @@ function insereTable(newDisc){
   if(newDisc.professor !== null){
     newLinha.classList.add("table-success");
     preenchido++;
-    chProgressBar();
   }
+  chProgressBar(preenchido);
   celId.style.display = 'none';
   celProf.setAttribute("id", newDisc.id);
-  total++;
 }
 
 function insereTableProf(newDisc){
@@ -161,12 +162,10 @@ function insereTableProf(newDisc){
 }
 
 
-
-
-
 async function getDBMD(id) {
   deleteAllRows();
   disciplinas = await fetch(`../api/discip.php?mat=${id}`).then(resp => resp.json()).catch(error => false);
+  total = disciplinas.length;
   if (disciplinas.length > 0){
     disciplinas.forEach(e => insereTable(e));
     noData = false;
@@ -196,8 +195,6 @@ function verifica(){
   const l2 = id_prof.value.length;
   if((l1 > 0) && (l2 > 0)){
     atualizar();
-    
-    chProgressBar();
     return true;
   } else return false;
 }
@@ -272,8 +269,6 @@ tbodyMatD.ondblclick = function(e) {
         var cells = target.getElementsByTagName("td");
         cells[4].innerHTML = '';
         atualizar();
-        preenchido--;
-        chProgressBar();
       }
     }
 }
@@ -291,9 +286,16 @@ function atualizar(){
         },
         body: JSON.stringify(data)
     })
-    .then( res => res.json());
+    .then( res => res.json())
+    .then( res => {
+           var x = res.data.preenchido;
+          // console.log(res.data.preenchido);
+           chProgressBar(x);
+        }
+    );
+    
+    
 }
- 
 
 getDBMDprof(2024);
 </script>

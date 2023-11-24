@@ -115,5 +115,16 @@ class Disciplinas {
                                   ->fetchObject()
                                   ->qtd;
   }
+
+   /**
+   * Método responsável por obter a quantidade de registros
+   * @param  integer $id
+   * @return integer
+   */
+  public static function getQntdPreen($where = null){
+    return (new Database('disciplinasv'))->select($where, null, null, 'COUNT(professor) as qtd')
+                                  ->fetchObject()
+                                  ->qtd;
+  }
  
 }

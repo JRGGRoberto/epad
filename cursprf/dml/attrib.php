@@ -4,7 +4,6 @@ require '../../vendor/autoload.php';
 use \App\Entity\Disciplinas;
 use \App\Session\Login;
 
-
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
@@ -23,12 +22,14 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         echo json_encode($response);
         exit;
     }
+
+    $preen = Disciplinas::getQntdPreen('id_matriz = "'.$dis->id_matriz.'"');
     
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "cpf"       => '094',
+            "preenchido"       => $preen,
             "status"    => 'Super sucesso!'
             )
         );
