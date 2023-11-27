@@ -6,29 +6,29 @@ use \App\Db\Database;
 use \PDO;
 
 
-class Ativ3 {
+class PADAtiv22 {
   public $id;
-  public $id_vin;
-  public $tp;
-  public $nome;
-  public $func;
-  public $orientandos;
-  public $chs;
+  public $vinculo;
+  public $atividade;
+  public $estudante;
+  public $curso;
+  public $serie;
+  public $ch;
   public $created_at;
   public $updated_at;
   public $user;
 
   public function add(){
-    $obDb = new Database('ativ3');
+    $obDb = new Database('pad22');
     $newId = exec('uuidgen -r');
     $obDb->insert([
         'id'         => $newId,
-        'id_vin'     => $this->id_vin,
-        'tp'         => $this->tp,
-        'nome'       => $this->nome,
-        'func'       => $this->func,
-        'orientandos'=> $this->orientandos,
-        'chs'        => $this->chs,
+        'vinculo'    => $this->vinculo,
+        'atividade'  => $this->atividade,
+        'estudante'  => $this->estudante,
+        'curso'      => $this->curso,
+        'serie'      => $this->serie,
+        'ch'        => $this->ch,
         'created_at' => $this->created_at,
       //'updated_at' => $this->updated_at,
         'user'       => $this->user
@@ -38,13 +38,13 @@ class Ativ3 {
 
 
   public function atualizar(){
-    return ( new Database('ativ3'))->update('id = "'.$this->id.'" ', [
-       // 'id_vin'     => $this->id_vin,
-        'tp'         => $this->tp,
-        'nome'       => $this->nome,
-        'func'       => $this->func,
-        'orientandos'=> $this->orientandos,
-        'chs'        => $this->chs,
+    return ( new Database('pad22'))->update('id = "'.$this->id.'" ', [
+       // 'vinculo'     => $this->vinculo,
+        'atividade'  => $this->atividade,
+        'estudante'  => $this->estudante,
+        'curso'      => $this->curso,
+        'serie'      => $this->serie,
+        'ch'        => $this->ch,
         'updated_at' => date("Y-m-d H:i:s"),
         'user'       => $this->user
 
@@ -52,19 +52,19 @@ class Ativ3 {
   }
 
   public static function get($where = null, $order = null, $limit = null){
-    return (new Database('ativ3'))->select($where,$order,$limit)
+    return (new Database('pad22'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   } 
 
   public static function getById($id){
     $where = ' id = "'.$id.'" ';
-    return (new Database('ativ3'))->select($where)
+    return (new Database('pad22'))->select($where)
                                      ->fetchObject(self::class);
   }
 
 
   public static function getQntd($where = null){
-    return (new Database('ativ3'))->select($where, null, null, 'COUNT(*) as qtd')
+    return (new Database('pad22'))->select($where, null, null, 'COUNT(*) as qtd')
                                   ->fetchObject()
                                   ->qtd;
   }
