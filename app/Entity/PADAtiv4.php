@@ -68,5 +68,12 @@ class PADAtiv3 {
                                   ->qtd;
   }
 
+  /**
+   * Método responsável por excluir a professor do banco
+   * @return boolean
+   */
+  public function excluir(){
+    return (new Database('pad4'))->delete('id = "'.$this->id .'"');
+  }
 
 }

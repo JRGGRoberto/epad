@@ -197,14 +197,14 @@
           <div class="modal-body">
             <form class="form-group" id="frmDiscDel" name="frmDiscDel" method="post">
               <div class="form-group">
-                Tem certeza que deseja apagar a disciplina abaixo? 
-                <div class="d-flex justify-content-center mb-3" id="nomeDisDel"></div>
+                <div  id="msgApagar"></div>
+                <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeDisDel"></div>
                 <input type="hidden" name="id_disDel" id="id_disDel">
               </div>
 
               <center>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-                <button type="submit" class="btn btn-danger btn-sm" >Apagar</button>
+                <button type="submit" class="btn btn-danger btn-sm" id="btnApagar"  >Apagar</button>
               </center>
 
             </form>
@@ -241,15 +241,22 @@ function noDataInfo(){
 
 function frmExcluirShow(id){
   $('#modalDel').modal('show');
-  alert(id);
-  /*
   let nomeDisDel = document.getElementById('nomeDisDel');
   let id_disDel = document.getElementById('id_disDel');
+  let msgApagar = document.getElementById('msgApagar');
   let index = disciplinas.findIndex(e => e.id === id);
   let myObj = disciplinas[index];
+  if((myObj.vinculo == null) || (myObj.vinculo == '')){
+    msgApagar.innerHTML = 'Tem certeza que deseja apagar a disciplina abaixo?';
+    btnApagar.hidden = false;
+  } else {
+    msgApagar.innerHTML = 'Há um professor vinculado a essa disciplina, solicite ao coordenador para remove-lo, depois poderá excluir esta disciplina';
+    btnApagar.hidden = true;
+  }
+
   nomeDisDel.innerHTML =  myObj.nome;
   id_disDel.value = myObj.id;
-  */
+  
 }
 
 const frmDEL = document.getElementById('frmDiscDel');
@@ -259,8 +266,8 @@ frmDEL.addEventListener('submit', e => {
   fetch(`./dml/delete.php?id=${id}` , {
       method: 'DELETE',
       headers: {
-          'Content-Type': 'application/json'
-          // Se você precisa de algum token de autenticação, adicione aqui
+        'Content-Type': 'application/json'
+        // Se você precisa de algum token de autenticação, adicione aqui
     }
   })
   .then(res => {
@@ -399,7 +406,6 @@ formM.addEventListener('submit', e => {
     const formData = new FormData(formM);
     const data = Object.fromEntries(formData);
 
-
     // Se tiver ID é uma edição se não ADD
     const id = document.getElementById('id').value;
     if(id === '') {
@@ -413,7 +419,6 @@ formM.addEventListener('submit', e => {
       })
       .then(res => res.json())
       .then( data => addDisciplina(data));
-      fecharModalDis();
     } else {
       fetch('./dml/update.php', {
           method:'PUT',
@@ -425,8 +430,8 @@ formM.addEventListener('submit', e => {
       })
       .then( res => res.json())
       .then( data => updateDisciplina(data));
-      fecharModalDis();
     }
+    fecharModalDis();
 });
 
 async function getDBMD() {

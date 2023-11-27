@@ -1,4 +1,4 @@
-<form class="form-group" id="frmAtv3" name="frmAtv3" method="post">
+            <form class="form-group" id="frmAtv3" name="frmAtv3" method="post">
 
               <div class="form-group">
                 <label for="tpProj3">Tipo de projeto</label>

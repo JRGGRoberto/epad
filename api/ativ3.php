@@ -2,13 +2,13 @@
 
 require '../vendor/autoload.php';
 
-use \App\Entity\Ativ3;
+use \App\Entity\PADAtiv3;
 
-$id_vinc = $_GET["at3"];
+$vinculo = $_GET["at3"];
 
-$where = 'id_vin = "'.$id_vinc.'"';
+$where = 'vinculo = "'.$vinculo.'"';
 
-$registros = Ativ3::get($where);
+$registros = PADAtiv3::get($where);
 
 echo json_encode($registros);
 

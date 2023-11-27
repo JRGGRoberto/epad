@@ -5,9 +5,8 @@ function deleteAllRows3(){
   $("#tbl3 tbody tr").remove(); 
 }
 
-
 function calculaSubt(){
-  total3.innerHTML = data3.reduce((a, b) => a + parseFloat(b.chs), 0);
+  total3.innerHTML = data3.reduce((a, b) => a + parseFloat(b.ch), 0);
 }
 
 function insereTable3(newDisc){
@@ -22,7 +21,7 @@ function insereTable3(newDisc){
     let celCH         = newLinha.insertCell(4);
     let celDelet      = newLinha.insertCell(5);
     let tipo = '';
-    switch (newDisc.tp) {
+    switch (newDisc.atividade) {
       case '1':
         tipo = 'Pesquisa';
         break;
@@ -37,10 +36,9 @@ function insereTable3(newDisc){
     };
 
     let func = '';
-    switch (newDisc.func) {
+    switch (newDisc.funcao) {
       case '1':
         func = 'Coordenador';
-        break;
       case '2':
         func = 'Membro';
         break;
@@ -55,7 +53,7 @@ function insereTable3(newDisc){
   celNome.innerHTML       = tipo +': '+ newDisc.nome;
   celFunc.innerHTML       = func;
   celNomeOrient.innerHTML = newDisc.orientandos;
-  celCH.innerHTML         = newDisc.chs;
+  celCH.innerHTML         = newDisc.ch;
   celDelet.innerHTML  = 
   `<center>
     <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow3('t3${newDisc.id}')">⛔</button>
@@ -68,10 +66,16 @@ function formAddAtv3() {
   clearModal3();
   document.getElementById("titleMotal3").innerHTML = 'Adicionar atividade';
   document.getElementById("addAtv3").innerHTML = "Adicionar";
+  let id_vinc = document.getElementById('id_vinc').value;
+  document.getElementById("vinc3").value = id_vinc;
+
+  
   $('#modalAtv3').modal('show');
 }
 
 function clearModal3(){
+  document.getElementById('id3').value = '';
+  document.getElementById('idx3').value = '';
   document.getElementById('tpProj3').value = '';
   document.getElementById('nome3').value = '';
   document.getElementById('funcao3').value = '';
@@ -82,13 +86,15 @@ function clearModal3(){
 function formEditar3(id) {
   let idx3 = data3.findIndex(d =>d.id === id);
   let myObj = data3[idx3];
+  let id_vinc = document.getElementById('id_vinc').value;
+  document.getElementById("vinc3").value = id_vinc;
   document.getElementById("idx3").value = idx3;
   document.getElementById("id3").value  = myObj.id;
-  document.getElementById('tpProj3').value = myObj.tp;
+  document.getElementById('tpProj3').value = myObj.atividade;
   document.getElementById('nome3').value = myObj.nome;
-  document.getElementById('funcao3').value =myObj.func;
+  document.getElementById('funcao3').value =myObj.funcao;
   document.getElementById('orientandos3').value = myObj.orientandos;
-  document.getElementById('cargah3').value = myObj.chs;
+  document.getElementById('cargah3').value = myObj.ch;
 
   document.getElementById("titleMotal3").innerHTML = 'Editar atividade';
   document.getElementById("addAtv3").innerHTML = "Alterar";
@@ -104,20 +110,20 @@ function fecharModalAtv3() {
 
 function tradaDados3(receiveData){
   return dados = {
-    id      : receiveData.id3,
-    id_vin  : receiveData.vinc3, 		
-    tp	    : receiveData.tpProj3,
-    nome	  : receiveData.nome3,
-    func	  : receiveData.funcao3,
-    orientandos : receiveData.orientandos3,
-    chs         : receiveData.cargah3
+    id           : receiveData.id3,
+    vinculo      : receiveData.vinc3, 		
+    atividade	   : receiveData.tpProj3,
+    nome	       : receiveData.nome3,
+    funcao	     : receiveData.funcao3,
+    orientandos  : receiveData.orientandos3,
+    ch           : receiveData.cargah3
   };
 }
 
 
 function addAtividade3(receiveData) {
- // data = receiveData.data;
-  receiveData = tradaDados3(receiveData);
+  data = receiveData.data; 
+  receiveData = tradaDados3(data);
   data3.push(receiveData);
   insereTable3(receiveData);
   fecharModalAtv3();
@@ -140,7 +146,7 @@ function updateAtividade3(receiveData){
       tipo = 'Extensão e cultura';
       break;
     case '3':
-      tipo = 'Outro - informar em observações';
+      tipo = 'Outro(s) - informar em observações';
       break;
     default:
       tipo = 'Não definido';
@@ -177,12 +183,36 @@ frmAtv3.addEventListener('submit', e => {
   const formData = new FormData(frmAtv3);
   const data = Object.fromEntries(formData);
 
+  console.table(data);
+
   const id = document.getElementById('id3').value;
   if(id === ''){
-    addAtividade3(data);
+    fetch('./includes/atv3/dml/insert.php', {
+      method:'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then( data => addAtividade3(data));
+
   }else{
-    updateAtividade3(data);
+    fetch('./includes/atv3/dml/update.php', {
+      method:'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then( res => res.json())
+    .then( data => updateAtividade3(data));
+    
+
   }
+  fecharModalAtv3();
   calculaSubt();
 })
 
