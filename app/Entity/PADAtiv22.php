@@ -28,8 +28,8 @@ class PADAtiv22 {
         'estudante'  => $this->estudante,
         'curso'      => $this->curso,
         'serie'      => $this->serie,
-        'ch'        => $this->ch,
-        'created_at' => $this->created_at,
+        'ch'         => $this->ch,
+        'created_at' => date("Y-m-d H:i:s"),
       //'updated_at' => $this->updated_at,
         'user'       => $this->user
     ]);
@@ -44,7 +44,7 @@ class PADAtiv22 {
         'estudante'  => $this->estudante,
         'curso'      => $this->curso,
         'serie'      => $this->serie,
-        'ch'        => $this->ch,
+        'ch'         => $this->ch,
         'updated_at' => date("Y-m-d H:i:s"),
         'user'       => $this->user
 
