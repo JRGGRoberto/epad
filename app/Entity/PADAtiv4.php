@@ -29,7 +29,7 @@ class PADAtiv3 {
         'alocado'    => $this->alocado,
         'numdata'    => $this->numdata,
         'ch'         => $this->ch,
-        'created_at' => $this->created_at,
+        'created_at' => date("Y-m-d H:i:s"),
       //'updated_at' => $this->updated_at,
         'user'       => $this->user
     ]);

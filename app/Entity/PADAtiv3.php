@@ -22,16 +22,16 @@ class PADAtiv3 {
     $obDb = new Database('pad3');
     $newId = exec('uuidgen -r');
     $obDb->insert([
-        'id'         => $newId,
-        'vinculo'    => $this->vinculo,
-        'atividade'  => $this->atividade,
-        'nome'       => $this->nome,
-        'funcao'       => $this->funcao,
-        'orientandos'=> $this->orientandos,
-        'ch'        => $this->ch,
-        'created_at' => date("Y-m-d H:i:s"),
-      //'updated_at' => $this->updated_at,
-        'user'       => $this->user
+        'id'          => $newId,
+        'vinculo'     => $this->vinculo,
+        'atividade'   => $this->atividade,
+        'nome'        => $this->nome,
+        'funcao'      => $this->funcao,
+        'orientandos' => $this->orientandos,
+        'ch'          => $this->ch,
+        'created_at'  => date("Y-m-d H:i:s"),
+      //'updated_at'  => $this->updated_at,
+        'user'        => $this->user
     ]);
     return $newId;
   }
@@ -40,13 +40,13 @@ class PADAtiv3 {
   public function atualizar(){
     return ( new Database('pad3'))->update('id = "'.$this->id.'" ', [
        // 'vinculo'     => $this->vinculo,
-        'atividade'  => $this->atividade,
-        'nome'       => $this->nome,
-        'funcao'     => $this->funcao,
-        'orientandos'=> $this->orientandos,
-        'ch'        => $this->ch,
-        'updated_at' => date("Y-m-d H:i:s"),
-        'user'       => $this->user
+        'atividade'   => $this->atividade,
+        'nome'        => $this->nome,
+        'funcao'      => $this->funcao,
+        'orientandos' => $this->orientandos,
+        'ch'          => $this->ch,
+        'updated_at'  => date("Y-m-d H:i:s"),
+        'user'        => $this->user
 
     ]);
   }

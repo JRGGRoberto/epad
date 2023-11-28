@@ -2,11 +2,11 @@
     <thead class="thead-light">
         <tr>
             <th style="display: none;">ID</th>
-            <th>Atividades de Pesquisa, Extensão e Cultura e Programas Especiais</th>
-            <th>Função</th>
-            <th>Nome do orientando (se houver)</th>
-            <th>Carga horária semanal</th>
-            <th style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv3()">Adicionar</button></th>
+            <th class="align-top">Atividades de Pesquisa,<br>Extensão e Cultura e Programas Especiais</th>
+            <th class="align-top" style="text-align: center;">Função</th>
+            <th class="align-top">Nome do orientando<br><sup>(se houver)</sup></th>
+            <th class="align-top">Carga horária<br><sup>semanal</sup></th>
+            <th class="align-top" style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv3()">Adicionar</button></th>
         </tr>
     </thead>
     <tbody>

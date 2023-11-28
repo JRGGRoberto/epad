@@ -55,13 +55,12 @@
 
             <div id="ativ22" class="collapse" data-parent="#accordion" style="">
                 <div class="card-body">
-                <div class="container mt-3">
-    <h3>Matrizes de Cursos</h3>         <?php
-                    include './includes/atv22/tbla22.php';
+                    
+                    <?php
+                      include './includes/atv22/tbla22.php';
                     ?>
 
 
-                </div>
             </div>
         </div>
 

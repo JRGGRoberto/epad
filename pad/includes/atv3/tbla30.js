@@ -5,7 +5,7 @@ function deleteAllRows3(){
   $("#tbl3 tbody tr").remove(); 
 }
 
-function calculaSubt(){
+function calculaSubt3(){
   total3.innerHTML = data3.reduce((a, b) => a + parseFloat(b.ch), 0);
 }
 
@@ -20,6 +20,7 @@ function insereTable3(newDisc){
     let celNomeOrient = newLinha.insertCell(3);
     let celCH         = newLinha.insertCell(4);
     let celDelet      = newLinha.insertCell(5);
+    
     let tipo = '';
     switch (newDisc.atividade) {
       case '1':
@@ -60,6 +61,11 @@ function insereTable3(newDisc){
     <button type="button" class="btn btn-light btn-sm" onclick="formEditar3('${newDisc.id}')">✏️</button>
   </center>`;
   celId.style.display = 'none'; 
+  
+  celFunc.style.textAlign = 'center';
+    celCH.style.textAlign = 'right';
+  
+
 }
 
 function formAddAtv3() {
@@ -110,13 +116,14 @@ function fecharModalAtv3() {
 
 function tradaDados3(receiveData){
   return dados = {
-    id           : receiveData.id3,
-    vinculo      : receiveData.vinc3, 		
-    atividade	   : receiveData.tpProj3,
-    nome	       : receiveData.nome3,
-    funcao	     : receiveData.funcao3,
-    orientandos  : receiveData.orientandos3,
-    ch           : receiveData.cargah3
+    id          : receiveData.id3,
+    vinculo     : receiveData.vinc3, 		
+    atividade	  : receiveData.tpProj3,
+    nome	      : receiveData.nome3,
+    funcao	    : receiveData.funcao3,
+    orientandos : receiveData.orientandos3,
+    ch          : receiveData.cargah3,
+    idx         : receiveData.idx3
   };
 }
 
@@ -130,15 +137,13 @@ function addAtividade3(receiveData) {
 }
 
 function updateAtividade3(receiveData){
-  data = tradaDados3(receiveData);
-
-  data3[receiveData.idx3] = data;
-
+  data = tradaDados3(receiveData.data);
+  data3[data.idx] = data;
   let tabela = document.getElementById("tbl3").getElementsByTagName("tbody")[0];
-  let linha = tabela.rows[receiveData.idx3];
+  let linha = tabela.rows[data.idx];
 
   let tipo;
-  switch (data.tp) {
+  switch (data.atividade) {
     case '1':
       tipo = 'Pesquisa';
       break;
@@ -153,7 +158,7 @@ function updateAtividade3(receiveData){
   };
 
   let func = '';
-  switch (data.func) {
+  switch (data.funcao) {
     case '1':
       func = 'Coordenador';
       break;
@@ -170,7 +175,7 @@ function updateAtividade3(receiveData){
   linha.cells[1].innerHTML = tipo +': '+ data.nome;
   linha.cells[2].innerHTML = func;
   linha.cells[3].innerHTML = data.orientandos;
-  linha.cells[4].innerHTML = data.chs;
+  linha.cells[4].innerHTML = data.ch;
 
   fecharModalAtv3();
   
@@ -182,8 +187,6 @@ frmAtv3.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(frmAtv3);
   const data = Object.fromEntries(formData);
-
-  console.table(data);
 
   const id = document.getElementById('id3').value;
   if(id === ''){
@@ -197,7 +200,6 @@ frmAtv3.addEventListener('submit', e => {
     })
     .then(res => res.json())
     .then( data => addAtividade3(data));
-
   }else{
     fetch('./includes/atv3/dml/update.php', {
       method:'PUT',
@@ -209,11 +211,9 @@ frmAtv3.addEventListener('submit', e => {
     })
     .then( res => res.json())
     .then( data => updateAtividade3(data));
-    
-
   }
   fecharModalAtv3();
-  calculaSubt();
+  calculaSubt3();
 })
 
 async function getDBMD3() {
@@ -228,7 +228,7 @@ async function getDBMD3() {
     noDataInfo();
     noData3 = true;
   }
-  calculaSubt();
+  calculaSubt3();
   
   //dadosCH();
 }
