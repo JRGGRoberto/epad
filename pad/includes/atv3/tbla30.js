@@ -64,8 +64,6 @@ function insereTable3(newDisc){
   
   celFunc.style.textAlign = 'center';
     celCH.style.textAlign = 'right';
-  
-
 }
 
 function formAddAtv3() {
@@ -225,7 +223,7 @@ async function getDBMD3() {
     data3.forEach(e => insereTable3(e));
     noData3 = false;
   } else {
-    noDataInfo();
+    //noDataInfo();
     noData3 = true;
   }
   calculaSubt3();

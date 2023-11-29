@@ -1,7 +1,6 @@
 <?php
-
 require '../../../../vendor/autoload.php';
-use \App\Entity\PADAtiv3;
+use \App\Entity\PADAtiv4;
 
 use \App\Session\Login;
 Login::requireLogin();
@@ -12,33 +11,32 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true); 
 
-    if($data["id3"] != '') {
+    if($data["id4"] != '') {
         $response = array("status" => "error", "message" => "Método de requisição inválido 1.");
         echo json_encode($response);
         exit;
     }
 
-    $pad = new PADAtiv3;
-    $pad->vinculo      = $data["vinc3"];
-    $pad->atividade    = $data["tpProj3"];
-    $pad->nome         = $data["nome3"];
-    $pad->funcao       = $data["funcao3"];
-    $pad->orientandos  = $data["orientandos3"];
-    $pad->ch           = $data["cargah3"];
+    $pad = new PADAtiv4;
+    $pad->vinculo      = $data["vinc4"];
+    $pad->cargo        = $data["cargo4"];
+    $pad->alocado      = $data["alocado4"];
+    $pad->numdata      = $data["numdata4"];
+    $pad->ch           = $data["cargah4"];
     $pad->user         = $user["id"];
 
+   
     $id = $pad->add();
 
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "id3"          => $id,
-            "tpProj3"      => $pad->atividade,
-            "nome3"        => $pad->nome,
-            "funcao3"      => $pad->funcao,
-            "orientandos3" => $pad->orientandos,
-            "cargah3"      => $pad->ch
+            "id4"          => $id,
+            "cargo4"       => $pad->cargo,
+            "alocado4"     => $pad->alocado,
+            "numdata4"     => $pad->numdata,
+            "cargah4"      => $pad->ch
             )
         );
 

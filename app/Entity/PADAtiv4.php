@@ -6,10 +6,9 @@ use \App\Db\Database;
 use \PDO;
 
 
-class PADAtiv3 {
+class PADAtiv4 {
   public $id;
   public $vinculo;
-  public $atividade;
   public $cargo;
   public $alocado;
   public $numdata;
@@ -24,7 +23,6 @@ class PADAtiv3 {
     $obDb->insert([
         'id'         => $newId,
         'vinculo'    => $this->vinculo,
-        'atividade'  => $this->atividade,
         'cargo'      => $this->cargo,
         'alocado'    => $this->alocado,
         'numdata'    => $this->numdata,
@@ -40,7 +38,6 @@ class PADAtiv3 {
   public function atualizar(){
     return ( new Database('pad4'))->update('id = "'.$this->id.'" ', [
        // 'vinculo'     => $this->vinculo,
-        'atividade'  => $this->atividade,
         'cargo'      => $this->cargo,
         'alocado'    => $this->alocado,
         'numdata'    => $this->numdata,
