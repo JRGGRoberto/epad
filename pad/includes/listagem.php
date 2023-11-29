@@ -204,10 +204,10 @@
           <div class="modal-body">
             <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
               <div class="form-group">
-                Tem certeza que deseja apagar a atividade abaixo? 
-                <div class="d-flex justify-content-center mb-3" id="nomeDisDel"></div>
+              <div  id="msgApagar">Tem certeza que deseja apagar a atividade abaixo?</div>
+                <div class="d-flex justify-content-center mb-3" id="nomeAtivDel"></div>
                 <input type="hidden" name="idAtivDel" id="idAtivDel">
-                <input type="hidden" name="idAtivDelOrigem" id="idAtivDelOrigem">
+                <input type="hidden" name="ativX" id="ativX">
               </div>
 
               <center>
@@ -228,16 +228,30 @@
 <script>
 
 
-function frmExcluirShow(){
-  $('#modalDel').modal('show');
+function frmExcluirShow(aid){
+  const ativ = aid.substr(0, 2);
+  const id = aid.substr(2, 36);
+  let nomeAtivDel = document.getElementById('nomeAtivDel');
+  let idAtivDel = document.getElementById('idAtivDel');
+  var index;
+  var myObj;
+  console.log(ativ);
+  console.log(id);
 
-/*
-  let nomeDisDel = document.getElementById('nomeDisDel');
-  let id_disDel = document.getElementById('id_disDel');
-  let index = disciplinas.findIndex(e => e.id === id);
-  let myObj = disciplinas[index];
-  nomeDisDel.innerHTML =  myObj.nome;
-  id_disDel.value = myObj.id;*/
+  if(ativ == 'a3'){
+    index = data3.findIndex(e => e.id === id);
+    myObj = data3[index];
+  } if (ativ == 'a4') {
+    index = data4.findIndex(e => e.id === id);
+    myObj = data4[index];
+
+  } else {
+    return;
+  }
+  $('#modalDel').modal('show');
+  // nomeAtivDel.innerHTML =  myObj.nome;
+  console.log(myObj);
+  idAtivDel.value = myObj.id;
 }
 
 
