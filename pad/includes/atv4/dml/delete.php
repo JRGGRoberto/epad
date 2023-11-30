@@ -1,7 +1,10 @@
 <?php
 
-require '../../vendor/autoload.php';
-use \App\Entity\PADAtiv3;
+require '../../../../vendor/autoload.php';
+use \App\Entity\PADAtiv4;
+
+use \App\Session\Login;
+Login::requireLogin();
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -12,10 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
     // Captura o ID do recurso a ser excluído
     $id = $_GET["id"];
 
-    $dis = PADAtiv3::getById($id);
+    $dis = PADAtiv4::getById($id);
 
     // Lógica para excluir o recurso com o ID especificado
-    if(!$dis instanceof PADAtiv3){
+    if(!$dis instanceof PADAtiv4){
         header("HTTP/1.1 500 Internal Server Error");
         echo json_encode(array("message" => "Objeto de uma instancia não esperada."));
         exit;

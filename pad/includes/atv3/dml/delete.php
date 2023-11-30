@@ -1,11 +1,10 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../../vendor/autoload.php';
 use \App\Entity\PADAtiv3;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+use \App\Session\Login;
+Login::requireLogin();
 
 if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
 

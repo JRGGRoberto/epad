@@ -1,6 +1,8 @@
 let data3 = [ ];
 let noData3 = true;
 
+
+
 function deleteAllRows3(){
   $("#tbl3 tbody tr").remove(); 
 }
@@ -131,7 +133,7 @@ function addAtividade3(receiveData) {
   receiveData = tradaDados3(data);
   data3.push(receiveData);
   insereTable3(receiveData);
-  fecharModalAtv3();
+  calculaSubt3();
 }
 
 function updateAtividade3(receiveData){
@@ -175,9 +177,7 @@ function updateAtividade3(receiveData){
   linha.cells[3].innerHTML = data.orientandos;
   linha.cells[4].innerHTML = data.ch;
 
-  fecharModalAtv3();
-  
-
+  calculaSubt3();
 }
 
 const frmAtv3 = document.getElementById('frmAtv3');
@@ -211,8 +211,45 @@ frmAtv3.addEventListener('submit', e => {
     .then( data => updateAtividade3(data));
   }
   fecharModalAtv3();
+  
+});
+
+function excluirLinhaTbl3(idr) {
+  console.log(`Mensagem: ${idr.message}`);
+  console.log(`ID: ${idr.id}`);
+  let idx = data3.findIndex(d =>d.id === idr.id);
+  if(idx > -1){
+    let tabela = document.getElementById("tbl3").getElementsByTagName("tbody")[0];
+    tabela.deleteRow(idx);
+    data3.splice(idx, 1);
+  } else {
+    console.log(`Não encontrado ${idr.id}`);
+  }
   calculaSubt3();
-})
+}
+
+
+function removAtiv3(id){
+  fetch(`./includes/atv3/dml/delete.php?id=${id}` , {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+      // Se você precisa de algum token de autenticação, adicione aqui
+  }
+  })
+  .then(res => {
+      if (!res.ok) {
+          throw new Error('Erro ao excluir o recurso.');
+      }
+      return res.json(); 
+  })
+  .then(data => excluirLinhaTbl3(data) )
+  .catch(error => {
+      console.error(error);
+  });
+  $('#modalDel').modal('hide');
+}
+
 
 async function getDBMD3() {
   deleteAllRows3();

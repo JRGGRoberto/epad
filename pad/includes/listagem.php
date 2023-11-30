@@ -205,9 +205,9 @@
             <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
               <div class="form-group">
               <div  id="msgApagar">Tem certeza que deseja apagar a atividade abaixo?</div>
-                <div class="d-flex justify-content-center mb-3" id="nomeAtivDel"></div>
-                <input type="hidden" name="idAtivDel" id="idAtivDel">
-                <input type="hidden" name="ativX" id="ativX">
+                <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
+                <input hidden name="idAtivDel" id="idAtivDel">
+                <input hidden name="ativX" id="ativX">
               </div>
 
               <center>
@@ -229,31 +229,49 @@
 
 
 function frmExcluirShow(aid){
-  const ativ = aid.substr(0, 2);
+  const ativ = parseInt(aid.substr(1, 1));
   const id = aid.substr(2, 36);
   let nomeAtivDel = document.getElementById('nomeAtivDel');
   let idAtivDel = document.getElementById('idAtivDel');
+  let ativX = document.getElementById('ativX');
+  ativX.value = ativ;
   var index;
-  var myObj;
-  console.log(ativ);
-  console.log(id);
-
-  if(ativ == 'a3'){
+  if(ativ === 3){
     index = data3.findIndex(e => e.id === id);
-    myObj = data3[index];
-  } if (ativ == 'a4') {
+    var myObj = data3[index];
+    idAtivDel.value = myObj.id;
+    nomeAtivDel.innerHTML = myObj.nome;
+    $('#modalDel').modal('show');
+  } if (ativ === 4) {
     index = data4.findIndex(e => e.id === id);
-    myObj = data4[index];
-
+    var myObj = data4[index];
+    idAtivDel.value = myObj.id;
+    nomeAtivDel.innerHTML =  myObj.cargo +' - '+ myObj.alocado + ' - ' + myObj.numdata;
+    $('#modalDel').modal('show');
   } else {
     return;
   }
-  $('#modalDel').modal('show');
   // nomeAtivDel.innerHTML =  myObj.nome;
-  console.log(myObj);
-  idAtivDel.value = myObj.id;
 }
 
+const frmDelAtiv = document.getElementById('frmDelAtiv');
+frmDelAtiv.addEventListener('submit', e => {
+  e.preventDefault();
+  let nomeAtivDel = document.getElementById('nomeAtivDel');
+  let idAtivDel = document.getElementById('idAtivDel').value;
+  let ativX = document.getElementById('ativX').value;
+
+  if(ativX === '3'){
+    removAtiv3(idAtivDel);
+  }
+  
+  if(ativX === '4'){
+    removAtiv4(idAtivDel);
+  }
+
+  $('#modalDel').modal('hide');
+  
+});
 
 
 function somaTotais() {
