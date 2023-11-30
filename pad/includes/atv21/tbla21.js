@@ -66,5 +66,13 @@ async function getDBMD21(){
   let ch1Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
   let ch2Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
   total21.innerHTML = parseFloat((ch1Total + ch2Total)/2);
-  
+ 
 }
+
+
+
+const myInterval21 = window.setInterval(function() {
+  getDBMD21()
+}, 4500);
+
+getDBMD21();

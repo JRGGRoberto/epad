@@ -1,3 +1,8 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <table id="tbl22" class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>
@@ -13,3 +18,6 @@
     <tbody>
     </tbody>
 </table>
+
+<script src="./includes/atv22/tbla22.js"></script>
+

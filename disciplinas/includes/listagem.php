@@ -221,7 +221,7 @@ let disciplinas = [ ];
 let noData = true;
 
 
-function deleteAllRows(){
+function deleteAllRows(){exluirLinha
     $("#tabelaMatD tbody tr").remove(); 
 }
 
