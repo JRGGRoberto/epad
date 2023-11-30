@@ -179,11 +179,23 @@
             </div>
             <div id="outobs" class="collapse show" >
                 <div class="card-body">
-                    <input type="text" name="" id="" value="<?= $vinc->obs ?>">
+                    <form class="form-group" id="frmobs" name="frmobs" method="post">
+                       <div class="form-group">
+                            <textarea name="vincobs" id="vincobs" cols="30" class="form-control" rows="5">
+                                <?= $vinc->obs ?>
+                            </textarea>
+                        </div>
+                        <div class="form-group float-right">
+                            <input type="submit" value="Salvar observação" class="btn btn-primary btn-sm">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>  
+    <div>
+        .
+    </div>
 
 
 </section>
@@ -226,7 +238,28 @@
 
 
 <script>
+/*
+const frmobs = document.getElementById('frmDisc');
+frmobs.addEventListener('submit', e => {
+    e.preventDefault();
+    const formData = new FormData(formM);
+    const data = Object.fromEntries(formData);
 
+    // Se tiver ID é uma edição se não ADD
+    const id = document.getElementById('id').value;
+    fetch('./includes/dml/updateObs.php', {
+        method:'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then( res => res.json())
+    .then( data => updateDisciplina(data));
+});
+
+*/
 
 function frmExcluirShow(aid){
   const ativ = parseInt(aid.substr(1, 1));
@@ -269,7 +302,6 @@ frmDelAtiv.addEventListener('submit', e => {
     removAtiv4(idAtivDel);
   }
 
-  $('#modalDel').modal('hide');
   
 });
 
