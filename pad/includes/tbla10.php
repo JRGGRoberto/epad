@@ -6,7 +6,7 @@
         <th colspan="1">Nome</th>   <td colspan="2"><?=$vinc->nome?></td>    <th colspan="1" style="width:230px">Regime de Trabalho</th>  <td colspan="2"><span id="rt" style="padding-left: 20px;"><?=$vinc->rt?></span></td>
     </tr>
     <tr>
-        <th colspan="1">Campus</th> <td colspan="2"><?=$vinc->campus?></td>  <th colspan="1">Centro de área</th>      <td colspan="2"><?=$vinc->centros?></td>
+        <th colspan="1">Campus</th> <td colspan="2"><?=$vinc->campus?></td>  <th colspan="1">Centro de área</th>      <td colspan="2"><?=$vinc->codcentro?></td>
     </tr>
     <tr>
         <th colspan="1">Colegiado</th>        <td colspan="2"><?=$vinc->colegiado?></td>     <th colspan="1">Área de concurso</th> <td colspan="2"><?=$vinc->area_concurso?></td>

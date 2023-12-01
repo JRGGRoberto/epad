@@ -1,5 +1,6 @@
 let data22 = [];
 let noData22 = true;
+let contador22 = 0;
 
 function deleteAllRowsTable22(){
   $("#tbl22 tbody tr").remove(); 
@@ -39,15 +40,29 @@ function insereTable22(newDisc){
 }
 
 async function getDBMD22(){
-  deleteAllRowsTable22();
-  data22 = await fetch(`../api/ativ22.php?vc=${id_vinc.value}`).then(resp => resp.json()).catch(error => false);
-  if (data22.length > 0) {
-    data22.forEach(e => insereTable22(e));
+  let data22t = []
+  data22t = await fetch(`../api/ativ22.php?vc=${id_vinc.value}`).then(resp => resp.json()).catch(error => false);
+
+  if (contador22 == 0){
+    deleteAllRowsTable22();
+    data22 = data22t;
+    if (data22.length > 0) {
+      data22.forEach(e => insereTable22(e));
+    }
+  } else if (data22t != data22){
+    data22 = data22t;
+    if (data22.length > 0) {
+      data22.forEach(e => insereTable22(e));
+    }
   }
+  if (contador22 === 700){
+    contador22 = 0;
+  }
+  
   
   let ch1Total = data22.reduce((a, b) => a + parseFloat(b.ch), 0);
   let ch2Total = data22.reduce((a, b) => a + parseFloat(b.ch), 0);
-  total22.innerHTML = parseFloat((ch1Total + ch2Total)/2);
+  total22.innerHTML = parseFloat((ch1Total + ch2Total)/2) + 'h';
 }
 
 const myInterval22 = window.setInterval(function() {

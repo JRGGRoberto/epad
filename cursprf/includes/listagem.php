@@ -1,6 +1,6 @@
 <div class="container mt-3"  style="margin-bottom: 0px;">
     <div class="row">
-      <div class="col"><h3>Atribuição de professores as disciplinas</h3></div>
+      <div class="col-11"><h3>Atribuição de professores as disciplinas</h3></div>
       <div class="col"  style="text-align:right"><a href="../curso/">voltar</a></div>
     </div>
     <form id="frmatrib" hidden>
@@ -11,11 +11,11 @@
     <hr>
 
     <div class="form-group row" >
-      <div class="col">
+      <div class="col-3">
         <div>
             <?= $matriz->nome ?> - <?=  $turno ?>
 
-          <div class="progress" style="height:7px; width:150px" >
+          <div class="progress" style="height:7px; width:180px" >
               <div class="progress-bar" id="progressBar"></div>
           </div>
         </div>    
@@ -51,18 +51,22 @@
         </div>
 
         <div class="col" style="max-height: 600px; overflow: scroll;">
-          <table id="tblProfs" name="tblProfs" class="table table-bordered table-sm table-hover">
-            <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
-              <tr>
-                <th style="display: none;">ID</th>
-                <th>Professor(ª)</th>
-                <th style="display: none;">J</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-          </table>
+          <div class="row">
+          <input class="form-control" id="impBuscar" type="text" placeholder="Buscar...   nome, curso..">
+          </div>
+          <div class="row">
+            <table id="tblProfs" name="tblProfs" class="table table-bordered table-sm table-hover">
+              <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
+                <tr>
+                  <th style="display: none;">ID</th>
+                  <th>Professor(ª)</th>
+                  <th style="display: none;">J</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -296,6 +300,17 @@ function atualizar(){
     
     
 }
+
+
+$(document).ready(function(){
+  $("#impBuscar").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tblProfs tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
 
 getDBMDprof(2024);
 </script>

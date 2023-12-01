@@ -34,7 +34,7 @@
               </div>
 
               <div class="form-group">
-                <label for="cargah3">Carga horária</label>
+                <label for="cargah3">Carga horária semanal</label>
                 <input type="text" name="cargah3" id="cargah3" class="form-control">
               </div>
 

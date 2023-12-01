@@ -1,5 +1,6 @@
 let data21 = [];
 let noData21 = true;
+let contador21 = 0;
 
 function deleteAllRowsTable21(){
   $("#tbl21 tbody tr").remove(); 
@@ -33,21 +34,23 @@ function insereTable21(newDisc){
         turno = 'Integral';
         break;
       default:
-        turno = 'Não definido';
+        turno = '';
     };
+
+  ch = stripZeros(newDisc.cargah);
+
+  if(newDisc.atividade === 'd'){
+    newDisc.disciplina = '[planejamento] ' + newDisc.disciplina
+  }
+
     
   celId.innerHTML          = newDisc.id;
   celAtividade.innerHTML   = newDisc.atividade;
   celDisciplina.innerHTML  = newDisc.disciplina;
   celCurso.innerHTML       = newDisc.curso;
   celTurno.innerHTML       = turno;
-  let cargaHoraria = newDisc.cargah;
-  if (newDisc.atividade === 'c'){
-    cargaHoraria = cargaHoraria * 1.5;
-    newDisc.cargah = cargaHoraria;
-  }
-  celCh1.innerHTML         = cargaHoraria;
-  celCh2.innerHTML         = cargaHoraria;
+  celCh1.innerHTML         = newDisc.ch;
+  celCh2.innerHTML         = newDisc.ch;
 
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
@@ -56,18 +59,32 @@ function insereTable21(newDisc){
   celCh2.style.textAlign = 'right';
 }
 
+
 async function getDBMD21(){
-  deleteAllRowsTable21();
-  data21 = await fetch(`../api/pad21.php?vc=${id_vinc.value}`).then(resp => resp.json()).catch(error => false);
-  if (data21.length > 0) {
-    data21.forEach(e => insereTable21(e));
+  let data21t = []
+  data21t = await fetch(`../api/pad21.php?vc=${id_vinc.value}`).then(resp => resp.json()).catch(error => false);
+
+  if (contador21 === 0 ){  
+    deleteAllRowsTable21();
+    data21 = data21t;
+    if (data21.length > 0) {
+      data21.forEach(e => insereTable21(e));
+    }
+  } else if (data21t !== data21) {
+    deleteAllRowsTable21();
+    data21 = data21t;
+    if (data21.length > 0) {
+      data21.forEach(e => insereTable21(e));
+    }
+  }
+  if (contador21 === 700){
+    contador21 = 0;
   }
   
   let ch1Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
   let ch2Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
-  total21.innerHTML = parseFloat((ch1Total + ch2Total)/2);
- 
-}
+  total21.innerHTML = parseFloat((ch1Total + ch2Total)/2) + 'h';
+ }
 
 
 

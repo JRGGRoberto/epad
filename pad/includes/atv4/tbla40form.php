@@ -19,7 +19,7 @@
     </div>
 
     <div class="form-group">
-      <label for="cargah4">Carga horária</label>
+      <label for="cargah4">Carga horária semanal</label>
       <input type="text" name="cargah4" id="cargah4" class="form-control">
     </div>
 

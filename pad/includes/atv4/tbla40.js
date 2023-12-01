@@ -8,7 +8,7 @@ function deleteAllRows4(){
 }
 
 function calculaSubt4(){
-  total4.innerHTML = data4.reduce((a, b) => a + parseFloat(b.ch), 0);
+  total4.innerHTML = data4.reduce((a, b) => a + parseFloat(b.ch), 0) + 'h';
 }
 
 function insereTable4(newDisc){

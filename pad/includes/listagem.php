@@ -24,18 +24,18 @@
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false">
+                    <div class="col-sm">
+                        <a class="card-link collapsed" data-toggle="collapse" href="#ativ21" aria-expanded="false">
                         <strong>2.1. Atividades Didáticas</strong></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm d-flex justify-content-end">
+                    <div class="col-sm small d-flex justify-content-end">
                         Média semanal anual da carga horária didática: <strong><span id="total21" style="padding-left: 20px;">0</span></strong>
                     </div>
                 </div>
+                
             </div>
 
-            <div id="ativ21" class="collapse" >
+            <div id="ativ21" class="collapse show" >
                 <div class="card-body">
 
                     <?php
@@ -53,15 +53,13 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ22" aria-expanded="false">
                         <strong>2.2. Atividades de Supervisão e Orientação</strong></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm d-flex justify-content-end">
+                    <div class="col-sm small d-flex justify-content-end">
                         Média semanal anual da carga horária de orientação e supervisão: <strong><span id="total22" style="padding-left: 20px;">0</span></strong>
                     </div>
                 </div>
             </div>
 
-            <div id="ativ22" class="collapse" >
+            <div id="ativ22" class="collapse show" >
                 <div class="card-body">
                     
                     <?php
@@ -75,18 +73,16 @@
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false">
+                    <div class="col-7"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false">
                         <strong>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</strong></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm d-flex justify-content-end">
-                        Total de carga horária semanal Pesquisa/Extensão/Cultura/Programas Especiais: <strong><span id="total3" style="padding-left: 20px;">0</span></strong>
+                    <div class="col-sm small d-flex justify-content-end">
+                        Total de carga horária semanal Pesq/Ext/Cult/ProgEspeciais: <strong><span id="total3" style="padding-left: 20px;">0</span></strong>
                     </div>
                 </div>
             </div>
 
-            <div id="ativ3" class="collapse" >
+            <div id="ativ3" class="collapse show" >
                 <div class="card-body">
                     <?php
                     include './includes/atv3/tbla30.php';
@@ -102,13 +98,12 @@
                     <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ4" aria-expanded="false">
                         <strong>4. Atividades de Gestão Institucional</strong></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm d-flex justify-content-end">Total de carga horária semanal de gestão institucional: <strong><span id="total4" style="padding-left: 20px;">0</span></strong></div>
+                    <div class="col-sm small d-flex justify-content-end">Total de carga horária semanal de gestão institucional: <strong><span id="total4" style="padding-left: 20px;">0</span></strong>
+                    </div>
                 </div>
             </div>
 
-            <div id="ativ4" class="collapse" >
+            <div id="ativ4" class="collapse show" >
                 <div class="card-body">
                     <?php
                     include './includes/atv4/tbla40.php';
@@ -126,39 +121,39 @@
                 </div>
             </div>
             <div id="resumo" class="collapse show" >
-                <div class="card-body">
-                    <table class="table table-bordered table-sm">
+                <div class="card-body d-flex align-items-center justify-content-center " >
+                    <table class="table table-sm" style="max-width: 800px;" >
     
                         <tr>
                             <th>2.1</th>
                             <th>Total de média semanal anual de carga horária didática</th>
                             <td style="text-align: right">
-                                <strong><span id="rtotal21" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
+                                <strong><span id="rtotal21" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
                         <tr>
                             <th>2.2</th>
                             <th>Total de média semanal anual de carga horária supervisão e orientação</th>
                             <td style="text-align: right">
-                                <strong><span id="rtotal22" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
+                                <strong><span id="rtotal22" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
                         <tr>
                             <th>3</th>
                             <th>Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</th>
                             <td style="text-align: right">
-                                <strong><span id="rtotal3" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
+                                <strong><span id="rtotal3" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
                         <tr>
                             <th>4</th>
                             <th>Total de carga horária semanal de gestão institucional</th>
                             <td style="text-align: right">
-                                <strong><span id="rtotal4" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
+                                <strong><span id="rtotal4" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
                         </tr>
     
                         <tr>
-                            <th colspan="2">Total de carga horária semanal</th>
+                            <th colspan="2" style="text-align: right;">Total de carga horária semanal</th>
                             <td style="text-align: right">
-                                <strong><span id="rtotal" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span>h</strong>
+                                <strong><span id="rtotal" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
                         </tr>
     
@@ -261,6 +256,12 @@ frmobs.addEventListener('submit', e => {
 
 */
 
+function stripZeros(str) {
+  return parseFloat(str.replace(',', '.'))
+    .toString()
+    .replace('.', ',');
+}
+
 function frmExcluirShow(aid){
   const ativ = parseInt(aid.substr(1, 1));
   const id = aid.substr(2, 36);
@@ -319,7 +320,7 @@ function somaTotais() {
     document.getElementById('rtotal4').innerHTML = total4;
     soma = (parseFloat(total21) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
 
-    document.getElementById('rtotal').innerHTML = soma;
+    document.getElementById('rtotal').innerHTML = soma + 'h';
 }
 
 

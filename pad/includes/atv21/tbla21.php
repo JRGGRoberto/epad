@@ -14,4 +14,7 @@
     </tbody>
 </table>
 
-<script src="./includes/atv21/tbla21.js"></script>
+<sub style="line-height: 12px;"><strong>a</strong>) Aulas na graduação; <strong>b</strong>) Aulas na pós-graduação Lato Sensu gratuita; <strong>c</strong>) Aulas na pós-graduação Stricto Sensu (estas devem ser computadas na razão de 1,5 hora/aula); <strong>d</strong>)
+Planejamento didático-pedagógico.</sub>
+
+<script src="./includes/atv21/tbla21.js"></script> 
