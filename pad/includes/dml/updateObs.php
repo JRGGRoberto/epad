@@ -2,26 +2,28 @@
 
 require '../../../vendor/autoload.php';
 use \App\Entity\Vinculo;
+use \App\Session\Login;
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
+
 
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true); 
 
-    if($data["id4"] == '' or $data["idx4"] == '') {
+
+    if($data["id_v"] == '' or $data["idx4"] == '') {
         $response = array("status" => "error", "message" => "Método de requisição inválido 1.");
         echo json_encode($response);
         exit;
     }
 
-    $pad = new Vinculo();
-    $pad = $pad::get($data['id4']);
-    $pad->vinculo      = $data["vinc4"];
-    $pad->cargo        = $data["cargo4"];
-    $pad->alocado      = $data["alocado4"];
-    $pad->numdata      = $data["numdata4"];
-    $pad->ch           = $data["cargah4"];
-    if(!$pad->atualizar()){
+    $vinculo = new Vinculo();
+    $vinculo = $vinculo::get($data['id_v']);
+    $vinculo->obs      = $data["obst"];
+    $vinculo->user         = $user["id"];
+    if(!$vinculo->atualizar()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
         echo json_encode($response);
         exit;
@@ -33,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         "data" => array (
             "id4"          => $data["id4"],
             "idx4"         => $data["idx4"],
-            "vinc4"        => $pad->vinculo,
-            "cargo4"       => $pad->cargo,
-            "alocado4"     => $pad->alocado,
-            "numdata4"     => $pad->numdata,
-            "cargah4"      => $pad->ch,
+            "vinc4"        => $vinculo->vinculo,
+            "cargo4"       => $vinculo->cargo,
+            "alocado4"     => $vinculo->alocado,
+            "numdata4"     => $vinculo->numdata,
+            "cargah4"      => $vinculo->ch,
             )
         );
     header('Content-Type: application/json');

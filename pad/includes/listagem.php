@@ -176,9 +176,7 @@
                 <div class="card-body">
                     <form class="form-group" id="frmobs" name="frmobs" method="post">
                        <div class="form-group">
-                            <textarea name="vincobs" id="vincobs" cols="30" class="form-control" rows="5">
-                                <?= $vinc->obs ?>
-                            </textarea>
+                            <textarea name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
                         </div>
                         <div class="form-group float-right">
                             <input type="submit" value="Salvar observação" class="btn btn-primary btn-sm">
@@ -233,15 +231,19 @@
 
 
 <script>
-/*
-const frmobs = document.getElementById('frmDisc');
+
+const frmobs = document.getElementById("frmobs");
 frmobs.addEventListener('submit', e => {
     e.preventDefault();
-    const formData = new FormData(formM);
-    const data = Object.fromEntries(formData);
+    
+    let id_v = document.getElementById("id_vinc").value;
+    let obst = document.getElementById("vincobs").value;
+    
+    data = {
+             id: id_v,
+             obs: obst
+           };
 
-    // Se tiver ID é uma edição se não ADD
-    const id = document.getElementById('id').value;
     fetch('./includes/dml/updateObs.php', {
         method:'PUT',
         headers:{
@@ -250,11 +252,9 @@ frmobs.addEventListener('submit', e => {
         },
         body: JSON.stringify(data)
     })
-    .then( res => res.json())
-    .then( data => updateDisciplina(data));
+    .then( res => res.json());
 });
 
-*/
 
 function stripZeros(str) {
   return parseFloat(str.replace(',', '.'))
@@ -302,8 +302,6 @@ frmDelAtiv.addEventListener('submit', e => {
   if(ativX === '4'){
     removAtiv4(idAtivDel);
   }
-
-  
 });
 
 

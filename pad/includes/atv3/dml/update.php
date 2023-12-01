@@ -2,6 +2,9 @@
 
 require '../../../../vendor/autoload.php';
 use \App\Entity\PADAtiv3;
+use \App\Session\Login;
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
@@ -22,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $pad->funcao       = $data["funcao3"];
     $pad->orientandos  = $data["orientandos3"];
     $pad->ch           = $data["cargah3"];
+    $pad->user         = $user["id"];
     if(!$pad->atualizar()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
         echo json_encode($response);
