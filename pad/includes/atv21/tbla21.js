@@ -49,8 +49,8 @@ function insereTable21(newDisc){
   celDisciplina.innerHTML  = newDisc.disciplina;
   celCurso.innerHTML       = newDisc.curso;
   celTurno.innerHTML       = turno;
-  celCh1.innerHTML         = newDisc.ch;
-  celCh2.innerHTML         = newDisc.ch;
+  celCh1.innerHTML         = ch;
+  celCh2.innerHTML         = ch;
 
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
