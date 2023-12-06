@@ -22,8 +22,8 @@
       </div>
       <div class="col">
         <ul class="pagination pagination-sm" style="height:7px;" hidden id="indicativo" fade>
-          <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina">Disciplina</small></a></li>
-          <li class="page-item"><a class="page-link" href="#"><small id="profSelected">Professor</small></a></li>
+          <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina">Selecione a disciplina</small></a></li>
+          <li class="page-item"><a class="page-link" href="#"><small id="profSelected">Selecione um professor</small></a></li>
         </ul>
       </div>
     </div>
@@ -185,11 +185,7 @@ async function getDBMDprof(ano) {
   professores = await fetch(`../api/profvinculados.php?y=${ano}`).then(resp => resp.json()).catch(error => false);
   if (professores.length > 0){
     professores.forEach(e => insereTableProf(e));
-   // noData = false;
-  } /*else {
-     noDataInfo();
-    noData = true;
-  } */
+  } 
 }
 
 
@@ -226,7 +222,7 @@ tbodyProf.onclick = function (e) {
       id_prof.value = '';
       var trDaCedula  = cedulaNomeProfInDisc.parentNode;
       trDaCedula.classList.add("table-success");
-
+      
       //ADD função para esmaecer indicativo.hidden = false;
     }
 };
@@ -251,7 +247,7 @@ tbodyMatD.onclick = function (e) {
       target.classList.add("table-success");
       id_dis.value   = '';
       id_prof.value = '';
-
+      
       //ADD função para esmaecer indicativo.hidden = false;
     }  
 };
@@ -295,6 +291,10 @@ function atualizar(){
            var x = res.data.preenchido;
           // console.log(res.data.preenchido);
            chProgressBar(x);
+           indicativo.hidden = true;
+           profDisciplina.innerHTML = 'Selecione a disciplina';
+           profSelected.innerHTML = 'Selecione um professor';
+
         }
     );
     

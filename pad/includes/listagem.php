@@ -242,8 +242,7 @@ function updateOBS(){
 
     data = {
              id: id_v,
-             obs: obst,
-
+             obs: obst
            };
            
     fetch('./includes/dml/updateObs.php', {
