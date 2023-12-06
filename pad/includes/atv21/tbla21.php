@@ -2,10 +2,10 @@
     <thead class="thead-light">
         <tr>
             <th style="display: none;">ID</th>
-            <th class="align-top">Atividade</th>
+            <th class="align-top" style="text-align: center;" width="78px">Atividade</th>
             <th class="align-top">Disciplina</th>
             <th class="align-top">Curso</th>
-            <th class="align-top">Turno</th>
+            <th class="align-top" style="text-align: center;">Turno</th>
             <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
             <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
         </tr>

@@ -2,7 +2,7 @@
     <thead class="thead-light">
         <tr>
             <th style="display: none;">ID</th>
-            <th class="align-top" >Atividade</th>
+            <th class="align-top" style="text-align: center;" width="78px">Atividade</th>
             <th class="align-top" >Nome do(a) estudante</th>
             <th class="align-top" >Curso</th>
             <th class="align-top" style="text-align: center;" width="75px">Série</th>

@@ -24,7 +24,6 @@ if(!$vinc == null){
     
 }
 
-
 include '../includes/footer.php';
 
 

@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $pad->orientandos  = $data["orientandos3"];
     $pad->ch           = $data["cargah3"];
     $pad->user         = $user["id"];
-    
+
     $id = $pad->add();
 
     $responseData = array( 

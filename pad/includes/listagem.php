@@ -174,14 +174,12 @@
             </div>
             <div id="outobs" class="collapse show" >
                 <div class="card-body">
-                    <form class="form-group" id="frmobs" name="frmobs" method="post">
-                       <div class="form-group">
-                            <textarea name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
-                        </div>
-                        <div class="form-group float-right">
-                            <input type="submit" value="Salvar observação" class="btn btn-primary btn-sm">
-                        </div>
-                    </form>
+                    <div class="form-group">
+                         <textarea onKeyUp="AtivaupdateOBS()" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
+                    </div>
+                    <div class="form-group float-right">
+                         <input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();" hidden>
+                     </div>
                 </div>
             </div>
         </div>
@@ -232,18 +230,22 @@
 
 <script>
 
-const frmobs = document.getElementById("frmobs");
-frmobs.addEventListener('submit', e => {
-    e.preventDefault();
-    
+function AtivaupdateOBS(){
+    const updateObsBtn = document.getElementById('updateObsBtn');
+    updateObsBtn.hidden = false;
+}
+
+function updateOBS(){
     let id_v = document.getElementById("id_vinc").value;
     let obst = document.getElementById("vincobs").value;
-    
+    const updateObsBtn = document.getElementById('updateObsBtn');
+
     data = {
              id: id_v,
-             obs: obst
-           };
+             obs: obst,
 
+           };
+           
     fetch('./includes/dml/updateObs.php', {
         method:'PUT',
         headers:{
@@ -253,7 +255,8 @@ frmobs.addEventListener('submit', e => {
         body: JSON.stringify(data)
     })
     .then( res => res.json());
-});
+    updateObsBtn.hidden = true;
+}
 
 
 function stripZeros(str) {

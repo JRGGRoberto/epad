@@ -148,7 +148,10 @@ img.remover {
          
                          if($obUsuario['config'] === '1'){
                            echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Cursos</a>';
-                           echo '<a type="button" class="btn btn-primary" href="../orientacao" style="text-align: center;">Orientações</a>';
+
+                           echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Atribuições</a>';
+
+                          // echo '<a type="button" class="btn btn-primary" href="../orientacao" style="text-align: center;">Orientações</a>';
                          } 
                        } elseif($obUsuario['tipo'] === 'agente'){
                          echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
