@@ -22,8 +22,8 @@
       </div>
       <div class="col">
         <ul class="pagination pagination-sm" style="height:7px;" hidden id="indicativo" fade>
-          <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina">Selecione a disciplina</small></a></li>
-          <li class="page-item"><a class="page-link" href="#"><small id="profSelected">Selecione um professor</small></a></li>
+          <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina"><span class="spinner-border text-primary spinner-border-sm"></span> Selecione uma disciplina</small></a></li>
+          <li class="page-item"><a class="page-link" href="#"><small id="profSelected"><span class="spinner-border text-primary spinner-border-sm"></span> Selecione um professor</small></a></li>
         </ul>
       </div>
     </div>
@@ -292,8 +292,8 @@ function atualizar(){
           // console.log(res.data.preenchido);
            chProgressBar(x);
            indicativo.hidden = true;
-           profDisciplina.innerHTML = 'Selecione a disciplina';
-           profSelected.innerHTML = 'Selecione um professor';
+           profDisciplina.innerHTML = '<span class="spinner-border text-primary spinner-border-sm"></span> Selecione uma disciplina';
+           profSelected.innerHTML   = '<span class="spinner-border text-primary spinner-border-sm"></span> Selecione um professor';
 
         }
     );

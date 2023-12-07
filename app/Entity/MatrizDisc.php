@@ -9,6 +9,12 @@ class MatrizDisc {
   public $id;
   public $id_curso;
   public $ano;
+  public $coordtcc;
+  public $coordtccchlog;
+  public $coordtccchlogdate;
+  public $coordestag;
+  public $coordestagchlog;
+  public $coordestagchlogdate;
   public $categ;
   public $nome;
   public $ch;
@@ -43,7 +49,6 @@ class MatrizDisc {
                          //'updated_at' => date("Y-m-d H:i:s"),
                          'user' => $this->user
                        ]);
-
     //RETORNAR SUCESSO
     return $newId;
   }
@@ -118,5 +123,29 @@ class MatrizDisc {
                                   ->fetchObject()
                                   ->qtd;
   }
- 
+
+  /**
+   * Método responsável por atualizar REGISTRO no banco
+   * @return boolean
+   */
+  public function atrib_coord_tcc(){ 
+    return (new Database('matriz_disc'))->update('id = "'.$this->id.'" ',[
+                                                                'coordtcc'       => $this->coordtcc,
+                                                                'coordtccchlog'  => $this->coordtccchlog,
+                                                                'coordtccchlogdate' => date("Y-m-d H:i:s")
+                                                              ]);
+  }
+
+
+  /**
+   * Método responsável por atualizar REGISTRO no banco
+   * @return boolean
+   */
+  public function atrib_coord_estag(){ 
+    return (new Database('matriz_disc'))->update('id = "'.$this->id.'" ',[
+                                                                'coordestag'      => $this->coordestag,
+                                                                'coordestagchlog' => $this->coordestagchlog,
+                                                                'coordestagchlogdate' => date("Y-m-d H:i:s")
+                                                              ]);
+  }
 }
