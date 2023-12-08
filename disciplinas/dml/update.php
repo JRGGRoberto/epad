@@ -3,6 +3,11 @@
 require '../../vendor/autoload.php';
 use \App\Entity\Disciplinas;
 
+use \App\Session\Login;
+
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
+
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $json_data = file_get_contents("php://input");
@@ -19,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $dis->nome      = $data["disc"];
     $dis->ch        = $data["ch"];
     $dis->serie     = $data["serie"];
-    $dis->user      = $data["uid"];
+    $dis->user      = $user['id'];
     if(!$dis->atualizar()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
         echo json_encode($response);

@@ -2,10 +2,10 @@
 
 require '../../vendor/autoload.php';
 use \App\Entity\Disciplinas;
+use \App\Session\Login;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
 

@@ -5,10 +5,6 @@ error_reporting(E_ALL);
 ?>
 
     
-    
-
-
-
 <div style="max-height: 300px; overflow: scroll;" id="div_tbl22">
     <table id="tbl22" class="table table-bordered table-sm table-hover">
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
@@ -22,10 +18,10 @@ error_reporting(E_ALL);
                 <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tbodyAtv">
         </tbody>
     </table>
-</div>
+</div> 
 <button id="btnShowAdd" type="button" class="btn btn-primary btn-sm" onclick="btnShowAddfnc()">Adicionar</button><span class="badge badge-secondary  float-right" id="DoubleClick" hidden>DoubleClick to Edt</span>
 
 
@@ -68,24 +64,3 @@ error_reporting(E_ALL);
     </center>
 </form>
 
-<script>
-let frmAtv = document.getElementById('frmAtv');
-let div_tbl22 = document.getElementById('div_tbl22');
-let DoubleClick = document.getElementById('DoubleClick');
-
-function btnShowAddfnc(){ 
-    frmAtv.hidden = false;
-    btnShowAdd.hidden = true;
-    div_tbl22.hidden = true;
-    DoubleClick.hidden = true;
-}
-
-function btnFecharCanc(){
-    frmAtv.hidden = true;
-    btnShowAdd.hidden = false;
-    div_tbl22.hidden = false;
-    
-
-}
-
-</script>

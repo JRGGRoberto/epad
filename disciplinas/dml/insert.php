@@ -2,6 +2,11 @@
 
 require '../../vendor/autoload.php';
 use \App\Entity\Disciplinas;
+use \App\Session\Login;
+
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -19,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dis->nome      = $data["disc"];
     $dis->ch        = $data["ch"];
     $dis->serie     = $data["serie"];
-    $dis->user      = $data["uid"];
+    $dis->user      = $user['id'];
     $id = $dis->cadastrar();
     
     $responseData = array( 

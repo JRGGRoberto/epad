@@ -11,7 +11,7 @@
     <hr>
 
     <div class="form-group row" >
-      <div class="col-3">
+      <div class="col-5">
         <div>
             <?= $matriz->nome ?> - <?=  $turno ?>
 
@@ -20,7 +20,8 @@
           </div>
         </div>    
       </div>
-      <div class="col">
+      <div class="col-1"></div>
+      <div class="col d-flex justify-content-center">
         <ul class="pagination pagination-sm" style="height:7px;" hidden id="indicativo" fade>
           <li class="page-item"><a class="page-link" href="#"><small id="profDisciplina"><span class="spinner-border text-primary spinner-border-sm"></span> Selecione uma disciplina</small></a></li>
           <li class="page-item"><a class="page-link" href="#"><small id="profSelected"><span class="spinner-border text-primary spinner-border-sm"></span> Selecione um professor</small></a></li>
@@ -40,9 +41,9 @@
               <tr>
                 <th style="display: none;">ID</th>
                 <th style="vertical-align:top">Disciplina</th>
-                <th >Carga horária</th>
-                <th style="vertical-align:top">Série</th>
-                <th style="vertical-align:top">Professor(ª)</th>
+                <th  style="vertical-align:top; width: 75px; text-align: center;">Carga horária</th>
+                <th style="vertical-align:top; text-align: center;">Série</th>
+                <th style="vertical-align:top; width: 200px;">Professor(ª)<span id="infoRemove" hidden class="badge badge-secondary" id="DoubleClick">DoubleClick to remove</span></th>
               </tr>
             </thead>
             <tbody>
@@ -92,6 +93,7 @@ var id_prof = document.getElementById("id_prof");
 var profSelected = document.getElementById("profSelected")
 var tblProfs = document.getElementById("tblProfs");
 var tbodyProf = tblProfs.getElementsByTagName("tbody")[0];
+var infoRemove = document.getElementById("infoRemove");
 
 
 function chProgressBar(pre){
@@ -135,7 +137,7 @@ function insereTable(newDisc){
     let celProf  = newLinha.insertCell(4);
   celId.innerHTML    = newDisc.id;
   celDisc.innerHTML  = newDisc.nome;
-  celSerie.innerHTML = newDisc.serie;
+  celSerie.innerHTML = newDisc.serie + 'º';
   celCh.innerHTML    = newDisc.ch;
   celProf.innerHTML  = newDisc.professor;
   if(newDisc.professor !== null){
@@ -145,6 +147,8 @@ function insereTable(newDisc){
   chProgressBar(preenchido);
   celId.style.display = 'none';
   celProf.setAttribute("id", newDisc.id);
+  celSerie.style.textAlign = 'center';
+  celCh.style.textAlign = 'right';
 }
 
 function insereTableProf(newDisc){
@@ -223,7 +227,7 @@ tbodyProf.onclick = function (e) {
       var trDaCedula  = cedulaNomeProfInDisc.parentNode;
       trDaCedula.classList.add("table-success");
       
-      //ADD função para esmaecer indicativo.hidden = false;
+      
     }
 };
 
@@ -247,9 +251,13 @@ tbodyMatD.onclick = function (e) {
       target.classList.add("table-success");
       id_dis.value   = '';
       id_prof.value = '';
-      
-      //ADD função para esmaecer indicativo.hidden = false;
     }  
+    
+    if(target.classList.contains("table-success")){
+      infoRemove.hidden = false;
+    } else {
+      infoRemove.hidden = true;
+    }
 };
 
 
@@ -269,6 +277,7 @@ tbodyMatD.ondblclick = function(e) {
         var cells = target.getElementsByTagName("td");
         cells[4].innerHTML = '';
         atualizar();
+        infoRemove.hidden = true;
       }
     }
 }
