@@ -1,8 +1,6 @@
 let data4 = [ ];
 let noData4 = true;
 
-
-
 function deleteAllRows4(){
   $("#tbl4 tbody tr").remove(); 
 }

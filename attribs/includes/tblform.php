@@ -16,6 +16,8 @@ error_reporting(E_ALL);
                 <th class="align-top" style="text-align: center;" width="75px">Série</th>
                 <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
                 <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
+                <th class="align-top" style="text-align: center; width: 45px;">⚙️</th>
+
             </tr>
         </thead>
         <tbody id="tbodyAtv">
@@ -25,12 +27,12 @@ error_reporting(E_ALL);
 <button id="btnShowAdd" type="button" class="btn btn-primary btn-sm" onclick="btnShowAddfnc()">Adicionar</button><span class="badge badge-secondary  float-right" id="DoubleClick" hidden>DoubleClick to Edt</span>
 
 
-<form class="form-group" id="frmAtv" name="frmAtv" method="post" hidden>
+<form class="form-group" id="frmAtv22" name="frmAtv22" method="post" hidden>
     <div class="form-group">
       <label for="tpAtiv22">Atividade</label>
-      <input type="hidden" name="id4" id="id4">
-      <input type="hidden" name="idx4" id="idx4">
-      <input type="hidden" name="vinc4" id="vinc4">
+      <input type="hidden" name="id22" id="id22">
+      <input type="hidden" name="idx22" id="idx22">
+      <input type="hidden" name="vinc22" id="vinc22">
       <select name="tpAtiv22" id="tpAtiv22" class="form-control" require="">
         <option value="">Selecione</option>
         <option value="a">Estágio Curricular Supervisionado Obrigatório</option>
@@ -60,7 +62,7 @@ error_reporting(E_ALL);
 
     <center>
       <button type="button" class="btn btn-secondary btn-sm" onclick="btnFecharCanc()">Fechar</button>
-      <button type="submit" id="addAtv4" class="btn btn-primary btn-sm" >Adicionar</button>
+      <button type="submit" id="addEdt22" class="btn btn-primary btn-sm" >Adicionar</button>
     </center>
 </form>
 

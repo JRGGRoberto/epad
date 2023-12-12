@@ -1,80 +1,15 @@
 let data22 = [];
 let noData22 = true;
 
-
-const  frmAtv = document.getElementById('frmAtv');
 let div_tbl22 = document.getElementById('div_tbl22');
 let DoubleClick = document.getElementById('DoubleClick');
+
 
 function stripZeros(str) {
   return parseFloat(str.replace(',', '.'))
     .toString()
     .replace('.', ',');
 }
-
-var tbodyAtv = document.getElementById("tbodyAtv");
-tbodyAtv.ondblclick = function(e){
-  e = e || window.event;
-  var target = e.srcElement || e.target;
-  while (target && target.nodeName !== "TR") {
-      target = target.parentNode;
-  }
-  if (target) {
-    var cells = target.getElementsByTagName("td");
-    btnShowAddfnc();
-    document.getElementById('tpAtiv22').value = cells[1].innerHTML;
-    document.getElementById('nome22F').value  = cells[2].innerHTML;
-    document.getElementById('curso22F').value = cells[3].innerHTML;
-    document.getElementById('serie22F').value = cells[4].innerHTML;
-  }
-}
-
-function btnShowAddfnc(){ 
-  document.getElementById('tpAtiv22').value = '';
-  document.getElementById('nome22F').value = '';
-  document.getElementById('curso22F').value ='';
-  document.getElementById('serie22F').value ='';
-  frmAtv.hidden = false;
-  btnShowAdd.hidden = true;
-  div_tbl22.hidden = true;
-  DoubleClick.hidden = true;
-}
-
-function btnFecharCanc(){
-    frmAtv.hidden = true;
-    btnShowAdd.hidden = false;
-    div_tbl22.hidden = false;
-}
-
-
-function frmAtiv22Show(id) {
-
-  btnFecharCanc();
-  getDBMD22(id)
-
-  /*
-  let idx4 = data4.findIndex(d =>d.id === id);
-  let myObj = data4[idx4];
-  let id_vinc = document.getElementById('id_vinc').value;
-
-  document.getElementById("vinc4").value = id_vinc;
-  document.getElementById("idx4").value = idx4;
-  document.getElementById("id4").value  = myObj.id;
-  document.getElementById('cargo4').value = myObj.cargo;
-
-  document.getElementById('alocado4').value = myObj.alocado;
-  document.getElementById('numdata4').value = myObj.numdata;
-  
-  document.getElementById('cargah4').value = myObj.ch;
-
-  document.getElementById("titleMotal4").innerHTML = 'Editar atividade';
-  document.getElementById("addAtv4").innerHTML = "Alterar";
-  */
-
-  $('#modalAtv').modal('show');
-}
-
-
 
 function deleteAllRows(){
   $("#tabelaPADS tbody tr").remove(); 
@@ -130,6 +65,61 @@ async function getDBMD() {
 getDBMD();
 
 
+function frmAtiv22Show(id) {
+  btnFecharCanc();
+  getDBMD22(id);
+  $('#modalAtv').modal('show');
+  
+  document.getElementById('vinc22').value = id;
+}
+
+
+var tbodyAtv = document.getElementById("tbodyAtv");
+tbodyAtv.ondblclick = function(e){
+  e = e || window.event;
+  var target = e.srcElement || e.target;
+  
+  while (target && target.nodeName !== "TR") {
+      target = target.parentNode;
+  }
+  if (target) {
+    var cells = target.getElementsByTagName("td");
+    btnShowAddfnc();
+    let index = data22.findIndex(e => e.id === cells[0].innerHTML);
+    let myObj = data22[index];
+
+    document.getElementById('id22').value     = myObj.id;
+    document.getElementById('idx22').value    = index;
+    document.getElementById('tpAtiv22').value = myObj.atividade;
+    document.getElementById('nome22F').value  = myObj.estudante;
+    document.getElementById('curso22F').value = myObj.curso;
+    document.getElementById('serie22F').value = myObj.serie;
+
+    document.getElementById('addEdt22').innerHTML = 'Alterar';
+  }
+}
+
+function btnShowAddfnc(){ 
+  document.getElementById('id22').value     = '';
+  document.getElementById('idx22').value    = '';
+  
+  document.getElementById('tpAtiv22').value = '';
+  document.getElementById('nome22F').value  = '';
+  document.getElementById('curso22F').value = '';
+  document.getElementById('serie22F').value = '';
+  frmAtv22.hidden = false;
+  btnShowAdd.hidden = true;
+  div_tbl22.hidden = true;
+  DoubleClick.hidden = true;
+  document.getElementById('addEdt22').innerHTML = 'Adicionar';
+}
+
+function btnFecharCanc(){
+    frmAtv22.hidden = true;
+    btnShowAdd.hidden = false;
+    div_tbl22.hidden = false;
+}
+
 function deleteAllRowsTable22(){
   $("#tbl22 tbody tr").remove(); 
 }
@@ -146,6 +136,7 @@ function insereTable22(newDisc){
     let celSerie      = newLinha.insertCell(4);
     let celCh1        = newLinha.insertCell(5);
     let celCh2        = newLinha.insertCell(6);
+    let celDel        = newLinha.insertCell(7);
     
   celId.innerHTML          = newDisc.id;
   celAtividade.innerHTML   = newDisc.atividade;
@@ -159,13 +150,66 @@ function insereTable22(newDisc){
   }
   celCh1.innerHTML         = cargaHoraria;
   celCh2.innerHTML         = cargaHoraria;
-
+  celDel.innerHTML         =
+  `<center>
+  <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow22('${newDisc.id}')">⛔</button>
+</center>`;
+  
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
   celSerie.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
   celCh2.style.textAlign = 'right';
 }
+
+function addAtividade22(receiveData) {
+  data = receiveData.data; 
+  //receiveData = tradaDados4(data);
+  data22.push(receiveData);
+  insereTable22(receiveData);
+  //calculaSubt4();
+}
+
+
+const frmAtv22 = document.getElementById('frmAtv22');
+frmAtv22.addEventListener('submit', e => {
+  e.preventDefault();
+  const formData = new FormData(frmAtv22);
+  const data = Object.fromEntries(formData);
+
+  const id = document.getElementById('id22').value;
+  if(id === ''){
+    console.log('insert');
+    console.table(data);
+    fetch('./includes/dml/insert.php', {
+      method:'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then( data => addAtividade22(data)); 
+  }else{
+    console.log('update');
+  
+    fetch('./includes/dml/update.php', {
+      method:'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then( res => res.json())
+    .then( data => updateAtividade22(data)); 
+  }
+  btnFecharCanc();
+  //$('#modalAtv').modal('hide');
+});
+
+
 
 async function getDBMD22(id){
   data22 = await fetch(`../api/ativ22.php?vc=${id}`).then(resp => resp.json()).catch(error => false);

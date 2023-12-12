@@ -38,7 +38,7 @@
 
     <!-- The Modal ADD / EDT-->
     <div class="modal fade" id="modalAtv">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
           <!-- Modal Header -->
