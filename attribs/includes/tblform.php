@@ -66,3 +66,37 @@ error_reporting(E_ALL);
     </center>
 </form>
 
+
+<!-- The Modal DELET-->
+<div class="modal fade" id="modalDel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" >Remover atividade</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
+          <div class="form-group">
+          <div  id="msgApagar">Tem certeza que deseja apagar a atividade relacionada ao aluno(ª) abaixo?</div>
+            <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
+            <input hidden name="idAtivDel" id="idAtivDel">
+           
+          </div>
+
+          <center>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
+            <button type="submit" class="btn btn-danger btn-sm" >Apagar</button>
+          </center>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!--  The Modal DELET Fim-->
+

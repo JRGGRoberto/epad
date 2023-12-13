@@ -1,6 +1,6 @@
 <?php
 
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 use \App\Entity\PADAtiv22;
 use \App\Session\Login;
 
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
 
     $dis = PADAtiv22::getById($id);
 
-    // Lógica para excluir o recurso com o ID especificado
+     // Lógica para excluir o recurso com o ID especificado
     if(!$dis instanceof PADAtiv22){
         header("HTTP/1.1 500 Internal Server Error");
         echo json_encode(array("message" => "Objeto de uma instancia não esperada."));

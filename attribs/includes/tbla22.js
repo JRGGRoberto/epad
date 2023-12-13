@@ -168,6 +168,15 @@ function addAtividade22(receiveData) {
   insereTable22(data);
 }
 
+function frmExcluirShow22(id){
+  $('#modalDel').modal('show');
+  let nomeAtivDel = document.getElementById('nomeAtivDel');
+  let index = data22.findIndex(e => e.id === id);
+  let myObj = data22[index];
+  nomeAtivDel.innerHTML = myObj.estudante;
+  let idAtivDel = document.getElementById('idAtivDel');
+  idAtivDel.value = id;
+}
 
 function updateAtividade22(receiveData){
   data = receiveData.data; 
@@ -210,8 +219,51 @@ frmAtv22.addEventListener('submit', e => {
     .then( data => updateAtividade22(data)); 
   }
   btnFecharCanc();
-  //$('#modalAtv').modal('hide');
 });
+
+
+const frmDEL = document.getElementById('frmDelAtiv');
+frmDEL.addEventListener('submit', e => {
+  e.preventDefault();
+
+  let id = document.getElementById('idAtivDel').value;
+
+  console.log('ID: ' + id); 
+  fetch(`./includes/dml/delete.php?id=${id}` , {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+        // Se você precisa de algum token de autenticação, adicione aqui
+    }
+  })
+  .then(res => {
+      if (!res.ok) {
+          throw new Error('Erro ao excluir o recurso.');
+      }
+      return res.json(); 
+  })
+  .then(data => excluirLinhaTbl(data) )
+  .catch(error => {
+      console.error(error);
+  });
+  $('#modalDel').modal('hide');
+});
+
+
+function excluirLinhaTbl(idr) {
+  console.log(`Mensagem: ${idr.message}`);
+  console.log(`ID: ${idr.id}`);
+  let idx = data22.findIndex(d =>d.id === idr.id);
+  if(idx > -1){
+    let tabela = document.getElementById("tbl22").getElementsByTagName("tbody")[0];
+    tabela.deleteRow(idx);
+    data22.splice(idx, 1);
+  } else {
+    console.log(`Não encontrado ${idr.id}`);
+  }
+  dadosCH();
+}
+
 
 
 
