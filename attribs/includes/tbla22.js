@@ -131,7 +131,7 @@ function insereTable22(newDisc){
   
     let celId         = newLinha.insertCell(0);
     let celAtividade  = newLinha.insertCell(1);
-    let celEstudante = newLinha.insertCell(2);
+    let celEstudante  = newLinha.insertCell(2);
     let celCurso      = newLinha.insertCell(3);
     let celSerie      = newLinha.insertCell(4);
     let celCh1        = newLinha.insertCell(5);
@@ -164,25 +164,20 @@ function insereTable22(newDisc){
 
 function addAtividade22(receiveData) {
   data = receiveData.data; 
-  //receiveData = tradaDados4(data);
   data22.push(data);
   insereTable22(data);
-  //calculaSubt4();
 }
 
 
 function updateAtividade22(receiveData){
-  console.log(receiveData)
-/*  data = tradaDados4(receiveData.data);
-  data4[data.idx] = data;
-  let tabela = document.getElementById("tbl4").getElementsByTagName("tbody")[0];
+  data = receiveData.data; 
+  data22[data.idx] = data;
+  let tabela = document.getElementById("tbl22").getElementsByTagName("tbody")[0];
   let linha = tabela.rows[data.idx];
-
-  linha.cells[1].innerHTML = data.cargo;
-  linha.cells[2].innerHTML = data.alocado;
-  linha.cells[3].innerHTML = data.numdata;
-  linha.cells[4].innerHTML = data.ch;
-*/
+  linha.cells[1].innerHTML = data.atividade;
+  linha.cells[2].innerHTML = data.estudante;
+  linha.cells[3].innerHTML = data.curso;
+  linha.cells[4].innerHTML = data.serie;
 }
 
 const frmAtv22 = document.getElementById('frmAtv22');
@@ -190,12 +185,8 @@ frmAtv22.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(frmAtv22);
   const data = Object.fromEntries(formData);
-
-  console.table(data);
-
   const id = document.getElementById('id22').value;
   if(id === ''){
-    console.log('insert');
     fetch('./includes/dml/insert.php', {
       method:'POST',
       headers:{
@@ -207,8 +198,6 @@ frmAtv22.addEventListener('submit', e => {
     .then(res => res.json())
     .then( data => addAtividade22(data)); 
   }else{
-    console.log('update');
-  
     fetch('./includes/dml/update.php', {
       method:'PUT',
       headers:{

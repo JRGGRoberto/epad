@@ -1,15 +1,11 @@
 <?php
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-
 require '../../../vendor/autoload.php';
 use \App\Entity\PADAtiv22;
 use \App\Session\Login;
 
-//Login::requireLogin();
-//$user = Login::getUsuarioLogado();
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -29,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $dis->curso     = $data["curso22F"];
     $dis->serie     = $data["serie22F"];
     $dis->ch        = '1';
-  //  $dis->user      = $user['id'];
+    $dis->user      = $user['id'];
     $id = $dis->add();
 
     $responseData = array( 

@@ -23,9 +23,8 @@ define('TITLE','Editar dados do Agente');
 
 //VALIDAÇÃO DO ID
 if(!isset($_GET['id']) ){
-  header('location: ../matrizes/');
-  exit;
-  
+    header('location: index.php?status=error');
+    exit;
 }
 
 //CONSULTA AO PROJETOecho '<pre>';
@@ -35,10 +34,8 @@ $obAgente = $obAgente::get($_GET['id']);
 
 //VALIDAÇÃO DA TIPO
 if(!$obAgente instanceof Agente){
- // header('location: ../index.php?status=error');
- header('location: ../matrizes/');
- exit;
- 
+  header('location: ../index.php?status=error');
+  exit;
 }
 
 $msg = '?';
@@ -60,10 +57,8 @@ if(isset($_POST['nome'])){
   }
   $obAgente->atualizar();
 
- // header('location: index.php?status=success');
- header('location: ../matrizes/');
- exit;
- 
+  header('location: index.php?status=success');
+  exit;
 }
 
 include '../includes/header.php';

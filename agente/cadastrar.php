@@ -39,12 +39,8 @@ if(isset($_POST['nome'])){
 
    $obAgente->cadastrar();
 
-  /* header('location: index.php?status=success');
+   header('location: index.php?status=success');
    exit;
-   */
-  header('location: ../matrizes/');
-  exit;
-
  }
 
 include '../includes/header.php';

@@ -14,13 +14,6 @@ $horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
 
   $nome = explode(' ',trim($obUsuario['nome']));
   $nome = $nome[0]; // will print Test
-
-use \App\Entity\MatrizDisc;
-$matz = MatrizDisc::get();
-
-
-
-
  
 ?>
 

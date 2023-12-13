@@ -1,14 +1,10 @@
 <?php
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require '../../../vendor/autoload.php';
 use \App\Entity\PADAtiv22;
-// use \App\Session\Login;
-// Login::requireLogin();
-// $user = Login::getUsuarioLogado();
+use \App\Session\Login;
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
@@ -28,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $dis->curso     = $data["curso22F"];
     $dis->serie     = $data["serie22F"];
     $dis->ch        = '1';
-  //  $dis->user      = $user['id'];
+    $dis->user      = $user['id'];
 
     if(!$dis->atualizar()){
         $response = array("status" => "error", "message" => "Método de requisição inválido 2.");
@@ -46,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
             "atividade" => $dis->atividade,
             "estudante" => $dis->estudante,
             "curso"     => $dis->curso,
-            "serie"     => $dis->serie
+            "serie"     => $dis->serie,
             "ch"        => $dis->ch
            )
         );

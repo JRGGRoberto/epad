@@ -1,6 +1,6 @@
 
 // Array para armazenar os equipe
-// let equipe = [ ];   // informação vem do 'cadastrar.php' ou do 'editar.php'
+//let equipe = [ ];   // informação vem do 'cadastrar.php' ou do 'editar.php'
 
 
 function deleteAllRows(){

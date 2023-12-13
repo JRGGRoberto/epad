@@ -221,7 +221,7 @@ let disciplinas = [ ];
 let noData = true;
 
 
-function deleteAllRows(){exluirLinha
+function deleteAllRows(){
     $("#tabelaMatD tbody tr").remove(); 
 }
 
@@ -406,6 +406,7 @@ formM.addEventListener('submit', e => {
     const formData = new FormData(formM);
     const data = Object.fromEntries(formData);
 
+
     // Se tiver ID é uma edição se não ADD
     const id = document.getElementById('id').value;
     if(id === '') {
@@ -419,6 +420,7 @@ formM.addEventListener('submit', e => {
       })
       .then(res => res.json())
       .then( data => addDisciplina(data));
+      fecharModalDis();
     } else {
       fetch('./dml/update.php', {
           method:'PUT',
@@ -430,8 +432,8 @@ formM.addEventListener('submit', e => {
       })
       .then( res => res.json())
       .then( data => updateDisciplina(data));
+      fecharModalDis();
     }
-    fecharModalDis();
 });
 
 async function getDBMD() {
