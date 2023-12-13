@@ -165,8 +165,8 @@ function insereTable22(newDisc){
 function addAtividade22(receiveData) {
   data = receiveData.data; 
   //receiveData = tradaDados4(data);
-  data22.push(receiveData);
-  insereTable22(receiveData);
+  data22.push(data);
+  insereTable22(data);
   //calculaSubt4();
 }
 
