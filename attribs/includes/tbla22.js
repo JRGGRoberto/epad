@@ -171,16 +171,31 @@ function addAtividade22(receiveData) {
 }
 
 
+function updateAtividade22(receiveData){
+  console.log(receiveData)
+/*  data = tradaDados4(receiveData.data);
+  data4[data.idx] = data;
+  let tabela = document.getElementById("tbl4").getElementsByTagName("tbody")[0];
+  let linha = tabela.rows[data.idx];
+
+  linha.cells[1].innerHTML = data.cargo;
+  linha.cells[2].innerHTML = data.alocado;
+  linha.cells[3].innerHTML = data.numdata;
+  linha.cells[4].innerHTML = data.ch;
+*/
+}
+
 const frmAtv22 = document.getElementById('frmAtv22');
 frmAtv22.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(frmAtv22);
   const data = Object.fromEntries(formData);
 
+  console.table(data);
+
   const id = document.getElementById('id22').value;
   if(id === ''){
     console.log('insert');
-    console.table(data);
     fetch('./includes/dml/insert.php', {
       method:'POST',
       headers:{

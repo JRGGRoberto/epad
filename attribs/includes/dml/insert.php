@@ -37,9 +37,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
             "id"        => $id, //uniqid(),
-            "vinculo" => $dis->vinculo,
-            "idx"  => $data["idx22"]
-
+            "vinculo"   => $dis->vinculo,
+            "atividade" => $dis->atividade,
+            "estudante" => $dis->estudante,
+            "curso"     => $dis->curso,
+            "serie"     => $dis->serie
+            "ch"        => $dis->ch
             )
         );
 
