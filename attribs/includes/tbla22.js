@@ -67,6 +67,11 @@ function insereTable(newDisc){
 
 }
 
+$('#modalAtv').on('hidden.bs.modal', function (e) {
+  getDBMD();
+  console.log('atualizar');
+}) 
+
 async function getDBMD() {
   deleteAllRows();
   data = await fetch(`../api/pads.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
@@ -236,6 +241,7 @@ frmAtv22.addEventListener('submit', e => {
     .then( data => updateAtividade22(data)); 
   }
   btnFecharCanc();
+  getDBMD();
 });
 
 
@@ -264,6 +270,7 @@ frmDEL.addEventListener('submit', e => {
       console.error(error);
   });
   $('#modalDel').modal('hide');
+  getDBMD();
 });
 
 
