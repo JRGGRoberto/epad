@@ -36,8 +36,13 @@
       <div class="row">
 
         <div class="col-9" style="max-height: 600px; overflow: scroll;">
+          
           <table id="tabelaMatD" name="tabelaMatD" class="table table-bordered table-sm table-hover">
             <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
+              <tr>
+                <th colspan="4"><input class="form-control" id="impBuscarDis" type="text" placeholder="Buscar disciplina"></th>
+              </tr>
+
               <tr>
                 <th style="display: none;">ID</th>
                 <th style="vertical-align:top">Disciplina</th>
@@ -53,11 +58,11 @@
 
         <div class="col" style="max-height: 600px; overflow: scroll;">
           <div class="row">
-          <input class="form-control" id="impBuscar" type="text" placeholder="Buscar...   nome, curso..">
-          </div>
-          <div class="row">
             <table id="tblProfs" name="tblProfs" class="table table-bordered table-sm table-hover">
               <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
+                <tr>
+                  <th ><input class="form-control" id="impBuscar" type="text" placeholder="Buscar...   nome, curso.."></th>
+                </tr>
                 <tr>
                   <th style="display: none;">ID</th>
                   <th>Professor(ª)</th>
@@ -314,7 +319,17 @@ function atualizar(){
 $(document).ready(function(){
   $("#impBuscar").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#tblProfs tr").filter(function() {
+    $("#tblProfs tbody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+
+$(document).ready(function(){
+  $("#impBuscarDis").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tabelaMatD tbody tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

@@ -40,7 +40,7 @@ function insereTable21(newDisc){
   ch = stripZeros(newDisc.cargah);
 
   if(newDisc.atividade === 'd'){
-    newDisc.disciplina = '[planejamento] ' + newDisc.disciplina
+    newDisc.disciplina = newDisc.disciplina + '<br><sub>(planejamento)</sub>'
   }
 
     
@@ -54,6 +54,8 @@ function insereTable21(newDisc){
 
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
+
+  celDisciplina.style.lineHeight = '0.9';
   celTurno.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
   celCh2.style.textAlign = 'right';

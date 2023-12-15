@@ -6,7 +6,7 @@
             <th class="align-top">Local</th>
             <th class="align-top">Número e data Ato Legal</th>
             <th class="align-top" class="align-top" style="text-align: center;" width="140px" >Carga horária<br><sup>semanal</sup></th>
-            <th class="align-top" style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv4()">Adicionar</button></th>
+            <th class="align-top" style="width:90px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv4()">Adicionar</button></th>
         </tr>
     </thead>
     <tbody>

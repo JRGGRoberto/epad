@@ -17,7 +17,8 @@ SELECT *
 FROM pad_sucinto 
 WHERE 
    ano  = "'. $ano .'" 
-   and co_id = "'. $co. '" ' ;
+   and co_id = "'. $co. '" 
+order by nome' ;
 $registros = Outros::qry($sql);
 
 echo json_encode($registros);

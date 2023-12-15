@@ -29,14 +29,15 @@ function insereTable(newDisc){
     let celAT   = newLinha.insertCell(6);
     let celRT   = newLinha.insertCell(7);
     let celCnf  = newLinha.insertCell(8);
-      
+    
+    let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
   celId.innerHTML   = newDisc.id;
   celNome.innerHTML = newDisc.nome;
   celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
   celA22.innerHTML  = newDisc.a22 +'h ';
   celA3.innerHTML   = newDisc.a3 +'h ';
   celA4.innerHTML   = newDisc.a4 +'h ';
-  celAT.innerHTML   = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4) +'h ';
+  celAT.innerHTML   = totUsado +'h ';
   celRT.innerHTML   = newDisc.rt +'h ';
   celCnf.innerHTML  = 
   `<center>
@@ -50,8 +51,20 @@ function insereTable(newDisc){
   celAT.style.textAlign = 'right';
   celRT.style.textAlign = 'right';
 
-  
-  //celCH.style.textAlign = 'right';
+  if(parseFloat(totUsado) < parseFloat(newDisc.rt)){
+    //amarelo
+    celAT.style.backgroundColor = '#ffeeba';
+    celAT.style.borderBlockColor = '#ffdf7e';
+  } else if (parseFloat(totUsado) === parseFloat(newDisc.rt)){
+    //verde
+    celAT.style.backgroundColor = '#c3e6cb';
+    celAT.style.borderBlockColor = '#8fd19e';
+  } else {
+    //vermelho
+    celAT.style.backgroundColor = '#f5c6cb';
+    celAT.style.borderBlockColor = '#ed969e';
+  }
+
 }
 
 async function getDBMD() {
@@ -69,7 +82,11 @@ function frmAtiv22Show(id) {
   btnFecharCanc();
   getDBMD22(id);
   $('#modalAtv').modal('show');
+
+  let index = data.findIndex(e => e.id === id);
+  let myObj = data[index];
   
+  document.getElementById('titleMotalProf').innerHTML = myObj.nome;
   document.getElementById('vinc22').value = id;
 }
 

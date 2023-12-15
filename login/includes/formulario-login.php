@@ -9,7 +9,7 @@
 
     <div class="col text-center">
 
-        <h2>PROEC</h2>
+        <h2>UNESPAR</h2>
         <img src="../imgs/logo_unespar.png" width="150" height="160">
         <hr>
         <h3>PLANO DE ATIVIDADES DOCENTES</h3>

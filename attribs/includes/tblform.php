@@ -1,10 +1,4 @@
-<?php
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
-?>
-
-    
+   
 <div style="max-height: 300px; overflow: scroll;" id="div_tbl22">
     <table id="tbl22" class="table table-bordered table-sm table-hover">
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">

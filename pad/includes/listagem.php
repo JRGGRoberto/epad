@@ -176,7 +176,7 @@
             <div id="outobs" class="collapse show" >
                 <div class="card-body">
                     <div class="form-group">
-                         <textarea onKeyUp="AtivaupdateOBS()" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
+                         <textarea onKeyUp="AtivaupdateOBS()" maxlength="50" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
                     </div>
                     <div class="form-group float-right">
                          <input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();" hidden>

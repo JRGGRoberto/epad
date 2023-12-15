@@ -6,7 +6,7 @@
             <th class="align-top" style="text-align: center;">Função</th>
             <th class="align-top">Nome do orientando<br><sup>(se houver)</sup></th>
             <th class="align-top" style="text-align: center;">Carga horária<br><sup>semanal</sup></th>
-            <th class="align-top" style="width:20px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv3()">Adicionar</button></th>
+            <th class="align-top" style="width:90px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv3()">Adicionar</button></th>
         </tr>
     </thead>
     <tbody>
