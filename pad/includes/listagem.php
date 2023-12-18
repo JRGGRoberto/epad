@@ -1,5 +1,17 @@
 <div class="container mt-3">
-    <h3>PAD <?=$vinc->ano?></h3>
+
+    <div class="row">
+        <div class="col">
+            <h3>PAD <?=$vinc->ano?></h3>
+        </div>
+        <div class="col">
+            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border-block-color: #ffdf7e; padding: 5px; font-size:12px;">Faltando horas</span>
+            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border-block-color: #8fd19e; padding: 5px; font-size:12px;">Ok horas completas</span>
+            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border-block-color: #ed969e; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
+        </div>
+    </div>
+
+
 <section>
     <input type="hidden" name="id_vinc" id="id_vinc" value="<?= $vinc->id ?>" >
 
@@ -321,7 +333,26 @@ function somaTotais() {
     document.getElementById('rtotal4').innerHTML = total4;
     soma = (parseFloat(total21) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
 
-    document.getElementById('rtotal').innerHTML = soma + 'h';
+    rtotal = document.getElementById('rtotal');
+    rtotal.innerHTML = soma + 'h';
+
+    
+
+    rt = parseFloat(document.getElementById('rt').innerHTML);
+    
+    if(parseFloat(soma) < parseFloat(rt)){
+      //amarelo
+      rtotal.style.backgroundColor = '#ffeeba';
+      rtotal.style.borderBlockColor = '#ffdf7e';
+    } else if (parseFloat(soma) === parseFloat(rt)){
+      //verde
+      rtotal.style.backgroundColor = '#c3e6cb';
+      rtotal.style.borderBlockColor = '#8fd19e';
+    } else {
+      //vermelho
+      rtotal.style.backgroundColor = '#f5c6cb';
+      rtotal.style.borderBlockColor = '#ed969e';
+    }
 }
 
 
