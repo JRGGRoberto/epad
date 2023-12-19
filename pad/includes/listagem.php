@@ -5,12 +5,12 @@
             <h3>PAD <?=$vinc->ano?></h3>
         </div>
         <div class="col">
-            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border-block-color: #ffdf7e; padding: 5px; font-size:12px;">Faltando horas</span>
-            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border-block-color: #8fd19e; padding: 5px; font-size:12px;">Ok horas completas</span>
-            <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border-block-color: #ed969e; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
+            <span id="inf_y" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border: 0px #ffdf7e solid; padding: 5px; font-size:12px;">Faltando horas</span>
+            <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Ok horas completas</span>
+            <span id="inf_r" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border: 0px #ed969e solid; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
         </div>
     </div>
-
+    
 
 <section>
     <input type="hidden" name="id_vinc" id="id_vinc" value="<?= $vinc->id ?>" >
@@ -133,7 +133,7 @@
                         </div>
                 </div>
             </div>
-            <div id="resumo" class="collapse show" >
+            <div id="resumo" class="collapse show" >''
                 <div class="card-body d-flex align-items-center justify-content-center " >
                     <table class="table table-sm" style="max-width: 800px;" >
     
@@ -336,23 +336,53 @@ function somaTotais() {
     rtotal = document.getElementById('rtotal');
     rtotal.innerHTML = soma + 'h';
 
+    inf_y = document.getElementById('inf_y');
+    inf_g = document.getElementById('inf_g');
+    inf_r = document.getElementById('inf_r');
     
 
     rt = parseFloat(document.getElementById('rt').innerHTML);
     
     if(parseFloat(soma) < parseFloat(rt)){
       //amarelo
+      inf_y.style.borderWidth = "2px";
+      inf_g.style.borderWidth = "0px";
+      inf_r.style.borderWidth = "0px";
       rtotal.style.backgroundColor = '#ffeeba';
-      rtotal.style.borderBlockColor = '#ffdf7e';
+      rtotal.style.border       = "2px #ffdf7e solid"; 
     } else if (parseFloat(soma) === parseFloat(rt)){
       //verde
+      inf_y.style.borderWidth = "0px";
+      inf_g.style.borderWidth = "2px";
+      inf_r.style.borderWidth = "0px";
       rtotal.style.backgroundColor = '#c3e6cb';
-      rtotal.style.borderBlockColor = '#8fd19e';
+      rtotal.style.border       = "2px #8fd19e solid"; 
     } else {
       //vermelho
+      inf_y.style.borderWidth = "0px";
+      inf_g.style.borderWidth = "0px";
+      inf_r.style.borderWidth = "2px";
       rtotal.style.backgroundColor = '#f5c6cb';
-      rtotal.style.borderBlockColor = '#ed969e';
+      rtotal.style.border       = "2px #ed969e solid"; 
     }
+    rtotal.style.borderWidth  = "2px";
+    rtotal.style.borderRadius = "5px";
+    rtotal.style.padding      = "5px 10px 5px 10px";
+    rtotal.style.boxShadow    = "lightgray 3px 3px";
+
+   
+    
+    
+
+/*
+    "text-align: right; 
+    
+    border-radius: 5px; 
+    background-color: #ffeeba; 
+    border: 0px #ffdf7e solid; padding: 5px;
+    font-size:12px;"
+    box-shadow: 3px 3px lightgray
+    */
 }
 
 
