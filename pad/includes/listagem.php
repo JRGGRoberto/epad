@@ -370,19 +370,6 @@ function somaTotais() {
     rtotal.style.padding      = "5px 10px 5px 10px";
     rtotal.style.boxShadow    = "lightgray 3px 3px";
 
-   
-    
-    
-
-/*
-    "text-align: right; 
-    
-    border-radius: 5px; 
-    background-color: #ffeeba; 
-    border: 0px #ffdf7e solid; padding: 5px;
-    font-size:12px;"
-    box-shadow: 3px 3px lightgray
-    */
 }
 
 
