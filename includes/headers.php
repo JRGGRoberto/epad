@@ -73,7 +73,7 @@ img.remover {
 }
 </style>
 
-<title>SisGP PROEC</title>
+<title>UNESPAR ePAD</title>
   </head>
   <body class="bg-light text-dark">
 

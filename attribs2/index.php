@@ -5,7 +5,6 @@ require '../vendor/autoload.php';
 use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
-use \App\Entity\Vinculo;
 
 
 if($user['tipo'] != 'prof'){
@@ -28,14 +27,7 @@ if(!$ok){
 $ano = '2024';
 $co = $user['co_id'];
 
-$where = ("(ano, co_id ) = ('". $ano ."', '".$co ."')" );
-$order = " nome ";
-$profs = Vinculo::gets($where, $order);
 
-$opcoes = '';
-foreach($profs as $p){
-   $opcoes .= '<option value="'.$p->id.'">'.  $p->nome .'</option>';
-}
 
 include '../includes/header.php';
 echo '<script>

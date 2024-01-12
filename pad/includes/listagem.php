@@ -133,8 +133,8 @@
                         </div>
                 </div>
             </div>
-            <div id="resumo" class="collapse show" >''
-                <div class="card-body d-flex align-items-center justify-content-center " >
+            <div id="resumo" class="collapse show" >
+                <div class="card-body d-flex align-items-center justify-content-center" >
                     <table class="table table-sm" style="max-width: 800px;" >
     
                         <tr>

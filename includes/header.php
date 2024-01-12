@@ -20,6 +20,7 @@ $horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
 <!doctype html>
 <html lang="pt-BR">
   <head>
+  <title>UNESPAR ePAD</title>
     <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +29,6 @@ $horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
   
@@ -88,7 +88,7 @@ img.remover {
 }
 </style>
 
-<title>SisGP PROEC</title>
+
   </head>
   <body class="bg-light text-dark">
 
@@ -145,13 +145,15 @@ img.remover {
                     <?php
                        if($obUsuario['tipo'] === 'prof'){
                          echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
-         
+
+        
                          if($obUsuario['config'] === '1'){
                            echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Cursos</a>';
 
+                           echo '<a type="button" class="btn btn-primary" href="../attribs2" style="text-align: center;">2.2</a>';
+
                            echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Atribuições</a>';
 
-                          // echo '<a type="button" class="btn btn-primary" href="../orientacao" style="text-align: center;">Orientações</a>';
                          } 
                        } elseif($obUsuario['tipo'] === 'agente'){
                          echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
