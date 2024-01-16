@@ -25,7 +25,7 @@
     
 
     <center>
-      <button type="button" class="btn btn-secondary btn-sm" onclick="btnFecharCanc()">Fechar</button>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
       <button type="submit" id="addBtnF" class="btn btn-primary btn-sm" disabled>Adicionar</button>
     </center>
 </form>

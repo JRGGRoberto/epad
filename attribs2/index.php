@@ -6,6 +6,14 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+//VALIDAÇÃO DO ID
+if(!isset($_GET['t']) ){
+   header('location: index.php?status=error');
+   exit;
+}
+
+$tp_atrib = $_GET['t'];
+
 
 if($user['tipo'] != 'prof'){
   header('location: ../home/');
@@ -14,9 +22,7 @@ if($user['tipo'] != 'prof'){
 $ok = false;
 
 if($user['tipo'] === 'prof' ){
-   if($user['config'] == '1'){
-      $ok = true;
-   }
+   $ok = true;
 }
 
 if(!$ok){

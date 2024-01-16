@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 
 use \App\Session\Login;
 $obUsuario = Login::getUsuarioLogado();
+use \App\Entity\Cargo;
 
 $clock = [
   '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚'
@@ -139,6 +140,7 @@ img.remover {
     } else {
 
     }
+    $ano = 2024;
 ?>
 
               <div class="btn-group btn-group-sm float-right">  
@@ -146,20 +148,21 @@ img.remover {
                        if($obUsuario['tipo'] === 'prof'){
                          echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
 
-        
+                         $where = ("(ano, id_prof, id_colegiado ) = ('".$ano."', '".$obUsuario['id']."', '".$obUsuario['co_id']."')");
+                         $cargos = Cargo::gets($where); 
+                         foreach($cargos as $c){
+                           echo '<a type="button" class="btn btn-primary" href="../attribs2/index.php?t='.$c->tipocod.'" style="text-align: center;">Atribuição '.strtoupper($c->tipocod).'</a>';
+                         }
+
                          if($obUsuario['config'] === '1'){
-                           echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Cursos</a>';
-
-                           echo '<a type="button" class="btn btn-primary" href="../attribs2" style="text-align: center;">2.2</a>';
-
                            echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Atribuições</a>';
-
                          } 
                        } elseif($obUsuario['tipo'] === 'agente'){
                          echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
                        }
-         
-                   
+
+                       
+
                        if(1>2){
                          echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
                        }

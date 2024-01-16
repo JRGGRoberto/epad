@@ -23,11 +23,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
 
+        $vinc = $_POST['listaProf'];;
+        $co   = $_POST['co'];
+        $ano  = $_POST['ano'];
+        $tipo = $_POST['listaFunc'];
+
+        $where = ("(ano, id_vinculo, tipo ) = ('".$ano."', '".$vinc."', '".$tipo."')");
+        $verif = Cargo::getQntd($where); 
+
+        
+        if($verif > 0 ){
+            // send a error message
+           header('location: ..');
+           exit;
+        } 
+
         $func = new Cargo();
-        $func->id_vinculo    = $_POST['listaProf'];;
-        $func->id_colegiado  = $_POST['co'];
-        $func->ano           = $_POST['ano'];
-        $func->tipo           = $_POST['listaFunc'];
+        $func->id_vinculo    = $vinc;
+        $func->id_colegiado  = $co;
+        $func->ano           = $ano;
+        $func->tipo          = $tipo;
         $func->user  = $user['id'];
         if($func->cadastrar()){
             header('location: ..');
