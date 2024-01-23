@@ -17,6 +17,10 @@ class Vinculo {
   public $obs;
   public $created_at;
   public $updated_at;
+  public $aprov_co_id;
+  public $aprov_co_data;
+  public $aprov_ce_id;
+  public $aprov_ce_data;
   public $user;
 
   public function cadastrar(){
@@ -52,6 +56,23 @@ class Vinculo {
                                                           'user'          => $this->user
                                                         ]);
   }
+
+
+  public function assing_co(){
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+      'aprov_co_id'   =>  $this->aprov_co_id,
+      'aprov_co_data' =>  date("Y-m-d H:i:s")
+    ]);
+  }
+
+
+  public function assing_ce(){
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+      'aprov_ce_id'   =>  $this->aprov_ce_id,
+      'aprov_ce_data' =>  date("Y-m-d H:i:s")
+    ]);
+  }
+
 
   public function excluir(){
     return (new Database('vinculo'))->delete('id = "'.$this->id .'"');

@@ -5,9 +5,9 @@
       <label for="listaFunc">Função</label>
       <select name="listaFunc" id="listaFunc" class="form-control" require="" onchange="ativaBTN();">
         <option value="-1">Selecione</option>
-        <option value="a">Coordenação de Estágio Curricular Supervisionado Obrigatório</option>
-        <option value="c">Coordenação de Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses)</option>
-        <option value="d">Orientação de Monitoria</option>
+        <option value="a">Coordenação de Estágio</option>
+        <option value="c">Coordenação de Trabalhos Acadêmicos</option>
+        
       </select>
 
     </div>

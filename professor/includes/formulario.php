@@ -7,12 +7,6 @@ $user = Login::getUsuarioLogado();
 <script src="./ccc.js"></script>
 <main>
 
-  <section>
-    <a href="index.php">
-      <button class="btn btn-sm btn-success float-right">Voltar</button>
-    </a>
-  </section>
-
   <h2 class="mt-3"><?=TITLE?></h2>
 
   <form method="post" id="formprof">

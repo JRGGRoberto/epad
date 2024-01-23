@@ -3,7 +3,32 @@
     <div class="col-2"><h3>Atribuições</h3></div>
     <div class="col" style="text-align:left">
       <div>
-        <span class="badge badge-pill badge-light">2.2. Atividades de Supervisão e Orientação</span>
+        <span class="badge badge-pill badge-light">
+<?php
+$option1 ='';
+$optiontext;
+
+
+switch ($tp_atrib) {
+  case "a":
+      $optiontext = "Estágio Curricular Supervisionado Obrigatório";
+      break;
+  case "b":
+      $optiontext = "Atividades de aulas práticas em inst da área da saúde";
+      break;
+  case "c":
+      $optiontext = "Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses)";
+      break;
+  case "d":
+      $optiontext = "Orientação de Monitoria";
+      break;
+}
+ echo $optiontext;
+ $option1 = '<option value="'.$tp_atrib .'" selected>'.$optiontext.'</option>';
+?>
+
+
+        </span>
       </div>
       <div>
         <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border-block-color: #ffdf7e; padding: 5px; font-size:12px;">Faltando horas</span>

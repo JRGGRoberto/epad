@@ -340,8 +340,12 @@ function somaTotais() {
     inf_g = document.getElementById('inf_g');
     inf_r = document.getElementById('inf_r');
     
-
-    rt = parseFloat(document.getElementById('rt').innerHTML);
+    rt = document.getElementById('rt').innerHTML;
+     if(rt === 'TIDE'){
+        rt = 40;
+    } else {
+        rt = parseFloat(document.getElementById('rt').innerHTML);
+    }
     
     if(parseFloat(soma) < parseFloat(rt)){
       //amarelo

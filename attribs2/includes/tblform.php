@@ -28,11 +28,7 @@
       <input type="hidden" name="idx22" id="idx22">
       <input type="hidden" name="vinc22" id="vinc22">
       <select name="tpAtiv22" id="tpAtiv22" class="form-control" require="">
-        <option value="">Selecione</option>
-        <option value="a">Estágio Curricular Supervisionado Obrigatório</option>
-        <option value="b">Atividades de aulas práticas em inst da área da saúde</option>
-        <option value="c">Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses)</option>
-        <option value="d">Orientação de Monitoria</option>
+        <?= $option1 ?>
       </select>
     </div>
 

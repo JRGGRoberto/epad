@@ -38,7 +38,12 @@ function insereTable(newDisc){
   celA3.innerHTML   = newDisc.a3 +'h ';
   celA4.innerHTML   = newDisc.a4 +'h ';
   celAT.innerHTML   = totUsado +'h ';
-  celRT.innerHTML   = newDisc.rt +'h ';
+  if(newDisc.rt === 'TIDE'){
+    celRT.innerHTML   = newDisc.rt;
+  } else {
+    celRT.innerHTML   = newDisc.rt +'h ';
+  }
+
   celCnf.innerHTML  = 
   `<center>
     <button type="button" class="btn btn-light btn-sm" onclick="frmAtiv22Show('${newDisc.id}')">⚙️</button>
@@ -50,6 +55,10 @@ function insereTable(newDisc){
   celA4.style.textAlign = 'right';
   celAT.style.textAlign = 'right';
   celRT.style.textAlign = 'right';
+
+  if(newDisc.rt == 'TIDE'){
+    newDisc.rt = 40;
+  }
 
   if(parseFloat(totUsado) < parseFloat(newDisc.rt)){
     //amarelo
@@ -107,6 +116,8 @@ tbodyAtv.ondblclick = function(e){
   if (target) {
     var cells = target.getElementsByTagName("td");
     btnShowAddfnc();
+
+
     let index = data22.findIndex(e => e.id === cells[0].innerHTML);
     let myObj = data22[index];
 
@@ -125,7 +136,7 @@ function btnShowAddfnc(){
   document.getElementById('id22').value     = '';
   document.getElementById('idx22').value    = '';
   
-  document.getElementById('tpAtiv22').value = '';
+  // document.getElementById('tpAtiv22').value = '';
   document.getElementById('nome22F').value  = '';
   document.getElementById('curso22F').value = '';
   document.getElementById('serie22F').value = '';

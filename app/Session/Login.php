@@ -46,7 +46,12 @@ class Login{
       'senha'     => $obUsuario->senha,
       'config'    => $obUsuario->config,
       'tipo'      => $obUsuario->tipo,
-      'co_id'     => $obUsuario->co_id
+      'co_id'     => $obUsuario->co_id,
+      'co_nome'   => $obUsuario->co_nome,
+      'ce_id'     => $obUsuario->ce_id,
+      'ce_cod'    => $obUsuario->ce_cod,
+      'ce_nome'   => $obUsuario->ce_nome,
+      
     ];
 
     // redireciona usuário para Index

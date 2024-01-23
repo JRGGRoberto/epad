@@ -58,10 +58,8 @@ function insereTable(newDisc){
   `<center>
   <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
 </center>`;
-  
   celId.style.display = 'none'; 
   celDel.style.textAlign = 'center';
-
 }
 
 function formAddAtv(){
