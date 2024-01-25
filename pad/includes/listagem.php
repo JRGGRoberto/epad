@@ -5,9 +5,24 @@
             <h3>PAD <?=$vinc->ano?></h3>
         </div>
         <div class="col">
+            <?php 
+               if(!$editavel){
+                ?>
+
+<span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; 
+border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?= $vinc->assing_co?></span>
+                <?php
+
+               } else {
+            ?>
+
             <span id="inf_y" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border: 0px #ffdf7e solid; padding: 5px; font-size:12px;">Faltando horas</span>
             <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Ok horas completas</span>
             <span id="inf_r" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border: 0px #ed969e solid; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
+<?php
+   }
+?>
+
         </div>
     </div>
     
@@ -188,10 +203,25 @@
             <div id="outobs" class="collapse show" >
                 <div class="card-body">
                     <div class="form-group">
-                         <textarea onKeyUp="AtivaupdateOBS()" maxlength="50" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
+                         <textarea 
+                         <?php 
+                            if($editavel){
+                                echo 'onKeyUp="AtivaupdateOBS()"';
+                            } else {
+                                echo 'readonly';
+                            }
+                         ?>
+                         
+                         
+                         maxlength="50" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
                     </div>
                     <div class="form-group float-right">
-                         <input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();" hidden>
+                         
+                         <?php 
+                            if($editavel){
+                                echo '<input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();"hidden >';
+                            } 
+                         ?> 
                      </div>
                 </div>
             </div>
@@ -243,10 +273,16 @@
 
 <script>
 
+<?php 
+
+    if($editavel) {   ?>
+
 function AtivaupdateOBS(){
-    const updateObsBtn = document.getElementById('updateObsBtn');
-    updateObsBtn.hidden = false;
+ 
+   const updateObsBtn = document.getElementById('updateObsBtn');
+   updateObsBtn.hidden = false;
 }
+
 
 function updateOBS(){
     let id_v = document.getElementById("id_vinc").value;
@@ -269,6 +305,10 @@ function updateOBS(){
     .then( res => res.json());
     updateObsBtn.hidden = true;
 }
+
+<?php 
+
+}   ?>
 
 
 function stripZeros(str) {
@@ -336,16 +376,18 @@ function somaTotais() {
     rtotal = document.getElementById('rtotal');
     rtotal.innerHTML = soma + 'h';
 
-    inf_y = document.getElementById('inf_y');
-    inf_g = document.getElementById('inf_g');
-    inf_r = document.getElementById('inf_r');
-    
     rt = document.getElementById('rt').innerHTML;
-     if(rt === 'TIDE'){
+    if(rt === 'TIDE'){
         rt = 40;
     } else {
         rt = parseFloat(document.getElementById('rt').innerHTML);
     }
+
+<?php if($editavel) { ?>
+
+    inf_y = document.getElementById('inf_y');
+    inf_g = document.getElementById('inf_g');
+    inf_r = document.getElementById('inf_r');
     
     if(parseFloat(soma) < parseFloat(rt)){
       //amarelo
@@ -373,6 +415,7 @@ function somaTotais() {
     rtotal.style.borderRadius = "5px";
     rtotal.style.padding      = "5px 10px 5px 10px";
     rtotal.style.boxShadow    = "lightgray 3px 3px";
+<?php } ?>
 
 }
 
@@ -381,6 +424,9 @@ const myInterval = window.setInterval(function() {
     somaTotais()
 }, 5000);
 
+
+
 getDBMD21();
+
 </script>
 

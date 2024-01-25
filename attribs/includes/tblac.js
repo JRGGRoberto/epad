@@ -54,10 +54,18 @@ function insereTable(newDisc){
   celId.innerHTML    = newDisc.id;
   celNome.innerHTML  = newDisc.nome;
   celTipo.innerHTML  = newDisc.tipo;
-  celDel.innerHTML   =
-  `<center>
-  <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
-</center>`;
+
+  if(!newDisc.aprov_co_id){
+    celDel.innerHTML   =
+      `<center>
+        <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
+      </center>`;
+   }  else {
+    `<center>
+        <button type="button" class="btn btn-light btn-sm"  title="PAP Homologado">🔑</button>
+      </center>`;
+
+   }
   celId.style.display = 'none'; 
   celDel.style.textAlign = 'center';
 }

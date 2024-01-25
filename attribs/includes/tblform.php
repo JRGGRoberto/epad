@@ -14,7 +14,7 @@
 
 
     <div class="form-group" >
-      <label for="listaProf">Função</label>
+      <label for="listaProf">Professor(ª)</label>
       <select name="listaProf" id="listaProf" class="form-control" require="" onchange="ativaBTN();">
           <option value="-1">Selecione</option>
           <?=$opcoes?>

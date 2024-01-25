@@ -6,7 +6,9 @@
             <th class="align-top" style="text-align: center;">Função</th>
             <th class="align-top">Nome do orientando<br><sup>(se houver)</sup></th>
             <th class="align-top" style="text-align: center;">Carga horária<br><sup>semanal</sup></th>
+<?php if($editavel) { ?>
             <th class="align-top" style="width:90px"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv3()">Adicionar</button></th>
+<?php } ?>
         </tr>
     </thead>
     <tbody>
@@ -29,7 +31,9 @@
           <div class="modal-body">
 
 <?php
+
   include './includes/atv3/tbla30form.php';
+
 ?>
             
           </div>
@@ -38,4 +42,11 @@
     </div>
     <!--  The Modal ADD / EDT Fim-->
 
-    <script src="./includes/atv3/tbla30.js"></script>
+    
+    <?php 
+   if($editavel) { 
+      echo '<script src="./includes/atv3/tbla30.js"></script>';
+   } else {
+      echo '<script src="./includes/atv3/tbla30NC.js"></script>';
+   }
+?>

@@ -311,8 +311,6 @@ function atualizar(){
 
         }
     );
-    
-    
 }
 
 

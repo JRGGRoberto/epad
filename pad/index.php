@@ -19,9 +19,20 @@ if($user['tipo'] != 'prof') {
 $idprof = $user['id'];
 $vinc = Vinculo::getByAnoProf($idprof, '2024');
 
+
+$editavel = true;
+
 include '../includes/header.php';
 if(!$vinc == null){
+
+    if(($vinc->aprov_co_id == null) or ($vinc->aprov_co_id == '') ){
+        $editavel = true;
+    } else {
+        $editavel = false;
+    }
+echo $editavel;
     include __DIR__.'/includes/listagem.php';
+
     
 } else {
     include __DIR__.'/includes/msgnovinc.php';

@@ -73,7 +73,7 @@
               <div class="row" style="padding: 20px 30px;">
                 <div class="col-5" style="display: flex;"><p id="dataHoje" style="margin: 0;">, </p></div>
                 <div class="col">
-                  <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar()">Assinar 🖋️</button></p>
+                  <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar('a')">Assinar 🖋️</button></p>
                   <p style="text-align: center; margin: 0;"><strong><?=$user['nome']?></strong></p>
                   <p style="text-align: center; margin: 0;"><sup>Coordenador do Colegiado de <?=$user['co_nome']?></sup></p>
                 </div>
@@ -101,7 +101,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title" >Remover Assinatura</h4>
+        <h4 class="modal-title" >Remover homologação</h4>
         <button type="button" class="close" data-dismiss="modal">×</button>
       </div>
 
@@ -109,15 +109,17 @@
       <div class="modal-body">
         <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
           <div class="form-group">
-          <div  id="msgApagar">Tem certeza que deseja apagar a atividade relacionada ao aluno(ª) abaixo?</div>
+          <div  id="msgApagar">Tem certeza que deseja remover a homologação?</div>
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
-            <input hidden name="idAtivDel" id="idAtivDel">
+            
+            <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">
+            <input type="hidden" name="vinc_id_cod" id="vinc_id_cod" value="<?=$user['id']?>">
            
           </div>
 
           <center>
             <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-            <button type="submit" class="btn btn-danger btn-sm" >Apagar</button>
+            <button type="submit" class="btn btn-danger btn-sm"  onclick="Aprovar('d')">Apagar</button>
           </center>
 
         </form>

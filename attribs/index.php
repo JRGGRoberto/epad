@@ -28,7 +28,7 @@ if(!$ok){
 $ano = '2024';
 $co = $user['co_id'];
 
-$where = ("(ano, co_id ) = ('". $ano ."', '".$co ."')" );
+$where = ("(ano, co_id ) = ('". $ano ."', '".$co ."' ) and aprov_co_id is null" );
 $order = " nome ";
 $profs = Vinculo::gets($where, $order);
 

@@ -62,7 +62,7 @@ function insereTable(newDisc){
   } else if (!(newDisc.aprov_co_id === null)){
     celCnf.innerHTML  = 
        `<center>
-         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="modalDel('${newDisc.id}')">✏️</button>
+         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
        </center>`;
   } else {
       if ((parseFloat(totUsado)) === (parseFloat(newDisc.rt))) {
@@ -106,15 +106,53 @@ function insereTable(newDisc){
     celAT.style.borderBlockColor = '#ed969e';
   }
 }
+ 
+function Aprovar(ad){
+  let vinc_idps;
+  let vinc_id_co;
+  let tdo = ad;
 
-function Aprovar(){
-  let vinc_idps  = document.getElementById('vinc_idps').value;
-  let vinc_id_co = document.getElementById('vinc_id_co').value;
+  if(tdo == 'a'){
+    vinc_idps  = document.getElementById('vinc_idps').value;
+    vinc_id_co = document.getElementById('vinc_id_co').value;
+  } else if (tdo == 'd'){
+    vinc_idps  = document.getElementById('vinc_idpsd').value;tdo;
+    vinc_id_co = document.getElementById('vinc_id_cod').value;
+  } else {
+    console.log('error ' + tdo);
+    return;
+  }
+  
+  let datasing = {
+    to_do: tdo,
+    id_vin: vinc_idps,
+    id_user: vinc_id_co
+  };
 
-  console.log(vinc_idps +' '+ vinc_id_co);
+  const data = datasing;
 
+  console.log(data);
+
+  fetch('./dml/sing_co.php', {
+      method:'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then( res => res.json())
+  .then( res => console.log(res)
+  );
+
+  if(tdo == 'a'){ 
+    fecharModal();
+  } else {
+    fecharModalDel()
+  }
+
+  getDBMD();
 }
-
 
 
 async function getDBMD() {
@@ -142,57 +180,27 @@ function frmAtivShow(id) {
  document.getElementById('dataHoje').innerHTML = txtLocal +', ' + txtData + ".";
 }
 
+
+function frmmodalDel(id) {
+  $('#modalDel').modal('show');
+
+  document.getElementById('vinc_idpsd').value = id;
+
+  let index = data.findIndex(e => e.id === id);
+  let myObj = data[index];
+  document.getElementById('nomeAtivDel').innerHTML = myObj.nome;
+ 
+}
+
+function fecharModalDel(){
+  $('#modalDel').modal('hide');
+}
+
 function fecharModal(){
   $('#modalAtv').modal('hide');
 }
 
 
-function frmExcluirShow(id){
-  $('#modalDel').modal('show');
-  let nomeAtivDel = document.getElementById('nomeAtivDel');
-  let index = data22.findIndex(e => e.id === id);
-  let myObj = data22[index];
-  nomeAtivDel.innerHTML = myObj.estudante;
-  let idAtivDel = document.getElementById('idAtivDel');
-  idAtivDel.value = id;
-}
 
-/*
-const frmAtv22 = document.getElementById('frmAtv22');
-frmAtv22.addEventListener('submit', e => {
-  e.preventDefault();
-  const formData = new FormData(frmAtv22);
-  const data = Object.fromEntries(formData);
-  const id = document.getElementById('id22').value;
-  if(id === ''){
-    fetch('./includes/dml/insert.php', {
-      method:'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then( data => addAtividade22(data)); 
-  }else{
-    fetch('./includes/dml/update.php', {
-      method:'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then( res => res.json())
-    .then( data => updateAtividade22(data)); 
-  }
-  btnFecharCanc();
-  getDBMD();
-});
-
-
-
-*/
 
 

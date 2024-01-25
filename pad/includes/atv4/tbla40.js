@@ -29,11 +29,13 @@ function insereTable4(newDisc){
   celAlocado.innerHTML = newDisc.alocado;
   celNumdata.innerHTML = newDisc.numdata;
   celCH.innerHTML      = newDisc.ch;
+
   celDelet.innerHTML   = 
   `<center>
     <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('a4${newDisc.id}')">⛔</button>
     <button type="button" class="btn btn-light btn-sm" onclick="formEditar4('${newDisc.id}')">✏️</button>
   </center>`;
+
   celId.style.display = 'none'; 
   celCH.style.textAlign = 'right';
 }
