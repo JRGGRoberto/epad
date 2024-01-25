@@ -2,6 +2,9 @@
 
 require '../vendor/autoload.php';
 
+use \App\Session\Login;
+Login::requireLogin();
+
 use \App\Entity\PADAtiv3;
 
 $vinculo = $_GET["at3"];

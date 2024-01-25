@@ -134,23 +134,37 @@ function noDataInfo(){
 function insereTable(newDisc){
   // Adicionar uma nova linha na tabela
     let tabela = document.getElementById("tabelaMatD").getElementsByTagName("tbody")[0];
-  let newLinha = tabela.insertRow();
+    let newLinha = tabela.insertRow();
     let celId    = newLinha.insertCell(0);
     let celDisc  = newLinha.insertCell(1);
     let celCh    = newLinha.insertCell(2);
     let celSerie = newLinha.insertCell(3);
     let celProf  = newLinha.insertCell(4);
+    let ceDispo  = newLinha.insertCell(5);
   celId.innerHTML    = newDisc.id;
+  celId.style.display = 'none';
   celDisc.innerHTML  = newDisc.nome;
   celSerie.innerHTML = newDisc.serie + 'º';
   celCh.innerHTML    = newDisc.ch;
-  celProf.innerHTML  = newDisc.professor;
+  ceDispo.innerHTML  = newDisc.disponivel;
+  ceDispo.style.display = 'none';
+  
+  let info = '';
   if(newDisc.professor !== null){
+
+    if(newDisc.disponivel == 0 ){
+       info = ' 🔒';
+    }
     newLinha.classList.add("table-success");
     preenchido++;
+    celProf.innerHTML  = newDisc.professor + info;
+  } else {
+    celProf.innerHTML  = newDisc.professor;
   }
+  
+  
   chProgressBar(preenchido);
-  celId.style.display = 'none';
+  
   celProf.setAttribute("id", newDisc.id);
   celSerie.style.textAlign = 'center';
   celCh.style.textAlign = 'right';
@@ -231,14 +245,11 @@ tbodyProf.onclick = function (e) {
       id_prof.value = '';
       var trDaCedula  = cedulaNomeProfInDisc.parentNode;
       trDaCedula.classList.add("table-success");
-      
-      
     }
 };
 
 //Click na tabela DISCIPLINAS
 tbodyMatD.onclick = function (e) {
-    indicativo.hidden = false;
     e = e || window.event;
     var data = [];
     var target = e.srcElement || e.target;
@@ -247,6 +258,10 @@ tbodyMatD.onclick = function (e) {
     }
     if (target) {
         var cells = target.getElementsByTagName("td");
+        if(cells[5].innerHTML == 0){
+          return;
+        }
+        indicativo.hidden = false;
         id_dis.value = cells[0].innerHTML;
         data.push(cells[1].innerHTML);
         profDisciplina.innerHTML = data;
@@ -278,9 +293,13 @@ tbodyMatD.ondblclick = function(e) {
       const l1 = id_dis.value.length;
       const l2 = id_prof.value.length;
       if((l1 > 0) && (l2 == 0)){
-        target.classList.remove("table-success");
         var cells = target.getElementsByTagName("td");
+        if(cells[5].innerHTML == 0){
+          return;
+        }
+        
         cells[4].innerHTML = '';
+        target.classList.remove("table-success");
         atualizar();
         infoRemove.hidden = true;
       }

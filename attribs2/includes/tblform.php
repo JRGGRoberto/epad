@@ -10,7 +10,7 @@
                 <th class="align-top" style="text-align: center;" width="75px">Série</th>
                 <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
                 <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
-                <th class="align-top" style="text-align: center; width: 45px;">⚙️</th>
+                <th class="align-top" style="text-align: center; width: 45px;" id="gear1">⚙️</th>
 
             </tr>
         </thead>

@@ -30,7 +30,7 @@ if(!$vinc == null){
     } else {
         $editavel = false;
     }
-echo $editavel;
+
     include __DIR__.'/includes/listagem.php';
 
     

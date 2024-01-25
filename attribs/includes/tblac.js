@@ -61,6 +61,7 @@ function insereTable(newDisc){
         <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
       </center>`;
    }  else {
+    celDel.innerHTML   =
     `<center>
         <button type="button" class="btn btn-light btn-sm"  title="PAP Homologado">🔑</button>
       </center>`;

@@ -78,13 +78,13 @@ switch ($tp_atrib) {
 
           <!-- Modal Header -->
           <div class="modal-header">
-              <h4 class="modal-title" id="titleMotal">2.2. Atividades de Supervisão e Orientação</h4>
+              <h4 class="modal-title" id="titleMotal" name="titleMotal">2.2. Atividades de Supervisão e Orientação</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
 
           <!-- Modal body -->
           <div class="modal-body"  style="padding-top: 0px;">
-            <span class="badge badge-light" id="titleMotalProf"></span>
+            <span class="badge badge-light" id="titleMotalProf" name="titleMotalProf"></span>
 
 <?php
   include './includes/tblform.php';

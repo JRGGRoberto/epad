@@ -4,7 +4,6 @@ let noData22 = true;
 let div_tbl22 = document.getElementById('div_tbl22');
 let DoubleClick = document.getElementById('DoubleClick');
 
-
 function stripZeros(str) {
   return parseFloat(str.replace(',', '.'))
     .toString()
@@ -44,10 +43,17 @@ function insereTable(newDisc){
     celRT.innerHTML   = newDisc.rt +'h ';
   }
 
-  celCnf.innerHTML  = 
-  `<center>
-    <button type="button" class="btn btn-light btn-sm" onclick="frmAtiv22Show('${newDisc.id}')">⚙️</button>
-  </center>`;
+  if(!newDisc.aprov_co_id){
+    celCnf.innerHTML  = 
+    `<center>
+      <button type="button" class="btn btn-light btn-sm" onclick="frmAtiv22Show('${newDisc.id}e')">⚙️</button>
+    </center>`;
+  } else {
+    celCnf.innerHTML  = 
+    `<center>
+      <button type="button" class="btn btn-light btn-sm" onclick="frmAtiv22Show('${newDisc.id}f')">🔒</button>
+    </center>`;
+  }
   celId.style.display = 'none'; 
   celA21.style.textAlign = 'right';
   celA22.style.textAlign = 'right';
@@ -73,13 +79,13 @@ function insereTable(newDisc){
     celAT.style.backgroundColor = '#f5c6cb';
     celAT.style.borderBlockColor = '#ed969e';
   }
-
 }
 
+/*
 $('#modalAtv').on('hidden.bs.modal', function (e) {
   getDBMD();
-  console.log('atualizar');
-}) 
+})
+*/ 
 
 async function getDBMD() {
   deleteAllRows();
@@ -93,13 +99,28 @@ getDBMD();
 
 
 function frmAtiv22Show(id) {
+
   btnFecharCanc();
   getDBMD22(id);
   $('#modalAtv').modal('show');
 
+  let func = id.slice(-1);
+  id = id.slice(0, -1);
+
   let index = data.findIndex(e => e.id === id);
   let myObj = data[index];
-  
+  let gear1 = document.getElementById('gear1');
+  let btnAdc = document.getElementById('btnShowAdd');
+//!myObj.aprov_co_id && 
+  if(func === 'e'){
+    gear1.removeAttribute('hidden');
+    btnAdc.removeAttribute('hidden');
+    btnAdc.setAttribute('onclick', 'btnShowAddfnc()');
+  } else {
+    gear1.setAttribute('hidden', true);
+    btnAdc.setAttribute('hidden', true);
+    btnAdc.removeAttribute('onclick');
+  }
   document.getElementById('titleMotalProf').innerHTML = myObj.nome;
   document.getElementById('vinc22').value = id;
 }
@@ -117,7 +138,6 @@ tbodyAtv.ondblclick = function(e){
     var cells = target.getElementsByTagName("td");
     btnShowAddfnc();
 
-
     let index = data22.findIndex(e => e.id === cells[0].innerHTML);
     let myObj = data22[index];
 
@@ -127,7 +147,6 @@ tbodyAtv.ondblclick = function(e){
     document.getElementById('nome22F').value  = myObj.estudante;
     document.getElementById('curso22F').value = myObj.curso;
     document.getElementById('serie22F').value = myObj.serie;
-
     document.getElementById('addEdt22').innerHTML = 'Alterar';
   }
 }
@@ -183,6 +202,8 @@ function insereTable22(newDisc){
   }
   celCh1.innerHTML         = cargaHoraria;
   celCh2.innerHTML         = cargaHoraria;
+  
+  
   celDel.innerHTML         =
   `<center>
   <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow22('${newDisc.id}')">⛔</button>
@@ -193,6 +214,11 @@ function insereTable22(newDisc){
   celSerie.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
   celCh2.style.textAlign = 'right';
+
+  if(newDisc.edt === 'f'){
+    celDel.innerHTML         = '';
+    celDel.style.display = 'none';
+  }
 }
 
 function addAtividade22(receiveData) {
@@ -272,7 +298,7 @@ frmDEL.addEventListener('submit', e => {
   })
   .then(res => {
       if (!res.ok) {
-          throw new Error('Erro ao excluir o recurso.');
+        throw new Error('Erro ao excluir o recurso.');
       }
       return res.json(); 
   })
@@ -280,10 +306,13 @@ frmDEL.addEventListener('submit', e => {
   .catch(error => {
       console.error(error);
   });
-  $('#modalDel').modal('hide');
-  getDBMD();
+  fecharModalDel();
 });
 
+function fecharModalDel(){
+  $('#modalDel').modal('hide');
+  getDBMD();
+}
 
 function excluirLinhaTbl(idr) {
   console.log(`Mensagem: ${idr.message}`);
@@ -299,15 +328,22 @@ function excluirLinhaTbl(idr) {
   dadosCH();
 }
 
-
-
-
 async function getDBMD22(id){
+  let func = id.slice(-1);
+  id = id.slice(0, -1);
+  let newCampo = {edt: func};
+
   data22 = await fetch(`../api/ativ22.php?vc=${id}`).then(resp => resp.json()).catch(error => false);
   deleteAllRowsTable22();
   if (data22.length > 0) {
-    data22.forEach(e => insereTable22(e));
+    data22.forEach(tupla => {
+      const tuplaI = { ...tupla, ...newCampo };
+      insereTable22(tuplaI);
+    });
     DoubleClick.hidden = false;
+    if(func === 'f'){
+      DoubleClick.hidden = true;
+    }
   } else {
     DoubleClick.hidden = true;
   }

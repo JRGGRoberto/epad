@@ -2,11 +2,8 @@
 
 require '../vendor/autoload.php';
 
-//Login::requireLogin();
-//use \App\Session\Login;
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+use \App\Session\Login;
+Login::requireLogin();
 
 use \App\Entity\Vinculo;
 
