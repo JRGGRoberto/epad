@@ -21,7 +21,7 @@ $horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
 <!doctype html>
 <html lang="pt-BR">
   <head>
-  <title>UNESPAR ePAD</title>
+  <title>ePAD UNESPAR </title>
     <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -155,8 +155,8 @@ img.remover {
                          }
 
                          if($obUsuario['config'] === '1'){
-                           echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Atribuições</a>';
-                           echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Cursos</a>';
+                           echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Funções</a>';
+                           echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Aulas</a>';
                            echo '<a type="button" class="btn btn-primary" href="../aprovc" style="text-align: center;">Assinar</a>';
                          } elseif ($obUsuario['config'] === '2'){
                            echo '<a type="button" class="btn btn-primary" href="../aprovc" style="text-align: center;">Assinar</a>';
@@ -173,7 +173,7 @@ img.remover {
                        }
                     ?>
                   <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= ucfirst(strtolower($nome)) ?></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
                        <div class="dropdown-divider"></div>

@@ -16,9 +16,9 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
                } else {
             ?>
 
-            <span id="inf_y" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border: 0px #ffdf7e solid; padding: 5px; font-size:12px;">Faltando horas</span>
-            <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Ok horas completas</span>
-            <span id="inf_r" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border: 0px #ed969e solid; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
+            <span id="inf_y" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border: 0px #ffdf7e solid; padding: 5px; font-size:12px;" hidden>Faltando horas</span>
+            <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border: 0px #8fd19e solid; padding: 5px; font-size:12px;" hidden>Horas completas</span>
+            <span id="inf_r" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border: 0px #ed969e solid; padding: 5px; font-size:12px;" hidden>Horas extrapoladas</span>
 <?php
    }
 ?>
@@ -390,6 +390,9 @@ function somaTotais() {
     inf_r = document.getElementById('inf_r');
     
     if(parseFloat(soma) < parseFloat(rt)){
+      inf_y.hidden = false;
+      inf_g.hidden = true;
+      inf_r.hidden = true;
       //amarelo
       inf_y.style.borderWidth = "2px";
       inf_g.style.borderWidth = "0px";
@@ -397,6 +400,9 @@ function somaTotais() {
       rtotal.style.backgroundColor = '#ffeeba';
       rtotal.style.border       = "2px #ffdf7e solid"; 
     } else if (parseFloat(soma) === parseFloat(rt)){
+      inf_y.hidden = true;
+      inf_g.hidden = false;
+      inf_r.hidden = true;
       //verde
       inf_y.style.borderWidth = "0px";
       inf_g.style.borderWidth = "2px";
@@ -404,6 +410,9 @@ function somaTotais() {
       rtotal.style.backgroundColor = '#c3e6cb';
       rtotal.style.border       = "2px #8fd19e solid"; 
     } else {
+      inf_y.hidden = true;
+      inf_g.hidden = true;
+      inf_r.hidden = false;
       //vermelho
       inf_y.style.borderWidth = "0px";
       inf_g.style.borderWidth = "0px";

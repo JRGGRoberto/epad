@@ -35,7 +35,7 @@
 
               <div class="form-group">
                 <label for="cargah3">Carga horária semanal</label>
-                <input type="text" name="cargah3" id="cargah3" class="form-control">
+                <input type="number" name="cargah3" id="cargah3" class="form-control"  pattern="[0-9]+$">
               </div>
 
               <center>

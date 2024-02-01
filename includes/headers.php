@@ -73,7 +73,7 @@ img.remover {
 }
 </style>
 
-<title>UNESPAR ePAD</title>
+<title>ePAD UNESPAR</title>
   </head>
   <body class="bg-light text-dark">
 

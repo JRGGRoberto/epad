@@ -40,11 +40,11 @@ $user = Login::getUsuarioLogado();
           <label>Titulação</label>
           <!--<input type="text" class="form-control" name="titulacao" maxlength="65" value="< ?=$obProfessor->titulacao?>" >  -->
 
-          <select  class="form-control" name="titulacao" id="titulacao" maxlength="65" value="<?=$obProfessor->titulacao?>">
-            <option value="Mestre">Mestre</option>
-            <option value="Doutor">Doutor</option>
-            <option value="Bacharel">Bacharel</option>
-            <option value="Especialista">Especialista</option>
+          <select  class="form-control" name="titulacao" id="titulacao" maxlength="65">
+            <option value="Mestre"       <?=$obProfessor->titulacao=='Mestre'      ?'selected':'' ?> >Mestre</option>
+            <option value="Doutor"       <?=$obProfessor->titulacao=='Doutor'      ?'selected':'' ?> >Doutor</option>
+            <option value="Bacharel"     <?=$obProfessor->titulacao=='Bacharel'    ?'selected':'' ?> >Bacharel</option>
+            <option value="Especialista" <?=$obProfessor->titulacao=='Especialista'?'selected':'' ?> >Especialista</option>
           </select>
         </div>
 
@@ -172,7 +172,7 @@ $user = Login::getUsuarioLogado();
 
      <div class="col">
        <div class="form-group">
-         <label>Senha <?= TITLE <> 'Cadastrar professor'? '<span class="badge badge-warning">Não mexa para não alterá-la</span>': null ?> </label>
+         <label>Senha <?= TITLE <> 'Cadastrar professor'? '<span class="badge badge-warning">Para alterar a senha digite uma nova</span>': null ?> </label>
          <input type="password" class="form-control" name="senha" >
        </div>
      </div>

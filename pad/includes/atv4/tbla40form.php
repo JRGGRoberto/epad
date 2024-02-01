@@ -20,7 +20,7 @@
 
     <div class="form-group">
       <label for="cargah4">Carga horária semanal</label>
-      <input type="text" name="cargah4" id="cargah4" class="form-control">
+      <input type="number" name="cargah4" id="cargah4" class="form-control"  pattern="[0-9]+$" >
     </div>
 
     <center>
