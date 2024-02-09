@@ -29,10 +29,6 @@ if(sizeof($reg) == 1){
                         
 }
 
-
-
-
-
 include '../includes/header.php';
 $uid = $user['id'];
 include __DIR__.'/includes/content.php';

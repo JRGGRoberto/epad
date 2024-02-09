@@ -72,6 +72,10 @@ class Cargo {
                                      ->fetchObject(self::class);
   }
 
+  public static function getw($where){
+      return (new Database('cargosv'))->select($where)
+                                     ->fetchObject(self::class);
+  }
 
   /**
    * Método responsável por obter a quantidade de registros

@@ -84,6 +84,10 @@ class Vinculo {
                                   ->fetchObject(self::class);
   }
 
+  public static function getwh($where){
+    return (new Database('vinculov'))->select($where)
+                                     ->fetchObject(self::class);
+  }
 
   public static function get($id){
     $where = ' id = "'.$id.'" ';

@@ -50,6 +50,9 @@
             <span class="badge badge-light" id="titleMotalProf"></span>
 
 <?php
+
+  $ca_nome = $user['lota_nome'];
+  $co_nome = $user['co_nome'];
   include './includes/tblform.php';
 ?>
             
