@@ -1,7 +1,7 @@
 <?php
 
 require '../../../vendor/autoload.php';
-use \App\Entity\PADAtiv22;
+use \App\Entity\Cargo;
 use \App\Session\Login;
 
 Login::requireLogin();
@@ -9,6 +9,19 @@ $user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
+
+    if(isset($_POST['listaFunc'])){
+        echo $_POST['listaFunc'];
+        echo '<br>';
+        echo $_POST['listaProf'];
+        echo '<br>';
+        echo $_POST['ano'];
+        echo '<br>';
+        echo $_POST['co'];
+        header('location: ..');
+        exit; 
+      
+    } /*
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true); 
 
@@ -18,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    $dis = new PADAtiv22;
+    $dis = new Cargo;
     $dis->vinculo   = $data["vinc22"];
     $dis->atividade = $data["tpAtiv22"];
     $dis->estudante = $data["nome22F"];
@@ -49,5 +62,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $response = array("status" => "error", "message" => "Método de requisição inválido.");
     echo json_encode($response);
-}
+} */ }
 ?>

@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use \App\Db\Database;
 use \PDO;
-
+use \App\Entity\UuiuD;
 
 class PADAtiv22 {
   public $id;
@@ -20,7 +20,7 @@ class PADAtiv22 {
 
   public function add(){
     $obDb = new Database('pad22');
-    $newId = exec('uuidgen -r');
+    $newId = UuiuD::gera(); //exec('uuidgen -r');
     $obDb->insert([
         'id'         => $newId,
         'vinculo'    => $this->vinculo,
@@ -52,13 +52,13 @@ class PADAtiv22 {
   }
 
   public static function get($where = null, $order = null, $limit = null){
-    return (new Database('pad22'))->select($where,$order,$limit)
+    return (new Database('pad22v'))->select($where,$order,$limit)
                                   ->fetchAll(PDO::FETCH_CLASS,self::class);
   } 
 
   public static function getById($id){
     $where = ' id = "'.$id.'" ';
-    return (new Database('pad22'))->select($where)
+    return (new Database('pad22v'))->select($where)
                                      ->fetchObject(self::class);
   }
 

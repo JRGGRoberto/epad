@@ -1,40 +1,34 @@
-   
-<div style="max-height: 300px; overflow: scroll;" id="div_tbl22">
-    <table id="tbl22" class="table table-bordered table-sm table-hover">
-        <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
-            <tr>
-                <th style="display: none;">ID</th>
-                <th class="align-top" style="text-align: center;" width="78px">Ativ</th>
-                <th class="align-top" >Nome<br><sup>estudante</sup></th>
-                <th class="align-top" >Curso</th>
-                <th class="align-top" style="text-align: center;" width="75px">Série</th>
-                <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
-                <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
-                <th class="align-top" style="text-align: center; width: 45px;" id="gear1">⚙️</th>
-
-            </tr>
-        </thead>
-        <tbody id="tbodyAtv">
-        </tbody>
-    </table>
-</div> 
-<button id="btnShowAdd" type="button" class="btn btn-primary btn-sm" onclick="btnShowAddfnc()">Adicionar</button><span class="badge badge-secondary  float-right" id="DoubleClick" hidden>DoubleClick to Edt</span>
-
-
-<form class="form-group" id="frmAtv22" name="frmAtv22" method="post" hidden>
+<form class="form-group" id="frmfunoesatt" name="frmfunoesatt" method="post" action="includes/insert.php">
     <div class="form-group">
-      <label for="tpAtiv22">Atividade</label>
-      <input type="hidden" name="id22" id="id22">
-      <input type="hidden" name="idx22" id="idx22">
-      <input type="hidden" name="vinc22" id="vinc22">
-      <select name="tpAtiv22" id="tpAtiv22" class="form-control" require="">
-        <?= $option1 ?>
+      <label for="listaFunc">Função</label>
+      <select name="listaFunc" id="listaFunc" class="form-control" require="" onchange="ativaBTN();">
+        <option value="-1">Selecione</option>
+        <option value="a">Coordenar o aluno(a) no Estágio</option>
+        <option value="c">Coordenar o aluno(a) nos Trabalhos Acadêmicos</option>
+        
+      </select>
+
+    </div>
+
+    <div class="form-group" >
+      <label for="filtro">Filtro para localizar um professor</label>
+      <select name="filtro" id="filtro"  class="form-control" onchange="execFiltro(this.value)">
+        <option value="1">Meu colegiado</option>
+        <option value="2">Meu campus</option>
+        <option value="3">Todos</option>
       </select>
     </div>
 
-
     <div class="form-group" >
-      <label for="nome22F">Nome do(a) estudante</label>
+      <label for="listaProf">Definir que o professor(ª)</label>  
+      <select name="listaProf" id="listaProf" class="form-control" require="" onchange="ativaBTN();" >
+          <option value="-1">Selecione</option>
+          <?=$opcoes?>
+      </select>
+    </div>
+    
+    <div class="form-group" >
+      <label for="nome22F">Oriente o trabalho do(a) aluno(a)</label>
       <input type="text" name="nome22F" id="nome22F" class="form-control">
     </div>
     
@@ -46,47 +40,82 @@
   
       <div class="form-group col">
         <label for="serie22F">Série</label>
-        <input type="text" name="serie22F" id="serie22F" class="form-control">
+        <input type="number" name="serie22F" pattern="[0-9]+$"  id="serie22F" class="form-control">
       </div>
     </div>
+    
+
+
+    <input type="hidden" name="ano" value="<?=$ano?>">
+    <input type="hidden" name="co" value="<?=$co?>">
+    
 
     <center>
-      <button type="button" class="btn btn-secondary btn-sm" onclick="btnFecharCanc()">Fechar</button>
-      <button type="submit" id="addEdt22" class="btn btn-primary btn-sm" >Adicionar</button>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
+      <button type="submit" id="addBtnF" class="btn btn-primary btn-sm" disabled>Adicionar</button>
     </center>
 </form>
 
+<script>
+  function execFiltro(a){
+    switch(a) {
+      case '1': // Meu colegiado
+        somenteMeColegiado('<?= $co_nome ?>');
+        showSoMeuCampus('<?= $ca_nome ?>');
+        break;
+      case '2': // Meu campus
+        showAllColegiado();
+        showSoMeuCampus('<?= $ca_nome ?>');
+        break;
+      case '3':  // Todos
+        showAllColegiado();
+        showAllCampi();
+        break;
+       }
+  }
 
-<!-- The Modal DELET-->
-<div class="modal fade" id="modalDel">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" >Remover atividade</h4>
-        <button type="button" class="close" data-dismiss="modal">×</button>
-      </div>
+function showSoMeuCampus(camp) {
+  let allOptgroups = document.querySelectorAll('optgroup');
+  let optgroupToDisplay = document.querySelector('optgroup[label="'+ camp+ '"]');
+  allOptgroups.forEach(optgroup => {
+      if (optgroup !== optgroupToDisplay) {
+        optgroup.setAttribute('hidden', true);
+      }
+    });
+  
+ }
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
-          <div class="form-group">
-          <div  id="msgApagar">Tem certeza que deseja apagar a atividade relacionada ao aluno(ª) abaixo?</div>
-            <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
-            <input hidden name="idAtivDel" id="idAtivDel">
-           
-          </div>
+ function showAllCampi() {
+    let allOptgroups = document.querySelectorAll('optgroup');
+    allOptgroups.forEach(optgroup => {
+       optgroup.removeAttribute('hidden');
+     });
+  }
 
-          <center>
-            <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-            <button type="submit" class="btn btn-danger btn-sm" >Apagar</button>
-          </center>
+  function somenteMeColegiado(filtro) {
+    var select = document.getElementById("listaProf");
+    var options = select.getElementsByTagName("option");
+    for (var i = 0; i < options.length; i++) {
+      var optionText = options[i].textContent.toLowerCase();
+      if (optionText.includes(filtro.toLowerCase())) {
+      //  options[i].style.display = "";
+         options[i].removeAttribute('hidden');
+      } else {
+      //  options[i].style.display = "none";
+        options[i].setAttribute('hidden', true);
+      }
+    }
+  }
 
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--  The Modal DELET Fim-->
+  function showAllColegiado(){
+    var select = document.getElementById("listaProf");
+    var options = select.getElementsByTagName("option");
+    for (var i = 0; i < options.length; i++) {
+     // options[i].style.display = "";
+       options[i].removeAttribute('hidden');
+    }
+  }
 
+
+</script>

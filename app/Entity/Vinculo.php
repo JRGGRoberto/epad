@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use \App\Db\Database;
 use \PDO;
+use \App\Entity\UuiuD;
 
 class Vinculo {
   public $id;
@@ -24,7 +25,7 @@ class Vinculo {
   public $user;
 
   public function cadastrar(){
-    $newId = exec('uuidgen -r');
+    $newId = UuiuD::gera(); //exec('uuidgen -r');
     $obDB = new Database('vinculo');
     $obDB->insert([
         'id'            =>  $newId,

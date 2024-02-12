@@ -20,7 +20,7 @@ function insereTable22(newDisc){
     let celCh2        = newLinha.insertCell(6);
     
   celId.innerHTML          = newDisc.id;
-  celAtividade.innerHTML   = newDisc.atividade;
+  celAtividade.innerHTML   = newDisc.atividade; 
   celEstudante.innerHTML   = newDisc.estudante;
   celCurso.innerHTML       = newDisc.curso;
   celSerie.innerHTML       = newDisc.serie;

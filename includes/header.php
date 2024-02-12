@@ -148,7 +148,7 @@ img.remover {
                        if($obUsuario['tipo'] === 'prof'){
                          echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
 
-                         $where = ("(ano, id_prof, id_colegiado ) = ('".$ano."', '".$obUsuario['id']."', '".$obUsuario['co_id']."')");
+                         $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
                          $cargos = Cargo::gets($where); 
                          foreach($cargos as $c){
                            echo '<a type="button" class="btn btn-primary" href="../attribs2/index.php?t='.$c->tipocod.'" style="text-align: center;">Atribuição '.strtoupper($c->tipocod).'</a>';

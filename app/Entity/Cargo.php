@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use \App\Db\Database;
 use \PDO;
-
+use \App\Entity\UuiuD;
 
 class Cargo {
 
@@ -22,7 +22,7 @@ class Cargo {
    */
   public function cadastrar(){
     //INSERIR A REGISTRO NO BANCO
-    $newId = exec('uuidgen -r');
+    $newId = UuiuD::gera(); //exec('uuidgen -r');
     $obDatabase = new Database('cargos');
     $obDatabase->insert([
                             'id'           => $newId,
@@ -68,6 +68,18 @@ class Cargo {
    */
   public static function get($id){
     $where = ' id = "'.$id.'" ';
+    return (new Database('cargosv'))->select($where)
+                                     ->fetchObject(self::class);
+  }
+
+    /**
+   * Método responsável por obter as professores do banco de dados
+   * @param  string $where
+   * @param  string $order
+   * @param  string $limit
+   * @return array
+   */
+  public static function getw($where){
     return (new Database('cargosv'))->select($where)
                                      ->fetchObject(self::class);
   }

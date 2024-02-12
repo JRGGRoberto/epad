@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use \App\Db\Database;
 use \PDO;
+use \App\Entity\UuiuD;
 
 class Disciplinas {
   public $id;
@@ -25,7 +26,7 @@ class Disciplinas {
 
    public function cadastrar(){
     //INSERIR A REGISTRO NO BANCO
-    $newId = exec('uuidgen -r');
+    $newId = UuiuD::gera(); //exec('uuidgen -r');
     $obDatabase = new Database('disciplinas');
     $obDatabase->insert([
                          'id'        => $newId,
