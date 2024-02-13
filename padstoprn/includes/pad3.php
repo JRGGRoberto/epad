@@ -4,7 +4,7 @@ echo '<pre>';
 print_r($pad3);
 echo '</pre>'; */
 ?>
-<h2>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</h2>
+<h5>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</h5>
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>
@@ -55,5 +55,9 @@ foreach($pad3 as $p){
   ";
 }
 ?>
+       <tr>
+         <td colspan="3" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS</td>
+         <td colspan="1" style='text-align: center;'><?= $total3 ?></td>
+       </tr>
     </tbody>
 </table>

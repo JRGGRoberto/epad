@@ -1,4 +1,4 @@
-<h2>Aprovação e Homologação</h2>
+<h5>Aprovação e Homologação</h5>
 
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
@@ -13,7 +13,7 @@
           echo 'Ainda não aprovado.';
         } else {
           echo '<p>Aprovado no Colegiado do Curso em ' . $vinc->aprov_co_data .'</p>';
-          echo '<p>Aprovado pelo sistema pelo(a) Docente '. $vinc->assing_co.'</p>';
+          echo '<p>Aprovado no sistema pelo(a) Docente '. $vinc->assing_co.', Coordenador do Colegiado</p>';
         }
         ?>
         </td>

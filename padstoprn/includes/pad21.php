@@ -1,7 +1,7 @@
 <?php
 // print_r($pad21);
 ?>
-<h2>2.1. Atividades Didáticas</h2>
+<h5>2.1. Atividades Didáticas</h4>
 
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
@@ -52,10 +52,11 @@ foreach($pad21 as $p){
   ";
 }
 
-
-
 ?>
-
+       <tr>
+         <td colspan="4" style='text-align: right;'>MÉDIA SEMANAL ANUAL DA CARGA HORÁRIA DIDÁTICA</td>
+         <td colspan="2" style='text-align: center;'><?= $total21 ?></td>
+       </tr>
     </tbody>
 </table>
 <sub style="line-height: 12px;"><strong>a</strong>) Aulas na graduação; <strong>b</strong>) Aulas na pós-graduação Lato Sensu gratuita; <strong>c</strong>) Aulas na pós-graduação Stricto Sensu (estas devem ser computadas na razão de 1,5 hora/aula); <strong>d</strong>)

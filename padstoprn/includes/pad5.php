@@ -1,4 +1,4 @@
-<h2>5. Resumo das atividades e totalização</h2>
+<h5>5. Resumo das atividades e totalização</h5>
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>

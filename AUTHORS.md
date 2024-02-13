@@ -1,4 +1,4 @@
-SisGP was conceived and developed by J. Roberto Góes Gomes.
+ePAD was conceived and developed by J. Roberto Góes Gomes.
 Financial resources from UNESPAR/PROEC.
 Meeting the needs of PROEC
 
@@ -30,4 +30,4 @@ Meeting the needs of PROEC
 
 As this software is being developed with public money, it must always be open to the public.
 
-SisGP would not have been possible without the strong support of the community.
+ePAD would not have been possible without the strong support of the community.

@@ -1,6 +1,6 @@
 <?php
 ?>
-<h2>1. Dados do Docente</h2>
+<h5>1. Dados do Docente</h5>
 
 <table class="table table-bordered table-sm"> 
     <tr>

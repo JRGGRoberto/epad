@@ -1,4 +1,4 @@
-<h2>6. Outras observações</h2>
+<h5>6. Outras observações</h5>
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>

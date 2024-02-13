@@ -1,9 +1,9 @@
 <?php
 // print_r($pad22);
 ?>
-<h2>2.2. Atividades de Supervisão e Orientação</h2>
+<h5>2.2. Atividades de Supervisão e Orientação</h5>
 
-<table id="tbl22" class="table table-bordered table-sm">
+<table class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>
             <th class="align-top" style="text-align: center;" width="78px">Atividade</th>
@@ -30,6 +30,10 @@ foreach($pad22 as $p){
   ";
 }
 ?>
+        <tr>
+         <td colspan="4" style='text-align: right;'>MÉDIA SEMANAL ANUAL DA CARGA HORÁRIA DE ORIENTAÇÃO E SUPERVISÃO</td>
+         <td colspan="2" style='text-align: center;'><?= $total22 ?></td>
+       </tr>
     </tbody>
 </table>
 

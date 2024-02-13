@@ -1,7 +1,7 @@
 <?php
 // print_r($pad4);
 ?>
-<h2>4. Atividades de Gestão Institucional</h2>
+<h5>4. Atividades de Gestão Institucional</h5>
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
         <tr>
@@ -25,5 +25,9 @@ foreach($pad4 as $p){
   ";
 }
 ?>
+       <tr>
+         <td colspan="3" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL DE GESTÃO INSTITUCIONAL</td>
+         <td colspan="1" style='text-align: center;'><?= $total3 ?></td>
+       </tr>
     </tbody>
 </table>
