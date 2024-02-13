@@ -59,5 +59,5 @@ foreach($pad21 as $p){
        </tr>
     </tbody>
 </table>
-<sub style="line-height: 12px;"><strong>a</strong>) Aulas na graduação; <strong>b</strong>) Aulas na pós-graduação Lato Sensu gratuita; <strong>c</strong>) Aulas na pós-graduação Stricto Sensu (estas devem ser computadas na razão de 1,5 hora/aula); <strong>d</strong>)
-Planejamento didático-pedagógico.</sub>
+<sup style="line-height: 12px;"><strong>a</strong>) Aulas na graduação; <strong>b</strong>) Aulas na pós-graduação Lato Sensu gratuita; <strong>c</strong>) Aulas na pós-graduação Stricto Sensu (estas devem ser computadas na razão de 1,5 hora/aula); <strong>d</strong>)
+Planejamento didático-pedagógico.</sup>

@@ -102,6 +102,11 @@ function fecharModalDel(){
   $('#modalDel').modal('hide');
 }
 
+
+function fecharFormAddAtv(){
+  $('#modalAtv').modal('hide');
+}
+
 async function getDBMD(){
   dataCargo = await fetch(`../api/cargo.php?ca=${co}${ano}`).then(resp => resp.json()).catch(error => false);
   deleteAllRowsTable();

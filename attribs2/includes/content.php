@@ -6,7 +6,7 @@
         O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
         como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
     <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
-    atribuiu a ti a função de coordenador do <strong><?= $cargoAttri->tipo ?></strong>. 
+    atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
     Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
       </span>
       </div>
