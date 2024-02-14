@@ -31,7 +31,7 @@
       <tr>
         <td><?php
         if($vinc->aprov_co_id == null){
-          echo 'Necessita primeiro da aprovação do colegiado';
+          echo 'Requer a aprovação prévia do colegiado.';
         } else {
           if($vinc->aprov_ce_id == null){
             echo 'Ainda não homologado.';

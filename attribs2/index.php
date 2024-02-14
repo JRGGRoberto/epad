@@ -20,7 +20,7 @@ if($user['tipo'] === 'prof' ){
   // }
 }
 $tipocod = $_GET['t'];
-if(!$ok){;;
+if(!$ok){
    header('location: ../home/');
    exit;
 }
@@ -32,10 +32,6 @@ $atribuidor = Vinculo::getByAnoProf($user['id'], $ano);
 $where = ' id_vinculo = "'. $atribuidor->id .'" and tipocod = "'. $tipocod .'"';
 $cargoAttri = Cargo::getw($where);
 
-
-
-
-// $where = ("(ano, co_id ) = ('". $ano ."', '".$co ."' ) and aprov_co_id is null" );
 $where = ("ano = '". $ano ."' and aprov_co_id is null" );
 $order = " campus, colegiado, nome  ";
 $profs = Vinculo::gets($where, $order);
@@ -71,17 +67,29 @@ foreach($profs as $p){
 }
 
 
+$texto = '';
+switch ($cargoAttri->tipocod){
+   case 'a': 
+      $texto = 'Orientação ao Estágio';
+      break;
+   case 'b': 
+      $texto = 'Orientação nas Atividades de aulas práticas em inst da área da saúde';
+      break;
+   case 'c': 
+      $texto = 'Orientação de Trabalhos acadêmicosmicos Obrigatórios (TCCs, dissertações e teses)';
+      break;
+   case 'd': 
+      $texto = 'Orientação de Monitoria';
+      break;
+}
 
-
+$funcSelected = '<option >'. $texto .'</option>';
 
 include '../includes/header.php';
 echo '<script>
-const ano = "'. $ano.'";
-const co = "'. $co .'";
+  let co_id = "'. $cargoAttri->co_id_tt .'";
+  let tipo = "'. $cargoAttri->tipocod .'";
+  
 </script>';
-echo '<pre>';
-print_r($cargoAttri);
-echo '</pre>';
-
 include __DIR__.'/includes/content.php';
 include '../includes/footer.php';

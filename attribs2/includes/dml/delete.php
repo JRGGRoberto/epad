@@ -1,8 +1,8 @@
 <?php
 
 require '../../../vendor/autoload.php';
-use \App\Entity\Cargo;
 use \App\Session\Login;
+use \App\Entity\PADAtiv22;
 
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
     // Captura o ID do recurso a ser excluído
     $id = $_GET["id"];
 
-    $dis = Cargo::get($id);
+    $dis = PADAtiv22::getById($id);
 
      // Lógica para excluir o recurso com o ID especificado
-    if(!$dis instanceof Cargo){
+    if(!$dis instanceof PADAtiv22){
         header("HTTP/1.1 500 Internal Server Error");
         echo json_encode(array("message" => "Objeto de uma instancia não esperada."));
         exit;

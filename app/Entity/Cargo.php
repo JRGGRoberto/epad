@@ -15,7 +15,9 @@ class Cargo {
   public $tipo;
   public $created_at;
   public $user;
-
+  
+  public $tipocod;
+  
 /**
    * Método responsável por cadastrar uma nova pessoa no banco
    * @return boolean

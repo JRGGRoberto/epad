@@ -9,6 +9,7 @@ use \App\Entity\UuiuD;
 class PADAtiv22 {
   public $id;
   public $vinculo;
+  public $id_co;
   public $atividade;
   public $estudante;
   public $curso;
@@ -24,6 +25,7 @@ class PADAtiv22 {
     $obDb->insert([
         'id'         => $newId,
         'vinculo'    => $this->vinculo,
+        'id_co'      => $this->id_co,
         'atividade'  => $this->atividade,
         'estudante'  => $this->estudante,
         'curso'      => $this->curso,

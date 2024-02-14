@@ -4,7 +4,7 @@ echo '<div class="row">
 
   <div class="col" style="text-align: center;"> <sub> 
   <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GESP</span></span>  
-  <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GESP</span></span> 
-  <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">EC</span></span></sub></div>
+  <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">EC</span></span> 
+  <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GRAD</span></span></sub></div>
 <div class="col-7" style="text-align: right;"><sub><span><span style="color: #002661;">e</span><span style="color: #007F3D;">PAD</span></span></sup> '. $vinc->ano .' Docente: '. $vinc->nome . ' -  Final de documento.</sub></div></div>';
 echo '</div></body></html>'; 

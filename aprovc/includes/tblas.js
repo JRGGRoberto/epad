@@ -97,7 +97,7 @@ function insereTable(newDisc){
 
   if(parseFloat(totUsado) < parseFloat(newDisc.rt)){
     //amarelo
-    celAT.style.backgroundColor = '#f feeba';
+    celAT.style.backgroundColor = '#ffeeba';
     celAT.style.borderBlockColor = '#ffdf7e';
   } else if (parseFloat(totUsado) === parseFloat(newDisc.rt)){
     //verde

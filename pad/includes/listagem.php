@@ -24,7 +24,7 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
 ?>
 
         </div>
-        <div class="col-1" style="text-align: center;"><a href="../padstoprn/index.php?id=a45c7ebf-bfba-11ee-801b-0266ad9885af" target="_blank">🖨️</a> </div>
+        <div class="col-1" style="text-align: center;"><a href="../padstoprn/index.php?id=<?= $vinc->id ?>" target="_blank">🖨️</a> </div>
     </div>
     
 

@@ -1,6 +1,10 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-2"><h3>Atribuições</h3></div>
+    <div class="col-3">
+      <h3>Atribuições</h3>
+      <?= $opcaoMenu ?><br>
+      <sup><?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?> - <?= $cargoAttri->colegiado_tt ?></sup>
+    </div>
     <div class="col" style="text-align:left">
       <div><p style="text-align: justify;   text-justify: inter-word;">
         O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
@@ -11,7 +15,6 @@
       </span>
       </div>
     </div>
-          
   </div>
   <hr>
     <!-- TABLE -->
@@ -21,10 +24,11 @@
           <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
             <tr>
               <th style="display: none;">ID</th>
-              <th class="align-top">Professor(a)</th>
-              <th class="align-top">Aluno(a)</th>
-              <th class="align-top">Série</th>
-              
+              <th class="align-top" style="text-align: left; width: 422px;">Professor(a)</th>
+              <th class="align-top" style="text-align: center; width: 30px;">PAD</th>
+              <th class="align-top"> Aluno(a)</th>
+              <th class="align-top" style="text-align: center; width: 75px;">Série</th>
+              <th class="align-top" style="text-align: center; width: 55px;">Carga Horária</th>
               <th class="align-top" style="text-align: center; width: 45px;"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv()">➕</button></th>
             </tr>
           </thead>
@@ -72,7 +76,7 @@
     
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title" >Remoção de atribuição</h4>
+            <h4 class="modal-title" >Remover a orientação</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
     
@@ -80,15 +84,15 @@
           <div class="modal-body">
             <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
               <div class="form-group">
-              <div  id="msgApagar">Tem certeza que deseja remover a atribuição abaixo?</div>
-                <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeRelacao">AAA</div>
+              <div  id="msgApagar">Tem certeza que deseja remover a orientação do professor(a) para o aluno(a)?</div>
+                <div class="justify-content-center mb-3 font-weight-bold" id="nomeRelacao">AAA</div>
                 <input hidden name="idAtivDel" id="idAtivDel">
                
               </div>
     
               <center>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-                <button type="button" class="btn btn-danger btn-sm"  onclick="removCargo()">Remover</button>
+                <button type="button" class="btn btn-danger btn-sm"  onclick="removVinc22()">Remover</button>
               </center>
     
             </form>
@@ -100,6 +104,4 @@
 
 
 
-<script src="./includes/tblac.js"></script>
-
-
+<script src="./includes/tblaAtt2.js"></script>
