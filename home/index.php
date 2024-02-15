@@ -12,7 +12,7 @@ if($user['tipo'] == 'agente') {
 } elseif($user['tipo'] == 'prof') {
   // header('location: ../pad/');
   include '../includes/header.php';
-  include __DIR__.'/includes/listagem.php';
+  include __DIR__.'/includes/content.php';
 
   include '../includes/footer.php';
    

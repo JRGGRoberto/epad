@@ -1,6 +1,6 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3"><h3>Homologar PAD</h3><sup><?=$subTitle?></sup></div>
+    <div class="col-3"><h3>Homologar PAD</h3><sup><?=$subTitle?> - Lista de professores do meu colegiado</sup></div>
     <div class="col" style="text-align:left">
       <div>
         <span class="badge badge-pill badge-light"> </span>

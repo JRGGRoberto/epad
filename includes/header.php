@@ -148,10 +148,6 @@ img.remover {
                        if($obUsuario['tipo'] === 'prof'){
                          echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
 
-<<<<<<< HEAD
-                    //   $where = ("(ano, id_prof, id_colegiado ) = ('".$ano."', '".$obUsuario['id']."', '".$obUsuario['co_id']."')");
-=======
->>>>>>> 1e17409070cb1a01cf336dec6f7c35e1e50bf8c2
                          $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
                          $cargos = Cargo::gets($where); 
                          if (sizeof($cargos) > 0){
@@ -187,11 +183,11 @@ img.remover {
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir funções</a>
                                   <a class="dropdown-item btn-sm" href="../curso" >Aulas</a>
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir funções</a>
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="#">Relatórios</a>
+                                  <a class="dropdown-item btn-sm" href="#">Informações</a>
                                 </div>
                               </div>
                           <?php
