@@ -29,6 +29,7 @@
             <tr>
               <th style="display: none;">ID</th>
               <th class="align-top">Professor(ª)</th>
+              <th class="align-top" style="text-align: center; width: 35px;">PAD</th>
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Ativ. 2.1</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Ativ. 2.2</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Ativ. 3</sup></th>

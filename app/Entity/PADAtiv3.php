@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use \App\Db\Database;
 use \PDO;
-
+use \App\Entity\UuiuD;
 
 class PADAtiv3 {
   public $id;
@@ -20,7 +20,7 @@ class PADAtiv3 {
 
   public function add(){
     $obDb = new Database('pad3');
-    $newId = exec('uuidgen -r');
+    $newId = UuiuD::gera(); //exec('uuidgen -r');
     $obDb->insert([
         'id'          => $newId,
         'vinculo'     => $this->vinculo,

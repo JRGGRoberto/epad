@@ -1,9 +1,9 @@
 <?php
 
 require '../../../vendor/autoload.php';
-use \App\Entity\Cargo;
-use \App\Session\Login;
+use \App\Entity\PADAtiv22;
 
+use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
@@ -25,34 +25,44 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $json_data = file_get_contents("php://input");
     $data = json_decode($json_data, true); 
 
-    if($data["id22"] != '') {
+    /*
+    if($data["id3"] != '') {
         $response = array("status" => "error", "message" => "Método de requisição inválido 1.");
         echo json_encode($response);
         exit;
-    }
+    }*/
 
-    $dis = new Cargo;
-    $dis->vinculo   = $data["vinc22"];
-    $dis->atividade = $data["tpAtiv22"];
-    $dis->estudante = $data["nome22F"];
-    $dis->curso     = $data["curso22F"];
-    $dis->serie     = $data["serie22F"];
-    $dis->ch        = '1';
-    $dis->user      = $user['id'];
-    $id = $dis->add();
+    $pad = new PADAtiv22;
+    $pad->vinculo      = $data["vinculo"];
+    $pad->estudante    = $data["estudante"];
+    $pad->curso        = $data["curso"];
+    $pad->atividade    = $data["atividade"];
+    $pad->id_co        = $data["id_co"];
+    $pad->serie        = $data["serie"];
+    $pad->ch           = $data["ch"];
+    $pad->user         = $user["id"];
+
+    $id = $pad->add();
+    $pad = PADAtiv22::getById($id);
 
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
-        "data" => array (
-            "id"        => $id, //uniqid(),
-            "vinculo"   => $dis->vinculo,
-            "atividade" => $dis->atividade,
-            "estudante" => $dis->estudante,
-            "curso"     => $dis->curso,
-            "serie"     => $dis->serie,
-            "ch"        => $dis->ch
-            )
+        "data" => $pad
+        /*
+        array (
+            "id"        => $id,
+            "vinculo"   => $pad->vinculo,
+            "atividade" => $pad->atividade,
+            "estudante" => $pad->estudante,
+            "id_co"     => $pad->id_co,
+            "serie"     => $pad->serie,
+            "ch"        => $pad->ch,
+            "orientador"  => $pad->ch,
+            "codcam_orientador"=>  "ap",
+            "codcentro_orientador"=>  "CCHE",
+            "colegiado_orientador"=> "Legal"
+            )*/
         );
 
     header('Content-Type: application/json');
@@ -62,5 +72,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
     $response = array("status" => "error", "message" => "Método de requisição inválido.");
     echo json_encode($response);
-} */ }
+} 
 ?>

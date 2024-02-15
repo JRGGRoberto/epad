@@ -148,27 +148,69 @@ img.remover {
                        if($obUsuario['tipo'] === 'prof'){
                          echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
 
+<<<<<<< HEAD
                     //   $where = ("(ano, id_prof, id_colegiado ) = ('".$ano."', '".$obUsuario['id']."', '".$obUsuario['co_id']."')");
+=======
+>>>>>>> 1e17409070cb1a01cf336dec6f7c35e1e50bf8c2
                          $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
                          $cargos = Cargo::gets($where); 
-                         foreach($cargos as $c){
-                           echo '<a type="button" class="btn btn-primary" href="../attribs2/index.php?t='.$c->tipocod.'" style="text-align: center;">Atribuição '.strtoupper($c->tipocod).'</a>';
+                         if (sizeof($cargos) > 0){
+                            echo '<div class="btn-group btn-group-sm">';
+                            echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Atribuir</button>';
+                            echo '   <div class="dropdown-menu dropdown-menu-left">';
+                            $opcaoMenu = '';
+                            foreach($cargos as $c){
+                              switch($c->tipocod){
+                               case 'a': 
+                                  $opcaoMenu = 'Orientação ao Estágio ';
+                                  break;
+                               case 'b': 
+                                  $opcaoMenu = 'Orientação de Aulas Práticas em Saúde';
+                                  break;
+                               case 'c': 
+                                  $opcaoMenu = 'Orientação à Trabalhos acadêmicos';
+                                  break;
+                               case 'd': 
+                                  $opcaoMenu = 'Orientação de Monitoria.';
+                                  break;
+                              }
+                              echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.'" >'.$opcaoMenu.'</a>';
+                            }
+
+                            echo '   </div>';
+                            echo '</div>';
                          }
 
+
                          if($obUsuario['config'] === '1'){
-                           echo '<a type="button" class="btn btn-primary" href="../attribs" style="text-align: center;">Funções</a>';
-                           echo '<a type="button" class="btn btn-primary" href="../curso" style="text-align: center;">Aulas</a>';
-                           echo '<a type="button" class="btn btn-primary" href="../aprovc" style="text-align: center;">Assinar</a>';
+                           ?>
+                              <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir funções</a>
+                                  <a class="dropdown-item btn-sm" href="../curso" >Aulas</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item btn-sm" href="#">Relatórios</a>
+                                </div>
+                              </div>
+                          <?php
                          } elseif ($obUsuario['config'] === '2'){
-                           echo '<a type="button" class="btn btn-primary" href="../aprovc" style="text-align: center;">Assinar</a>';
+                           ?>
+                              <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Direção</button>
+                                <div class="dropdown-menu dropdown-menu-left">
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item btn-sm" href="#">Relatórios</a>
+                                </div>
+                              </div>
+                          <?php
                          }
 
                        } elseif($obUsuario['tipo'] === 'agente'){
                          echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
                        }
-
-                       
-
                        if(1>2){
                          echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
                        }
