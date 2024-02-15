@@ -10,8 +10,6 @@
 
     </div>
          
-
-
     <div class="form-group" >
       <label for="filtro">Filtro</label>
       <select name="filtro" id="filtro"  class="form-control" onchange="execFiltro(this.value)">

@@ -63,9 +63,6 @@ foreach($profs as $p){
 }
 
 
-
-
-
 include '../includes/header.php';
 echo '<script>
 const ano = "'. $ano.'";
