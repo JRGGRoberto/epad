@@ -1,7 +1,7 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-3">
-      <h3>Atribuições</h3>
+      <h3>Orientação</h3>
       <?= $tpOrientacao ?><br>
       <sup><?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?> - <?= $cargoAttri->colegiado_tt ?></sup>
     </div>

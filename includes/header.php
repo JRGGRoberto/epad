@@ -152,13 +152,13 @@ img.remover {
                          $cargos = Cargo::gets($where); 
                          if (sizeof($cargos) > 0){
                             echo '<div class="btn-group btn-group-sm">';
-                            echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Atribuir</button>';
+                            echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Orientação</button>';
                             echo '   <div class="dropdown-menu dropdown-menu-left">';
                             $opcaoMenu = '';
                             foreach($cargos as $c){
                               switch($c->tipocod){
                                case 'a': 
-                                  $opcaoMenu = 'Orientação ao Estágio ';
+                                  $opcaoMenu = 'Orientação ao Estágio';
                                   break;
                                case 'b': 
                                   $opcaoMenu = 'Orientação de Aulas Práticas em Saúde';
@@ -167,7 +167,7 @@ img.remover {
                                   $opcaoMenu = 'Orientação à Trabalhos acadêmicos';
                                   break;
                                case 'd': 
-                                  $opcaoMenu = 'Orientação de Monitoria.';
+                                  $opcaoMenu = 'Orientação de Monitoria';
                                   break;
                               }
                               echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.'" >'.$opcaoMenu.'</a>';

@@ -24,7 +24,13 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
 ?>
 
         </div>
-        <div class="col-1" style="text-align: center;"><a href="../padstoprn/index.php?id=<?= $vinc->id ?>" target="_blank">🖨️</a> </div>
+        <div class="col-1" style="text-align: center;">
+           <a class="card-link" href="../ajuda/" aria-expanded="true" data-toggle="collapse" ><span class="badge badge-warning">Ajuda</span></a>
+        </div>
+
+        <div class="col-1" style="text-align: center;">   
+           <a href="../padstoprn/index.php?id=<?= $vinc->id ?>" target="_blank">🖨️</a> 
+       </div>
     </div>
     
 
@@ -33,7 +39,8 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
 
     <div class="card mt-2">
         <div class="card-header">
-            <strong>1. Dados do Docente</strong>
+            <a class="card-link collapsed" data-toggle="collapse" href="#dadosDoc" aria-expanded="false">
+            <strong>1. Dados do Docente</strong></a>
         </div>
         <div id="dadosDoc" class="collapse show" >
             <div class="card-body">
@@ -229,7 +236,7 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
         </div>
     </div>  
     <div>
-        .
+        
     </div>
 
 
