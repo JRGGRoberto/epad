@@ -1,6 +1,6 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3"><h3>Homologar PAD</h3><sup><?=$subTitle?> - Lista de professores do meu colegiado</sup></div>
+    <div class="col-3"><h3>Aprovação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do meu colegiado</sup></div>
     <div class="col" style="text-align:left">
       <div>
         <span class="badge badge-pill badge-light"> </span>
@@ -9,6 +9,8 @@
         <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #ffeeba; border-block-color: #ffdf7e; padding: 5px; font-size:12px;">Faltando horas</span>
         <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; border-block-color: #8fd19e; padding: 5px; font-size:12px;">Ok horas completas</span>
         <span style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #f5c6cb; border-block-color: #ed969e; padding: 5px; font-size:12px;">Extrapolou as horas do RT</span>
+
+        <a class="card-link" href="../ajuda/?help=coord_vpads" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
       </div>
     </div>
           
@@ -110,7 +112,7 @@
       <div class="modal-body">
         <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
           <div class="form-group">
-          <div  id="msgApagar">Tem certeza que deseja remover a homologação?</div>
+          <div  id="msgApagar">Tem certeza que deseja remover a aprovação?</div>
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
             
             <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">

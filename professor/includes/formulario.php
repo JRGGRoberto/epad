@@ -8,6 +8,8 @@ $user = Login::getUsuarioLogado();
 <main>
 
   <h2 class="mt-3"><?=TITLE?></h2>
+  <a class="card-link" href="../ajuda/?help=perfil" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
+  <hr>
 
   <form method="post" id="formprof">
     

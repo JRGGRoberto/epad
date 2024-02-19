@@ -9,10 +9,11 @@
       <div><p style="text-align: justify;   text-justify: inter-word;">
         O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
         como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
-    <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
-    atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
-    Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
-      </span>
+        <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
+        atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
+        Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
+        </p>
+        <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
       </div>
     </div>
   </div>

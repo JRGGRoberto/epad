@@ -160,17 +160,31 @@
       <div id="pad03" class="collapse" data-parent="#accordion">
         <div class="card-body row">
           <div class="col">
-            <img src="../imgs/menuperf.png" alt="Meunu Atribuir" >
-            <p>A todo usuário conectado no sistema é apresentado este menu com o primeiro nome em maiúsculo.</p>
-            <ul>
-              <li>Perfil <sub>Permite alterar dados da conta</sub></li>
-              <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
-            </ul>
+            <p>
+                Nesta parte é onde adicionado as atividades de pesquisa, extensão ou de cultura e programas especiais, respeitando a <a target="_blank" href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">RESOLUÇÃO Nº 007/2017</a></p>
+              <img src="../imgs/pad4.png" alt="3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais" >
+
             
-          </div>  <!--
-          <div class="col">
-            <img src="../imgs/epadd.png" alt="PAD">
-          </div> -->
+          </div>
+          <div class="row" style="padding: 10ox;"> 
+            <div class="col">
+              <p>As atividades podem ser do tipo:</p>
+                <ul>
+                  <li>Pesquisa</li>
+                  <li>Extensão</li>
+                  <li>Cultura e Programas Especiais</li>
+                </ul>
+                <p>Botões:</p>
+                <ul>
+                  <li><span class="badge badge-primary ">Adicionar</span> <sub>Abre uma janela para adicionar os dados da atividade</sub></li>
+                  <li>⛔ <sub>Excluir item</sub></li>
+                  <li>✏️ <sub>Editar - Abre uma janela para editar os dados da atividade</sub></li>
+                </ul>
+            </div>
+            <div class="col">
+              <img src="../imgs/pad3edt.png" alt="3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais" >
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -185,17 +199,22 @@
       <div id="pad04" class="collapse" data-parent="#accordion">
         <div class="card-body row">
           <div class="col">
-            <img src="../imgs/menuperf.png" alt="Meunu Atribuir" >
-            <p>A todo usuário conectado no sistema é apresentado este menu com o primeiro nome em maiúsculo.</p>
-            <ul>
-              <li>Perfil <sub>Permite alterar dados da conta</sub></li>
-              <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
-            </ul>
-            
-          </div>  <!--
-          <div class="col">
-            <img src="../imgs/epadd.png" alt="PAD">
-          </div> -->
+            <p>
+              Nesta parte é onde adicionado as atividades de gestão, respeitando a <a target="_blank" href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">RESOLUÇÃO Nº 007/2017</a></p>
+            <img src="../imgs/pad4.png" alt="4. Atividades de Gestão Institucional" >
+          </div>
+          <div class="row" style="padding: 10ox;">
+            <div class="col">
+              <ul>
+                <li><span class="badge badge-primary ">Adicionar</span> <sub>Abre uma janela para adicionar os dados da atividade</sub></li>
+                <li>⛔ <sub>Excluir atividade</sub></li>
+                <li>✏️ <sub>Editar - Abre uma janela para editar os dados da atividade</sub></li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="../imgs/pad4edt.png" alt="4. Atividades de Gestão Edição" >
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -210,16 +229,23 @@
       <div id="orient_esttbr" class="collapse" data-parent="#accordion">
         <div class="card-body row">
           <div class="col">
-            <img src="../imgs/menuperf.png" alt="Meunu Atribuir" >
-            <p>A todo usuário conectado no sistema é apresentado este menu com o primeiro nome em maiúsculo.</p>
-            <ul>
-              <li>Perfil <sub>Permite alterar dados da conta</sub></li>
-              <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
-            </ul>
-          </div>  <!--
-          <div class="col">
-            <img src="../imgs/epadd.png" alt="PAD">
-          </div> -->
+            <p>Caso o coordenador tenha lhe atribuido uma função de coordenador de estágio ou de trabalhos acadêmicos, este menu aparecerá para você. Esse procedimento já adiciona informações ao item 2.2 do PAD do professor selecionado</p>
+            <img src="../imgs/orienta.png" alt="Meunu Atribuir" >
+
+            <div class="row">
+              <div class="col">
+                <ul>
+                  <li>Perfil <sub>Permite alterar dados da conta</sub></li>
+                  <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
+                </ul>
+              
+              </div>
+              <div class="col">
+                 <img src="../imgs/orientedt.png" alt="PAD">
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -267,12 +293,19 @@
       <div id="coord_atrib" class="collapse" data-parent="#accordion">
         <div class="card-body row">
           <div class="col">
-            <img src="../imgs/menuperf.png" alt="Meunu Atribuir" >
-            <p>A todo usuário conectado no sistema é apresentado este menu com o primeiro nome em maiúsculo.</p>
+            <p>Neste opção pode-se selecionar um professor e designar uma função a ele:</p>
+            <img src="../imgs/atrib.png" alt="Menu Atribuir" >
             <ul>
-              <li>Perfil <sub>Permite alterar dados da conta</sub></li>
-              <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
+              <li>Coordenador de Estágio</li>
+              <li>Cordenador das Práticas em Saúde</li>
+              <li>Coordenador dos Trabalhos acadêmicos</li>
+               <li>Coordenação a Monitoria</li>
             </ul>
+      
+            Apesar de poder selecionar professores de outros colegiados, eles atenderão alunos do seu colegiado.
+            <img src="../imgs/atribedt.png" alt="Adicionar" >
+            <p>Clique no botão ⛔ para remover a atribuição;</p>
+            <img src="../imgs/attdel.png" alt="Remover" >
           </div>  <!--
           <div class="col">
             <img src="../imgs/epadd.png" alt="PAD">
@@ -291,12 +324,21 @@
       <div id="coord_vpads" class="collapse" data-parent="#accordion">
         <div class="card-body row">
           <div class="col">
-            <img src="../imgs/menuperf.png" alt="Meunu Atribuir" >
-            <p>A todo usuário conectado no sistema é apresentado este menu com o primeiro nome em maiúsculo.</p>
+            <p>Todo coordenador de curso tem acesso a esta menu.</p>
+            <p>Neste menu é listado os professores pertencentes ao seu conegiado, com seus respectivos informativos de uso tempo de cada item do PAD.</p>
+            <img src="../imgs/aprov_pad.png" alt="Lista de professores para aprovação de PAD" >
             <ul>
-              <li>Perfil <sub>Permite alterar dados da conta</sub></li>
-              <li>Sair <sub>Sai do sistema, é uma função interessante a ser feita quando utiliza-se computadores compartilhados</sub></li>
+              <li>📄 <sub>Abrir aba para impressão do PAD</sub></li>
+              <li>⏳ <sub>CH Total não está igual ao RT</sub></li>
+              <li>🖋️ <sub>CH Total está contenmplanto o RT, pode ser assinado</sub></li>
             </ul>
+
+            <p>Ao clicar no 🖋️, o PAD do professor selecionado pode ser aprovado</p>
+            <img src="../imgs/aprovacao.png" alt="Aprovação de PAD" >
+            <p>Ao aprovar o PAD, o documento fica bloqueado para alterações, com isso ninguém consegue alterar os dados do PAD.</p>
+            <p>A operação pode ser desfeita neste mesmo lugar, clicando no botão ✏️, permitindo alterações.</p>
+            <img src="../imgs/remapov.png" alt="remover aprovação de PAD" >
+
           </div>  <!--
           <div class="col">
             <img src="../imgs/epadd.png" alt="PAD">
@@ -344,3 +386,25 @@
 
   </div>
 </div>
+
+
+<script>
+$(document).ready(function(){
+  // Verifica se há um parâmetro na URL chamado 'collapse', por exemplo, ?collapse=collapseTwo
+  var urlParams = new URLSearchParams(window.location.search);
+  var collapseId = urlParams.get('help');
+  console.log(urlParams);
+  console.log('');
+  console.log(collapseId);
+
+  // Se houver um parâmetro 'collapse' na URL
+  if (collapseId) {
+    // Ativa o colapso correspondente
+    $('#' + collapseId).collapse('show');
+
+    $('html, body').animate({
+      scrollTop: $('#' + collapseId).offset().top - 50 // Ajuste o valor conforme necessário
+    }, 'slow');
+  }
+});
+</script>
