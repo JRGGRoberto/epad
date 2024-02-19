@@ -187,7 +187,7 @@ img.remover {
                                   <a class="dropdown-item btn-sm" href="../attribs" >Atribuir funções</a>
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="#">Informações</a>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
                                 </div>
                               </div>
                           <?php
@@ -196,9 +196,9 @@ img.remover {
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Direção</button>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Homologar ver PADs</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="#">Relatórios</a>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
                                 </div>
                               </div>
                           <?php
