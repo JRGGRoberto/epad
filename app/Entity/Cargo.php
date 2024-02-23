@@ -15,7 +15,8 @@ class Cargo {
   public $tipo;
   public $created_at;
   public $user;
-  
+
+  public $co_id_tt;
   public $tipocod;
   
 /**

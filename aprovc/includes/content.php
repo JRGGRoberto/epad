@@ -23,7 +23,7 @@
         <strong>Total att</strong>) Total de carga horária semanal; <strong>RT</strong>) Regime de trabalho. 
       </sub>
       <p>O coordenador do curso poderá outorgar os PAD que estiverem de acordo com a <a target="_blank"
-        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">RESOLUÇÃO Nº 007/2017</a></p>
+        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a></p>
 
       <div style="max-height: 600px; overflow: scroll;">
         <table id="tabelaPADS" name="tabelaPADS" class="table table-bordered table-sm  table-hover">
@@ -70,7 +70,7 @@
                como coordenador(a) do curso de <strong><?=$user['co_nome']?>
             </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
                confirmo que este plano está de acordo com a resolução atual, <a target="_blank"
-        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">RESOLUÇÃO Nº 007/2017</a> 
+        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a> 
         e solicito que o Diretor de Centro de Área também outorgue para que seja feita a publicação.</p>
 
               <div class="row" style="padding: 20px 30px;">

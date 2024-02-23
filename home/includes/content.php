@@ -64,7 +64,9 @@
 </figure>
 
 
-<p>Em caso de dúvidas, acesse o link &nbsp;<a href="../ajuda" style="text-decoration: none;"><span style="text-align: right; box-shadow: lightgray 3px 3px; border-radius: 5px; background-color: rgb(255, 238, 186); border: 2px solid rgb(255, 223, 126); padding: 5px; font-size: 12px;">Ajuda</span></a> &nbsp; para mais informações detalhadas de cada tópico</p>
+<p>Em caso de dúvidas, acesse o link &nbsp;<a href="../ajuda" style="text-decoration: none;"><span style="text-align: right; box-shadow: lightgray 3px 3px; border-radius: 5px; background-color: rgb(255, 238, 186); border: 2px solid rgb(255, 223, 126); padding: 5px; font-size: 12px;">Ajuda</span></a> &nbsp; para mais informações detalhadas de cada tópico, ou caso acredite ser necessário, acesse o menu 
+<a href="../faleconosc" style="text-decoration: none;"><span class="badge badge badge-primary">Fale conosco</span></a></p>
+
 
 
 

@@ -10,7 +10,7 @@
                 ?>
 
 <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; 
-border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?= $vinc->assing_co?></span>
+border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coordenador(a) <?= $vinc->assing_co?></span>
                 <?php
 
                } else {
@@ -25,7 +25,7 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Homologado - Coord <?=
 
         </div>
         <div class="col-1" style="text-align: center;">
-           <a class="card-link" href="../ajuda/?help=meun_meupad" aria-expanded="true"><span class="badge badge-warning">Ajuda</span></a>
+           <a class="card-link" href="../ajuda/?help=menu_meupad" aria-expanded="true"><span class="badge badge-warning">Ajuda</span></a>
         </div>
 
         <div class="col-1" style="text-align: center;">   

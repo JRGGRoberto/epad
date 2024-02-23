@@ -1,5 +1,8 @@
 <div class="container mt-3">
-    <h3>Matrizes de Cursos</h3>
+    <div class="row">
+      <div class="col-11"><h3>Matrizes de Cursos</h3></div>
+      <div class="col" style="text-align:right"><!--<a href="../curso/">voltar</a> --> <a class="card-link" href="../ajuda/?help=coord_aulas" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a></div>
+    </div>
     <hr>
     <!-- TABLE -->
     <div class="form-group table-responsive-sm">

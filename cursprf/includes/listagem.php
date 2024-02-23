@@ -15,8 +15,8 @@
         <div>
             <?= $matriz->nome ?> - <?=  $turno ?>
 
-          <div class="progress" style="height:7px; width:180px" >
-              <div class="progress-bar" id="progressBar"></div>
+          <div class="progress" style="height:10px; width:180px" >
+              <div class="progress-bar anim" id="progressBar"></div>
           </div>
         </div>    
       </div>
@@ -357,3 +357,15 @@ getDBMDprof(2024);
 </script>
 
 <?= $script ?>
+<style>
+.anim {
+  animation: crescer 2.5s;
+
+}
+
+@keyframes crescer {
+  0%{
+    width: 0
+  }
+}
+</style>

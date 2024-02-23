@@ -183,9 +183,9 @@ img.remover {
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                  <a class="dropdown-item btn-sm" href="../curso" >Aulas</a>
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir funções</a>
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Assinar ver PADs</a>
+                                  <a class="dropdown-item btn-sm" href="../curso" >Atribuir Aulas</a>
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs</a>
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
                                 </div>
@@ -215,6 +215,8 @@ img.remover {
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
+                       <div class="dropdown-divider"></div>
+                       <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a>
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
                     </div>
