@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fale->url =  $url;
     $fale->msg =  $_POST['msg'];
     $fale->user = $user['id'];
+    $fale->assunto =  $_POST['assunto'];
     $idresp = $fale->cadastrar();
     $parte = '';
     

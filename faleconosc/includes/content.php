@@ -12,6 +12,8 @@
 
       <p>Parte: <strong><?= $parte ?></strong> </p>
 
+      <p>Assunto: <strong><?=  $fale->assunto  ?></strong> </p>
+
       <p>Tipo de mensagem: <strong><?= $tp ?></strong> </p>
 
       <p>Mensagem: <strong><?= $fale->msg ?></strong> </p>
