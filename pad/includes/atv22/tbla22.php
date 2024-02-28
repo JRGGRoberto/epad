@@ -6,8 +6,7 @@
             <th class="align-top" >Nome do(a) estudante</th>
             <th class="align-top" >Curso</th>
             <th class="align-top" style="text-align: center;" width="75px">Série</th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
+            <th class="align-top" style="text-align: center;" width="75px">CH</th>
         </tr>
     </thead>
     <tbody>

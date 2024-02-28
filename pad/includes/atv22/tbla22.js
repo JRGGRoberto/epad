@@ -17,7 +17,7 @@ function insereTable22(newDisc){
     let celCurso      = newLinha.insertCell(3);
     let celSerie      = newLinha.insertCell(4);
     let celCh1        = newLinha.insertCell(5);
-    let celCh2        = newLinha.insertCell(6);
+    
     
   celId.innerHTML          = newDisc.id;
   celAtividade.innerHTML   = newDisc.atividade; 
@@ -30,13 +30,13 @@ function insereTable22(newDisc){
     newDisc.ch = cargaHoraria;
   }
   celCh1.innerHTML         = cargaHoraria;
-  celCh2.innerHTML         = cargaHoraria;
+  
 
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
   celSerie.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
-  celCh2.style.textAlign = 'right';
+  
 }
 
 async function getDBMD22(){
@@ -61,8 +61,7 @@ async function getDBMD22(){
   
   
   let ch1Total = data22.reduce((a, b) => a + parseFloat(b.ch), 0);
-  let ch2Total = data22.reduce((a, b) => a + parseFloat(b.ch), 0);
-  total22.innerHTML = parseFloat((ch1Total + ch2Total)/2) + 'h';
+  total22.innerHTML = parseFloat(ch1Total) + 'h';
 }
 
 const myInterval22 = window.setInterval(function() {

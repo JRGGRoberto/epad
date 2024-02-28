@@ -17,8 +17,7 @@ function insereTable21(newDisc){
     let celCurso      = newLinha.insertCell(3);
     let celTurno      = newLinha.insertCell(4);
     let celCh1        = newLinha.insertCell(5);
-    let celCh2        = newLinha.insertCell(6);
-
+    
     let turno;
     switch (newDisc.turno) {
       case 'm':
@@ -50,7 +49,7 @@ function insereTable21(newDisc){
   celCurso.innerHTML       = newDisc.curso;
   celTurno.innerHTML       = turno;
   celCh1.innerHTML         = ch;
-  celCh2.innerHTML         = ch;
+  
 
   celId.style.display = 'none'; 
   celAtividade.style.textAlign = 'center';
@@ -58,7 +57,7 @@ function insereTable21(newDisc){
   celDisciplina.style.lineHeight = '0.9';
   celTurno.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
-  celCh2.style.textAlign = 'right';
+  
 }
 
 
@@ -84,8 +83,8 @@ async function getDBMD21(){
   }
   
   let ch1Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
-  let ch2Total = data21.reduce((a, b) => a + parseFloat(b.cargah), 0);
-  total21.innerHTML = parseFloat((ch1Total + ch2Total)/2) + 'h';
+  
+  total21.innerHTML = parseFloat(ch1Total) + 'h';
  }
 
 
