@@ -6,13 +6,15 @@
                   <option value="">Selecione</option>
                   <option value="1">Pesquisa</option>
                   <option value="2">Extensão e cultura</option>
+                  <option value="4">PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI</option>
+                  <option value="5">PIBEX e PIBIS</option>
                   <option value="3">Programas especiais</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label for="nome3">Nome</label>
-                <input type="text" name="nome3" id="nome3" class="form-control">
+                <input type="text" name="nome3" id="nome3" class="form-control" maxlength="170">
                 <input type="hidden" name="id3" id="id3">
                 <input type="hidden" name="idx3" id="idx3">
                 <input type="hidden" name="vinc3" id="vinc3">

@@ -34,6 +34,16 @@ function insereTable3(newDisc){
       case '3':
         tipo = 'Outro - informar em observações';
         break;
+
+      case '4':
+        tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
+        break;
+
+      case '5':
+          tipo = 'PIBEX e PIBIS';
+          break;
+  
+
       default:
         tipo = 'Não definido';
     };

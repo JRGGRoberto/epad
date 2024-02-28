@@ -221,7 +221,7 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
                          ?>
                          
                          
-                         maxlength="50" name="vincobs" id="vincobs" cols="30" class="form-control" rows="5"><?= $vinc->obs ?></textarea>
+                         maxlength="2000" name="vincobs" id="vincobs" cols="30" class="form-control" rows="8"><?= $vinc->obs ?></textarea>
                     </div>
                     <div class="form-group float-right">
                          

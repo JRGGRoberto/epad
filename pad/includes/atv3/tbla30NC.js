@@ -48,6 +48,12 @@ function insereTable3(newDisc){
       case '3':
         func = 'Programas especiais';
         break;
+      case '4':
+        tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
+        break;
+      case '5':
+        tipo = 'PIBEX e PIBIS';
+        break;
       default:
         func = 'Não definido';
     };
