@@ -10,8 +10,7 @@
             <th class="align-top" >Nome do(a) estudante</th>
             <th class="align-top" >Curso</th>
             <th class="align-top" style="text-align: center;" width="75px">Série</th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem</th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem</th>
+            <th class="align-top" style="text-align: center;" width="75px">CH</th>
         </tr>
     </thead>
     <tbody>
@@ -24,7 +23,6 @@ foreach($pad22 as $p){
   <td>". $p->estudante ."</td>
   <td>". $p->curso ."</td>
   <td style='text-align: center;'>". $p->serie ."</td>
-  <td style='text-align: center;'>". $p->ch ."</td>
   <td style='text-align: center;'>". $p->ch ."</td>
 </tr>
   ";
