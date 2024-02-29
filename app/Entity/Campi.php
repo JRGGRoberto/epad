@@ -29,6 +29,7 @@ class Campi{
     $this->id = $obDatabase->insert([
                                       'nome' => $this->nome,
                                       'codigo' => $this->codigo,
+                                      'created_at' => date("Y-m-d H:i:s"),
                                       'user' => $this->user
                                     ]);
 

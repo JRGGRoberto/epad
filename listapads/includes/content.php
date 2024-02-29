@@ -19,7 +19,7 @@
           </tr>
 
          <tr>
-            <th class="align-top" style="text-align: center;" width="78px">Campus</th>
+            <th class="align-top" style="text-align: center;" width="138px">Campus</th>
             <th class="align-top">Centro</th>
             <th class="align-top">Colegiado</th>
             <th class="align-top" style="text-align: center;">Nome</th>

@@ -14,16 +14,17 @@ $dados =  $_POST['import_json'];
   $chTotal = 0;
   $nome = '';
   foreach($arrEq as $key => $data) {
-    $s = $data["Série"];
+    $s = $data["SERIE"];
     $dis = new Disciplinas;
     $dis->id_matriz = $id_master;
-    $dis->nome      = $data["Disciplinas"];
-    $dis->ch        = $data["Cargahoraria"];
+    $dis->nome      = $data["DISCIPLINA"];
+    $dis->ch        = str_replace("h","",$data["CARGAHORÁRIA"]);
     $dis->user      = $user;
-    $dis->serie     = $s[0];
+    $dis->serie     = 1; // $s[0];
+
     $id = $dis->cadastrar();
     $chTotal += $dis->ch;
-    $nome = $data["Matriz"];
+    $nome = $data["Curso"];
     $index++;
   }
 

@@ -10,8 +10,7 @@
             <th class="align-top">Disciplina</th>
             <th class="align-top">Curso</th>
             <th class="align-top" style="text-align: center;">Turno</th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>1ºsem</sup></th>
-            <th class="align-top" style="text-align: center;" width="75px">CH sem<br><sup>2ºsem</sup></th>
+            <th class="align-top" style="text-align: center;" width="75px">CH </th>
         </tr>
     </thead>
     <tbody>
@@ -46,7 +45,6 @@ foreach($pad21 as $p){
   <td>". $p->disciplina . $atv ."</td>
   <td>". $p->curso ."</td>
   <td style='text-align: center;'>". $turno ."</td>
-  <td style='text-align: center;'>". $ch1 ."</td>
   <td style='text-align: center;'>". $ch1 ."</td>
 </tr>
   ";

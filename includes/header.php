@@ -157,35 +157,42 @@ img.remover {
                             $opcaoMenu = '';
                             foreach($cargos as $c){
                               switch($c->tipocod){
-                               case 'a': 
+                                case 'a': 
                                   $opcaoMenu = 'Orientação ao Estágio';
                                   break;
-                               case 'b': 
+                                case 'b': 
                                   $opcaoMenu = 'Orientação de Aulas Práticas em Saúde';
                                   break;
-                               case 'c': 
+                                case 'c': 
                                   $opcaoMenu = 'Orientação à Trabalhos acadêmicos';
                                   break;
-                               case 'd': 
+                                case 'd': 
                                   $opcaoMenu = 'Orientação de Monitoria';
+                                  break;
+                                case 'e': 
+                                  $opcaoMenu = 'Orientação de estudante em PIC/PIBIC';
+                                  break;
+                                case 'f': 
+                                  $opcaoMenu = 'Orientação de estudante em PIBEX/PIBIS';
                                   break;
                               }
                               echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.'" >'.$opcaoMenu.'</a>';
                             }
-
                             echo '   </div>';
                             echo '</div>';
                          }
-
+                         
 
                          if($obUsuario['config'] === '1'){
                            ?>
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
-                                <div class="dropdown-menu dropdown-menu-left">
+                                <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item btn-sm" href="../curso" >Atribuir Aulas</a>
                                   <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções</a>
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/817X3ykCmoy7xkdd8" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas</a>
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
                                 </div>
@@ -211,6 +218,30 @@ img.remover {
                          echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
                        }
                     ?>
+
+
+<?php
+
+// colocar via tabela de suporte!!!
+$galeraDoSuporte = array(
+  'b8fa555f-cedb-47cf-91cc-7581736aac88', // Roberto
+  '8154fff1-becd-11ee-801b-0266ad9885af',   // Sérgio
+  '81512d7d-becd-11ee-801b-0266ad9885af' );   // Dorigão
+
+if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
+
+                              <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Suporte</button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPADs</a>
+                             <!--     <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a> -->
+                                </div>
+                              </div>
+
+
+<?php
+}
+?> 
                   <div class="btn-group btn-group-sm">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">

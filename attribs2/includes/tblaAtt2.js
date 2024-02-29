@@ -137,18 +137,6 @@ function frmExcluirShow(id){
   document.getElementById('idAtivDel').value = myObj.id;
 }
 
-/*
-function ativaBTN(){
-  const opt1 = document.getElementById('listaFunc');
-  const opt2 = document.getElementById('listaProf');
-  const addBtnF = document.getElementById('addBtnF');
-  if((opt1.value != -1) && (opt2.value != -1) ){
-    addBtnF.disabled = false;
-  } else {
-    addBtnF.disabled = true;
-  }
-}
-*/
 
 function fecharModalDel(){            
   $('#modalDel').modal('hide');

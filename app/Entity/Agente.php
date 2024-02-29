@@ -39,7 +39,7 @@ class Agente {
                             'lotacao'    => $this->lotacao,
                             'senha'      => $this->senha,
                             'config'     => $this->config,
-                            'created_at' => $this->created_at,
+                            'created_at' => date("Y-m-d H:i:s"),
                           //  'updated_at' => $this->updated_at,
                             'user'       => $this->user
                        ]);

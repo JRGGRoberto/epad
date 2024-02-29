@@ -77,13 +77,14 @@ function insereTable(newDisc){
 function formAddAtv(){
   $('#modalAtv').modal('show');
   const formMod = document.getElementById('modalAtv');
+
 }
 
 function ativaBTN(){
   const opt1 = document.getElementById('listaFunc');
   const opt2 = document.getElementById('listaProf');
   const addBtnF = document.getElementById('addBtnF');
-  if((opt1.value != -1) && (opt2.value != -1) ){
+  if((opt1.value != -1) & (opt2.value.length > 5) ){
     addBtnF.disabled = false;
   } else {
     addBtnF.disabled = true;

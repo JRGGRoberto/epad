@@ -49,7 +49,7 @@
     
         <div class="form-group" >
           <label for="msg">Mensagem</label>  
-          <textarea maxlength="250" name="msg" id="msg" cols="30" class="form-control" rows="5"></textarea>
+          <textarea maxlength="1500" name="msg" id="msg" cols="30" class="form-control" rows="8"></textarea>
         </div>
           <center>
             <button type="submit" id="addBtnF" class="btn btn-primary btn-sm">Enviar</button>

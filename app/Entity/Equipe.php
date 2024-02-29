@@ -49,6 +49,7 @@ class Equipe {
                          'funcao'       => $this->funcao,
                          'tel'          => $this->tel,
                          'email'        => $this->email,
+                         'created_at' => date("Y-m-d H:i:s"),
                          'user'         => $this->user
                        ]);
 

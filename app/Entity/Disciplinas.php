@@ -34,6 +34,7 @@ class Disciplinas {
                          'ch'        => $this->ch,
                          'serie'     => $this->serie,
                          'id_matriz'  => $this->id_matriz,
+                         'created_at' => date("Y-m-d H:i:s"),
                          //'updated_at' => date("Y-m-d H:i:s"),
                          'user' => $this->user
                        ]);

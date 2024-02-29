@@ -10,20 +10,35 @@
 
     </div>
          
-    <div class="form-group" >
-      <label for="filtro">Filtro</label>
-      <select name="filtro" id="filtro"  class="form-control" onchange="execFiltro(this.value)">
-        <option value="1">Meu colegiado</option>
-        <option value="2">Meu campus</option>
-        <option value="3">Todos</option>
-      </select>
+    <div class="form-group row">
+      <div class="col-3">
+        <div class="form-group">
+          <label for="ca">Campus</label>
+          <select name="id_campus" id="ca" class="form-control" required>
+          </select>
+        </div> 
+      </div>
+
+      <div class="col-2">
+        <div class="form-group">
+          <label for="ce">Centro</label>
+          <select name="id_centro"  id="ce" class="form-control" required>
+          </select>
+        </div> 
+      </div>
+
+      <div class="col-7">
+        <div class="form-group">
+          <label for="co">Colegiado</label>
+          <select name="id_colegiado" id="co" class="form-control" required>
+          </select>
+        </div> 
+      </div>
     </div>
 
     <div class="form-group" >
       <label for="listaProf">Professor(ª)</label>  
       <select name="listaProf" id="listaProf" class="form-control" require="" onchange="ativaBTN();" >
-          <option value="-1">Selecione</option>
-          <?=$opcoes?>
       </select>
 
 

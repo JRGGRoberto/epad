@@ -33,7 +33,7 @@ class Cargo {
                             'id_colegiado' => $this->id_colegiado,
                             'ano'          => $this->ano,
                             'tipo'         => $this->tipo,
-                            'created_at'   => $this->created_at,
+                            'created_at' => date("Y-m-d H:i:s"),
                             'user'         => $this->user
                        ]);
 
