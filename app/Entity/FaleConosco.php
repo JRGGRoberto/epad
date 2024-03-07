@@ -34,4 +34,16 @@ class FaleConosco {
         ]);
         return $newId;
     }
+
+
+    public static function get($where = null, $order = null, $limit = null){
+        return (new Database('mensagens'))->select($where,$order,$limit)
+                                      ->fetchAll(PDO::FETCH_CLASS,self::class);
+    }
+
+    public static function getById($id){
+        $where = ' id = "'.$id.'" ';
+        return (new Database('mensagens'))->select($where)
+                                         ->fetchObject(self::class);
+      }
 }

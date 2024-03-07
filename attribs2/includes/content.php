@@ -11,7 +11,7 @@
 
     </div>
     <div class="col" style="text-align:left">
-      <div><p style="text-align: justify;   text-justify: inter-word;">
+      <div><p hidden style="text-align: justify;   text-justify: inter-word;">
         O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
         como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
         <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
@@ -53,7 +53,7 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-              <h4 class="modal-title" id="titleMotal">Atribuição de funções</h4>
+              <h4 class="modal-title" id="titleMotal">Atribuição de orientação</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
 
@@ -111,3 +111,4 @@
 
 
 <script src="./includes/tblaAtt2.js"></script>
+<script src="./includes/ccc.js"></script>

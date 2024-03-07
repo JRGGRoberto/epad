@@ -34,7 +34,7 @@ foreach($pad21 as $p){
     default:
       $turno = '';
   };
-  $ch1 = number_format($p->cargah, 0);
+  $ch1 = number_format($p->cargah, 1);
   if($p->atividade == 'd'){
     $atv = " (planejamento)";
   } else {

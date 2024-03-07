@@ -1,23 +1,10 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3">
-      <h3>Orientação</h3>
-      <?= $tpOrientacao ?><br>
-      <?php if(in_array($cargoAttri->tipocod, ['a', 'b', 'c', 'd' ]))
-         echo '<sup>' + strtoupper($cargoAttri->codcam_tt) + '/' + $cargoAttri->codcentro_tt +' - ' +  $cargoAttri->colegiado_tt  + '</sup>';
-      
-      ?>
-
-
+    <div class="col-9">
+      <h3>Atribuição de: Projeto de ensino ou Monitoria</h3>
     </div>
     <div class="col" style="text-align:left">
-      <div><p style="text-align: justify;   text-justify: inter-word;">
-        O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
-        como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
-        <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
-        atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
-        Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
-        </p>
+      <div>
         <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
       </div>
     </div>
@@ -31,9 +18,8 @@
             <tr>
               <th style="display: none;">ID</th>
               <th class="align-top" style="text-align: left; width: 422px;">Professor(a)</th>
-              <th class="align-top" style="text-align: center; width: 30px;">PAD</th>
-              <th class="align-top"> Aluno(a)</th>
-              <th class="align-top" style="text-align: center; width: 75px;">Série</th>
+              <th class="align-top" >Atividade</th>
+              <th class="align-top" >Nome/Curso</th>
               <th class="align-top" style="text-align: center; width: 55px;">Carga Horária</th>
               <th class="align-top" style="text-align: center; width: 45px;"><button type="button" class="btn btn-primary btn-sm" onclick="formAddAtv()">➕</button></th>
             </tr>
@@ -53,7 +39,7 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-              <h4 class="modal-title" id="titleMotal">Atribuição de funções</h4>
+              <h4 class="modal-title" id="titleMotal">Atribuição de orientação</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
 
@@ -110,5 +96,5 @@
 
 
 
-<script src="./includes/tblaAtt2.js"></script>
+<script src="./includes/tblaAtt23.js"></script>
 <script src="./includes/ccc.js"></script>

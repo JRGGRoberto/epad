@@ -109,6 +109,29 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
+                    <div class="col-sm"><a class="card-link collapsed" data-toggle="collapse" href="#ativ23" aria-expanded="false">
+                        <strong>2.3. Projetos de ensino e Monitoria</strong></a>
+                    </div>
+                    <div class="col-sm small d-flex justify-content-end">
+                        Média semanal anual da carga horária de projeto de ensino / monitoria: <strong><span id="total23" style="padding-left: 20px;">0</span></strong>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ativ23" class="collapse show" >
+                <div class="card-body">
+                    
+                    <?php
+                      include './includes/atv23/tbla23.php';
+                    ?>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <div class="card-header">
+                <div class="row">
                     <div class="col-7"><a class="card-link collapsed" data-toggle="collapse" href="#ativ3" aria-expanded="false">
                         <strong>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</strong></a>
                     </div>
@@ -166,18 +189,31 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
                             <td style="text-align: right">
                                 <strong><span id="rtotal21" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
+                        </tr>    
+
                         <tr>
                             <th>2.2</th>
                             <th>Total de média semanal anual de carga horária supervisão e orientação</th>
                             <td style="text-align: right">
                                 <strong><span id="rtotal22" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
+                        </tr>
+
+                        <tr>
+                            <th>2.3</th>
+                            <th>Total de média semanal anual de carga horária de projeto de ensino / monitoria</th>
+                            <td style="text-align: right">
+                                <strong><span id="rtotal23" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
+                            </td>
+                        </tr>
+
                         <tr>
                             <th>3</th>
                             <th>Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</th>
                             <td style="text-align: right">
                                 <strong><span id="rtotal3" style="padding-left: 20px;"><div class="spinner-grow spinner-grow-sm text-primary"></div></span></strong>
                             </td>
+                        </tr>
                         <tr>
                             <th>4</th>
                             <th>Total de carga horária semanal de gestão institucional</th>
@@ -372,14 +408,16 @@ function somaTotais() {
 
     let total21 = document.getElementById('total21').innerHTML;
     let total22 = document.getElementById('total22').innerHTML;
-    let total3 = document.getElementById('total3').innerHTML;
-    let total4 = document.getElementById('total4').innerHTML;
+    let total23 = document.getElementById('total23').innerHTML;
+    let total3  = document.getElementById('total3').innerHTML;
+    let total4  = document.getElementById('total4').innerHTML;
 
     document.getElementById('rtotal21').innerHTML = total21;
     document.getElementById('rtotal22').innerHTML = total22;
+    document.getElementById('rtotal23').innerHTML = total23;
     document.getElementById('rtotal3').innerHTML = total3;
     document.getElementById('rtotal4').innerHTML = total4;
-    soma = (parseFloat(total21) + parseFloat(total22) + parseFloat(total3) + parseFloat(total4));
+    soma = (parseFloat(total21) + parseFloat(total22) + parseFloat(total23) + parseFloat(total3) + parseFloat(total4));
 
     rtotal = document.getElementById('rtotal');
     rtotal.innerHTML = soma + 'h';

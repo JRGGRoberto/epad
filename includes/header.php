@@ -234,7 +234,8 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Suporte</button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPADs</a>
-                             <!--     <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a> -->
+                                  <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a>
+                             <!--      -->
                                 </div>
                               </div>
 

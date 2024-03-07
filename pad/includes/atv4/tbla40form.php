@@ -2,7 +2,7 @@
 
     <div class="form-group">
       <label for="cargo4">Cargo</label>
-       <input type="text" name="cargo4" id="cargo4" class="form-control"> 
+       <input type="text" name="cargo4" id="cargo4" class="form-control"  maxlength="120">
     <!--  <select name="cargo4" require id="cargo4" class="form-control">
         <optgroup label="Atividades de Gestão Institucional - Direção Superior">
           <option value="Reitor">Reitor</option>
@@ -45,17 +45,18 @@
 
     <div class="form-group">
       <label for="alocado4">Local</label>
-      <input type="text" name="alocado4" id="alocado4" class="form-control" maxlength="120">
+      <input type="text" name="alocado4" id="alocado4" class="form-control" maxlength="120"  required>
     </div>
     
     <div class="form-group">
       <label for="numdata4">Número e data Ato Legal</label>
-      <input type="text" name="numdata4" id="numdata4" class="form-control" maxlength="120">
+      <input type="text" name="numdata4" id="numdata4" class="form-control" maxlength="120"  required>
     </div>
 
     <div class="form-group">
       <label for="cargah4">Carga horária semanal</label>
-      <input type="number" name="cargah4" id="cargah4" class="form-control"  pattern="[0-9]+$"  maxlength="120">
+      <input type="number" name="cargah4" id="cargah4" class="form-control"  maxlength="120" value="1" step="0.01" min="0.0" max="40" required>
+      
     </div>
 
     <center>

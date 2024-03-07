@@ -32,12 +32,13 @@
 
               <div class="form-group">
                 <label for="orientandos3">Nome dos orientandos <sub>(Se houver)</sub></label>
-                <textarea name="orientandos3" id="orientandos3" cols="30" rows="5" class="form-control"></textarea>
+                <textarea name="orientandos3" id="orientandos3" cols="30" rows="5" class="form-control" maxlength="500"></textarea>
               </div>
 
               <div class="form-group">
                 <label for="cargah3">Carga horária semanal</label>
-                <input type="number" name="cargah3" id="cargah3" class="form-control"  pattern="[0-9]+$">
+                <input type="number" name="cargah3" id="cargah3" class="form-control" value="1" step="0.01" min="0.0" max="20">
+                
               </div>
 
               <center>

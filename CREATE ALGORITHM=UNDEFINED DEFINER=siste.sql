@@ -227,6 +227,25 @@ CREATE TABLE `cargos` (
 
 
 
+CREATE  or REPLACE  VIEW `mensagens` AS 
+select 
+  f.sistema AS sistema,p.nome AS solicitante,f.created_at AS data_envio,p.email AS email,concat(upper(v.codcam),' / ',v.codcentro,' - ',v.colegiado) AS local,
+  (case 
+	 when (f.url = 1) then 'ePAD - Geral' 
+     when (f.url = 2) then 'Meu PAD -  Cálculos' 
+     when (f.url = 3) then 'Meu PAD -  Item 1' 
+     when (f.url = 4) then 'Meu PAD -  Item 2' 
+     when (f.url = 5) then 'Meu PAD -  Item 2.2' 
+     when (f.url = 6) then 'Meu PAD -  Item 3' 
+     when (f.url = 7) then 'Meu PAD -  Item 4' 
+     when (f.url = 8) then 'Meu PAD -  Item 6' 
+     when (f.url = 9) then 'Coordenação - Matrizes' 
+     when (f.url = 10) then 'Coordenação - Distribuição de disciplinas' 
+     when (f.url = 11) then 'Coordenação - Atribuição de funções' when (f.url = 12) then 'Coordenação - Relatórios' 
+     when (f.url = 13) then 'Edição de dados do professor' when (f.url = 14) then 'Login' end) AS parte,f.assunto AS assunto,
+     (case when (f.tipomsg = 1) then 'Elogio' when (f.tipomsg = 2) then 'Dúvidas' when (f.tipomsg = 3) then 'Sugestão' when (f.tipomsg = 4) then 'Erro no sistema' end) AS tp_msg,f.msg AS msg
+     
+     from faleconosco f join vinculov v on f.user = v.id_prof  join professores p on p.id = v.id_prof 
 
 
 Orientação de estudante em PIC/PIBIC
@@ -294,38 +313,31 @@ from
   
 
 
-  create or replace view mensagens as 
+CREATE or REPLACE VIEW `mensagens` AS 
 select 
-   f.sistema,
-   p.nome solicitante, f.created_at data_envio,
-   p.email,
-  CONCAT(  UPPER(v.codcam),' / ' , v.codcentro,' - ' , v.colegiado ) local,
-  CASE 
-    WHEN f.url = 1  THEN "ePAD - Geral"
-    WHEN f.url = 2  THEN "Meu PAD -  Cálculos"
-    WHEN f.url = 3  THEN "Meu PAD -  Item 1"
-    WHEN f.url = 4  THEN "Meu PAD -  Item 2"
-    WHEN f.url = 5  THEN "Meu PAD -  Item 2.2"
-    WHEN f.url = 6  THEN "Meu PAD -  Item 3"
-    WHEN f.url = 7  THEN "Meu PAD -  Item 4"
-    WHEN f.url = 8  THEN "Meu PAD -  Item 6"
-    WHEN f.url = 9  THEN "Coordenação - Matrizes"
-    WHEN f.url = 10 THEN "Coordenação - Distribuição de disciplinas"
-    WHEN f.url = 11 THEN "Coordenação - Atribuição de funções"
-    WHEN f.url = 12 THEN "Coordenação - Relatórios"
-    WHEN f.url = 13 THEN "Edição de dados do professor"
-    WHEN f.url = 14 THEN "Login"
-  END parte,
-  f.assunto,
-  CASE 
-    WHEN f.tipomsg = 1  THEN "Elogio"
-    WHEN f.tipomsg = 2  THEN "Dúvidas"
-    WHEN f.tipomsg = 3  THEN "Sugestão"
-    WHEN f.tipomsg = 4  THEN "Erro no sistema"
-  END tp_msg,
-  f.msg
-from 
-  faleconosco f
-  inner join vinculov v on f.`user` = v.id_prof 
-  inner join professores p on p.id  = v.id_prof 
-order by 2 desc
+  `f`.`id` AS `id`,
+  `f`.`sistema` AS `sistema`,
+  `p`.`nome` AS `solicitante`,
+  `f`.`created_at` AS `data_envio`,
+  `p`.`email` AS `email`,
+  concat(upper(`v`.`codcam`),' / ',`v`.`codcentro`,' - ',`v`.`colegiado`) AS `local`,
+  (case when (`f`.`url` = 1) then 'ePAD - Geral' when (`f`.`url` = 2) then 'Meu PAD -  Cálculos' when (`f`.`url` = 3) then 'Meu PAD -  Item 1' when (`f`.`url` = 4) then 'Meu PAD -  Item 2' when (`f`.`url` = 5) then 'Meu PAD -  Item 2.2' when (`f`.`url` = 6) then 'Meu PAD -  Item 3' when (`f`.`url` = 7) then 'Meu PAD -  Item 4' when (`f`.`url` = 8) then 'Meu PAD -  Item 6' when (`f`.`url` = 9) then 'Coordenação - Matrizes' when (`f`.`url` = 10) then 'Coordenação - Distribuição de disciplinas' when (`f`.`url` = 11) then 'Coordenação - Atribuição de funções' when (`f`.`url` = 12) then 'Coordenação - Relatórios' when (`f`.`url` = 13) then 'Edição de dados do professor' when (`f`.`url` = 14) then 'Login' end) AS `parte`,
+  `f`.`assunto` AS `assunto`,
+  (case when (`f`.`tipomsg` = 1) then 'Elogio' when (`f`.`tipomsg` = 2) then 'Dúvidas' when (`f`.`tipomsg` = 3) then 'Sugestão' when (`f`.`tipomsg` = 4) then 'Erro no sistema' end) AS `tp_msg`,
+  `f`.`msg` AS `msg`,(select count(1) from `respostas` `r` where (`f`.`id` = `r`.`id_falec`)) AS `respostas` 
+  
+  from 
+    `faleconosco` `f` 
+    join `vinculov` `v` on `f`.`user` = `v`.`id_prof` 
+    join `professores` `p` on`p`.`id` = `v`.`id_prof`
+
+
+    CREATE TABLE `campi` (
+  `id` char(36) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `codigo` varchar(2) DEFAULT NULL,
+  `chef_div_id` varchar(36) DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='tabela contendo todos os campi'

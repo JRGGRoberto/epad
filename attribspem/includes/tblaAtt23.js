@@ -1,19 +1,19 @@
-let data22 = [];
+let data23 = [];
 
 
 function excluirLinhaTbl(idr) {
-  let idx = data22.findIndex(d =>d.id === idr.id);
+  let idx = data23.findIndex(d =>d.id === idr.id);
   if(idx > -1){
     let tabela = document.getElementById("tabelaAtrib").getElementsByTagName("tbody")[0];
     tabela.deleteRow(idx);
-    data22.splice(idx, 1);
+    data23.splice(idx, 1);
   } else {
     console.log(`Não encontrado ${idr.id}`);
   }
 }
 
 
-function removVinc22(){
+function removVinc23(){
   const id = document.getElementById('idAtivDel').value;
   fetch(`./includes/dml/delete.php?id=${id}` , {
     method: 'DELETE',
@@ -34,9 +34,9 @@ function removVinc22(){
   $('#modalDel').modal('hide');
 }  
 
-function addVinculo22(receiveData) {
+function addVinculo23(receiveData) {
   data = receiveData.data; 
-  data22.push(data);
+  data23.push(data);
   insereTable(data);
 }
 
@@ -59,7 +59,7 @@ frmAtv.addEventListener('submit', e => {
       body: JSON.stringify(data)
     })
     .then(res => res.json())
-    .then( data => addVinculo22(data));
+    .then( data => addVinculo23(data));
 /*  }else{
     fetch('./includes/atv3/dml/update.php', {
       method:'PUT',
@@ -86,51 +86,43 @@ function insereTable(newDisc){
   let tabela = document.getElementById("tabelaAtrib").getElementsByTagName("tbody")[0];
   let newLinha = tabela.insertRow();
   
-    let celId    = newLinha.insertCell(0);
-    let celProf  = newLinha.insertCell(1);
-    let celLink  = newLinha.insertCell(2);
-    let celAluno = newLinha.insertCell(3);
-    let celSerie = newLinha.insertCell(4);
-    let celCH    = newLinha.insertCell(5);
-    let celDel   = newLinha.insertCell(6);
-   
-  celId.innerHTML    = newDisc.id;
-  celProf.innerHTML  = `${newDisc.orientador}<br>
-    <sup>${newDisc.codcam_orientador.toUpperCase()}/${newDisc.codcentro_orientador} - ${newDisc.colegiado_orientador} 
-    </sup>`;
-  celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.vinculo +'" target="_blank">📄</a> ';
-  celAluno.innerHTML = newDisc.estudante;
-  celCH.innerHTML    = newDisc.ch + 'h';
-  celSerie.innerHTML = newDisc.serie + 'ª série';
+  let celId         = newLinha.insertCell(0);
+  let celProf       = newLinha.insertCell(1);
+  let celAtividade  = newLinha.insertCell(2);
+  let celNome       = newLinha.insertCell(3);
+  let celCh         = newLinha.insertCell(4);
   
-  if(!newDisc.aprov_co_id){
-    celDel.innerHTML   =
-      `<center>
-        <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
-      </center>`;
-   }  else {
-    celDel.innerHTML   =
-    `<center>
-        <button type="button" class="btn btn-light btn-sm"  title="PAP Homologado">🔑</button>
-      </center>`;
 
-   }
-  celId.style.display = 'none'; 
-  celDel.style.textAlign = 'center';
-  celLink.style.textAlign = 'center';
-  celCH.style.textAlign = 'center';
-  celSerie.style.textAlign = 'center';
+let txtAtv = '';
+switch(newDisc.atividade){
+  case '1': 
+     txtAtv = 'Projeto de ensino';
+     break;
+  case '2':
+    txtAtv = 'Monitoria';
+     break; 
+}
+
+celId.innerHTML         = newDisc.id;
+celProf.innerHTML       = newDisc.professor;
+celAtividade.innerHTML  = txtAtv; 
+celNome.innerHTML       = newDisc.nome_atividade;
+celCh.innerHTML         = newDisc.ch;
+
+celId.style.display = 'none'; 
+celCh.textAlign = 'right';
 }
 
 function formAddAtv(){
   $('#modalAtv').modal('show');
   const formMod = document.getElementById('modalAtv');
-  
+
+    
 
 }
 function frmExcluirShow(id){
-  let idx = data22.findIndex(d =>d.id === id);
-  let myObj = data22[idx];
+  let idx = data23.findIndex(d =>d.id === id);
+  let myObj = data23[idx];
   $('#modalDel').modal('show'); 
   document.getElementById('nomeRelacao').innerHTML =  
   '<br><sup>Professor(a)</sup>'+ myObj.orientador + '<br /> <sup>Aluno(a)</sup>' + myObj.estudante;
@@ -148,9 +140,9 @@ function fecharFormAddAtv(){
 }
  
 async function getDBMD(){
-  data22 = await fetch(`../api/ativ22attr.php?ca=${co_id}${tipo}`).then(resp => resp.json()).catch(error => false);
+  data23 = await fetch(`../api/ativ23att.php?ca=${co_id}${ano}`).then(resp => resp.json()).catch(error => false);
   deleteAllRowsTable();
-  data22.forEach(e => insereTable(e));
+  data23.forEach(e => insereTable(e));
 }
 
 getDBMD();

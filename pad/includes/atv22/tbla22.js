@@ -25,10 +25,10 @@ function insereTable22(newDisc){
   celCurso.innerHTML       = newDisc.curso;
   celSerie.innerHTML       = newDisc.serie;
   let cargaHoraria = newDisc.ch;
-  if (newDisc.atividade === 'c'){
+ /* if (newDisc.atividade === 'c'){
     cargaHoraria = cargaHoraria * 1.5;
     newDisc.ch = cargaHoraria;
-  }
+  } */
   celCh1.innerHTML         = cargaHoraria;
   
 

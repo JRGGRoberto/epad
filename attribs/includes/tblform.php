@@ -40,10 +40,8 @@
       <label for="listaProf">Professor(ª)</label>  
       <select name="listaProf" id="listaProf" class="form-control" require="" onchange="ativaBTN();" >
       </select>
-
-
-      
     </div>
+
     <input type="hidden" name="ano" value="<?=$ano?>">
     <input type="hidden" name="co" value="<?=$co?>">
     

@@ -176,6 +176,8 @@ if(isset($_POST['nome'])){
 
   //header('location: ../index.php?status=success');
   header('location: ./../index.php?status=success');
+
+  
   exit;
 }
 

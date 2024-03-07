@@ -46,7 +46,7 @@ const inserirCE = (data) => {
    ce.innerHTML += `<option value="${e["id"]}">${e["codigo"]}</option>`
   });
 
-  listaProf = document.getElementById('listaProf');
+  listaProf = document.getElementById('vinculo');
   listaProf.innerHTML = '';
   ce.addEventListener("change", e => pegarCO(ce.value))
 }
@@ -82,7 +82,7 @@ const pegarProfs = async (id) => {
 
 
 const inserirProfs = (data) => {
-  listaProf = document.getElementById('listaProf');
+  listaProf = document.getElementById('vinculo');
   listaProf.innerHTML = `<option value="">Selecione</option>`;
   data.forEach(e => {
     listaProf.innerHTML += `<option value="${e["id"]}">${e["nome"]}</option>`
