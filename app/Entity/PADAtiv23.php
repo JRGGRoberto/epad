@@ -11,6 +11,7 @@ class PADAtiv23 {
   public $vinculo;
   public $id_co;
   public $atividade;
+  public $ano;
   public $nome_atividade;
   public $id_curs;
   public $ch;
@@ -26,6 +27,7 @@ class PADAtiv23 {
         'id'             => $newId,
         'vinculo'        => $this->vinculo,
         'id_co'          => $this->id_co,
+        'ano'            => $this->ano,
         'atividade'      => $this->atividade,
         'nome_atividade' => $this->nome_atividade,
         'id_curs'        => $this->id_curs,
@@ -43,6 +45,7 @@ class PADAtiv23 {
         'atividade'   => $this->atividade,
         'nome_atividade'  => $this->nome_atividade,
         'id_curs'      => $this->id_curs,
+        'ano'            => $this->ano,
         'ch'          => $this->ch,
         'updated_at'  => date("Y-m-d H:i:s"),
         'user'        => $this->user

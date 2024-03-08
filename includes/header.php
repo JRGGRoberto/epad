@@ -176,11 +176,12 @@ img.remover {
                                   $opcaoMenu = 'Orientação de estudante em PIBEX/PIBIS';
                                   break;
                               }
-                              echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.'" >'.$opcaoMenu.'</a>';
+                              echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod. $c->id. '" >'.$opcaoMenu.' - '. $c->colegiado_tt .'</a>';
                             }
                             echo '   </div>';
                             echo '</div>';
                          }
+                         
                          
 
                          if($obUsuario['config'] === '1'){
@@ -190,6 +191,8 @@ img.remover {
                                 <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item btn-sm" href="../curso" >Atribuir Aulas</a>
                                   <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções</a>
+                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias</a>
+
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs</a>
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/817X3ykCmoy7xkdd8" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas</a>
@@ -248,7 +251,8 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
                        <div class="dropdown-divider"></div>
-                       <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a>
+                      <!-- <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
+                      <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a>
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
                     </div>

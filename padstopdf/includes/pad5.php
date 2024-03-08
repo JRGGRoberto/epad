@@ -16,16 +16,20 @@
         <td style='text-align: right;'><?= $total22 ?></td>
       </tr>
       <tr>
-        <td>3. Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</td>
+        <td>3. Total de média semanal anual de carga horária de projetos de ensino e monitoria</td>
+        <td style='text-align: right;'><?= $total22 ?></td>
+      </tr>
+      <tr>
+        <td>4. Total de carga horária semanal pesquisa/extensão/cultura/programas especiais</td>
         <td style='text-align: right;'><?= $total3 ?></td>
       </tr>
       <tr>
-        <td>4. Total de carga horária semanal de gestão institucional</td>
+        <td>5. Total de carga horária semanal de gestão institucional</td>
         <td style='text-align: right;'><?= $total4 ?></td>
       </tr>
       <tr>
         <td>Total de carga horária semanal</td>
-        <td style='text-align: right;'><?= $total21 + $total22 + $total3 + $total4 ?></td>
+        <td style='text-align: right;'><?= $total21 + $total22 +$total23 + $total3 + $total4 ?></td>
       </tr>
     </tbody>
 </table>

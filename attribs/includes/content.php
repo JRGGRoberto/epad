@@ -4,7 +4,7 @@
     <div class="col" style="text-align:left">
       <div>
         <span class="badge badge-pill badge-light">Professores que irão gerir as funções</span>
-        <a class="card-link" href="../ajuda/?help=coord_atrib" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
+        <a class="card-link" href="../ajuda/?help=coord_atrib" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
       <div>
 

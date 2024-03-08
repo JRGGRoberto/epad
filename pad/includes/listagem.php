@@ -25,7 +25,7 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
 
         </div>
         <div class="col-1" style="text-align: center;">
-           <a class="card-link" href="../ajuda/?help=menu_meupad" aria-expanded="true"><span class="badge badge-warning">Ajuda</span></a>
+           <a class="card-link" href="../ajuda/?help=menu_meupad" aria-expanded="true"><span class="badge badge-warning" hidden>Ajuda</span></a>
         </div>
 
         <div class="col-1" style="text-align: center;">   

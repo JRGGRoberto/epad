@@ -1,14 +1,14 @@
 <?php
 
 require '../../vendor/autoload.php';
-use \App\Entity\Cargo;
+use \App\Entity\PADAtiv23;
 use \App\Session\Login;
 
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if(isset($_POST['listaFunc'])){
+    if(isset($_POST['vinculo'])){
 
         if($user['config']  !==  '1'){
             echo 'erro config';
@@ -18,47 +18,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo 'erro tipo';
             exit;
         }
-        if($user['co_id']  !==   $_POST['co']){
-            echo 'erro colegiado ';
-            exit;
-        }
+      
+        $pad23 = new PADAtiv23();
+        $pad23->vinculo         = $_POST['vinculo'];
+        $pad23->id_co           = $user ['co_id'];;
+        $pad23->atividade       = $_POST['atividade'];
+        $pad23->nome_atividade  = $_POST['nome_atividade'];
+        $pad23->ch              = $_POST['ch'];
+        $pad23->ano              = 2024;
 
-        $vinc = $_POST['listaProf'];;
-        $co   = $_POST['co'];
-        $ano  = $_POST['ano'];
-        $tipo = $_POST['listaFunc'];
+        $pad23->user            = $user['id'];
+        $pad23->add();
 
-        $where = ("(ano, id_vinculo, tipo ) = ('".$ano."', '".$vinc."', '".$tipo."')");
-        $verif = Cargo::getQntd($where); 
-
-        
-        if($verif > 0 ){
-            // send a error message
-           header('location: ..');
-           exit;
-        } 
-
-        $func = new Cargo();
-        $func->id_vinculo    = $vinc;
-        $func->id_colegiado  = $co;
-        $func->ano           = $ano;
-        $func->tipo          = $tipo;
-        $func->user  = $user['id'];
-        if($func->cadastrar()){
-            header('location: ..');
-            exit; 
-        } else {
-           echo $_POST['listaFunc'];
-           echo '<br>';
-           echo $_POST['listaProf'];
-           echo '<br>';
-           echo $_POST['ano'];
-           echo '<br>';
-           echo $_POST['co'];
-           echo '<pre>';
-           print_r($user);
-           echo '</pre>';
-        }
+        header('location: ..');   
     } 
  }
 ?>

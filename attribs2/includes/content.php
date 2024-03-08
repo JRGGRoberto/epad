@@ -4,7 +4,7 @@
       <h3>Orientação</h3>
       <?= $tpOrientacao ?><br>
       <?php if(in_array($cargoAttri->tipocod, ['a', 'b', 'c', 'd' ]))
-         echo '<sup>' + strtoupper($cargoAttri->codcam_tt) + '/' + $cargoAttri->codcentro_tt +' - ' +  $cargoAttri->colegiado_tt  + '</sup>';
+         echo '<sup>' . strtoupper($cargoAttri->codcam_tt) . '/' . $cargoAttri->codcentro_tt .' - ' .  $cargoAttri->colegiado_tt  . '</sup>';
       
       ?>
 
@@ -18,7 +18,7 @@
         atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
         Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
         </p>
-        <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
+        <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
     </div>
   </div>

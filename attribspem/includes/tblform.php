@@ -1,9 +1,9 @@
-<form class="form-group" id="frmAtv" name="frmAtv" method="post">
+<form class="form-group" id="frmAtv" name="frmAtv" method="post" action="./includes/insert.php">
     <div class="form-group">
       <label for="listaFunc">Atividade</label>
       <select name="atividade" id="atividade" class="form-control" required>
          <option value="1">Projeto de ensino</option>
-         <option value="1">Monitoria</option>
+         <option value="2">Monitoria</option>
       </select>
 
     </div>
@@ -36,14 +36,14 @@
 
     <div class="form-group" >
       <label for="vinculo">Professor(ª)</label>  
-      <select name="vinculo" id="vinculo" class="form-control" require="" onchange="ativaBTN();" >
+      <select name="vinculo" id="vinculo" class="form-control" require=""  >
       </select>
     </div>
 
     <div class="row">
     
       <div class="form-group  col" >
-        <label for="estudante">Nome do projeto de ensino ou curso</label>
+        <label for="estudante">Nome do projeto de ensino ou curso para monitoria</label>
         <input type="text" name="nome_atividade" id="nome_atividade" class="form-control" maxlength="118" require>
       </div>
   

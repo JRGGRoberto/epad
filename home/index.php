@@ -10,7 +10,8 @@ if($user['tipo'] == 'agente') {
   header('location: ../matrizes/');
   exit;
 } elseif($user['tipo'] == 'prof') {
-  // header('location: ../pad/');
+        header('location: ../pad/');
+        exit;
   include '../includes/header.php';
   include __DIR__.'/includes/content.php';
 

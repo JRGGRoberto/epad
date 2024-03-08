@@ -39,7 +39,7 @@ function addVinculo23(receiveData) {
   data23.push(data);
   insereTable(data);
 }
-
+/*
 const frmAtv = document.getElementById('frmAtv');
 frmAtv.addEventListener('submit', e => {
   e.preventDefault();
@@ -73,9 +73,9 @@ frmAtv.addEventListener('submit', e => {
     .then( data => updateAtividade3(data));
   }
   */
-  fecharFormAddAtv();
+ // fecharFormAddAtv();
 
-});
+//});
 
 function deleteAllRowsTable(){
   $("#tabelaAtrib tbody tr").remove(); 
@@ -91,7 +91,7 @@ function insereTable(newDisc){
   let celAtividade  = newLinha.insertCell(2);
   let celNome       = newLinha.insertCell(3);
   let celCh         = newLinha.insertCell(4);
-  
+  let celDel        = newLinha.insertCell(5);
 
 let txtAtv = '';
 switch(newDisc.atividade){
@@ -111,6 +111,21 @@ celCh.innerHTML         = newDisc.ch;
 
 celId.style.display = 'none'; 
 celCh.textAlign = 'right';
+if(!newDisc.aprov_co_id){
+  celDel.innerHTML   =
+    `<center>
+      <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
+    </center>`;
+ }  else {
+  celDel.innerHTML   =
+  `<center>
+      <button type="button" class="btn btn-light btn-sm"  title="PAD já Aprovado">🔑</button>
+    </center>`;
+
+ }
+celDel.style.textAlign = 'center';
+celCh.style.textAlign = 'right';
+
 }
 
 function formAddAtv(){
@@ -125,8 +140,10 @@ function frmExcluirShow(id){
   let myObj = data23[idx];
   $('#modalDel').modal('show'); 
   document.getElementById('nomeRelacao').innerHTML =  
-  '<br><sup>Professor(a)</sup>'+ myObj.orientador + '<br /> <sup>Aluno(a)</sup>' + myObj.estudante;
-  document.getElementById('idAtivDel').value = myObj.id;
+  '<br><sup>Professor(a)</sup>  '+ myObj.professor + '<br /> <sup>Projeto/Curso(a)</sup>  ' + myObj.nome_atividade;
+ 
+  document.getElementById('idAtivDel').value = id;
+  
 }
 
 

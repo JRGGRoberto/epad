@@ -79,6 +79,7 @@ function formAddAtv(){
   const formMod = document.getElementById('modalAtv');
 }
 
+/*
 function ativaBTN(){
   const opt1 = document.getElementById('listaFunc');
   const opt2 = document.getElementById('listaProf');
@@ -89,6 +90,7 @@ function ativaBTN(){
     addBtnF.disabled = true;
   }
 }
+*/
 
 function frmExcluirShow(id){
   let idx = dataCargo.findIndex(d =>d.id === id);

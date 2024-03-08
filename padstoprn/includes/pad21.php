@@ -43,7 +43,7 @@ foreach($pad21 as $p){
   echo "<tr>
   <td style='text-align: center;'>". $p->atividade ."</td>
   <td>". $p->disciplina . $atv ."</td>
-  <td>". $p->curso ."</td>
+  <td>". $p->curso ." (". $p->campus .")</td>
   <td style='text-align: center;'>". $turno ."</td>
   <td style='text-align: center;'>". $ch1 ."</td>
 </tr>

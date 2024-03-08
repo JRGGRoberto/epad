@@ -5,7 +5,7 @@
     </div>
     <div class="col" style="text-align:left">
       <div>
-        <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right">Ajuda</span></a>
+        <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@
 
           <!-- Modal Header -->
           <div class="modal-header">
-              <h4 class="modal-title" id="titleMotal">Atribuição de orientação</h4>
+              <h4 class="modal-title" id="titleMotal">Projeto de ensino ou Monitoria</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
 
@@ -68,7 +68,7 @@
     
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title" >Remover a orientação</h4>
+            <h4 class="modal-title" >Excluir projeto de ensino  / monitoria</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
     
@@ -76,7 +76,7 @@
           <div class="modal-body">
             <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
               <div class="form-group">
-              <div  id="msgApagar">Tem certeza que deseja remover a orientação do professor(a) para o aluno(a)?</div>
+              <div  id="msgApagar">Tem certeza que deseja excluir este projeto de ensino/monitoria?</div>
                 <div class="justify-content-center mb-3 font-weight-bold" id="nomeRelacao">AAA</div>
                 <input hidden name="idAtivDel" id="idAtivDel">
                
@@ -84,7 +84,7 @@
     
               <center>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-                <button type="button" class="btn btn-danger btn-sm"  onclick="removVinc22()">Remover</button>
+                <button type="button" class="btn btn-danger btn-sm"  onclick="removVinc23()">Remover</button>
               </center>
     
             </form>

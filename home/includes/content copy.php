@@ -21,9 +21,51 @@
   </ul>
 -->
 
-<h3>Manutenção</h3>
-<p>A parte de atribuição de Orientações está fora momentaneamente </p>
+<h3>Conhecendo o sistema</h3>
+<p>O sistema contempla os tópicos para elaboração do PAD com algumas alterações quanto à forma de preenchimento:</p>
+<dl>
+  <dt>1. Dados do Docente</dt>
+    <dd> Dados preenchidos automáticamente, importados pela PROGESP.</dd>
+  <dt>2.1. Atividades Didáticas</dt>
+    <dd> Dados preenchidos quando o Coordenador do curso associa o professor à(s) disciplina(s).</dd>
+  <dt>2.2. Atividades de Supervisão e Orientação</dt>
+    <dd> Dados preenchidos quando o Coordenador de Estágio ou TCC associa o professor a um aluno.</dd>
+  <dt>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</dt>
+    <dd> Dados preenchidos pelo professor que está usando o sistema.</dd>
+  <dt>4. Atividades de Gestão Institucional</dt>
+    <dd> Dados preenchidos pelo professor que está usando o sistema.</dd>
+  <dt>5. Resumo das atividades e totalização</dt>
+    <dd> Os cálculos são realizados automaticamente.</dd>
+  <dt>6. Outras Observações</dt>
+    <dd> Informação preenchida pelo professor que está usando o sistema.</dd>
+</dl>
 
+<h3>Tipos de usuários e níveis de acesso</h3>
+<p>Dentro do sistema, há atribuições de diferentes tipos de usuários e seus respectivos níveis de acesso, para que cada um desempenhe um papel no seu funcionamento, gerando segurança e usabilidade. Segue uma lista tipos de usuários e acessos:</p>
+<ul>
+  <li>Agente <br><sup>Disponibilizam as matrizes dos cursos com suas respectivas disciplinas.</sup></li>
+  <li>Professor<br><sup>Edição do seu respectivo PAD nos itens 3 e 4.</sup></li>
+  <li>Professor com função de atribuição(ões)<br><sup>Associa um professor a um aluno para orientação/supervisão, preenchendo o item 2.2 do professor o qual foi associado.</sup></li>
+  <li>Professor Coordenador de Colegiado<br><sup>Associa os professores as disciplinas do curso, isso preenche o item 2.1 do professor selecionado; Atribui quem serão os professores coordenadores de Estágios/TCC, aprova o PAD dos professores.</sup></li>
+  <li>Professor Diretor de Centro de Área<br><sup>Homologa os PAD já aprovados pelo Coordenador de curso.</sup></li>
+</ul>
+
+
+<h3>Menus e ajuda</h3>
+<p>De acordo com o seu tipo de usuário, seu menu poderá ter mais ou menos itens:</p>
+<figure>
+  <figcaption>Menu básico</figcaption>
+<img src="../imgs/shortmenu.png" alt="Menu com menos opções">
+</figure>
+
+<figure>
+  <figcaption>Menu com mais opções</figcaption>
+  <img src="../imgs/fullmenu.png" alt="Menu com mais opções">
+</figure>
+
+
+<p>Em caso de dúvidas, acesse o link &nbsp;<a href="../ajuda" style="text-decoration: none;"><span style="text-align: right; box-shadow: lightgray 3px 3px; border-radius: 5px; background-color: rgb(255, 238, 186); border: 2px solid rgb(255, 223, 126); padding: 5px; font-size: 12px;">Ajuda</span></a> &nbsp; para mais informações detalhadas de cada tópico, ou caso acredite ser necessário, acesse o menu 
+<a href="../faleconosc" style="text-decoration: none;"><span class="badge badge badge-primary">Fale conosco</span></a></p>
 
 
 
