@@ -10,6 +10,7 @@ echo '</pre>'; */
         <tr>
             <th class="align-top">Atividades de Pesquisa,<br>Extensão e Cultura e Programas Especiais</th>
             <th class="align-top" style="text-align: center;">Função</th>
+            <th class="align-top" style="text-align: center;">Nome</th>
             <th class="align-top">Nome do orientando(s)<br><sup>(se houver)</sup></th>
             <th class="align-top" style="text-align: center;">Carga horária<br><sup>semanal</sup></th>
         </tr>
@@ -62,6 +63,7 @@ foreach($pad3 as $p){
   echo "<tr>'''
   <td style='text-align: left;'>". $tipo ."</td>
   <td style='text-align: center;'>". $func ."</td>
+  <td >". $p->nome ."</td>
   <td>". $p->orientandos ."</td>
   <td style='text-align: center;'>". $p->ch ."</td>
 </tr>
