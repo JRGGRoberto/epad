@@ -13,7 +13,8 @@
     </tr>
     <tr>
         <th colspan="1">Maior Titulação</th>             <td colspan="2"><?=$vinc->titulacao?></td>
-        <th colspan="1">Data de obtenção do título</th>  <td colspan="2"><?=$vinc->dt_obtn_tit?></td>
+        <th colspan="1">Data de obtenção do título</th>  <td colspan="2"><?=date_format(new DateTime( $vinc->dt_obtn_tit ), 'd/m/Y'); ?></td>
+                                                                         
     </tr>
     <tr>
         <th colspan="2">Tempo de docência nos

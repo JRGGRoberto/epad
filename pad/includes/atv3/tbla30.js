@@ -51,22 +51,33 @@ function insereTable3(newDisc){
     };
 
     let func = '';
-    switch (newDisc.funcao) {
-      case '1':
+
+    if(String(newDisc.funcao) === '1'){
+      func = 'Coordenador';
+    } else if (String(newDisc.funcao) === '2') {
+      func = 'Membro';
+    } else if (String(newDisc.funcao) === '3') {
+      func = 'Programas especiais';
+    } else {
+      func = 'Não definido';
+    }
+
+   /* switch (newDisc.funcao) {
+      case 1:
         func = 'Coordenador';
-      case '2':
+      case 2:
         func = 'Membro';
         break;
-      case '3':
+      case 3:
         func = 'Programas especiais';
         break;
       default:
         func = 'Não definido';
-    };
+    };*/
   
   celId.innerHTML         = newDisc.id;
   celNome.innerHTML       = tipo +': '+ newDisc.nome;
-  celFunc.innerHTML       = func;
+  celFunc.innerHTML       = func  ;
   celNomeOrient.innerHTML = newDisc.orientandos;
   celCH.innerHTML         = newDisc.ch;
   celDelet.innerHTML  = 
