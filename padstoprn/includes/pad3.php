@@ -71,7 +71,7 @@ foreach($pad3 as $p){
 }
 ?>
        <tr>
-         <td colspan="3" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS</td>
+         <td colspan="4" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS</td>
          <td colspan="1" style='text-align: center;'><?= $total3 ?></td>
        </tr>
     </tbody>

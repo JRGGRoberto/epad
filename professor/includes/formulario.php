@@ -179,11 +179,10 @@ $user = Login::getUsuarioLogado();
        </div>
      </div>
      <div class="col">
-       <!--
+
         <div class="form-group">
-         <label>.</label>
-         <input type="password" class="form-control" name="csenha" disabled>
-       </div>-->
+         <?php print_r($listvV); ?>
+       </div>
      </div> 
       
       

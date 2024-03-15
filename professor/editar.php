@@ -3,7 +3,7 @@ require '../vendor/autoload.php';
 
 use \App\Session\Login;
 use \App\Entity\Professor;
-use \App\Entity\Outros;
+use \App\Entity\Vinculo;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
@@ -54,62 +54,9 @@ if (strcmp($user['id'],$_GET['id'])===0){
   $CEop = "<option value='".$Caeo->ce_id ."' readonly class='xpto3'>".$Caeo->centros .  "</option>";
   $Coop = "<option value='".$Caeo->co_id ."' readonly class='xpto3'>".$Caeo->colegiado ."</option>";
 
-} elseif ($user['adm'] != 1){
-  switch($user['niveln']){
-    case 1 :
-      $CAop = "<option value='".$Caeo->ca_id ."' readonly class='xpto1'>". $Caeo->campus ."</option>";
-      $script .= '
-      pegarCE("'.$Caeo->ca_id .'").then(
-        (onResolved) => {
-          selectOpt("ce","'.$Caeo->ce_id .'")
-        }, (onRejected) => { }
-      ).then(
-      (onResolved) => {
-            pegarCO("'.$Caeo->ce_id .'").then(
-              (onResolved) => {
-                selectOpt("co","'.$Caeo->co_id .'")
-              }, (onRejected) => { }
-            )
-        }, (onRejected) => { }
-      )
-      ';
-      
-      if ($user['ca_id'] == $obProfessor->ca_id ){
-        $acessoOk = true;
+} 
 
-        $msg = 'CA';
-      }
-      break;
-    case 2 :
-      $CAop = "<option value='".$Caeo->ca_id ."' readonly class='xpto2'>".$Caeo->campus ."</option>";
-      $CEop = "<option value='".$Caeo->ce_id ."' readonly class='xpto2'>".$Caeo->centros ."</option>";
-
-      $script .= '
-      pegarCO("'.$Caeo->ce_id .'").then(
-        (onResolved) => {
-          selectOpt("co","'.$Caeo->co_id .'")
-        }, (onRejected) => { }
-      )
-      ';
-     
-      if ($user['ce_id'] == $obProfessor->ce_id ){
-        $acessoOk = true;
-
-        $msg = 'CE';
-      }
-      break;
-    case 3 :
-      $CAop = "<option value='".$Caeo->ca_id ."' readonly class='xpto3'>".$Caeo->campus .   "</option>";
-      $CEop = "<option value='".$Caeo->ce_id ."' readonly class='xpto3'>".$Caeo->centros .  "</option>";
-      $Coop = "<option value='".$Caeo->co_id ."' readonly class='xpto3'>".$Caeo->colegiado ."</option>";
-      if ($user['co_id'] == $obProfessor->co_id ){
-        $acessoOk = true;
-
-        $msg = 'CO';
-      }
-      break;
-    }
-} elseif ($user['adm'] == 1) {
+if ($user['adm'] == 1) {
   $acessoOk = true;
 
   $msg = 'ADM';
@@ -137,18 +84,21 @@ if (strcmp($user['id'],$_GET['id'])===0){
       }, (onRejected) => { }
   )
   ';
-} else {
-  $acessoOk = false;
-  $msg = 'nada';
-}
-
+} 
 
 $script .= '</script>';
 
-if (!$acessoOk){
-  header('location: ../home/index.php?status=error');
-  exit;
+$vinculoss = Vinculo::gets('   id_prof =  "'. $obProfessor->id.'" ');
+$listvV = '<ul title="Vínculos">';
+foreach($vinculoss as $v){
+ // $listvV .= '<a href="../dadosvinc/index.php?id="'. $v->id_prof.'">'. $v->ano .'</a> RT [ ' . $v->rt .' ]';
+ $listvV .=  $v->ano .' RT [ ' . $v->rt .' ]';
 }
+$listvV .= '</ul>';
+
+
+
+
 
 //VALIDAÇÃO DO POST
 if(isset($_POST['nome'])){
@@ -180,6 +130,7 @@ if(isset($_POST['nome'])){
   
   exit;
 }
+
 
 include '../includes/header.php';
 include __DIR__.'/includes/formulario.php';

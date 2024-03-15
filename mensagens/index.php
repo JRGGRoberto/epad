@@ -46,4 +46,7 @@ foreach($mensagens as $msg){
 
 include '../includes/header.php';
 include __DIR__.'/includes/lista.php';
+echo '<pre>';
+print_r($user );
+echo '</pre>';
 include '../includes/footer.php';

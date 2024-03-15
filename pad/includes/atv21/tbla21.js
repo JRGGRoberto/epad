@@ -55,6 +55,7 @@ function insereTable21(newDisc){
   celAtividade.style.textAlign = 'center';
 
   celDisciplina.style.lineHeight = '0.9';
+  celCurso.style.lineHeight = '0.9';
   celTurno.style.textAlign = 'center';
   celCh1.style.textAlign = 'right';
   

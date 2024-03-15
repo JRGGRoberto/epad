@@ -82,7 +82,7 @@ error_reporting(E_ALL);
       <div class="col">
         <div class="form-group">
           <label for="ca1">Tempo de docência nos componentes curriculares</label>
-          <input type="text" class="form-control" name="tempo_cc" value="<?=$vinculo->tempo_cc?>" maxlength="10">
+          <input type="text" class="form-control" name="tempo_cc" value="<?=$vinculo->tempo_cc?>" maxlength="20">
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@ error_reporting(E_ALL);
       <div class="col">
         <div class="form-group">
           <label >Tempo efetivo de docência no ensino superior na UNESPAR</label>
-          <input type="text" class="form-control" name="tempo_esu" value="<?=$vinculo->tempo_esu?>" maxlength="10" >
+          <input type="text" class="form-control" name="tempo_esu" value="<?=$vinculo->tempo_esu?>" maxlength="20" >
         </div>
       </div>
     </div>
