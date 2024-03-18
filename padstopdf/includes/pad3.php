@@ -60,7 +60,7 @@ foreach($pad3 as $p){
 */
 
 
-  echo "<tr>'''
+  echo "<tr>
   <td style='text-align: left;'>". $tipo ."</td>
   <td style='text-align: center;'>". $func ."</td>
   <td >". $p->nome ."</td>
