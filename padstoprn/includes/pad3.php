@@ -10,7 +10,7 @@ echo '</pre>'; */
         <tr>
             <th class="align-top">Atividades de Pesquisa,<br>Extensão e Cultura e Programas Especiais</th>
             <th class="align-top" style="text-align: center;">Função</th>
-            <th class="align-top" style="text-align: center;">Nome</th>
+            <th class="align-top" >Título</th>
             <th class="align-top">Nome do orientando(s)<br><sup>(se houver)</sup></th>
             <th class="align-top" style="text-align: center;">Carga horária<br><sup>semanal</sup></th>
         </tr>
@@ -30,6 +30,12 @@ foreach($pad3 as $p){
     case '3':
       $tipo = 'Outro - informar em observações';
       break;
+    case '4':
+       $tipo = 'PIC';
+        break;
+    case '5':
+        $tipo = 'PIBEX';
+        break;
     default:
       $tipo = 'Não definido';
   };
