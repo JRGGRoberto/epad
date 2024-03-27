@@ -11,6 +11,7 @@ function stripZeros(str) {
 }
 
 function deleteAllRows(){
+  data22 = [];
   $("#tabelaPADS tbody tr").remove(); 
 }
 
@@ -81,11 +82,6 @@ function insereTable(newDisc){
          </center>`;
       }
   }
-
-  /*
-  celAprovCoid.innerHTML = newDisc.aprov_co_id;
-  celAprovCeId.innerHTML = newDisc.aprov_ce_id;
-*/
 
   celId.style.display = 'none'; 
   celLink.style.textAlign = 'center';
@@ -160,18 +156,6 @@ function Aprovar(ad){
   getDBMD();
 }
 
-
-async function getDBMD() {
-  deleteAllRows();
-  data = await fetch(`../api/pads.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
-  if (data.length > 0){
-    data.forEach(e => insereTable(e));
-   } 
-}
-
-getDBMD();
-
-
 function frmAtivShow(id) {
   $('#modalAtv').modal('show');
  
@@ -208,5 +192,13 @@ function fecharModal(){
 
 
 
+async function getDBMD() {
+  deleteAllRows();
+  data = await fetch(`../api/pads.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
+  if (data.length > 0){
+    data.forEach(e => insereTable(e));
+   } 
+}
 
+getDBMD();
 

@@ -13,7 +13,7 @@
               </div>
 
               <div class="form-group">
-                <label for="nome3">Nome</label>
+                <label for="nome3">Título</label>
                 <input type="text" name="nome3" id="nome3" class="form-control" maxlength="170">
                 <input type="hidden" name="id3" id="id3">
                 <input type="hidden" name="idx3" id="idx3">

@@ -29,6 +29,9 @@
         <table id="tabelaPADS" name="tabelaPADS" class="table table-bordered table-sm  table-hover">
           <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
             <tr>
+              <th colspan="11"><input class="form-control" id="impBuscarDis" type="text" placeholder="Localizar"></th>
+            </tr>
+            <tr>
               <th style="display: none;">ID</th>
               <th class="align-top">Professor(ª)</th>
               <th class="align-top" style="text-align: center; width: 35px;">PAD</th>
@@ -39,6 +42,7 @@
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Ativ. 4</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Total att</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">RT</th>
+              <th class="align-top" style="text-align: center; width: 45px;">Coleg.</th>
               <th class="align-top" style="text-align: center; width: 45px;">🖊️</th>
               <th style="display: none;">🖊️</th>
             </tr>
@@ -59,7 +63,7 @@
           <!-- Modal Header -->
           <div class="modal-header row">
             <div class="col-1"></div>
-            <div class="col"><h4 class="modal-title" id="titleMotal" style="text-align: center;">Aprovação do PAD</h4></div>
+            <div class="col"><h4 class="modal-title" id="titleMotal" style="text-align: center;">Homologação do PAD</h4></div>
             <div class="col-1"><button type="button" class="close" data-dismiss="modal">×</button></div>
           </div>
           
@@ -71,8 +75,8 @@
                como coordenador(a) do curso de <strong><?=$user['co_nome']?>
             </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
                confirmo que este plano está de acordo com a resolução atual, <a target="_blank"
-        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a> 
-        e solicito que o Diretor de Centro de Área também outorgue para que seja feita a publicação.</p>
+        href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a>
+              </p>
 
               <div class="row" style="padding: 20px 30px;">
                 <div class="col-5" style="display: flex;"><p id="dataHoje" style="margin: 0;">, </p></div>
@@ -117,7 +121,7 @@
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
             
             <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">
-            <input type="hidden" name="vinc_id_cod" id="vinc_id_cod" value="<?=$user['id']?>">
+            <input type="hidden" name="vinc_id_ce" id="vinc_id_ce" value="<?=$user['id']?>">
            
           </div>
 
@@ -133,7 +137,18 @@
 </div>
 <!--  The Modal DELET Fim-->
 
+<script>
 
+$(document).ready(function(){
+  $("#impBuscarDis").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tabelaPADS tbody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+
+</script>
 
 
 <script src="./includes/tblasce.js"></script>

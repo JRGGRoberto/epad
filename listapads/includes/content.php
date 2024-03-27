@@ -15,7 +15,7 @@
   <table id="tabelaMatD" name="tabelaMatD" class="table table-bordered table-sm table-hover">
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
           <tr>
-            <th colspan="5"><input class="form-control" id="impBuscarDis" type="text" placeholder="Localizare"></th>
+            <th colspan="5"><input class="form-control" id="impBuscarDis" type="text" placeholder="Localizar"></th>
           </tr>
 
          <tr>

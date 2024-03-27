@@ -18,7 +18,7 @@ if(!$vinc instanceof Vinculo){
  }
 
   $where = ' vinculo = "'. $vinc->id . '" ';
-  $sql = 'select * from pad21d where '. $where . ' order by disciplina, atividade';
+  $sql = 'select * from pad21d where '. $where . ' order by atividade, disciplina';
 
 $pad21 = Outros::qry($sql);
 $pad22 = PADAtiv22::get($where);

@@ -11,6 +11,7 @@ function stripZeros(str) {
 }
 
 function deleteAllRows(){
+  data22 = [];
   $("#tabelaPADS tbody tr").remove(); 
 }
 
@@ -29,65 +30,56 @@ function insereTable(newDisc){
     let celA4   = newLinha.insertCell(7);
     let celAT   = newLinha.insertCell(8);
     let celRT   = newLinha.insertCell(9);
-    let celCnf  = newLinha.insertCell(10);
-//    let celAprovCoid = newLinha.insertCell(9);
-//    let celAprovCeId = newLinha.insertCell(10);
+    let celAprovCoid = newLinha.insertCell(10);
+    let celCnf  = newLinha.insertCell(11);
+    
+    //let AssingCoorden =  typeof newLinha.aprov_co_id !== 'undefined' ? ( newLinha.aprov_co_id === 36 ? '✅' :  '⏳'): '⏳';
+    let AssingCoorden =  newDisc.aprov_co_id === null ? '⏳':  '✅' ;
+
     
     let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a23) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
-  celId.innerHTML   = newDisc.id;
-  celNome.innerHTML = newDisc.nome + '<br><sub>'+ newDisc.colegiado +'</sub>';
-  celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.id +'" target="_blank">📄</a> ';
-  celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
-  celA22.innerHTML  = newDisc.a22 +'h ';
-  celA23.innerHTML  = newDisc.a23 +'h ';
-  celA3.innerHTML   = newDisc.a3 +'h ';
-  celA4.innerHTML   = newDisc.a4 +'h ';
-  celAT.innerHTML   = totUsado +'h ';
+    celId.innerHTML   = newDisc.id;
+    celNome.innerHTML = newDisc.nome + '<br><sub>'+ newDisc.colegiado +'</sub>';
+    celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.id +'" target="_blank">📄</a> ';
+    celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
+    celA22.innerHTML  = newDisc.a22 +'h ';
+    celA23.innerHTML  = newDisc.a23 +'h ';
+    celA3.innerHTML   = newDisc.a3 +'h ';
+    celA4.innerHTML   = newDisc.a4 +'h ';
+    celAT.innerHTML   = totUsado +'h ';
+    celAprovCoid.innerHTML =  AssingCoorden;
+
 
   if(newDisc.rt === 'TIDE'){
     celRT.innerHTML   = newDisc.rt;
   } else {
     celRT.innerHTML   = newDisc.rt +'h ';
   }
-  celCnf.innerHTML  = 
-  `<center>
-    <button type="button" class="btn btn-light btn-sm" title="??">implementando</button>
-  </center>`;
-
   if(newDisc.rt == 'TIDE'){
     newDisc.rt = 40;
   }
-/*
-  if(!(newDisc.aprov_ce_id === null) ){
-    celCnf.innerHTML  = 
-       `<center>
-         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">🔒</button>
-       </center>`;
-  } else if (!(newDisc.aprov_co_id === null)){
-    celCnf.innerHTML  = 
-       `<center>
-         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
-       </center>`;
-  } else {
-      if ((parseFloat(totUsado)) === (parseFloat(newDisc.rt))) {
-        celCnf.innerHTML  = 
-         `<center>
-           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD" onclick="frmAtivShow('${newDisc.id}')">🖋️</button>
-         </center>`;
-      } else {
-        celCnf.innerHTML  = 
-         `<center>
-           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD")">⏳</button>
-         </center>`;
-      }
-  }
-*/
 
-  /*
-  celAprovCoid.innerHTML = newDisc.aprov_co_id;
-  celAprovCeId.innerHTML = newDisc.aprov_ce_id;
-*/
-   celNome.style.lineHeight = '0.9';
+  if(newDisc.aprov_co_id === null) {
+    celCnf.innerHTML  = 
+      `<center>
+      <button type="button" class="btn btn-light btn-sm" title="??">⏳</button>
+      </center>`;
+  } else {
+    if ((newDisc.aprov_ce_id === null) | (newDisc.aprov_ce_id === '')){
+      celCnf.innerHTML  = 
+         `<center>
+            <button type="button" class="btn btn-light btn-sm" title="Homologar PAD" onclick="frmAtivShow('${newDisc.id}')">🖋️</button>
+         </center>`;
+    } else {
+      celCnf.innerHTML  = 
+         `<center>
+            <button type="button" class="btn btn-light btn-sm" title="Remover homologação" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
+         </center>`;
+
+    }
+  }
+
+  celNome.style.lineHeight = '0.9';
   celId.style.display = 'none'; 
   celLink.style.textAlign = 'center';
   celA21.style.textAlign = 'right';
@@ -97,6 +89,7 @@ function insereTable(newDisc){
   celA4.style.textAlign = 'right';
   celAT.style.textAlign = 'right';
   celRT.style.textAlign = 'right';
+  celAprovCoid.style.textAlign = 'center';
 
 
   if(parseFloat(totUsado) < parseFloat(newDisc.rt)){
@@ -116,15 +109,15 @@ function insereTable(newDisc){
  
 function Aprovar(ad){
   let vinc_idps;
-  let vinc_id_co;
+  let vinc_id_ce;
   let tdo = ad;
-
+  
   if(tdo == 'a'){
     vinc_idps  = document.getElementById('vinc_idps').value;
-    vinc_id_co = document.getElementById('vinc_id_co').value;
+    vinc_id_ce = document.getElementById('vinc_id_ce').value;
   } else if (tdo == 'd'){
-    vinc_idps  = document.getElementById('vinc_idpsd').value;tdo;
-    vinc_id_co = document.getElementById('vinc_id_cod').value;
+    vinc_idps  = document.getElementById('vinc_idpsd').value;
+    vinc_id_ce = document.getElementById('vinc_id_ce').value;
   } else {
     console.log('error ' + tdo);
     return;
@@ -133,14 +126,14 @@ function Aprovar(ad){
   let datasing = {
     to_do: tdo,
     id_vin: vinc_idps,
-    id_user: vinc_id_co
+    id_user: vinc_id_ce
   };
 
   const data = datasing;
-
+  console.log('ok1');
   console.log(data);
 
-  fetch('./dml/sing_co.php', {
+  fetch('./dml/sing_ce.php', {
       method:'PUT',
       headers:{
         'Accept': 'application/json',
@@ -152,12 +145,16 @@ function Aprovar(ad){
   .then( res => console.log(res)
   );
 
+  /*
   if(tdo == 'a'){ 
     fecharModal();
   } else {
     fecharModalDel()
   }
+ */
 
+  fecharModalDel()
+  fecharModal();
   getDBMD();
 }
 
@@ -189,6 +186,7 @@ function frmAtivShow(id) {
 
 
 function frmmodalDel(id) {
+
   $('#modalDel').modal('show');
 
   document.getElementById('vinc_idpsd').value = id;

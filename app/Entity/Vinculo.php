@@ -74,6 +74,14 @@ class Vinculo {
     ]);
   }
 
+  public function assing_ce_remov(){
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+      'aprov_ce_id'   =>  null,
+      'aprov_ce_data' =>  null
+    ]);
+  }
+
+
 
   public function excluir(){
     return (new Database('vinculo'))->delete('id = "'.$this->id .'"');
