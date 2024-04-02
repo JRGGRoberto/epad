@@ -48,20 +48,13 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $vinc->aprov_ce_id = null;  
 
-    if($to_do == 'a'){
+    if($to_do == 'd'){
         $vinc->aprov_ce_id = $user_id;
-        if(!$vinc->assing_ce()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-    } elseif ($to_do == 'd'){
         if(!$vinc->assing_ce_remov()){
             $response = array("status" => "error", "message" => "Erro ao assinar.");
             echo json_encode($response);
             exit;
         }
-        
     } else {
         $response = array("status" => "error", "message" => "Tipo não reconhecido");
         echo json_encode($response);

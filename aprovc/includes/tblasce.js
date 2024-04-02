@@ -145,16 +145,12 @@ function Aprovar(ad){
   .then( res => console.log(res)
   );
 
-  /*
   if(tdo == 'a'){ 
     fecharModal();
   } else {
     fecharModalDel()
   }
- */
 
-  fecharModalDel()
-  fecharModal();
   getDBMD();
 }
 

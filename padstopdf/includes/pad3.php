@@ -1,9 +1,3 @@
-<?php
-/*
-echo '<pre>';
-print_r($pad3);
-echo '</pre>'; */
-?>
 <h5>3. Atividades de Pesquisa / Extensão / Cultura e Programas Especiais</h5>
 <table class="table table-bordered table-sm">
     <thead class="thead-light">
@@ -50,21 +44,6 @@ foreach($pad3 as $p){
   } else {
     $func = 'Não definido';
   }
-  /*
-  switch ( (int)$p->funcao) {
-    case 1:
-      $func = 'Coordenador';
-    case 2:
-      $func = 'Membro';
-      break;
-    case 3:
-      $func = 'Programas especiais';
-      break;
-    default:
-      $func = 'Não definido';
-  };
-*/
-
 
   echo "<tr>
   <td style='text-align: left;'>". $tipo ."</td>

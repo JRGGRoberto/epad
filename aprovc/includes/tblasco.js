@@ -108,6 +108,8 @@ function insereTable(newDisc){
     celAT.style.borderBlockColor = '#ed969e';
   }
 }
+
+
  
 function Aprovar(ad){
   let vinc_idps;
@@ -118,7 +120,7 @@ function Aprovar(ad){
     vinc_idps  = document.getElementById('vinc_idps').value;
     vinc_id_co = document.getElementById('vinc_id_co').value;
   } else if (tdo == 'd'){
-    vinc_idps  = document.getElementById('vinc_idpsd').value;tdo;
+    vinc_idps  = document.getElementById('vinc_idpsd').value;
     vinc_id_co = document.getElementById('vinc_id_cod').value;
   } else {
     console.log('error ' + tdo);
@@ -132,27 +134,31 @@ function Aprovar(ad){
   };
 
   const data = datasing;
-
-  console.log(data);
-
-  fetch('./dml/sing_co.php', {
+  if(tdo == 'a'){
+    fetch('./dml/sing_co1.php', {
       method:'PUT',
       headers:{
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-  })
-  .then( res => res.json())
-  .then( res => console.log(res)
-  );
-
-  if(tdo == 'a'){ 
+    })
+    .then( res => res.json());
     fecharModal();
-  } else {
-    fecharModalDel()
-  }
+  } else if (tdo == 'd'){
 
+    fetch('./dml/sing_co0.php', {
+      method:'PUT',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then( res => res.json());
+    fecharModalDel();
+
+  }
   getDBMD();
 }
 

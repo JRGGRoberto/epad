@@ -3,7 +3,7 @@
 //let equipe = [ ];   // informação vem do 'cadastrar.php' ou do 'editar.php'
 
 
-function deleteAllRows(){
+ deleteAllRows(){
     $("#tabela-equipe tbody tr").remove(); 
   }
   

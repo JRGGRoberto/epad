@@ -7,14 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+        font-family: 'Roboto';
+        font-size: 12px;
+    }
+    h5 {
+      font-family: 'Roboto';
+      font-size: 12px;
+      font-weight: bold;
+    }
+    @page { margin: 50px; }
+        .page-break { page-break-before: always; }
+  </style>
 
   </head>
-   <!--
-  <body class="bg-light text-dark">
-  <div class="container">
-  <table class="table table-borderless table-sm">
-    <thead class="thead-light">
-      -->
 <body>
   <div>
   <table>

@@ -50,9 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     if($to_do == 'a'){
         $vinc->aprov_co_id = $user_id;
-    } elseif ($to_do == 'd'){
-        $vinc->aprov_co_id = null;
-    } else {
+   } else {
         $response = array("status" => "error", "message" => "Tipo não reconhecido");
         echo json_encode($response);
         exit;
@@ -68,8 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "preenchido"       => 'assinado',
-            "status"    => 'Super sucesso!'
+            "preenchido"  => 'assinado',
+            "status"      => 'Ok',
+            "to_do"       => $to_do
             )
         );
 

@@ -46,35 +46,30 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     }
      */
 
-    $vinc->aprov_ce_id = null;  
+    $vinc->aprov_co_id = null;  
+    /*
 
-    if($to_do == 'a'){
-        $vinc->aprov_ce_id = $user_id;
-        if(!$vinc->assing_ce()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-    } elseif ($to_do == 'd'){
-        if(!$vinc->assing_ce_remov()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-        
-    } else {
+    if($to_do == 'd'){
+        $vinc->aprov_co_id = null;
+   } else {
         $response = array("status" => "error", "message" => "Tipo não reconhecido");
         echo json_encode($response);
+        exit;
     }
-    
-    
+    */
+    if(!$vinc->assing_co()){
+        $response = array("status" => "error", "message" => "Erro ao assinar.");
+        echo json_encode($response);
+        exit;
+    }
 
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "preenchido"       => 'assinado',
-            "status"    => 'Super sucesso!'
+            "preenchido"  => 'DESassinado',
+            "status"      => 'Ok',
+            "to_do"       => $to_do
             )
         );
 
