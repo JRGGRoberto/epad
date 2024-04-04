@@ -1,5 +1,8 @@
 <?php
 
+require '../vendor/autoload.php';
+use \App\Entity\Outros;
+
 $sql = "
 select * 
 FROM pad22v p 

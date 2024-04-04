@@ -1,5 +1,8 @@
 <?php
 
+require '../vendor/autoload.php';
+use \App\Entity\Outros;
+
 $sql = "select 
 if(rt <> 'TIDE', concat('T',rt ), rt ) rt, count(1) qnt 
 from vinculov v  

@@ -1,5 +1,8 @@
 <?php
 
+require '../vendor/autoload.php';
+use \App\Entity\Outros;
+
 $sql = "
 SELECT  
   if(cat_func='c','cres','efetivos') contrato,
