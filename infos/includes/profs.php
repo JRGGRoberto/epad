@@ -8,7 +8,7 @@ select v.nome,  if(v.rt <> 'TIDE', concat('T', v.rt ), rt ) rt, if(p.cat_func='c
 from 
   vinculov v
   inner join professores p on v.id_prof = p.id 
-where p.id_colegiado ='". $user['co_id'] ."'
+where p.id_colegiado ='". $co_id."'
 order BY 1, 3 ";
 
 $registros = Outros::qry($sql);

@@ -13,7 +13,7 @@ $sql = "select
 from 
   matriz_v m 
   inner join disciplinasv d on m.id = d.id_matriz 
-where m.id_curso = '". $user['co_id'] ."'
+where m.id_curso = '". $co_id."'
 order by 
    6, 3";
 

@@ -6,7 +6,7 @@ use \App\Entity\Outros;
 $sql = "select 
 if(rt <> 'TIDE', concat('T',rt ), rt ) rt, count(1) qnt 
 from vinculov v  
-where v.co_id  = '". $user['co_id'] . "'
+where v.co_id  = '". $co_id. "'
 group by 1 order by 1
 ";
 

@@ -7,7 +7,7 @@ $sql = "
 select * 
 FROM pad22v p 
 where 
-   p.co_idvinc_orientador  = '". $user['co_id'] ."'
+   p.co_idvinc_orientador  = '". $co_id."'
 order by orientador, estudante, curso, serie";
 
 $registros = Outros::qry($sql);

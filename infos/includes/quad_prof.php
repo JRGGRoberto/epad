@@ -12,14 +12,14 @@ SELECT
              FROM professores p2
              inner join vinculo v2 on v2.id_prof = p2.id
            where
-             p2.id_colegiado  = '". $user['co_id'] . "' and
+             p2.id_colegiado  = '". $co_id. "' and
              cat_func in ('c', 'e'))) * 100, 2), '%'
          ) AS percentual
  from 
     professores p
     inner join vinculo v on v.id_prof = p.id
 where 
-   p.id_colegiado  = '". $user['co_id'] . "'
+   p.id_colegiado  = '". $co_id. "'
  group by 1 order by 1 desc;
 " ;
 

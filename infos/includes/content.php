@@ -15,7 +15,7 @@
 
 <h5>Gerar arquivo PDF dos PADs do colegiado</h5>
 Essa operação utiliza alguns segundos para ser processada 
-<a href="../padstopdf/book.php?co=<?= $user['co_id'] ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
+<a href="../padstopdf/book.php?co=<?= $co_id?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
 <hr>
 
 
@@ -33,6 +33,9 @@ Essa operação utiliza alguns segundos para ser processada
 
 <?= $tbl_pad22 ?>
 
+<?= $tbl_resumo ?>
+
+<?= $tbl_profes ?>
 
 <p style="text-align: center;  padding-top : 70px;"><sup> UNESPAR<br>
    <span><span style="color: #002661;">PRO</span><span style="color: #007F3D;">GESP</span></span>   |
