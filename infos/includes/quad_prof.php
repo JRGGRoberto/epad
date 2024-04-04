@@ -39,4 +39,4 @@ $tbl_contrads .= '
 foreach($registros as $reg){
     $tbl_contrads .= "<tr><td>" . $reg->contrato . "</td><td>" . $reg->qnt . "</td><td>" . $reg->percentual . "</td></tr>" ;
 }
-$tbl_contrads .= '</tbody></table>';
+$tbl_contrads .= '</tbody></table><hr>';

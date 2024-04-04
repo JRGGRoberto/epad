@@ -20,29 +20,18 @@ Essa operação utiliza alguns segundos para ser processada
 
 
 <?= $tbl_contrads ?>
-<hr>
 
 <?= $tbl_rt ?>
-<hr>
-
 
 <?= $tbl_matriz ?>
-<hr>
-
 
 <?= $tbl_disc ?>
-<hr>
 
 <?= $tbl_disc1 ?>
-<hr>
 
-
-<h5>Quadro de professores do colegiado <?=  $user['co_nome']  ?> - <?=  $user['lota_nome']  ?>/<?=  $user['ce_cod']  ?></h5>
 <?= $tbl_prof ?>
-<hr>
 
 <?= $tbl_pad22 ?>
-<hr>
 
 
 <p style="text-align: center;  padding-top : 70px;"><sup> UNESPAR<br>

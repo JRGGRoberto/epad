@@ -44,4 +44,4 @@ foreach($registros as $reg){
             <td>" . $reg->cha ."<sub>anual</sub> / " . $reg->chs ."h<sub>sem</sub> </td>
         </tr>" ;
 }
-$tbl_disc1 .= '</tbody></table>';
+$tbl_disc1 .= '</tbody></table><hr>';

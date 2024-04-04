@@ -22,4 +22,4 @@ $tbl_rt .= '<table class="table table-bordered table-sm">
 foreach($registros as $reg){
     $tbl_rt .= "<tr><td>" . $reg->rt . "</td><td>" . $reg->qnt . "</td></tr>" ;
 }
-$tbl_rt .= '</tbody></table>';
+$tbl_rt .= '</tbody></table><hr>';

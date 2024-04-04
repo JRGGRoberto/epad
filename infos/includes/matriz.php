@@ -17,4 +17,4 @@ $qnt = 0;
 foreach($registros as $reg){
     $tbl_matriz .= "<tr><td>" . ++$qnt . "</td><td>" . $reg->nome . "</td></tr>" ;
 }
-$tbl_matriz .= '</tbody></table>';
+$tbl_matriz .= '</tbody></table><hr>';

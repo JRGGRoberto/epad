@@ -36,5 +36,5 @@ $tbl_pad22 .= '</tbody></table>
 <sub style="line-height: 12px;"><strong>a</strong>) Estágio Curricular Supervisionado Obrigatório para os cursos de Graduação e Estágio Docência para Pós-graduação Stricto Sensu. ; 
 <strong>b</strong>) Atividades de aulas práticas em
 instituições da área de saúde; <strong>c</strong>) Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses); <strong>d</strong>)
-Orientação de Monitoria.</sub>
+Orientação de Monitoria.</sub><hr>
 ';

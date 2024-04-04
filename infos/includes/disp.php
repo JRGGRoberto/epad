@@ -36,4 +36,4 @@ foreach($registros as $reg){
             <td>" . $reg->professor ."<br><sub>" .  $reg->colegiado . "</sub></td>
         </tr>" ;
 }
-$tbl_disc .= '</tbody></table>';
+$tbl_disc .= '</tbody></table><hr>';
