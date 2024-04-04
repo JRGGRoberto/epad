@@ -29,11 +29,10 @@ Essa operação utiliza alguns segundos para ser processada
 <?= $tbl_matriz ?>
 <hr>
 
-<h5>Matriz(es)/Disciplinas do curso <?=  $user['co_nome']  ?> - <?=  $user['lota_nome']  ?>/<?=  $user['ce_cod']  ?></h5>
+
 <?= $tbl_disc ?>
 <hr>
 
-<h5>Professores distribuidos por disciplinas <?=  $user['co_nome']  ?> - <?=  $user['lota_nome']  ?>/<?=  $user['ce_cod']  ?></h5>
 <?= $tbl_disc1 ?>
 <hr>
 
