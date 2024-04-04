@@ -130,7 +130,6 @@ function Aprovar(ad){
   };
 
   const data = datasing;
-  console.log('ok1');
   console.log(data);
 
   fetch('./dml/sing_ce.php', {

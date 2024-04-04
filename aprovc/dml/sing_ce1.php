@@ -55,13 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
             echo json_encode($response);
             exit;
         }
-    } elseif ($to_do == 'd'){
-        if(!$vinc->assing_ce_remov()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-        
     } else {
         $response = array("status" => "error", "message" => "Tipo não reconhecido");
         echo json_encode($response);

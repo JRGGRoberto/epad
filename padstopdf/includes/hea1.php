@@ -17,6 +17,8 @@
       font-size: 12px;
       font-weight: bold;
     }
+    @page { margin: 50px; }
+        .page-break { page-break-before: always; }
   </style>
 
   </head>

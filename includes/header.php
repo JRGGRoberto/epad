@@ -207,8 +207,8 @@ img.remover {
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Direção</button>
                                 <div class="dropdown-menu dropdown-menu-left">
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Homologar ver PADs</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
+                                 <!-- <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios</a> -->
                                 </div>
                               </div>
                           <?php
@@ -253,7 +253,7 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
-                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?= $obUsuario['id'] ?>">Informações PAD 2024</a>
+                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?= $obUsuario['id'] ?>">Informações do meu PAD 2024</a>
                        <div class="dropdown-divider"></div>
                       <!-- <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
                       <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a>

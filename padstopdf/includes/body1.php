@@ -1,4 +1,4 @@
-  <div class="page-break">
+<div>
   <table>
     <thead>
         <tr>
@@ -13,5 +13,5 @@
     </thead>
     <tbody>
     </tbody>
-</table>
+  </table>
 

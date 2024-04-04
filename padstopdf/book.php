@@ -7,6 +7,19 @@ use \App\Entity\PADAtiv22;
 use \App\Entity\PADAtiv23;
 use \App\Entity\PADAtiv3;
 use \App\Entity\PADAtiv4;
+use \App\Session\Login;
+
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
+
+$co = $_GET["co"];
+
+if($user['co_id'] !== $co ){
+  echo 'Apenas coordenadores podem executar essa função. '; 
+ // header('location: ../../');
+  exit;
+}
+echo 'Aguarde...';
 
 function gerarPad($id){
   $vinc = Vinculo::get($id);
@@ -32,7 +45,7 @@ function gerarPad($id){
 }
 
 
-$w=  "co_id = 'c3bbf72b-3b64-11ed-9793-0266ad9885af'";
+$w=  "co_id = '". $co ."'";
 $o = " nome ";
 $pads = Vinculo::gets($w, $o );
 
