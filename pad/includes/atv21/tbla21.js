@@ -42,11 +42,10 @@ function insereTable21(newDisc){
     newDisc.disciplina = newDisc.disciplina + '<br><sub>(planejamento)</sub>'
   }
 
-    
   celId.innerHTML          = newDisc.id;
   celAtividade.innerHTML   = newDisc.atividade;
   celDisciplina.innerHTML  = newDisc.disciplina;
-  celCurso.innerHTML       = newDisc.curso  + '<br><sub>'+ newDisc.campus +'</sub>';
+  celCurso.innerHTML       = newDisc.curso  + '<br><sub>' + newDisc.curso + " - " + newDisc.campus +'</sub>';
   celTurno.innerHTML       = turno;
   celCh1.innerHTML         = ch;
   

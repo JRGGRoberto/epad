@@ -18,20 +18,6 @@ Essa operação utiliza alguns segundos para ser processada
 <a href="../padstopdf/book.php?co=<?= $co_id?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
 <hr>
 
-<body>
-<div id="voltar"></div>
-<ol>
-    <li><a href="#id1">Quadro de professores atual do meu colegiado</a></li>
-    <li><a href="#id2">Distribuição de RT no colegiado de '.  $col_nome  .'</a></li>
-    <li><a href="#id3">Matriz(es) do curso '.  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome . '</a></li>
-    <li><a href="#id4">Matriz(es)/Disciplinas do curso' .  $col_nome .' - '.  $camp_nome .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id5">Professores distribuidos por disciplinas' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id6">Quadro de professores do colegiado' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id7">Atividades de Supervisão e Orientação dos Professores do colegiado' . $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id8">Resumo por curso - Colegiado de' .$col_nome. 'em' .$camp_nome. '</a></li>
-    <li><a href="#id9"> Disciplinas do colegiado de' . $col_nome. '</a></li>
-</ol>
-</body>
 
 <?= $tbl_contrads ?>
 
