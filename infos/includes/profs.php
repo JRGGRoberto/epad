@@ -12,7 +12,7 @@ where p.id_colegiado ='". $co_id."'
 order BY 1, 3 ";
 
 $registros = Outros::qry($sql);
-$tbl_prof .= '<table class="table table-bordered table-sm">
+$tbl_prof .= '<table class="table table-bordered table-sm" id="profs">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Professor(a)</th>
@@ -29,4 +29,6 @@ foreach($registros as $reg){
                     <td>" . $reg->contrato . "</td>
                 </tr>" ;
 }
-$tbl_prof .= '</tbody></table><hr>';
+$tbl_prof .= '</tbody></table> 
+                                <button class="btn btn-light btn-sm" onclick="exportToExcel(\'profs\')">📊</button>
+                     <hr>';

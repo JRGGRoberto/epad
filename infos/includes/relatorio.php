@@ -5,7 +5,10 @@ use \App\Entity\Outros;
 //--
 $sql = 
 "select  
-CONCAT ( p.cat_func , v.rt) as camp,  p.cat_func cfunc,  v.rt
+CONCAT(
+    CASE WHEN p.cat_func = 'c' THEN 't' ELSE p.cat_func END, 
+    v.rt
+) AS camp, p.cat_func cfunc,  v.rt
 from 
 vinculov v inner join 
 professores p on p.id = v.id_prof 
@@ -15,7 +18,7 @@ group by 1;";
 
 $registros = Outros::qry($sql);
 
-$tbl_resumo .= '<table class="table table-bordered table-sm">
+$tbl_resumo .= '<table class="table table-bordered table-sm" id="relat">
 <thead class="thead-light">
     <tr><th>Atividade</th>';
 foreach($registros as $h){
@@ -25,6 +28,7 @@ $tbl_resumo .= '<th>Total</th>
 </tr>
 </thead>
 <tbody>';
+
 //--
 
 $arratv1 = [];
@@ -56,7 +60,8 @@ foreach($registros as $b1){
     }
 } 
 $tbl_resumo .= '<td>'. number_format($sum1,2) . '</td>';
-//--
+
+//--------------------------------------------------------------------------------------------------------
 $tbl_resumo .='</tr><tr> <td>2.Total de média semanal anual de carga horária supervisão e orientação</td>';
 $sum2 = 0;
 foreach($registros as $b2){
@@ -158,6 +163,14 @@ $somatot = ($sum1 + $sum2 + $sum3 + $sum4 + $sum5);
 $tbl_resumo .= '<td>'. number_format($somatot, 2 ). '</td>';
 $tbl_resumo .= '</td>';
 
-$tbl_resumo .= '</tbody></table><hr>';
+$tbl_resumo .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'relat\')">📊</button><br>
+
+<sub style="line-height: 12px;">
+Legenda para a tabela "7. Resumo por curso":
+<br>
+<strong>e</strong> - Efetivo.
+<br>
+<strong>t</strong> - Temporário.
+</sub><hr>';
 
 //--

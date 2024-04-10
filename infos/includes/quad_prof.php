@@ -27,7 +27,7 @@ where
 $registros = Outros::qry($sql);
 
 $tbl_contrads .= '
-<table class="table table-bordered table-sm">
+<table class="table table-bordered table-sm" id ="quad_f">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Contrato</th>
@@ -39,4 +39,5 @@ $tbl_contrads .= '
 foreach($registros as $reg){
     $tbl_contrads .= "<tr><td>" . $reg->contrato . "</td><td>" . $reg->qnt . "</td><td>" . $reg->percentual . "</td></tr>" ;
 }
-$tbl_contrads .= '</tbody></table><hr>';
+$tbl_contrads .= '</tbody></table> <button class="btn btn-light btn-sm" onclick="exportToExcel(\'quad_f\')">📊</button><hr>';
+

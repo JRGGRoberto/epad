@@ -21,47 +21,43 @@ $col_nome    = $q->colegiado;
 $camp_nome   = $q->campus;
 $centro_nome = $q->codcentro;
 
-'<body>
-<div id="voltar"></div>
-<ol>
-    <li><a href="#id1">Quadro de professores atual do meu colegiado</a></li>
-    <li><a href="#id2">Distribuição de RT no colegiado de '.  $col_nome  .'</a></li>
-    <li><a href="#id3">Matriz(es) do curso '.  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome . '</a></li>
-    <li><a href="#id4">Matriz(es)/Disciplinas do curso' .  $col_nome .' - '.  $camp_nome .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id5">Professores distribuidos por disciplinas' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id6">Quadro de professores do colegiado' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id7">Atividades de Supervisão e Orientação dos Professores do colegiado' . $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</a></li>
-    <li><a href="#id8">Resumo por curso - Colegiado de' .$col_nome. 'em' .$camp_nome. '</a></li>
-    <li><a href="#id9"> Disciplinas do colegiado de' . $col_nome. '</a></li>
-</ol>
-</body>';
+$count = 1;
 
-$tbl_contrads = '<h5  id="id1" >Quadro de professores atual do meu colegiado</h5><a href="#voltar">Voltar</a>';
+$tbl_contrads = '<h5  id="id1" >'. $count++. '. Quadro de professores atual do meu colegiado</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/quad_prof.php';
 
-$tbl_rt = '<h5  id="id2" >Distribuição de RT no colegiado de '.  $col_nome  .'</h5><a href="#voltar">Voltar</a>';
+$tbl_rt = '<h5  id="id2" >'. $count++. '. Distribuição de RT no colegiado de '.  $col_nome  .'</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/rt.php';
 
-$tbl_matriz = '<h5  id="id3" >Matriz(es) do curso '.  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome . '</h5><a href="#voltar">Voltar</a>';
+$tbl_matriz = '<h5  id="id3" >'. $count++. '. Matriz(es) do curso '.  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome . '</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/matriz.php';
 
-$tbl_disc = '<h5  id="id4" >Matriz(es)/Disciplinas do curso' .  $col_nome .' - '.  $camp_nome .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
-include __DIR__.'/includes/disp.php';
+//$tbl_disc = '<h5  id="id4" >Matriz(es)/Disciplinas do curso ' .  $col_nome .' - '.  $camp_nome .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+//include __DIR__.'/includes/disp.php';
 
-$tbl_disc1 = '<h5  id="id5" >Professores distribuidos por disciplinas' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+$tbl_disc1 = '<h5  id="id5" >'. $count++. '. Professores distribuidos por disciplinas ' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/disp1.php';
 
-$tbl_prof = '<h5  id="id6" >Quadro de professores do colegiado' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+$tbl_prof = '<h5  id="id6" >'. $count++. '. Quadro de professores do colegiado ' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/profs.php';
 
-$tbl_pad22 = '<h5  id="id7" >Atividades de Supervisão e Orientação dos Professores do colegiado' . $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+$tbl_pad22 = '<h5  id="id7" >'. $count++. '. Atividades de Supervisão e Orientação dos Professores do colegiado ' . $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/pad22.php';
 
-$tbl_resumo = '<h5  id="id8" >Resumo por curso - Colegiado de' .$col_nome. 'em' .$camp_nome. '</h5><a href="#voltar">Voltar</a>';
+$tbl_resumo = '<h5  id="id8" >'. $count++. '. Resumo por curso - Colegiado de ' .$col_nome. ' em ' .$camp_nome. '</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/relatorio.php';
 
-$tbl_profes = '<h5  id="id9" > Disciplinas do colegiado de' . $col_nome. '</h5><a href="#voltar">Voltar</a>';
+$tbl_profes = '<h5  id="id9" >'. $count++. '.  Disciplinas do colegiado de ' . $col_nome. '</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/profes.php';
+
+$tbl_atvgest = '<h5  id="id10" >'. $count++. '.  Atividades de Gestão Institucional </h5><a href="#voltar">Voltar</a>';
+include __DIR__.'/includes/atvgest.php';
+
+$tbl_dispnoprof= '<h5  id="id11" >'. $count++. '.  Disciplinas sem professores </h5><a href="#voltar">Voltar</a>';
+include __DIR__.'/includes/dispnoprof.php';
+
+$tbl_projmonit= '<h5  id="id12" >'. $count++. '. Projetos de ensino e monitoria </h5><a href="#voltar">Voltar</a>';
+include __DIR__.'/includes/projmonit.php';
 
 
 include '../includes/header.php';

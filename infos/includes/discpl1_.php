@@ -1,5 +1,4 @@
 <?php
-
 require '../vendor/autoload.php';
 use \App\Entity\Outros;
 
@@ -22,7 +21,7 @@ where
 order by v.nome, d.nome, ccc.colegiado, d.serie  ";
 
 $registros = Outros::qry($sql);
-$tbl_disc1 .= '<table class="table table-bordered table-sm" id="disp1">
+$tbl_disc1 = '<table class="table table-bordered table-sm">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Professor</th>
@@ -44,4 +43,4 @@ foreach($registros as $reg){
             <td>" . $reg->cha ."<sub>anual</sub> / " . $reg->chs ."h<sub>sem</sub> </td>
         </tr>" ;
 }
-$tbl_disc1 .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'disp1\')">📊</button><hr>';
+$tbl_disc1 .= '</tbody></table>';

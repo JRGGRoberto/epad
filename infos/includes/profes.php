@@ -12,7 +12,7 @@ from colegiados c
 where c.id  = '". $co_id."'
 ORDER BY serie, prof    ";
 $registros = Outros::qry($sql);
-$tbl_profes .= '<table class="table table-bordered table-sm">
+$tbl_profes .= '<table class="table table-bordered table-sm" id="profess">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Colegiado</th>
@@ -28,4 +28,6 @@ foreach($registros as $reg){
     $tbl_profes .= 
     "<tr><td>" . $reg->colegiado . "</td><td>" . $reg->disciplina . "</td><td>" . $reg->prof . "</td><td>" . $reg->serie . "</td><td>" . $reg->chsemanal . "</td><td>" . $reg->ch . "</td></tr>" ;
 }
-$tbl_profes .= '</tbody></table><hr>';
+$tbl_profes .= '</tbody></table> 
+<button class="btn btn-light btn-sm" onclick="exportToExcel(\'profess\')">📊</button>
+<hr>';

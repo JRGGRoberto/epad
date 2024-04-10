@@ -15,7 +15,7 @@ include '../includes/header.php';
 $tbl_dir = '<table class="table table-bordered table-sm">
 <thead class="thead-light">
     <tr>
-        <th class="align-top">Colegiado</th>
+        <th class="align-top">Campus</th>
         <th class="align-top">Relatórios</th>
     </tr>
 </thead>

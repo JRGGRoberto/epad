@@ -1,5 +1,6 @@
 <?php
 require '../vendor/autoload.php';
+
 use \App\Entity\Outros;
 
 $sql = "
@@ -17,11 +18,11 @@ from
   left join  ca_ce_co ccc on m.id_curso = ccc.co_id
   left join horas h on h.horamatz = d.ch
 where 
-  v.co_id = '". $co_id."'
+  v.co_id = '" . $co_id . "'
 order by v.nome, d.nome, ccc.colegiado, d.serie  ";
 
 $registros = Outros::qry($sql);
-$tbl_disc1 = '<table class="table table-bordered table-sm">
+$tbl_disc1 = '<table class="table table-bordered table-sm" id="displ11">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Professor</th>
@@ -33,14 +34,14 @@ $tbl_disc1 = '<table class="table table-bordered table-sm">
 </thead>
 <tbody>';
 $qnt = 0;
-foreach($registros as $reg){
-    $tbl_disc1 .=
-        "<tr>
-            <td>" . $reg->professor ."</td>
-            <td>" . $reg->vinculo ."</td>
-            <td>" . $reg->disciplina ."<br><sub>" .  $reg->colegiado . " - ". $reg->loc. "</sub></td>
-            <td>" . $reg->serie ."</td>
-            <td>" . $reg->cha ."<sub>anual</sub> / " . $reg->chs ."h<sub>sem</sub> </td>
-        </tr>" ;
+foreach ($registros as $reg) {
+  $tbl_disc1 .=
+    "<tr>
+            <td>" . $reg->professor . "</td>
+            <td>" . $reg->vinculo . "</td>
+            <td>" . $reg->disciplina . "<br><sub>" .  $reg->colegiado . " - " . $reg->loc . "</sub></td>
+            <td>" . $reg->serie . "</td>
+            <td>" . $reg->cha . "<sub>anual</sub> / " . $reg->chs . "h<sub>sem</sub> </td>
+        </tr>";
 }
-$tbl_disc1 .= '</tbody></table>';
+$tbl_disc1 .= '</tbody><button class="btn btn-light btn-sm" onclick="exportToExcel(\'displ11\')">📊</button></table>';

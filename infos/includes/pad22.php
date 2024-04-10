@@ -11,7 +11,7 @@ where
 order by orientador, estudante, curso, serie";
 
 $registros = Outros::qry($sql);
-$tbl_pad22 .= '<table class="table table-bordered table-sm">
+$tbl_pad22 .= '<table class="table table-bordered table-sm" id="pad22a">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Atv.</th>
@@ -32,7 +32,7 @@ foreach($registros as $reg){
                     <td>" . $reg->ch . "</td>
                 </tr>" ;
 }
-$tbl_pad22 .= '</tbody></table>
+$tbl_pad22 .= '</tbody></table> <button class="btn btn-light btn-sm" onclick="exportToExcel(\'pad22a\')">📊</button>
 <sub style="line-height: 12px;"><strong>a</strong>) Estágio Curricular Supervisionado Obrigatório para os cursos de Graduação e Estágio Docência para Pós-graduação Stricto Sensu. ; 
 <strong>b</strong>) Atividades de aulas práticas em
 instituições da área de saúde; <strong>c</strong>) Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses); <strong>d</strong>)
