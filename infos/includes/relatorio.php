@@ -163,7 +163,7 @@ $somatot = ($sum1 + $sum2 + $sum3 + $sum4 + $sum5);
 $tbl_resumo .= '<td>'. number_format($somatot, 2 ). '</td>';
 $tbl_resumo .= '</td>';
 
-$tbl_resumo .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'relat\')">📊</button><br>
+$tbl_resumo .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'relat\')">📊</button>
 
 <sub style="line-height: 12px;">
 Legenda para a tabela "7. Resumo por curso":
