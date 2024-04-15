@@ -216,6 +216,7 @@ img.remover {
 
                        } elseif($obUsuario['tipo'] === 'agente'){
                          echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                         echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
                        }
                        if(1>2){
                          echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
