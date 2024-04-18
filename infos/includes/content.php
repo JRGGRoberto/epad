@@ -24,13 +24,15 @@ Essa operação utiliza alguns segundos para ser processada
 
 
 <ol>
-    <li><a href="#id1">Quadro de professores atual do meu colegiado</a></li>
+    <li><a href="#id1">Quadro de professores atual do meu colegiado</a></li> 
 
     <li><a href="#id2">Distribuição de RT no colegiado de <?=$col_nome ?> </a></li>
 
     <li><a href="#id3">Matriz(es) do curso <?=$col_nome?> - <?=$camp_nome?>/<?=$centro_nome?> </a></li>
 
     <!-- <li><a href="#id4">Matriz(es)/Disciplinas do curso <?=$col_nome ?> - <?=$camp_nome?>/<?=$centro_nome?> </a></li> -->
+
+        <!-- <li><a href="#id55">Professores CRES <?=$col_nome?> - <?=$camp_nome?>/<?=$centro_nome?> </a></li> -->
 
     <li><a href="#id5">Professores distribuidos por disciplinas <?=$col_nome?> - <?=$camp_nome?>/<?=$centro_nome?> </a></li>
 
@@ -57,6 +59,8 @@ Essa operação utiliza alguns segundos para ser processada
 <?= $tbl_matriz ?>
 
 <?= $tbl_disc ?>
+
+<?= $tbl_cres ?>
 
 <?= $tbl_disc1 ?>
 

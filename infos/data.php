@@ -23,6 +23,34 @@ $centro_nome = $q->codcentro;
 
 $count = 1;
 
+
+class ItensRelatorio {
+    public $id;
+    public $titulo;
+    public $tabela;
+
+     public function __construct($id, $titulo, $tabela) {
+        $this->id = $id;
+        $this->titulo = $titulo;
+        $this->tabela = $tabela;
+    }
+}
+$ListaRelat = array();
+
+
+$Item = new ItensRelatorio("id1", "Quadro de professores atual do meu colegiado", "a");
+$ListaRelat[] = $Item;
+
+$Item = new ItensRelatorio("id1", "Distribuição de RT no colegiado de", "b");
+$ListaRelat[] = $Item;
+
+foreach($ListaRelat as $r){
+    echo $r->$titulo.'<br>';
+}
+
+
+
+
 $tbl_contrads = '<h5  id="id1" >'. $count++. '. Quadro de professores atual do meu colegiado</h5><a href="#voltar">Voltar</a>';
 include __DIR__.'/includes/quad_prof.php';
 
