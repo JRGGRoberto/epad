@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
      */
 
     $vinc->aprov_ce_id = null;  
-    $vinc->aprov_co_data = null;  
+    
 
     if($to_do == 'd'){
         $vinc->aprov_ce_id = $user_id;

@@ -28,25 +28,9 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         exit;
       }
 
-      /*
-    // Verify se usuário é coordenador 
-    if($user['config'] != '1'){
-        $response = array("status" => "error", "message" => "Não adm.");
-        echo json_encode($response);
-        exit;
-    }
-    
-   
-
-    // Verify se Coordenador é do curso do Vinculado
-    if($user['co_id'] <> $vinc['co_id']){
-        $response = array("status" => "error", "message" => "Curso diferente.");
-        echo json_encode($response);
-        exit;
-    }
-     */
-
     $vinc->aprov_co_id = null;  
+    $vinc->aprov_co_data = null;  
+    
     /*
 
     if($to_do == 'd'){

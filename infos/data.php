@@ -21,75 +21,104 @@ $col_nome    = $q->colegiado;
 $camp_nome   = $q->campus;
 $centro_nome = $q->codcentro;
 
-$count = 1;
 
 
-class ItensRelatorio {
+define('VOLTAR', '<a href="#voltar">Voltar</a>');
+
+class Relatorios{
     public $id;
     public $titulo;
-    public $tabela;
+    public $conteudo;
 
-     public function __construct($id, $titulo, $tabela) {
+    public function __construct($id, $titulo, $conteudo)
+    {
         $this->id = $id;
         $this->titulo = $titulo;
-        $this->tabela = $tabela;
+        $this->conteudo = $conteudo;
+        
     }
 }
-$ListaRelat = array();
 
-
-$Item = new ItensRelatorio("id1", "Quadro de professores atual do meu colegiado", "a");
-$ListaRelat[] = $Item;
-
-$Item = new ItensRelatorio("id1", "Distribuição de RT no colegiado de", "b");
-$ListaRelat[] = $Item;
-
-foreach($ListaRelat as $r){
-    echo $r->$titulo.'<br>';
-}
-
-
-
-
-$tbl_contrads = '<h5  id="id1" >'. $count++. '. Quadro de professores atual do meu colegiado</h5><a href="#voltar">Voltar</a>';
+$tbl_contrads = '';
 include __DIR__.'/includes/quad_prof.php';
+$item = new Relatorios("id1", "Quadro de professores atual do meu colegiado", $tbl_contrads);
+$itens [] = $item;
 
-$tbl_rt = '<h5  id="id2" >'. $count++. '. Distribuição de RT no colegiado de '.  $col_nome  .'</h5><a href="#voltar">Voltar</a>';
+$tbl_rt = '';
 include __DIR__.'/includes/rt.php';
+$item = new Relatorios("id2", "Distribuição de RT no colegiado de", $tbl_rt);
+$itens [] = $item;
 
-$tbl_matriz = '<h5  id="id3" >'. $count++. '. Matriz(es) do curso '.  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome . '</h5><a href="#voltar">Voltar</a>';
+$tbl_matriz = '';
 include __DIR__.'/includes/matriz.php';
+$item = new Relatorios("id3", "Matriz(es) do curso", $tbl_matriz);
+$itens [] = $item;
 
-//$tbl_disc = '<h5  id="id4" >Matriz(es)/Disciplinas do curso ' .  $col_nome .' - '.  $camp_nome .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
-//include __DIR__.'/includes/disp.php';
+$tbl_disc = '';
+include __DIR__.'/includes/disp.php';
+$item = new Relatorios("id4", "Matriz(es)/Disciplinas do curso", $tbl_disc);
+$itens [] = $item;
 
-$tbl_disc1 = '<h5  id="id5" >'. $count++. '. Professores distribuidos por disciplinas ' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+
+
+$tbl_cres = '';
+include __DIR__.'/includes/cres.php';
+$item = new Relatorios("id55", "CRES", $tbl_cres);
+$itens [] = $item;
+
+$tbl_efet = '';
+include __DIR__.'/includes/efetiv.php';
+$item = new Relatorios("id556", "Efetivos", $tbl_efet);
+$itens [] = $item;
+
+
+$tbl_disc1 = '';
 include __DIR__.'/includes/disp1.php';
+$item = new Relatorios("id5", "Professores distribuidos por disciplinas", $tbl_disc1);
+$itens [] = $item;
 
-$tbl_prof = '<h5  id="id6" >'. $count++. '. Quadro de professores do colegiado ' .  $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+$tbl_prof = '';
 include __DIR__.'/includes/profs.php';
+$item = new Relatorios("id6", "Quadro de professores do colegiado", $tbl_prof);
+$itens [] = $item;
 
-$tbl_pad22 = '<h5  id="id7" >'. $count++. '. Atividades de Supervisão e Orientação dos Professores do colegiado ' . $col_nome  .' - '.  $camp_nome  .'/'.  $centro_nome .'</h5><a href="#voltar">Voltar</a>';
+$tbl_pad22 = '';
 include __DIR__.'/includes/pad22.php';
+$item = new Relatorios("id7", "Atividades de Supervisão e Orientação dos Professores do colegiado", $tbl_pad22);
+$itens [] = $item;
 
-$tbl_resumo = '<h5  id="id8" >'. $count++. '. Resumo por curso - Colegiado de ' .$col_nome. ' em ' .$camp_nome. '</h5><a href="#voltar">Voltar</a>';
+$tbl_resumo = '';
 include __DIR__.'/includes/relatorio.php';
+$item = new Relatorios("id8", "Resumo por curso - Colegiado de", $tbl_resumo);
+$itens [] = $item;
 
-$tbl_profes = '<h5  id="id9" >'. $count++. '.  Disciplinas do colegiado de ' . $col_nome. '</h5><a href="#voltar">Voltar</a>';
+$tbl_profes = '';
 include __DIR__.'/includes/profes.php';
+$item = new Relatorios("id9", "Disciplinas do colegiado de", $tbl_profes);
+$itens [] = $item;
 
-$tbl_atvgest = '<h5  id="id10" >'. $count++. '.  Atividades de Gestão Institucional </h5><a href="#voltar">Voltar</a>';
+
+$tbl_atvgest = '';
 include __DIR__.'/includes/atvgest.php';
+$item = new Relatorios("id10", "Atividades de Gestão Institucional", $tbl_atvgest);
+$itens [] = $item;
 
-$tbl_dispnoprof= '<h5  id="id11" >'. $count++. '.  Disciplinas sem professores </h5><a href="#voltar">Voltar</a>';
+
+$tbl_dispnoprof = '';
 include __DIR__.'/includes/dispnoprof.php';
+$item = new Relatorios("id11", "Disciplinas sem professores", $tbl_dispnoprof);
+$itens [] = $item;
 
-$tbl_projmonit= '<h5  id="id12" >'. $count++. '. Projetos de ensino e monitoria </h5><a href="#voltar">Voltar</a>';
+
+$tbl_projmonit = '';
 include __DIR__.'/includes/projmonit.php';
+$item = new Relatorios("id12", "Projetos de ensino e monitoria", $tbl_projmonit);
+$itens [] = $item;
+
 
 
 include '../includes/header.php';
-include __DIR__.'/includes/content.php';
+include __DIR__.'/includes/content2.php';
 include '../includes/footer.php';
    
    

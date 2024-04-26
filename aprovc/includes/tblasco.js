@@ -64,7 +64,7 @@ function insereTable(newDisc){
        `<center>
          <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">🔒</button>
        </center>`;
-  } else if (!(newDisc.aprov_co_id === null)){
+  } else if (!((newDisc.aprov_co_id === null) || (newDisc.aprov_co_id === ''))){
     celCnf.innerHTML  = 
        `<center>
          <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
@@ -207,4 +207,3 @@ async function getDBMD() {
 }
 
 getDBMD();
-

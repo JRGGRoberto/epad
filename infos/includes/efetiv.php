@@ -10,13 +10,13 @@ from professores p
 inner join ca_ce_co ccc on p.id_colegiado  = ccc.co_id 
 inner join vinculov v on v.id_prof = p.id 
 inner join pad_sucinto ps on ps.id = v.id 
-where p.cat_func = 'c' and p.id_colegiado ='". $co_id."'
+where p.cat_func = 'e' and p.id_colegiado ='". $co_id."'
 order by 1, 2, 3
 ";
 
 $registros = Outros::qry($sql);
 
-$tbl_cres .= '<table class="table table-bordered table-sm" id="atv_cres">
+$tbl_efet .= '<table class="table table-bordered table-sm" id="atv_efetv">
 <thead class="thead-light">
     <tr>
         <th class="align-top">Campus</th>
@@ -29,7 +29,7 @@ $tbl_cres .= '<table class="table table-bordered table-sm" id="atv_cres">
 </thead>
 <tbody>';
 foreach($registros as $reg){
-    $tbl_cres .= 
+    $tbl_efet .= 
     "<tr><td>" . $reg->campus . 
     "</td><td>" . $reg->colegiado . 
     "</td><td>" . $reg->nome .
@@ -38,4 +38,4 @@ foreach($registros as $reg){
     "</td><td>" . $reg->tempo_usado . 
     "</td></tr>" ;
 }
-$tbl_cres .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'atv_cres\')">📊</button><hr>';
+$tbl_efet .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'atv_efetv\')">📊</button><hr>';

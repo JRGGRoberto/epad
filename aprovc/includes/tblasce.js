@@ -59,7 +59,7 @@ function insereTable(newDisc){
     newDisc.rt = 40;
   }
 
-  if(newDisc.aprov_co_id === null) {
+  if(((newDisc.aprov_co_id === null) || (newDisc.aprov_co_id === ''))) {
     celCnf.innerHTML  = 
       `<center>
       <button type="button" class="btn btn-light btn-sm" title="??">⏳</button>
