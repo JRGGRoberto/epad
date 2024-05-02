@@ -14,12 +14,13 @@ $user = Login::getUsuarioLogado();
 
 $co = $_GET["co"];
 
-if($user['co_id'] !== $co ){
-  echo 'Apenas coordenadores podem executar essa função. '; 
- // header('location: ../../');
+if(($user['co_id'] == $co ) || ($user['config'] = 2) ){
+    echo 'Aguarde...';  
+} else {
+  echo 'Apenas coordenadores ou diretores de centro de área podem executar essa função. '; 
   exit;
 }
-echo 'Aguarde...';
+
 
 function gerarPad($id){
   $vinc = Vinculo::get($id);
