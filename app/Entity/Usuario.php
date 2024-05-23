@@ -33,6 +33,11 @@ class Usuario{
                                                                   'senha' => $this->senha , 
                                                                   'updated_at' => date("Y-m-d H:i:s"),
                                                                 ]);
+      } elseif ($this->tipo == 'prof'){
+        return (new Database('professores'))->update('id = '.$this->id,[
+                                                                  'senha' => $this->senha , 
+                                                                  'updated_at' => date("Y-m-d H:i:s"),
+                                                                ]);
       }
   }
 

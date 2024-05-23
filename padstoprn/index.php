@@ -2,6 +2,9 @@
 
 require '../vendor/autoload.php';
 
+use \App\Session\Login;
+Login::requireLogin();
+
 use \App\Entity\Vinculo;
 use \App\Entity\Outros;
 use \App\Entity\PADAtiv22;

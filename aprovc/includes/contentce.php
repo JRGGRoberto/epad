@@ -72,8 +72,8 @@
             
             <div style="max-height: 250px;" id="div_tbl">
               <p style="padding: 20px 30px; text-align: justify;"><span class="badge"> &nbsp;  &nbsp; </span> Eu, <strong><?=$user['nome']?></strong>,
-               como coordenador(a) do curso de <strong><?=$user['co_nome']?>
-            </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
+               como diretor de centro de área do <strong><?=$user['ce_nome']?>
+              </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
                confirmo que este plano está de acordo com a resolução atual, <a target="_blank"
         href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a>
               </p>
