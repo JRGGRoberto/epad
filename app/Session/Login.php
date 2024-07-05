@@ -25,7 +25,7 @@ class Login{
     self::init();
 
     //retorna dados do usuário
-    return self::isLogged() ? $_SESSION['unesparpad2'] : null;
+    return self::isLogged() ? $_SESSION['proecunespar'] : null;
 
   }
 
@@ -37,20 +37,41 @@ class Login{
     self::init();
 
     //sessão de usuário
-    $_SESSION['unesparpad2'] =[
-      'id'        => $obUsuario->id,
-      'nome'      => $obUsuario->nome,
-      'email'     => $obUsuario->email,
-      'lota_id'   => $obUsuario->lota_id,
-      'lota_nome' => $obUsuario->lota_nome,
-      'senha'     => $obUsuario->senha,
-      'config'    => $obUsuario->config,
-      'tipo'      => $obUsuario->tipo,
-      'co_id'     => $obUsuario->co_id,
-      'co_nome'   => $obUsuario->co_nome,
-      'ce_id'     => $obUsuario->ce_id,
-      'ce_cod'    => $obUsuario->ce_cod,
-      'ce_nome'   => $obUsuario->ce_nome,
+    $_SESSION['proecunespar'] =[
+      /*
+      'id'    => $obUsuario->id,
+      'nome'  => $obUsuario->nome,
+      'email' => $obUsuario->email,
+      'telefone' => $obUsuario->telefone,
+      'ca_id' => $obUsuario->ca_id,
+      'campus' => $obUsuario->campus,
+      'ce_id' => $obUsuario->ce_id,
+      'centros' => $obUsuario->centros,
+      'co_id' => $obUsuario->co_id,
+      'colegiado' => $obUsuario->colegiado,
+      'ativo' => $obUsuario->ativo,
+      'adm' => $obUsuario->adm,
+      'nivel' => $obUsuario->nivel,
+      'niveln' => $obUsuario->niveln,
+      'tpnivel' => $obUsuario->tpnivel
+      
+*/
+      'id' => $obUsuario->id,
+      'nome' => $obUsuario->nome,
+      'email' => $obUsuario->email,
+      'senha' => $obUsuario->senha,
+      'config' => $obUsuario->config,
+      'ce_id' => $obUsuario->ce_id,
+      'ce_cod' => $obUsuario->ce_cod,
+      'ce_nome' => $obUsuario->ce_nome,
+      'co_id' => $obUsuario->co_id,
+      'co_nome' => $obUsuario->co_nome,
+      'ca_id' => $obUsuario->ca_id,
+      'ca_cod' => $obUsuario->ca_cod,
+      'ca_nome' => $obUsuario->ca_nome,
+      'tipo' => $obUsuario->tipo,
+      'adm' => $obUsuario->adm,
+      'ativo' => $obUsuario->ativo
       
     ];
 
@@ -68,8 +89,8 @@ class Login{
     self::init();
 
     //remove a sessão de usuário
-    unset($_SESSION['unesparpad2']);
-    session_destroy('unesparpad2');
+    unset($_SESSION['proecunespar']);
+    session_destroy('proecunespar');
 
     header('location: ../login/login.php');
     exit;
@@ -85,7 +106,7 @@ class Login{
     self::init();
 
     //validação da sessão
-    return isset($_SESSION['unesparpad2']['id']);
+    return isset($_SESSION['proecunespar']['id']);
   }
 
   /**

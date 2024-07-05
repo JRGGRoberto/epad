@@ -255,7 +255,12 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
+<?php if($obUsuario['tipo'] == 'prof'){ ?> 
+      
                        <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?= $obUsuario['id'] ?>">Informações do meu PAD 2024</a>
+  
+  <?php } ?> 
+
                        <div class="dropdown-divider"></div>
                       <!-- <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
                       <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a>
