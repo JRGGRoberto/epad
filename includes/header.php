@@ -1,21 +1,22 @@
 <?php
-  
+
 require '../vendor/autoload.php';
 
-use \App\Session\Login;
+use App\Session\Login;
+
 $obUsuario = Login::getUsuarioLogado();
-use \App\Entity\Cargo;
+use App\Entity\Cargo;
 
 $clock = [
-  '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚'
+  '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
 ];
 
 $horas = date('H');
-$horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
+$horas >= 12 ? (int) ($horas -= 12) : (int) ($horas -= 0);
 
-  $nome = explode(' ',trim($obUsuario['nome']));
-  $nome = $nome[0]; // will print Test
- 
+$nome = explode(' ', trim($obUsuario['nome']));
+$nome = $nome[0]; // will print Test
+
 ?>
 
 <!doctype html>
@@ -121,7 +122,7 @@ img.remover {
             <div class="col">
                   
                   <div>
-                      <span class="badge badge-success">ePAD <?=$clock[$horas]?></span>
+                      <span class="badge badge-success">ePAD <?php echo $clock[$horas]; ?></span>
                   </div>
                   <div>
                      Plano de Atividades Docentes
@@ -130,63 +131,58 @@ img.remover {
 
                   
               </div>
-<?php 
-    if (!is_null($obUsuario['nome'])){
-
-    $tpuser;
-    if($obUsuario['tipo'] == 'prof'){
-      $tpuser = 'professor';
-    } elseif($obUsuario['tipo'] == 'agente'){
-      $tpuser = 'agente';
-    } else {
-
-    }
-    $ano = 2024;
-?>
+<?php
+    if (!is_null($obUsuario['nome'])) {
+        if ($obUsuario['tipo'] == 'prof') {
+            $tpuser = 'professor';
+        } elseif ($obUsuario['tipo'] == 'agente') {
+            $tpuser = 'agente';
+        } else {
+        }
+        $ano = 2024;
+        ?>
 
               <div class="btn-group btn-group-sm float-right">  
                     <?php
-                       if($obUsuario['tipo'] === 'prof'){
-                         echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
+                               if ($obUsuario['tipo'] === 'prof') {
+                                   echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
 
-                         $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
-                         $cargos = Cargo::gets($where); 
-                         if (sizeof($cargos) > 0){
-                            echo '<div class="btn-group btn-group-sm">';
-                            echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Orientação</button>';
-                            echo '   <div class="dropdown-menu dropdown-menu-left">';
-                            $opcaoMenu = '';
-                            foreach($cargos as $c){
-                              switch($c->tipocod){
-                                case 'a': 
-                                  $opcaoMenu = 'Orientação ao Estágio';
-                                  break;
-                                case 'b': 
-                                  $opcaoMenu = 'Orientação de Aulas Práticas em Saúde';
-                                  break;
-                                case 'c': 
-                                  $opcaoMenu = 'Orientação à Trabalhos acadêmicos';
-                                  break;
-                                case 'd': 
-                                  $opcaoMenu = 'Orientação de Monitoria';
-                                  break;
-                                case 'e': 
-                                  $opcaoMenu = 'Orientação de estudante em PIC/PIBIC';
-                                  break;
-                                case 'f': 
-                                  $opcaoMenu = 'Orientação de estudante em PIBEX/PIBIS';
-                                  break;
-                              }
-                              echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod. $c->id. '" >'.$opcaoMenu.' - '. $c->colegiado_tt .'</a>';
-                            }
-                            echo '   </div>';
-                            echo '</div>';
-                         }
-                         
-                         
+                                   $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
+                                   $cargos = Cargo::gets($where);
+                                   if (sizeof($cargos) > 0) {
+                                       echo '<div class="btn-group btn-group-sm">';
+                                       echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Orientação</button>';
+                                       echo '   <div class="dropdown-menu dropdown-menu-left">';
+                                       $opcaoMenu = '';
+                                       foreach ($cargos as $c) {
+                                           switch ($c->tipocod) {
+                                               case 'a':
+                                                   $opcaoMenu = 'Orientação ao Estágio';
+                                                   break;
+                                               case 'b':
+                                                   $opcaoMenu = 'Orientação de Aulas Práticas em Saúde';
+                                                   break;
+                                               case 'c':
+                                                   $opcaoMenu = 'Orientação à Trabalhos acadêmicos';
+                                                   break;
+                                               case 'd':
+                                                   $opcaoMenu = 'Orientação de Monitoria';
+                                                   break;
+                                               case 'e':
+                                                   $opcaoMenu = 'Orientação de estudante em PIC/PIBIC';
+                                                   break;
+                                               case 'f':
+                                                   $opcaoMenu = 'Orientação de estudante em PIBEX/PIBIS';
+                                                   break;
+                                           }
+                                           echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.$c->id.'" >'.$opcaoMenu.' - '.$c->colegiado_tt.'</a>';
+                                       }
+                                       echo '   </div>';
+                                       echo '</div>';
+                                   }
 
-                         if($obUsuario['config'] === '1'){
-                           ?>
+                                   if ($obUsuario['config'] === '1') {
+                                       ?>
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -202,8 +198,8 @@ img.remover {
                                 </div>
                               </div>
                           <?php
-                         } elseif ($obUsuario['config'] === '2'){
-                           ?>
+                                   } elseif ($obUsuario['config'] === '2') {
+                                       ?>
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Direção</button>
                                 <div class="dropdown-menu dropdown-menu-left">
@@ -213,27 +209,26 @@ img.remover {
                                 </div>
                               </div>
                           <?php
-                         }
-
-                       } elseif($obUsuario['tipo'] === 'agente'){
-                         echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
-                         echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
-                       }
-                       if(1>2){
-                         echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
-                       }
-                    ?>
+                                   }
+                               } elseif ($obUsuario['tipo'] === 'agente') {
+                                   echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                                   echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
+                               }
+                               if (1 > 2) {
+                                   echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
+                               }
+        ?>
 
 
 <?php
 
 // colocar via tabela de suporte!!!
-$galeraDoSuporte = array(
+$galeraDoSuporte = [
   'b8fa555f-cedb-47cf-91cc-7581736aac88', // Roberto
   '8154fff1-becd-11ee-801b-0266ad9885af',   // Sérgio
-  '81512d7d-becd-11ee-801b-0266ad9885af' );   // Dorigão
+  '81512d7d-becd-11ee-801b-0266ad9885af'];   // Dorigão
 
-if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
+        if (in_array($obUsuario['id'], $galeraDoSuporte)) { ?>
 
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Suporte</button>
@@ -249,15 +244,15 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
 
 
 <?php
-}
-?> 
+        }
+        ?> 
                   <div class="btn-group btn-group-sm">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?= $nome ?></button>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">👤 <?php echo $nome; ?></button>
                     <div class="dropdown-menu dropdown-menu-right">
-                       <a class="dropdown-item btn-sm" href="../<?= $tpuser ?>/editar.php?id=<?= $obUsuario['id'] ?>">Perfil</a> 
-<?php if($obUsuario['tipo'] == 'prof'){ ?> 
+                       <a class="dropdown-item btn-sm" href="../<?php echo $tpuser; ?>/editar.php?id=<?php echo $obUsuario['id']; ?>">Perfil</a> 
+<?php if ($obUsuario['tipo'] == 'prof') { ?> 
       
-                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?= $obUsuario['id'] ?>">Informações do meu PAD 2024</a>
+                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD 2024</a>
   
   <?php } ?> 
 
@@ -269,7 +264,7 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
                     </div>
                   </div>
               </div>
-<?php 
+<?php
     }
 ?>
          </div>
@@ -277,25 +272,22 @@ if(in_array($obUsuario['id'], $galeraDoSuporte)){ ?>
   </nav>
 
     <div class="container">
-<?php 
+<?php
 
-    if (!is_null($obUsuario['nome'])){
-      echo 
-                   "<span class='badge badge-primary' id='bca'>",   $obUsuario['tipo'],
-        "</span><span class='badge badge-secondary' id='bce'>", $obUsuario['lota_nome'],
-       // "</span><span class='badge badge-success' id='bco'>",   $obUsuario['colegiado'],
-        "</span><span class='badge badge-info'>",      $obUsuario['nome'],"</span></a>";
-/*
-      if($obUsuario['niveln'] > 0){
-        echo "<span class='badge badge-warning float-right'>", $obUsuario['nivel'],"</span>";
-      }
+    if (!is_null($obUsuario['nome'])) {
+        echo "<span class='badge badge-primary' id='bca'>",   $obUsuario['tipo'],
+        "</span><span class='badge badge-secondary' id='bce'>", $obUsuario['ce_nome'],
+        // "</span><span class='badge badge-success' id='bco'>",   $obUsuario['colegiado'],
+        "</span><span class='badge badge-info'>",      $obUsuario['nome'],'</span></a>';
+        /*
+              if($obUsuario['niveln'] > 0){
+                echo "<span class='badge badge-warning float-right'>", $obUsuario['nivel'],"</span>";
+              }
 
-      if($obUsuario['adm'] == 1){
-        echo "<span class='badge badge-danger float-right'>Admin</span>";
-      }
-*/
+              if($obUsuario['adm'] == 1){
+                echo "<span class='badge badge-danger float-right'>Admin</span>";
+              }
+        */
     }
-    
 
-
-  ?>
+?>
