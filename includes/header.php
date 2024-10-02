@@ -211,7 +211,9 @@ img.remover {
                           <?php
                                    }
                                } elseif ($obUsuario['tipo'] === 'agente') {
-                                   echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                                   if($user['adm'] == 1 ) {
+                                     echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                                   }
                                    echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
                                }
                                if (1 > 2) {
@@ -257,8 +259,8 @@ $galeraDoSuporte = [
   <?php } ?> 
 
                        <div class="dropdown-divider"></div>
-                      <!-- <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
-                      <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a>
+                       <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a>
+                      <!--                        <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a> -->
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
                     </div>

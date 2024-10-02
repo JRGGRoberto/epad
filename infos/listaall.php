@@ -27,7 +27,7 @@ $tbl_dir = '<table class="table table-bordered table-sm">
 foreach( $lista as $coleg){
   $tbl_dir .= '
     <tr>
-       <td>'. $coleg->ca .'</td>
+      <td>'. $coleg->ca .'</td>
       <td>'. $coleg->colegiado .'</td>
       <td><a href="./data.php?id='.$coleg->co_id. '" class"btn-primary" > 📄</a></td>
    </tr>' ;

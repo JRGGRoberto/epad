@@ -6,12 +6,9 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-if(!($user['tipo'] == 'agente' &&  $user['adm'] == 1)) {
-  header('location: ../home/branco.php');
-  exit;
-}
-
 include '../includes/header.php';
 $uid = $user['id'];
-include __DIR__.'/includes/content.php';
+echo  '<div class="container p-3 my-3 bg-white text-dark" style="padding : 25px">';
+echo 'Bem vindo';
+echo '</div>';
 include '../includes/footer.php'; 

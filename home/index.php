@@ -6,8 +6,11 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-if($user['tipo'] == 'agente') {
+if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
   header('location: ../matrizes/');
+  exit;
+} if($user['tipo'] == 'agente') {
+  header('location: ./branco.php');
   exit;
 } elseif($user['tipo'] == 'prof') {
         header('location: ../pad/');

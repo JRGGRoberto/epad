@@ -484,4 +484,3 @@ const myInterval = window.setInterval(function() {
 getDBMD21();
 
 </script>
-
