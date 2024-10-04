@@ -145,7 +145,7 @@ img.remover {
               <div class="btn-group btn-group-sm float-right">  
                     <?php
                                if ($obUsuario['tipo'] === 'prof') {
-                                   echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
+                                   echo '<a type="button" class="btn btn-primary" href="../home" style="text-align: center;">PAD</a>';
 
                                    $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
                                    $cargos = Cargo::gets($where);
