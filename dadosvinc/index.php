@@ -29,12 +29,21 @@ if($obProfessor->id <> $user['id']){
 }
 
 
-$ano = '2024';
-$vinculo = Vinculo::getByAnoProf($obProfessor->id, $ano);
-define('TITLE','Editar dados do vinculo de '. $ano);
+$anoLetivo = $user['AnoAtivo'];
+$vinculo = new Vinculo();
+$vinculo = Vinculo::getByAnoProf($obProfessor->id, $anoLetivo);
+define('TITLE','Editar dados do vinculo de '. $anoLetivo);
+
+$dados = false;
+
+if (!is_null($vinculo)){
+  if ($vinculo->ano == $anoLetivo){
+    $dados = true;
+  }
+}
 
 if(isset($_POST['nome'])){
-
+ 
   $vinculo->dt_obtn_tit     = $_POST['dt_obtn_tit'];
   $vinculo->tempo_cc        = $_POST['tempo_cc'];
   $vinculo->tempo_esu       = $_POST['tempo_esu'];
@@ -49,6 +58,18 @@ if(isset($_POST['nome'])){
 }
 
 include '../includes/header.php';
-include __DIR__.'/includes/formulario.php';
+if ($dados){
+   include __DIR__.'/includes/formulario.php';
+} else {
+  echo '<pre>';
+print_r($vinculo);
+echo '</pre>';
+  echo 
+  '<main>
+     <h2 class="mt-3">Vinculo não encontrado</h2>
+     <p>Seu vinculo '.$anoLetivo . ' ainda não foi registrado.  </p>
+     <p></p>
+  </main>';
+}
 include '../includes/footer.php';
   

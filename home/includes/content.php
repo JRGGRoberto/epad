@@ -1,12 +1,19 @@
 
 <div class="container mt-3">
 
-  <h3 class="mt-3">PAD </h3>
+  <h3 class="mt-3">PADs </h3>
   
 <div class="container p-3 my-3 bg-white text-dark" style="padding : 25px">
   
 <p>
+<pre>
+  <?php 
+  echo $opcoes;
 
+  echo '<br><br><br>';
+  print_r($retorno);
+  ?>
+</pre>
 
 </p>
 

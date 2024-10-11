@@ -2,6 +2,7 @@
 
 require '../vendor/autoload.php';
 
+
 use App\Session\Login;
 
 $obUsuario = Login::getUsuarioLogado();
@@ -138,6 +139,8 @@ img.remover {
         } elseif ($obUsuario['tipo'] == 'agente') {
             $tpuser = 'agente';
         } else {
+          header('location: ./branco.php');
+          exit;
         }
         $ano = 2024;
         ?>
@@ -254,7 +257,7 @@ $galeraDoSuporte = [
                        <a class="dropdown-item btn-sm" href="../<?php echo $tpuser; ?>/editar.php?id=<?php echo $obUsuario['id']; ?>">Perfil</a> 
 <?php if ($obUsuario['tipo'] == 'prof') { ?> 
       
-                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD 2024</a>
+                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD <?= $user['AnoAtivo'] ?></a>
   
   <?php } ?> 
 
