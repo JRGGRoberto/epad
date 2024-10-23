@@ -7,6 +7,9 @@ use \App\Entity\Vinculo;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
 //VALIDAÇÃO DO ID
@@ -30,17 +33,12 @@ if($obProfessor->id <> $user['id']){
 
 
 $anoLetivo = $user['AnoAtivo'];
-$vinculo = new Vinculo();
+
 $vinculo = Vinculo::getByAnoProf($obProfessor->id, $anoLetivo);
+
 define('TITLE','Editar dados do vinculo de '. $anoLetivo);
 
-$dados = false;
 
-if (!is_null($vinculo)){
-  if ($vinculo->ano == $anoLetivo){
-    $dados = true;
-  }
-}
 
 if(isset($_POST['nome'])){
  
@@ -58,13 +56,10 @@ if(isset($_POST['nome'])){
 }
 
 include '../includes/header.php';
-if ($dados){
+if($vinculo instanceof Vinculo){
    include __DIR__.'/includes/formulario.php';
 } else {
-  echo '<pre>';
-print_r($vinculo);
-echo '</pre>';
-  echo 
+    echo 
   '<main>
      <h2 class="mt-3">Vinculo não encontrado</h2>
      <p>Seu vinculo '.$anoLetivo . ' ainda não foi registrado.  </p>

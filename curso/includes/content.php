@@ -25,7 +25,7 @@
   </div>
 <script src="./ccc1.js"></script>
 <?php
-echo " <script> getDBMD('". $user['co_id'] ."') </script>";
+echo " <script> getDBMD('". $user['co_id'] . ''. $user['AnoAtivo'] . "') </script>";
 ?>
 
 

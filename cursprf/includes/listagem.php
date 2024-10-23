@@ -353,7 +353,7 @@ $(document).ready(function(){
 });
 
 
-getDBMDprof(2024);
+getDBMDprof(<?= $user['AnoAtivo'] ?>);
 </script>
 
 <?= $script ?>

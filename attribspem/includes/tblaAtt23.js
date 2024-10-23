@@ -160,6 +160,7 @@ async function getDBMD(){
   data23 = await fetch(`../api/ativ23att.php?ca=${co_id}${ano}`).then(resp => resp.json()).catch(error => false);
   deleteAllRowsTable();
   data23.forEach(e => insereTable(e));
+
 }
 
 getDBMD();

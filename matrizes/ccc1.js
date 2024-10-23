@@ -156,13 +156,14 @@ function desabilitar() {
 
 function ativaEdtAno() {
   var anoLetivoEdt = document.getElementById('anoLetivo');
-  anoLetivoEdt.value = '2024';
+  anoLetivoEdt.disabled = false;
+  /* anoLetivoEdt.value = '2024';
   let btnListarAnosL = document.getElementById('btnListarAnosL');
   let btnAdicionarAnosL = document.getElementById('btnAdicionarAnosL');
   btnListarAnosL.disabled = false;
   btnAdicionarAnosL.disabled = false;
   carregarDados();
-
+*/
 
   /*
 
@@ -196,6 +197,18 @@ ativaEdtAno();
 btnListarAnosL.disabled = false;
     btnAdicionarAnosL.disabled = false;
 */
+
+function testeAno(){
+  let anoLetivo = document.getElementById("anoLetivo");
+  console.log("mudou " + anoLetivo.value);
+  let btnListarAnosL = document.getElementById('btnListarAnosL');
+  if(anoLetivo.value == 2025  ) {
+    let btnAdicionarAnosL = document.getElementById('btnAdicionarAnosL');
+    btnAdicionarAnosL.disabled = false;
+  }
+  btnListarAnosL.disabled = false;
+  carregarDados();
+}
 
 function fecharModalDis() {
   clearModal();

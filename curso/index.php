@@ -19,15 +19,21 @@ if(!$ok){
 }
 
 use \App\Entity\MatrizDisc;
-$ano = '2024';
+$ano = $user['AnoAtivo']; //'2024';
 
-$where = ' (id_curso, ano) = ("'.$user['co_id']. '" , '.$ano.') ' ;
+// $where = ' (id_curso, ano) = ("'.$user['co_id']. '" , '.$ano.') ' ;
+$where = ' id_curso =  "'.$user['co_id']. '" ' ;
+
+
+
 $reg = MatrizDisc::get($where);
+/*
 if(sizeof($reg) == 1){
    header('location: '. '../cursprf/index.php?id='.$reg[0]->id);
    exit;
                         
 }
+*/
 
 include '../includes/header.php';
 $uid = $user['id'];

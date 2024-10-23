@@ -18,6 +18,7 @@ $horas >= 12 ? (int) ($horas -= 12) : (int) ($horas -= 0);
 $nome = explode(' ', trim($obUsuario['nome']));
 $nome = $nome[0]; // will print Test
 
+$ano = $obUsuario['AnoAtivo']; 
 ?>
 
 <!doctype html>
@@ -142,7 +143,7 @@ img.remover {
           header('location: ./branco.php');
           exit;
         }
-        $ano = 2024;
+      
         ?>
 
               <div class="btn-group btn-group-sm float-right">  
@@ -256,8 +257,8 @@ $galeraDoSuporte = [
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?php echo $tpuser; ?>/editar.php?id=<?php echo $obUsuario['id']; ?>">Perfil</a> 
 <?php if ($obUsuario['tipo'] == 'prof') { ?> 
-      
-                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD <?= $user['AnoAtivo'] ?></a>
+  <!-- ?= $user['AnoAtivo'] ?> -->
+                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD 2025</a>
   
   <?php } ?> 
 

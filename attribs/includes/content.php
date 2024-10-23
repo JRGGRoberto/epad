@@ -50,7 +50,8 @@
 
 <?php
 
-  $ca_nome = $user['lota_nome'];
+
+  $ca_nome = $user['ca_nome']; // ['lota_nome'];
   $co_nome = $user['co_nome'];
   include './includes/tblform.php';
 ?>
@@ -94,6 +95,7 @@
       </div>
     </div>
     <!--  The Modal DELET Fim-->
+
 
 
 

@@ -9,9 +9,10 @@ use \App\Entity\PADAtiv22;
 
 $ca = $_GET["ca"];
 $id_colg = substr($ca, 0, 36);
-$ativ    = substr($ca, 36, 1);
+$ano = substr($ca, 36, 4);
+$ativ    = substr($ca, 40, 1);
 
-$where = '(id_co_estudante, atividade) = ("'.$id_colg.'", "'.$ativ.'") ';
+$where = '(id_co_estudante, atividade, ano) = ("'.$id_colg.'", "'.$ativ.'", "'.$ano.'" ) ';
 $order = ' orientador, estudante, serie';
 
 $registros = PADAtiv22::get($where, $order);

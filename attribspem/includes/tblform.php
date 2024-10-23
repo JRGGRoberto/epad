@@ -45,6 +45,7 @@
       <div class="form-group  col" >
         <label for="estudante">Nome do projeto de ensino ou curso para monitoria</label>
         <input type="text" name="nome_atividade" id="nome_atividade" class="form-control" maxlength="118" require>
+        
       </div>
   
       <div class="form-group col-2">
@@ -55,7 +56,8 @@
     </div>
     
     <input type="hidden" name="id"        id="id"><br>
-    <input type="hidden" name="id_co"     id="id_co"     value="<?=$cargoAttri->co_id_tt?>"><br>
+    <input type="hidden" name="id_co"     id="id_co"     value="<?=$cargoAttri->co_id_tt?>">
+    <input type="hidden" name="ano"                       value="<?=$ano?>"><br>
 
 
     <center>

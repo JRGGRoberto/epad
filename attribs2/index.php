@@ -32,7 +32,10 @@ $tipocod = substr($tipocod, 0, 1);
 
 
 
-$ano = '2024';
+$ano = $user['AnoAtivo'] ; //'2024';
+echo '<script> 
+const ano = "'.$ano.'";
+</script>';
 $co = $user['co_id'];
 
 $cargoAttri = Cargo::get($cargoid);

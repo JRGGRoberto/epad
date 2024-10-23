@@ -25,7 +25,7 @@ if(!$ok){
    exit;
 }
 
-$ano = '2024';
+//$ano = '2024';
 $co = $user['co_id'];
 
 
@@ -37,5 +37,6 @@ echo '<script>
 
 
 include __DIR__.'/includes/content.php';
+
 include '../includes/footer.php';
 
