@@ -4,14 +4,12 @@
   <h3 class="mt-3">PADs </h3>
   
 <div class="container p-3 my-3 bg-white text-dark" style="padding : 25px">
-  
+  <p>Todas as configurações relizadas nos menus são referentes ao PAD do ano de <span class="badge badge-primary" id="bca"><?=$ano?></span></p>
+  <p>Os dados referentes aos PADs anteriores quando existirem poderão ser visto pelo(s) botão(ões) de cor <span class="badge badge-info">ciano escuro</span></p>
 <p>
-<pre>
+
   <?php 
   echo $opcoes;
-
-  echo '<br><br><br>';
-  print_r($retorno);
   ?>
 </pre>
 
