@@ -9,7 +9,6 @@
       <table id="tabelaMatD" class="table table-bordered table-sm">
         <thead class="thead-light">
           <tr>
-            <th style="display: none;">ID</th>
             <th>Ano</th>
             <th>Curso</th>
             <th>Nome</th>
@@ -19,14 +18,14 @@
           </tr>
         </thead>
         <tbody>
+          <?=$tbody?>
         </tbody>
       </table>
     </div>
   </div>
-<script src="./ccc1.js"></script>
-<?php
-echo " <script> getDBMD('". $user['co_id'] . ''. $user['AnoAtivo'] . "') </script>";
-?>
+
+
+
 
 
 

@@ -90,6 +90,7 @@
             <th>Disciplina</th>
             <th>Carga horária</th>
             <th>Série</th>
+            <th>Modal</th>
             <th style="text-align: center; width:130px">
               <button type="button" class="btn btn-primary btn-sm" onclick="formAddDis()" id="btnAdicionarD">➕</button>
             </th>
@@ -144,13 +145,11 @@
                 <div class="col">
                   <div class="form-group">
                     <label for="tipo_vinculo">Composição</label>
-                    <input type="text" class="form-control" id="tipo_vinculo" name="tipo_vinculo"  value="<?=$user['mudanca']?>">
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="form-group">
-                    <label for="mudanca">Série</label>
-                    <input type="text" class="form-control" id="mudanca" name="mudanca"  value="<?=$user['mudanca']?>">
+                      <select name="tipo_vinculo" id="tipo_vinculo" class="form-control" value="<?=$user['tipo_vinculo']?>">
+                        <option value="1">Um professor atendende está disciplina</option>
+                        <option value="n">Professores dividem a disciplina [dividindo o tempo]</option>
+                        <option value="m">Várias turmas [multiplica o tempo]</option>
+                      </select>
                   </div>
                 </div>
               </div>
@@ -303,7 +302,8 @@ function formEditar(id) {
   document.getElementById("disc").value = myObj.nome;
   document.getElementById("ch").value = myObj.ch;
   document.getElementById("serie").value = myObj.serie;
-  document.getElementById("titleMemb").innerHTML = 'Editar disciplina';
+  document.getElementById("titleMemb").innerHTML = 'Solicitação de alteração de disciplina';
+  document.getElementById("tipo_vinculo").value = myObj.tipo_vinculo;
   $('#modalDis').modal('show');
   document.getElementById("addMatrDis").innerHTML = "Alterar";
 }
@@ -323,7 +323,7 @@ function clearModal() {
   document.getElementById("ch").value = '';
   document.getElementById("serie").value = '';
 
-  document.getElementById("ch").value = '';
+  document.getElementById("tipo_vinculo").value = '1';
   document.getElementById("serie").value = '';
 }
 
@@ -335,20 +335,35 @@ function insereTable(newDisc){
     let celDisc  = newLinha.insertCell(1);
     let celCh    = newLinha.insertCell(2);
     let celSerie = newLinha.insertCell(3);
-    let celDelet = newLinha.insertCell(4);
-    let celSerie = newLinha.insertCell(5);
-    let celDelet = newLinha.insertCell(6);
+    let celTp_vinculo = newLinha.insertCell(4);
+    let celDelet = newLinha.insertCell(5);
+    
+    // mudanca 
+    
+   // let celDelet = newLinha.insertCell(6);
   celId.innerHTML    = newDisc.id;
   celDisc.innerHTML  = newDisc.nome;
   celSerie.innerHTML = newDisc.serie;
   celCh.innerHTML    = newDisc.ch;
+  let tp_vinc = '';
+  switch(newDisc.tipo_vinculo) {
+    case "1": tp_vinc = 'Um professor atendende está disciplina';
+            break;
+    case "n": tp_vinc = 'Professores dividem a disciplina';
+            break;
+    case "m": tp_vinc = 'Várias turmas';
+            break;
+  }
+  
+
+  celTp_vinculo.innerHTML = tp_vinc;
   celDelet.innerHTML  = 
   `<center>
-    <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
-    <button type="button" class="btn btn-light btn-sm" onclick="formEditar('${newDisc.id}')">✏️</button>
+   <button type="button" class="btn btn-light btn-sm" onclick="formEditar('${newDisc.id}')">✏️</button>
   </center>`;
   celId.style.display = 'none';
 }
+// <button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('${newDisc.id}')">⛔</button>
 
 function updateDisciplina(receiveData){
   data = receiveData.data;

@@ -12,15 +12,9 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-//VALIDAÇÃO DO ID
-if(!isset($_GET['id']) ){
-    header('location: index.php?status=error');
-    exit;
-}
-
 //CONSULTA AO PROJETO
 $obProfessor = new Professor();
-$obProfessor = $obProfessor::getProfessor($_GET['id']);
+$obProfessor = $obProfessor::getProfessor( $user['id']);
 //VALIDAÇÃO DA TIPO
 if(!$obProfessor instanceof Professor){
   header('location: ../index.php?status=error');
@@ -31,40 +25,29 @@ if($obProfessor->id <> $user['id']){
   exit;
 }
 
-
-$anoLetivo = $user['AnoAtivo'];
-
-$vinculo = Vinculo::getByAnoProf($obProfessor->id, $anoLetivo);
-
-define('TITLE','Editar dados do vinculo de '. $anoLetivo);
+//$vinculo = Vinculo::getByAnoProf($obProfessor->id, $anoLetivo);
+$retorno = Vinculo::gets('id_prof = "'.$obProfessor->id.'"');
 
 
+$opcoes = '';
 
-if(isset($_POST['nome'])){
- 
-  $vinculo->dt_obtn_tit     = $_POST['dt_obtn_tit'];
-  $vinculo->tempo_cc        = $_POST['tempo_cc'];
-  $vinculo->tempo_esu       = $_POST['tempo_esu'];
-  $vinculo->area_concurso   = $_POST['area_concurso'];
-  $vinculo->user            = $user['id'];
- 
-  $vinculo->atualizar();
+foreach( $retorno as $vinculo ){
 
-  header('location: ./../index.php?status=success');
-  
-  exit;
+    if($vinculo->anosedt == 0){
+        $opcoes .= ' <a type="button" class="btn btn-info"          href="./ano.php?a='. $vinculo->ano.'"
+                  style="text-align: center;">PAD '. $vinculo->ano  .' ['. $vinculo->rt .']</a> <br><br>' ;
+    } else {
+        $opcoes .= ' <a type="button" class="btn btn-primary"       href="./ano.php?a='. $vinculo->ano.'"
+                  style="text-align: center;">PAD '. $vinculo->ano  .' ['. $vinculo->rt .']</a> <br><br>';
+    }
+    
 }
+
 
 include '../includes/header.php';
-if($vinculo instanceof Vinculo){
-   include __DIR__.'/includes/formulario.php';
-} else {
-    echo 
-  '<main>
-     <h2 class="mt-3">Vinculo não encontrado</h2>
-     <p>Seu vinculo '.$anoLetivo . ' ainda não foi registrado.  </p>
-     <p></p>
-  </main>';
-}
+echo '<main>
+  <h2 class="mt-3">Informações do meu PAD [cabeçalho 1.]</h2><hr>';
+echo $opcoes;
+echo '</main>';
 include '../includes/footer.php';
   

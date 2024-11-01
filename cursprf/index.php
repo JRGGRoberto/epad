@@ -92,5 +92,12 @@ $script =
 
 
 include '../includes/header.php';
-include __DIR__.'/includes/listagem.php';
+
+if($matriz->edtano == 1) {
+  include __DIR__.'/includes/listagem.php';
+} else {
+  include __DIR__.'/includes/listagemNoEDT.php';
+}
+
+ 
 include '../includes/footer.php';

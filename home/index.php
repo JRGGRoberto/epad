@@ -17,10 +17,11 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
 } elseif($user['tipo'] == 'prof') {
     $sql = 
     'select 
-       v.ano, v.rt, v.id
+       v.ano, v.rt, v.id, a.edt
      from 
        usuarios u
        inner join vinculo v on u.id  = v.id_prof 
+       inner join anos a on a.ano = v.ano
       where 
         u.id = "' . $user['id'] .'"
      order by v.ano desc;';
@@ -30,16 +31,16 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
     $opcoes = '';
     foreach( $retorno as $vinculo ){
 
-        if($vinculo->ano !=$user['AnoAtivo']){
-            $opcoes .= '<a type="button" class="btn btn-info"  target="_blank"
+        if($vinculo->edt == 0){
+            $opcoes .= ' <a type="button" class="btn btn-info"  target="_blank"
                      href="../padstoprn/index.php?id='. $vinculo->id 
                     .'" style="text-align: center;">PAD '. $vinculo->ano 
-                    .' ['. $vinculo->rt .']</a>';
+                    .' ['. $vinculo->rt .']</a><br><br> ' ;
         } else {
-            $opcoes .= '<a type="button" class="btn btn-primary"
-                     href="../pad/"
+            $opcoes .= ' <a type="button" class="btn btn-primary"
+                     href="../pad/index.php?ano='. $vinculo->ano.'"
                       style="text-align: center;">PAD '. $vinculo->ano 
-                    .' ['. $vinculo->rt .']</a>';
+                    .' ['. $vinculo->rt .']</a><br><br> ';
         }
         
     }

@@ -4,9 +4,6 @@ namespace App\Session;
 
 class Login{
 
-  private static function AnoAtivo(){
-    return 2025;
-  }
 
   /**
    * Método responsável por iniciar a sessão
@@ -58,8 +55,7 @@ class Login{
       'ca_nome' => $obUsuario->ca_nome,
       'tipo' => $obUsuario->tipo,
       'adm' => $obUsuario->adm,
-      'ativo' => $obUsuario->ativo,
-      'AnoAtivo' => self::AnoAtivo()
+      'ativo' => $obUsuario->ativo
       
     ];
 
