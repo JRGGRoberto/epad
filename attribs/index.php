@@ -31,10 +31,10 @@ $co = $user['co_id'];
 
 
 
-
+// const ano = "'. $ano.'";
 include '../includes/header.php';
 echo '<script>
-const ano = "'. $ano.'";
+const ano = "2024";
 const co = "'. $co .'";
 
 </script>';

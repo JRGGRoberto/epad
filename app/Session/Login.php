@@ -55,7 +55,9 @@ class Login{
       'ca_nome' => $obUsuario->ca_nome,
       'tipo' => $obUsuario->tipo,
       'adm' => $obUsuario->adm,
-      'ativo' => $obUsuario->ativo
+      'ativo' => $obUsuario->ativo, 
+      'year_sel' => '',
+      'id_coSel' => ''
       
     ];
 

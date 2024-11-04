@@ -7,6 +7,8 @@ use App\Session\Login;
 
 $obUsuario = Login::getUsuarioLogado();
 use App\Entity\Cargo;
+use \App\Entity\Outros;
+
 
 $clock = [
   '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
@@ -18,7 +20,57 @@ $horas >= 12 ? (int) ($horas -= 12) : (int) ($horas -= 0);
 $nome = explode(' ', trim($obUsuario['nome']));
 $nome = $nome[0]; // will print Test
 
-// $ano = $obUsuario['AnoAtivo']; 
+$idu = $obUsuario['id'];
+  
+$qry1 = "
+  select 
+    c.id id , c.nome curso , a.ano ano , a.edt edt ,
+    CONCAT(c.nome,  '[', a.ano, ']' ) nomelongo
+  from 
+    colegiados c,
+    anos a
+  where 
+     (c.coord_id, a.edt) = ('". $idu ."', 1)
+  order by a.ano desc, c.nome
+  ";
+$coodAnos = Outros::qry($qry1);
+
+$qnty = 0;
+$btnCurs = '';
+$idCurso = '';
+$nomeCurso = '';
+$anoCurso = '';
+
+foreach($coodAnos as $curs){
+  $act = '';
+  $ck = '';
+
+  if($obUsuario['year_sel'] == '' and $qnty == 0){
+    $act = 'active';
+    $ck = 'checked';
+  }
+ 
+  $btnCurs .= 
+  '<label class="btn btn-primary '.$act.' btn-sm">
+    <input type="radio" name="options" '.$ck.' value="'. $curs->ano . $curs->id .'"> '. $curs->nomelongo.'
+  </label>';
+
+  if($act == 'active') {
+    $idCurso = $curs->id;
+    $nomeCurso = $curs->curso;
+    $anoCurso = $curs->ano;
+
+    
+  }
+
+  $qnty++;
+}
+
+   echo $idCurso .'<br>';
+   echo $nomeCurso .'<br>';
+   echo $anoCurso .'<br>';
+
+
 ?>
 
 <!doctype html>
@@ -146,6 +198,12 @@ img.remover {
       
         ?>
 <div> 
+  <div>
+
+
+  
+
+  </div>
   <!-- inicio botões menu -->
               <div class="btn-group btn-group-sm float-right">  
                     <?php
@@ -187,8 +245,10 @@ img.remover {
                                        echo '</div>';
                                    }
 
-                                   if ($obUsuario['config'] === '1') {
-                                       ?> 
+                                   if ($obUsuario['config'] === '1' and $qnty > 0) {
+                                    ?> 
+
+
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -196,14 +256,14 @@ img.remover {
                                     
                                   <div class="dropdown-divider"></div>
                                   
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções [ANO]</a>
-                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [ANO]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [ANO]</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [ANO]</a>
+                                  <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [ANO]</a>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                 </div>
                               </div>
                           <?php
@@ -280,7 +340,15 @@ $galeraDoSuporte = [
 ?> 
 
     <div><!-- Fim botões menu -->
-    [ANO ]
+
+<?php
+if ($obUsuario['config'] === '1') {
+  echo '<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">';
+  echo $btnCurs;
+  echo '</div>';
+}
+?>
+
     </div>
 </div>
 

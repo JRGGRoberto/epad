@@ -8,9 +8,13 @@
   <p>Quando o ano está com está <span class="badge badge-info">cor</span>, está apenas no modo de leitura</p>
 <p>
 
+<pre>
   <?php 
   echo $opcoes;
+
+  print_r($user)
   ?>
+  
 </pre>
 
 </p>
