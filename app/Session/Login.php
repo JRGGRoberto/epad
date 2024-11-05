@@ -59,6 +59,7 @@ class Login{
       'year_sel' => '',
       'id_coSel' => ''
       
+
     ];
 
     // redireciona usuário para Index

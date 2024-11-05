@@ -49,27 +49,30 @@ foreach($coodAnos as $curs){
     $act = 'active';
     $ck = 'checked';
   }
+
+  if($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel']  == $curs->id){
+    $act = 'active';
+    $ck = 'checked';
+  }
  
-  $btnCurs .= 
-  '<label class="btn btn-primary '.$act.' btn-sm">
-    <input type="radio" name="options" '.$ck.' value="'. $curs->ano . $curs->id .'"> '. $curs->nomelongo.'
+
+  $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
+  $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $curs->ano . $curs->id .'"  onclick="chValueS(`'.$curs->ano . $curs->id .'`);"  >'. $curs->nomelongo.'
   </label>';
 
   if($act == 'active') {
     $idCurso = $curs->id;
     $nomeCurso = $curs->curso;
     $anoCurso = $curs->ano;
-
-    
   }
 
   $qnty++;
 }
-
+/*
    echo $idCurso .'<br>';
    echo $nomeCurso .'<br>';
    echo $anoCurso .'<br>';
-
+*/
 
 ?>
 
@@ -348,8 +351,36 @@ if ($obUsuario['config'] === '1') {
   echo '</div>';
 }
 ?>
+<script>
 
-    </div>
+function chValueS(yearIDCO){
+  
+  const data = {
+    ano: yearIDCO.substr(0, 4),
+    coid: yearIDCO.substr(4, 36)
+  };
+ 
+
+  fetch('./../includes/dml/chSess.php', {
+        method:'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then( res => res.json())
+    .then( res => {
+           console.log(res.data.ano);
+           console.log(res.data.co);
+           window.location.reload();
+        }
+    );
+
+}
+</script>
+
+</div>
 </div>
 
          </div>
