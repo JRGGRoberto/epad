@@ -1,7 +1,9 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-2">
-        <h3>Atribuições</h3>
+        <h3 style="margin-bottom: 0;">Atribuições</h3>
+        <span class="badge badge-pill badge-light">Estágio / Trab. Acadêmicos</span>
+
     </div>
     <div class="col" style="text-align:left">
       <div>

@@ -29,6 +29,7 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
 
 
     $opcoes = '';
+    $qnt = 0;
     foreach( $retorno as $vinculo ){
 
         if($vinculo->edt == 0){
@@ -42,8 +43,14 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
                       style="text-align: center;">PAD '. $vinculo->ano 
                     .' ['. $vinculo->rt .']</a><br><br> ';
         }
-        
+        $qnt++;
     }
+
+    if($qnt == 0){
+        $opcoes = '<p>Não há PADs vinculados a esta conta.</p>';
+        $opcoes .= '<p>Qualquer problema entre em contato com o seu coordenador de curso.</p>';
+    }
+
 
     include '../includes/header.php';
     

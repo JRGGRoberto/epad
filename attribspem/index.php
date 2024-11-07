@@ -25,8 +25,9 @@ if(!$ok){
    exit;
 }
 
-//$ano = '2024';
-$co = $user['co_id'];
+
+$ano = $_SESSION['proecunespar']['year_sel'];
+$co =  $_SESSION['proecunespar']['id_coSel'];
 
 
 include '../includes/header.php';
