@@ -13,7 +13,15 @@
             
         </footer>
 -->
-
+<?php
+/*
+echo '<hr>Footer<hr>';
+echo 'ano: '. $ano;
+echo '<br>co: '. $co_id;
+echo '<pre>';
+print_r($user);
+*/
+?>
             
     </body>
 </html>

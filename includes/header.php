@@ -35,43 +35,58 @@ $qry1 = "
   ";
 $coodAnos = Outros::qry($qry1);
 
-$qnty = 0;
+
 $btnCurs = '';
 $idCurso = '';
 $nomeCurso = '';
 $anoCurso = '';
 
+
+$qnty = 0;
 foreach($coodAnos as $curs){
-  $act = '';
-  $ck = '';
-
-  if($obUsuario['year_sel'] == '' and $qnty == 0){
-    $act = 'active';
-    $ck = 'checked';
-  }
-
-  if($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel']  == $curs->id){
-    $act = 'active';
-    $ck = 'checked';
-  }
- 
-
-  $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
-  $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $curs->ano . $curs->id .'"  onclick="chValueS(`'.$curs->ano . $curs->id .'`);"  >'. $curs->nomelongo.'
-  </label>';
-
-  if($act == 'active') {
-    $idCurso = $curs->id;
-    $nomeCurso = $curs->curso;
-    $anoCurso = $curs->ano;
-  }
-
-  $qnty++;
+    $act = '';
+    $ck = '';
+  
+    if($obUsuario['year_sel'] == '' and $qnty == 0){
+      $act = 'active';
+      $ck = 'checked';
+    }
+  
+    if($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel']  == $curs->id){
+      $act = 'active';
+      $ck = 'checked';
+    }
+   
+  
+    $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
+    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $curs->ano . $curs->id .'"  onclick="chValueS(`'.$curs->ano . $curs->id .'`);"  >'. $curs->nomelongo.'
+    </label>';
+  
+    if($act == 'active') {
+      $idCurso = $curs->id;
+      $nomeCurso = $curs->curso;
+      $anoCurso = $curs->ano;
+    }
+  
+    $qnty++;
 }
+
+$scriptSel1opcao = '';
+
+if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0 ){
+
+  $scriptSel1opcao = "<hr>A<hr>    <script>
+      chValueS(`".$anoCurso . $idCurso ."`);
+      
+    </script>";
+}
+
 /*
-   echo $idCurso .'<br>';
-   echo $nomeCurso .'<br>';
-   echo $anoCurso .'<br>';
+
+echo 'id:   '. $idCurso .'<br>';
+echo 'curs: '. $nomeCurso .'<br>';
+echo 'ano:  '. $anoCurso .'<br>';
+echo '<hr>';
 */
 
 ?>
@@ -376,9 +391,11 @@ function chValueS(yearIDCO){
            window.location.reload();
         }
     );
-
 }
+
 </script>
+
+<?= $scriptSel1opcao ?>
 
 </div>
 </div>

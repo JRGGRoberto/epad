@@ -32,15 +32,25 @@ $tipocod = substr($tipocod, 0, 1);
 
 
 
-$ano = $user['AnoAtivo'] ; //'2024';
-echo '<script> 
-const ano = "'.$ano.'";
-</script>';
-$co = $user['co_id'];
+$co = $user['id_coSel'];
+//$ano = $user['year_sel'];
+
+
+
 
 $cargoAttri = Cargo::get($cargoid);
 
 
+
+/*
+$co_id_tt = $cargoAttri['co_id_tt'];
+$tipocod =  $cargoAttri['tipocod'];
+$ano =      $cargoAttri['ano'];
+*/
+
+$co_id_tt = $cargoAttri->co_id_tt;
+$tipocod =  $cargoAttri->tipocod;
+$ano =      $cargoAttri->ano;
 
 $texto = '';
 switch ($tipocod){
@@ -65,11 +75,12 @@ switch ($tipocod){
 }
 
 $funcSelected = '<option >'. $texto .'</option>';
-
 include '../includes/header.php';
-echo '<script>
-  let co_id = "'. $cargoAttri->co_id_tt .'";
-  let tipo = "'. $cargoAttri->tipocod .'";
+
+echo '<script> 
+  const ano = "'.$ano.'";
+  let co_id = "'. $co_id_tt .'";
+  let tipo = "'. $tipocod .'";
 </script>';
 
 $tpOrientacao = '';
@@ -95,5 +106,6 @@ $tpOrientacao = '';
   }
 
 include __DIR__.'/includes/content.php';
+
 include '../includes/footer.php';
 

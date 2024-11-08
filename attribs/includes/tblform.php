@@ -42,8 +42,8 @@
       </select>
     </div>
 
-    <input type="hidden" name="ano" value="<?=$ano?>">
-    <input type="hidden" name="co" value="<?=$co?>">
+    <input type="hidden" name="ano" value="<?=$ano; ?>">
+    <input type="hidden" name="co" value="<?=$co; ?>">
     
 
     <center>

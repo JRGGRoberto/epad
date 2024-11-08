@@ -49,5 +49,6 @@ echo '<main>
   <h2 class="mt-3">Informações do meu PAD [cabeçalho 1.]</h2><hr>';
 echo $opcoes;
 echo '</main>';
+
 include '../includes/footer.php';
   

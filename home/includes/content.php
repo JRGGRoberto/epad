@@ -12,7 +12,7 @@
   <?php 
   echo $opcoes;
 
-  // print_r($user)
+ // print_r($user)
   ?>
   
 </pre>

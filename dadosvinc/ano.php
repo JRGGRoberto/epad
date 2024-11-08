@@ -64,5 +64,6 @@ if($vinculo instanceof Vinculo){
      <p></p>
   </main>';
 }
+$ano =  $vinculo->ano;
 include '../includes/footer.php';
   

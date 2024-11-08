@@ -29,7 +29,7 @@ if(!$ok){
 
 
 
-    $year = $_SESSION['proecunespar']['year_sel'];
+    $ano = $_SESSION['proecunespar']['year_sel'];
     $co =  $_SESSION['proecunespar']['id_coSel'];
 
 
@@ -38,7 +38,7 @@ if(!$ok){
 // const ano = "'. $ano.'";
 include '../includes/header.php';
 echo '<script>
-const ano = "'. $year .'";
+const ano = "'. $ano .'";
 const co = "'. $co .'";
 
 </script>';

@@ -71,7 +71,9 @@ const inserirCO = (data) => {
 
 
 const pegarProfs = async (id) => {
-   let a = id + ano +'d';
+  console.log("ano " + ano);
+  console.log("id " + id);
+  let a = id + ano +'d';
   const data = await fetch(`../api/vinculos.php?md=${a}`)
      .then(resp => resp.json()).catch(error => false)
 

@@ -72,13 +72,18 @@ const inserirCO = (data) => {
 
 const pegarProfs = async (id) => {
   //ano pega nos ficheiros php
+  console.log('id: '+ id);
+  console.log('ano: ' + ano);
+
   let a = id + ano +'d';
   const data = await fetch(`../api/vinculos.php?md=${a}`)
-     .then(resp => resp.json()).catch(error => false)
+     .then(resp => resp.json())
+     .catch(error => false);
+   console.table(data);
 
    if(!data) return;
    inserirProfs(data);
- //  console.log(ano); conferir se o ano está correto
+   console.log(ano); // conferir se o ano está correto
 }
 
 
