@@ -23,11 +23,11 @@
                 
                     <div class="form-group">
                         <label for="firstname">Primeiro nome</label>
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Digite sua resposta">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Digite sua resposta" onkeypress="noEnter(event)">
                     </div>
                     <div class="form-group">
                         <label for="email">e-Mail cadastrado</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Digite sua resposta">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Digite sua resposta" onkeypress="noEnter(event)">
                     </div>
                     <button class="btn btn-primary next-slide" type="button">Próximo</button>
                 
@@ -44,14 +44,13 @@
                         
                         <select name="ca" id="ca" class="form-control" required="">
                                <option value="987456">Selecione</option>
-                               <option value="1832d052-39eb-11ed-9793-0267aa9885af">Angra</option>
                                <option value="1832d052-39eb-11ed-9793-0266ad9885af">Apucarana</option>
                                <option value="1832e5f1-39eb-11ed-9793-0266ad9885af">Campo Mourão</option>
                                <option value="1832e881-39eb-11ed-9793-0266ad9885af">Curitiba I (EMBAP)</option>
                                <option value="1832e953-39eb-11ed-9793-0266ad9885af">Curitiba II (FAP)</option>
                                <option value="1832e9c1-39eb-11ed-9793-0266ad9885af">Paranaguá</option>
                                <option value="1832ea24-39eb-11ed-9793-0266ad9885af">Paranavaí</option>
-                               <option value="1832ea24-39eb-31ed-9793-0266ad8887af">Guanabara</option>
+                               <option value="1832ea24-39eb-31ed-9793-0266ad8887af">Ganabara</option>
                                <option value="1832ea89-39eb-11ed-9793-0266ad9885af">União da Vitória</option>
                                <option value="1832ea89-39eb-11eb-9793-0266ad7785af">Paraty</option>
                                <option value="bf5bbf93-bfa4-11ee-801b-0266ad9885af">Loanda</option>
@@ -62,7 +61,11 @@
                     <div class="form-group">
                         <label for="cpf">CPF <span class="badge badge-light">digite só os números</span></label>
                         <a href="#" data-toggle="tooltip" title="Informe apenas os números" 
-          style="text-decoration:none;"><input type="text" class="form-control" name="cpf" id="cpf" maxlength="11"  onfocusout="valCPF()"></a>
+          style="text-decoration:none;"><input type="text" class="form-control" name="cpf" id="cpf" maxlength="11" 
+           onfocusout="valCPF()"
+           onkeypress="noEnter(event)"></a>
+
+           
                     </div>
                     <button class="btn btn-secondary prev-slide" type="button">Anterior</button>
                     <button class="btn btn-primary next-slide" type="button">Próximo</button>
@@ -77,7 +80,7 @@
                 
                     <div class="form-group">
                         <label for="lastname">Último nome</label>
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite sua resposta">
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Digite sua resposta" onkeypress="noEnter(event)">
                     </div>
                     <div class="form-group">
                         <label for="address">Segurança </label>
@@ -136,6 +139,14 @@
     function valCPF(){
       let cpf = document.getElementById("cpf");
       cpf.value = formatarCPF(cpf.value);
+    }
+
+
+    function noEnter(e){
+        if(e.keyCode === 13){
+            return e. preventDefault();;
+            console.log('teste enter');
+        }
     }
 </script>
 

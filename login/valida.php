@@ -97,7 +97,7 @@ echo '  <div class="container">
            <main>
                 <div class="jumbotron text-dark">
                     <section>';
-
+$data .= '<hr>'. $query;
 
 echo $data;
 

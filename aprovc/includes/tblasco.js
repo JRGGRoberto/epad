@@ -16,9 +16,9 @@ function deleteAllRows(){
 }
 
 function insereTable(newDisc){
-    // Adicionar uma nova linha na tabela
-    let tabela = document.getElementById("tabelaPADS").getElementsByTagName("tbody")[0];
-    let newLinha = tabela.insertRow();
+  // Adicionar uma nova linha na tabela
+  let tabela = document.getElementById("tabelaPADS").getElementsByTagName("tbody")[0];
+  let newLinha = tabela.insertRow();
 
     let celId   = newLinha.insertCell(0);
     let celNome = newLinha.insertCell(1);
@@ -50,10 +50,10 @@ function insereTable(newDisc){
   } else {
     celRT.innerHTML   = newDisc.rt +'h ';
   }
-  celCnf.innerHTML  = '';
-  /*`<center>
+  celCnf.innerHTML  = 
+  `<center>
     <button type="button" class="btn btn-light btn-sm" title="??">?</button>
-  </center>`;*/
+  </center>`;
 
   if(newDisc.rt == 'TIDE'){
     newDisc.rt = 40;
@@ -64,7 +64,7 @@ function insereTable(newDisc){
        `<center>
          <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">🔒</button>
        </center>`;
-  } else if (!((newDisc.aprov_co_id == null) || (newDisc.aprov_co_id == ''))){
+  } else if (!((newDisc.aprov_co_id === null) || (newDisc.aprov_co_id === ''))){
     celCnf.innerHTML  = 
        `<center>
          <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
@@ -135,7 +135,7 @@ function Aprovar(ad){
 
   const data = datasing;
   if(tdo == 'a'){
-    fetch('./dml/sing_co.php', {
+    fetch('./dml/sing_co1.php', {
       method:'PUT',
       headers:{
         'Accept': 'application/json',
@@ -145,10 +145,9 @@ function Aprovar(ad){
     })
     .then( res => res.json());
     fecharModal();
-
   } else if (tdo == 'd'){
 
-    fetch('./dml/sing_co.php', {
+    fetch('./dml/sing_co0.php', {
       method:'PUT',
       headers:{
         'Accept': 'application/json',
@@ -161,7 +160,6 @@ function Aprovar(ad){
 
   }
   getDBMD();
-
 }
 
 function frmAtivShow(id) {
@@ -203,17 +201,9 @@ function fecharModal(){
 async function getDBMD() {
   deleteAllRows();
   data = await fetch(`../api/pads.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
-  
-/*
-  setTimeout(function() {
-    window.location.reload();
-  }, 200);
-  */
-
   if (data.length > 0){
     data.forEach(e => insereTable(e));
-  } 
-
+   } 
 }
 
 getDBMD();
