@@ -28,16 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         exit;
       }
 
-      /*
     // Verify se usuário é coordenador 
     if($user['config'] != '1'){
         $response = array("status" => "error", "message" => "Não adm.");
         echo json_encode($response);
         exit;
     }
-    
-   
-
+          
+    /*
     // Verify se Coordenador é do curso do Vinculado
     if($user['co_id'] <> $vinc['co_id']){
         $response = array("status" => "error", "message" => "Curso diferente.");
@@ -46,28 +44,35 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     }
      */
 
-    $vinc->aprov_co_id = null;  
-    $vinc->aprov_co_data = null;  
+    $msg = '';
 
-    if($to_do == 'a'){
+    if($to_do === 'a'){
         $vinc->aprov_co_id = $user_id;
-   } else {
+        if(!$vinc->assing_co()){
+            $response = array("status" => "error", "message" => "Erro ao assinar.");
+            echo json_encode($response);
+            exit;
+        }
+        $msg ='assinado';
+    } elseif ($to_do === 'd'){
+        if(!$vinc->assing_co_remove()){
+            $response = array("status" => "error", "message" => "Erro ao assinar.");
+            echo json_encode($response);
+            exit;
+        }
+        $msg ='removido assinatura';
+    } else {
         $response = array("status" => "error", "message" => "Tipo não reconhecido");
         echo json_encode($response);
         exit;
     }
     
-    if(!$vinc->assing_co()){
-        $response = array("status" => "error", "message" => "Erro ao assinar.");
-        echo json_encode($response);
-        exit;
-    }
 
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "preenchido"  => 'assinado',
+            "preenchido"  => $msg ,
             "status"      => 'Ok',
             "to_do"       => $to_do
             )

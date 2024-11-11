@@ -1,8 +1,9 @@
-let data22 = [];
-let noData22 = true;
+let data = [];
+let noData = true;
+const icon = ["🔒", "🖋️❌",  "📄🖋️", "⏳"];
+
 
 let DoubleClick = document.getElementById('DoubleClick');
-
 
 function stripZeros(str) {
   return parseFloat(str.replace(',', '.'))
@@ -11,14 +12,14 @@ function stripZeros(str) {
 }
 
 function deleteAllRows(){
-  data22 = [];
+  data = [];
   $("#tabelaPADS tbody tr").remove(); 
 }
 
 function insereTable(newDisc){
-  // Adicionar uma nova linha na tabela
-  let tabela = document.getElementById("tabelaPADS").getElementsByTagName("tbody")[0];
-  let newLinha = tabela.insertRow();
+    // Adicionar uma nova linha na tabela
+    let tabela = document.getElementById("tabelaPADS").getElementsByTagName("tbody")[0];
+    let newLinha = tabela.insertRow();
 
     let celId   = newLinha.insertCell(0);
     let celNome = newLinha.insertCell(1);
@@ -50,10 +51,10 @@ function insereTable(newDisc){
   } else {
     celRT.innerHTML   = newDisc.rt +'h ';
   }
-  celCnf.innerHTML  = 
-  `<center>
+  celCnf.innerHTML  = '';
+  /*`<center>
     <button type="button" class="btn btn-light btn-sm" title="??">?</button>
-  </center>`;
+  </center>`;*/
 
   if(newDisc.rt == 'TIDE'){
     newDisc.rt = 40;
@@ -62,23 +63,23 @@ function insereTable(newDisc){
   if(!(newDisc.aprov_ce_id === null) ){
     celCnf.innerHTML  = 
        `<center>
-         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">🔒</button>
+         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">${icon[0]}</button>
        </center>`;
-  } else if (!((newDisc.aprov_co_id === null) || (newDisc.aprov_co_id === ''))){
+  } else if (!((newDisc.aprov_co_id == null) || (newDisc.aprov_co_id == ''))){
     celCnf.innerHTML  = 
        `<center>
-         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
+         <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${newDisc.id}')" >${icon[1]}</button>
        </center>`;
   } else {
       if ((parseFloat(totUsado)) === (parseFloat(newDisc.rt))) {
         celCnf.innerHTML  = 
          `<center>
-           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD" onclick="frmAtivShow('${newDisc.id}')">🖋️</button>
+           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD" onclick="frmAtivShow('${newDisc.id}')" >${icon[2]}</button>
          </center>`;
       } else {
         celCnf.innerHTML  = 
          `<center>
-           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD")">⏳</button>
+           <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD")">${icon[3]}</button>
          </center>`;
       }
   }
@@ -116,10 +117,10 @@ function Aprovar(ad){
   let vinc_id_co;
   let tdo = ad;
 
-  if(tdo == 'a'){
+  if(tdo  == 'a'){
     vinc_idps  = document.getElementById('vinc_idps').value;
     vinc_id_co = document.getElementById('vinc_id_co').value;
-  } else if (tdo == 'd'){
+  } else if (tdo  == 'd'){
     vinc_idps  = document.getElementById('vinc_idpsd').value;
     vinc_id_co = document.getElementById('vinc_id_cod').value;
   } else {
@@ -134,32 +135,30 @@ function Aprovar(ad){
   };
 
   const data = datasing;
-  if(tdo == 'a'){
-    fetch('./dml/sing_co1.php', {
-      method:'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then( res => res.json());
+
+  console.log(data);
+
+  fetch('./dml/sing_co.php', {
+    method:'PUT',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then( res => res.json())
+  // .then( res => console.log(res))
+  ;
+
+  if(tdo  == 'a'){
     fecharModal();
-  } else if (tdo == 'd'){
-
-    fetch('./dml/sing_co0.php', {
-      method:'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then( res => res.json());
+  } else if (tdo  == 'd'){
     fecharModalDel();
-
   }
+  
+  
   getDBMD();
+  
 }
 
 function frmAtivShow(id) {
@@ -201,9 +200,19 @@ function fecharModal(){
 async function getDBMD() {
   deleteAllRows();
   data = await fetch(`../api/pads.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
+  
+/*
+  setTimeout(function() {
+    window.location.reload();
+  }, 200);
+  */
+
   if (data.length > 0){
     data.forEach(e => insereTable(e));
-   } 
+  } 
+
 }
+
+
 
 getDBMD();

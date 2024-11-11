@@ -38,17 +38,16 @@ $ce = $user['ce_id'];
 include '../includes/header.php';
 if ($user['config'] == 1){
    echo '<script>
-   const ano = "'. $ano.'";
-   const co = "'. $co .'";
-   </script>';
-   include __DIR__.'/includes/contentco.php';
+         const ano = "'. $ano.'";
+         const co = "'. $co .'";
+         </script>';
+   // include __DIR__.'/includes/contentco.php';
+   include './includes/contentco.php';
 } elseif ($user['config'] == 2){
-
-
    echo '<script>
-   const ano = "'. $ano.'";
-   const ce = "'. $ce .'";
-   </script>';
+         const ano = "'. $ano.'";
+         const ce = "'. $ce .'";
+         </script>';
    include __DIR__.'/includes/contentce.php';
 } else {
    echo 'Não autorizado';

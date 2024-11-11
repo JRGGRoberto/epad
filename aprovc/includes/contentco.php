@@ -1,6 +1,11 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3"><h3>Aprovação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do meu colegiado</sup></div>
+    <div class="col-7">
+      <h3>Aprovação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do colegiado de <strong><?=  $nomeCurso .' ['. $anoCurso  .'] '?></strong></sup>
+      <div>🔒 - Assinado pela coordenação e dir. centro de área <br>⏳ - Não pode ser assinado pois o carga horária atribuida não corresponte ao RT</div>
+
+      
+    </div>
     <div class="col" style="text-align:left">
       <div>
         <span class="badge badge-pill badge-light"> </span>
@@ -12,6 +17,7 @@
 
         <a class="card-link" href="../ajuda/?help=coord_vpads" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
+      <div><hr>🖋️❌ - Já assinado, clique para revomer a assinatura <br>📄🖋️ - Não assinado, clique para assinar  </div>
     </div>
           
   </div>
@@ -39,7 +45,7 @@
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Ativ. 4</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">CH<br><sup>Total att</sup></th>
               <th class="align-top" style="text-align: center; width: 75px;">RT</th>
-              <th class="align-top" style="text-align: center; width: 45px;">🖊️</th>
+              <th class="align-top" style="text-align: center; width: 70px;">🖊️</th>
               <th style="display: none;">🖊️</th>
             </tr>
           </thead>
