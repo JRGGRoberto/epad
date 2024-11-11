@@ -16,7 +16,8 @@
 
 <div id="voltar"></div>
 
-<h5>Gerar arquivo PDF dos PADs do colegiado</h5>
+<h4>Gerar arquivo PDF dos PADs do colegiado</h4>
+<h5><?=$col_nome?>[<?=$ano?>]</h5>
 Essa operação utiliza alguns segundos para ser processada 
 <a href="../padstopdf/book.php?co=<?= $co_id?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
 <hr>

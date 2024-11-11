@@ -6,12 +6,23 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+/*
+$co_id = substr($_GET["id"],0,36);
+$ano = substr($_GET["id"],36,4);
+*/
+$ano = $_SESSION['proecunespar']['year_sel'];
+$co_id =  $_SESSION['proecunespar']['id_coSel'];
 
-$co_id = $_GET["id"];
 
-$sql = "select campus, codcentro, co_id , colegiado
-from ca_ce_co ccc 
-WHERE  co_id = '".$co_id  ."'
+$sql = 
+"select 
+   campus, codcentro, co_id , colegiado, ano
+from 
+  ca_ce_co ccc,
+  anos a 
+WHERE  
+  co_id = '".$co_id  ."'
+  and a.ano = '".$ano  ."'
 order by campus, colegiado ";
 
 
