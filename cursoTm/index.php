@@ -65,16 +65,12 @@ foreach ($reg as $r){
     if($r->qnt_pre ==  $r->qnt_dis){
        $class = 'class="table-success"';
     }
-    $corBtn = 'info';
-    if($r->edtano == 1 ){
-      $corBtn = 'primary';
-    }
-
+    
     $tbody .= '<tr '.$class.'>';
     $tbody .= '<td>'.$r->ano .'</td><td>'.$r->curso .'</td>
                <td>'.$r->nome .'</td><td>'. $turno .'</td>
                <td style="text-align: center;">'. $r->qnt_pre .'/'. $r->qnt_dis .'</td>
-               <td style="text-align:center;"><button type="button" class="btn btn-'.$corBtn.' btn-sm" onclick="window.location = `../cursprf/index.php?id='.$r->id.'`" data-toggle="tooltip" data-placement="right" title="Configurar">⚙️</button>
+               <td style="text-align:center;"><button type="button" class="btn btn-light btn-sm" onclick="window.location = `../disciplinasCh/index.php?id='.$r->id.'`" data-toggle="tooltip" data-placement="right" title="Configurar">⚙️</button>
                </td>';
     $tbody .= '</tr>';
     $x++;

@@ -71,13 +71,15 @@ const inserirCO = (data) => {
 
 
 const pegarProfs = async (id) => {
-  let ano = '2024';
+  console.log("ano " + ano);
+  console.log("id " + id);
   let a = id + ano +'d';
   const data = await fetch(`../api/vinculos.php?md=${a}`)
      .then(resp => resp.json()).catch(error => false)
 
    if(!data) return;
    inserirProfs(data);
+  // console.log(ano); variável deve deve ser oriunda do arquivo php
 }
 
 

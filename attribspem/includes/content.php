@@ -1,10 +1,14 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-9">
-      <h3>Atribuição de: Projeto de ensino ou Monitoria</h3>
+      <h3 style="margin-bottom: 0;">Atribuições</h3>
+       <span class="badge badge-pill badge-light">Projeto de ensino /  Monitoria</span>
     </div>
-    <div class="col" style="text-align:left">
+    <div class="col"> 
+      <!--style="text-align:left"> -->
       <div>
+        <span class="badge badge-pill badge-light"><?=  $nomeCurso .' ['. $anoCurso  .'] '?></span><br>
+        
         <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
     </div>
@@ -49,7 +53,7 @@
 
 <?php
 
-  $ca_nome = $user['lota_nome'];
+  $ca_nome = $user['ca_nome']; // ['lota_nome'];
   $co_nome = $user['co_nome'];
   include './includes/tblform.php';
 ?>

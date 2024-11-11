@@ -12,8 +12,10 @@ if($user['tipo'] != 'prof') {
     exit;
 }
 
+$ano = $_GET["ano"];
+
 $idprof = $user['id'];
-$vinc = Vinculo::getByAnoProf($idprof, '2024');
+$vinc = Vinculo::getByAnoProf($idprof, $ano);
 
 
 $editavel = true;

@@ -26,14 +26,19 @@ if(!$ok){
 
 */
 
-$ano = '2024';
-$co = $user['co_id'];
 
 
 
+    $ano = $_SESSION['proecunespar']['year_sel'];
+    $co =  $_SESSION['proecunespar']['id_coSel'];
+
+
+
+    
+// const ano = "'. $ano.'";
 include '../includes/header.php';
 echo '<script>
-const ano = "'. $ano.'";
+const ano = "'. $ano .'";
 const co = "'. $co .'";
 
 </script>';

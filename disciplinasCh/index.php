@@ -1,11 +1,6 @@
 <?php
 
 require '../vendor/autoload.php';
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
 
 use \App\Entity\MatrizDisc;
 use \App\Entity\Outros;
@@ -14,31 +9,17 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-if($user['tipo'] != 'prof'){
+/*
+if($user['tipo'] != 'profess'){
   header('location: ../home/');
   exit;
 }
-$ok = false;
-
-if($user['tipo'] === 'prof' ){
-   if($user['config'] == '1'){
-      $ok = true;
-   }
-}
-
-if(!$ok){
-   header('location: ../home/');
-   exit;
-}
-
-
+  */
 
 $matriz = new MatrizDisc();
 $matriz = $matriz::getById($_GET['id']);
 
-
 $inf = Outros::hierCol($matriz->id_curso);
-
 
 $oferta = '';
 switch ($matriz->oferta) {
@@ -85,19 +66,6 @@ switch ($matriz->turno) {
       $turno = 'Não definido';
 }
 
-$script = 
-" <script> 
-    getDBMD('". $matriz->id ."');
- </script>";
-
-
 include '../includes/header.php';
-
-if($matriz->edtano == 1) {
-  include __DIR__.'/includes/listagem.php';
-} else {
-  include __DIR__.'/includes/listagemNoEDT.php';
-}
-
- 
+include __DIR__.'/includes/listagem.php';
 include '../includes/footer.php';

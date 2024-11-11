@@ -104,10 +104,10 @@ img.remover {
             <div class="col">
                   
                   <div>
-                     <span class="badge badge-success">SisGP <?=$clock[$horas]?></span>
+                     <span class="badge badge-success">ePAD <?=$clock[$horas]?></span>
                   </div>
                   <div>
-                    Sistema para Gerir Projetos
+                  PLANO DE ATIVIDADES DOCENTES
                   </div>
                   <div>
               </div>

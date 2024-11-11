@@ -85,8 +85,11 @@ function insereTable(newData) {
 }
 
 async function getDBMD(id) {
-  ano = '2024';
-  let a = id + ano;
+  /*arrDados =  id.split("@");
+  id = arrDados[0];
+  ano = arrDados[1]; 
+  let a = id + ano;*/
+  let a = id;
   matrizDisc = await fetch(`../api/matriz.php?md=${a}`).then(resp => resp.json()).catch(error => false);
   if (matrizDisc.length > 0){
     matrizDisc.forEach(e => insereTable(e));

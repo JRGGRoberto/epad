@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $pad23->atividade       = $_POST['atividade'];
         $pad23->nome_atividade  = $_POST['nome_atividade'];
         $pad23->ch              = $_POST['ch'];
-        $pad23->ano              = 2024;
+        $pad23->ano             = $_POST['ano'];
 
         $pad23->user            = $user['id'];
         $pad23->add();

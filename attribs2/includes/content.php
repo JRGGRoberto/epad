@@ -1,8 +1,8 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3">
+    <div class="col-4">
       <h3>Orientação</h3>
-      <?= $tpOrientacao ?><br>
+      <?= $tpOrientacao ?><br><br>
       <?php if(in_array($cargoAttri->tipocod, ['a', 'b', 'c', 'd' ]))
          echo '<sup>' . strtoupper($cargoAttri->codcam_tt) . '/' . $cargoAttri->codcentro_tt .' - ' .  $cargoAttri->colegiado_tt  . '</sup>';
       
@@ -63,7 +63,8 @@
 
 <?php
 
-  $ca_nome = $user['lota_nome'];
+
+  $ca_nome = $user['ca_nome']; // ['lota_nome']; 
   $co_nome = $user['co_nome'];
   include './includes/tblform.php';
 ?>

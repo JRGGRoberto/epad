@@ -40,7 +40,7 @@
             <th style="width:20px"></th>
             <th>
               Para o ano letivo de:
-              <input type="number" name="anoLetivo" id="anoLetivo" min="2023" max="2099" maxlength="4" style="width:65px" readonly >
+              <input type="number" name="anoLetivo" id="anoLetivo" min="2024" max="2099" maxlength="4" style="width:65px" onchange="testeAno();" >
               <button type="button" class="btn btn-primary btn-sm" onclick="carregarDados()" disabled id="btnListarAnosL" hidden>Listar</button>
               <button type="button" class="btn btn-primary btn-sm" onclick="formAddMatDis()" disabled id="btnAdicionarAnosL">Adicionar</button>
             </th>

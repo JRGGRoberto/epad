@@ -18,6 +18,7 @@ class Cargo {
 
   public $co_id_tt;
   public $tipocod;
+
   
 /**
    * Método responsável por cadastrar uma nova pessoa no banco

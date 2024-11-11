@@ -2,10 +2,13 @@
 
 require '../vendor/autoload.php';
 
+
 use App\Session\Login;
 
 $obUsuario = Login::getUsuarioLogado();
 use App\Entity\Cargo;
+use \App\Entity\Outros;
+
 
 $clock = [
   '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
@@ -16,6 +19,75 @@ $horas >= 12 ? (int) ($horas -= 12) : (int) ($horas -= 0);
 
 $nome = explode(' ', trim($obUsuario['nome']));
 $nome = $nome[0]; // will print Test
+
+$idu = $obUsuario['id'];
+  
+$qry1 = "
+  select 
+    c.id id , c.nome curso , a.ano ano , a.edt edt ,
+    CONCAT(c.nome,  '[', a.ano, ']' ) nomelongo
+  from 
+    colegiados c,
+    anos a
+  where 
+     (c.coord_id, a.edt) = ('". $idu ."', 1)
+  order by a.ano desc, c.nome
+  ";
+$coodAnos = Outros::qry($qry1);
+
+
+$btnCurs = '';
+$idCurso = '';
+$nomeCurso = '';
+$anoCurso = '';
+
+
+$qnty = 0;
+foreach($coodAnos as $curs){
+    $act = '';
+    $ck = '';
+  
+    if($obUsuario['year_sel'] == '' and $qnty == 0){
+      $act = 'active';
+      $ck = 'checked';
+    }
+  
+    if($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel']  == $curs->id){
+      $act = 'active';
+      $ck = 'checked';
+    }
+   
+  
+    $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
+    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $curs->ano . $curs->id .'"  onclick="chValueS(`'.$curs->ano . $curs->id .'`);"  >'. $curs->nomelongo.'
+    </label>';
+  
+    if($act == 'active') {
+      $idCurso = $curs->id;
+      $nomeCurso = $curs->curso;
+      $anoCurso = $curs->ano;
+    }
+  
+    $qnty++;
+}
+
+$scriptSel1opcao = '';
+
+if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0 ){
+
+  $scriptSel1opcao = "<hr>A<hr>    <script>
+      chValueS(`".$anoCurso . $idCurso ."`);
+      
+    </script>";
+}
+
+/*
+
+echo 'id:   '. $idCurso .'<br>';
+echo 'curs: '. $nomeCurso .'<br>';
+echo 'ano:  '. $anoCurso .'<br>';
+echo '<hr>';
+*/
 
 ?>
 
@@ -138,16 +210,26 @@ img.remover {
         } elseif ($obUsuario['tipo'] == 'agente') {
             $tpuser = 'agente';
         } else {
+          header('location: ./branco.php');
+          exit;
         }
-        $ano = 2024;
+      
         ?>
+<div> 
+  <div>
 
+
+  
+
+  </div>
+  <!-- inicio botões menu -->
               <div class="btn-group btn-group-sm float-right">  
                     <?php
                                if ($obUsuario['tipo'] === 'prof') {
-                                   echo '<a type="button" class="btn btn-primary" href="../pad" style="text-align: center;">Meu PAD</a>';
+                                   echo '<a type="button" class="btn btn-primary" href="../home" style="text-align: center;">PAD</a>';
 
-                                   $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
+                                   // $where = ("(ano, id_prof ) = ('".$ano."', '".$obUsuario['id']."')");
+                                   $where = ("(id_prof, edtano ) = ('".$obUsuario['id']."', 1)");
                                    $cargos = Cargo::gets($where);
                                    if (sizeof($cargos) > 0) {
                                        echo '<div class="btn-group btn-group-sm">';
@@ -175,26 +257,31 @@ img.remover {
                                                    $opcaoMenu = 'Orientação de estudante em PIBEX/PIBIS';
                                                    break;
                                            }
-                                           echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.$c->id.'" >'.$opcaoMenu.' - '.$c->colegiado_tt.'</a>';
+                                           echo '<a class="dropdown-item btn-sm" href="../attribs2/index.php?t='.$c->tipocod.$c->id.'" >'.$opcaoMenu.' - '.$c->colegiado_tt.' ['.$c->ano.']</a>';
                                        }
                                        echo '   </div>';
                                        echo '</div>';
                                    }
 
-                                   if ($obUsuario['config'] === '1') {
-                                       ?>
+                                   if ($obUsuario['config'] === '1' and $qnty > 0) {
+                                    ?> 
+
+
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Coordenação</button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item btn-sm" href="../curso" >Atribuir Aulas</a>
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções</a>
-                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias</a>
+                                    
+                                  <div class="dropdown-divider"></div>
+                                  
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/817X3ykCmoy7xkdd8" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas</a>
+                                  <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios</a>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                 </div>
                               </div>
                           <?php
@@ -253,13 +340,13 @@ $galeraDoSuporte = [
                     <div class="dropdown-menu dropdown-menu-right">
                        <a class="dropdown-item btn-sm" href="../<?php echo $tpuser; ?>/editar.php?id=<?php echo $obUsuario['id']; ?>">Perfil</a> 
 <?php if ($obUsuario['tipo'] == 'prof') { ?> 
-      
-                       <a class="dropdown-item btn-sm" href="../dadosvinc/index.php?id=<?php echo $obUsuario['id']; ?>">Informações do meu PAD 2024</a>
+  <!-- ?= $user['AnoAtivo'] ?> -->
+                       <a class="dropdown-item btn-sm" href="../dadosvinc/">Informações do meu PAD [cabeçalho 1.]</a>
   
   <?php } ?> 
 
                        <div class="dropdown-divider"></div>
-                       <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a>
+                     <!--  <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
                       <!--                        <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a> -->
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
@@ -268,9 +355,53 @@ $galeraDoSuporte = [
               </div>
 <?php
     }
+?> 
+
+    <div><!-- Fim botões menu -->
+
+<?php
+if ($obUsuario['config'] === '1') {
+  echo '<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">';
+  echo $btnCurs;
+  echo '</div>';
+}
 ?>
+<script>
+
+function chValueS(yearIDCO){
+  
+  const data = {
+    ano: yearIDCO.substr(0, 4),
+    coid: yearIDCO.substr(4, 36)
+  };
+ 
+
+  fetch('./../includes/dml/chSess.php', {
+        method:'PUT',
+        headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then( res => res.json())
+    .then( res => {
+           console.log(res.data.ano);
+           console.log(res.data.co);
+           window.location.reload();
+        }
+    );
+}
+
+</script>
+
+<?= $scriptSel1opcao ?>
+
+</div>
+</div>
+
          </div>
-    </div>     
+    </div> 
   </nav>
 
     <div class="container">

@@ -1,6 +1,6 @@
 <div class="container mt-3"  style="margin-bottom: 0px;">
     <div class="row">
-      <div class="col-11"><h3>Atribuição de professores as disciplinas</h3></div>
+      <div class="col-11"><h3>Atribuição de professores as disciplinas - PAD <?= $matriz->ano ?></h3></div>
       <div class="col"  style="text-align:right"><!--<a href="../curso/">voltar</a> --> <a class="card-link" href="../ajuda/?help=coord_aulas" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a></div>
     </div>
     <form id="frmatrib" hidden>
@@ -353,7 +353,7 @@ $(document).ready(function(){
 });
 
 
-getDBMDprof(2024);
+getDBMDprof(<?= $matriz->ano ?>);
 </script>
 
 <?= $script ?>

@@ -1,8 +1,13 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-2"><h3>Atribuições</h3></div>
+    <div class="col-2">
+        <h3 style="margin-bottom: 0;">Atribuições</h3>
+        <span class="badge badge-pill badge-light">Estágio / Trab. Acadêmicos</span>
+
+    </div>
     <div class="col" style="text-align:left">
       <div>
+        <span class="badge badge-pill badge-light"><?=  $nomeCurso .' ['. $anoCurso  .'] '?></span><br>
         <span class="badge badge-pill badge-light">Professores que irão gerir as funções</span>
         <a class="card-link" href="../ajuda/?help=coord_atrib" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
@@ -50,7 +55,8 @@
 
 <?php
 
-  $ca_nome = $user['lota_nome'];
+
+  $ca_nome = $user['ca_nome']; // ['lota_nome'];
   $co_nome = $user['co_nome'];
   include './includes/tblform.php';
 ?>
@@ -94,6 +100,7 @@
       </div>
     </div>
     <!--  The Modal DELET Fim-->
+
 
 
 

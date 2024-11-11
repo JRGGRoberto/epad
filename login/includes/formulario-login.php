@@ -37,10 +37,11 @@
 
         <div class="form-group">
           <button type="submit" name="acao" value="logar" class="btn btn-primary">🔑 Entrar</button>
-        </div>
+        </div> 
+          
 
       </form>
-
+      <a href="./recupera.php" class="btn btn-light btn-sm float-right">📑 Recuperar senha</a>
       <br>
       <!--
       <a href="../projetostb/" class="btn btn-success" id="projEfet">📑 Propostas efetivadas</a>

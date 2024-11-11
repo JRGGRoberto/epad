@@ -7,6 +7,12 @@ $user = Login::getUsuarioLogado();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
+
+if ($vinculo->anosedt == 0){ 
+  $readonly = ' readonly ';
+} else { $readonly = '';}
+
 ?>
 
 <main>
@@ -73,7 +79,7 @@ error_reporting(E_ALL);
       <div class="col-3">
         <div class="form-group">
           <label for="ce1">Data de obtenção do título 	</label>
-          <input type="date" name="dt_obtn_tit" class="form-control" value="<?=date_format(new DateTime( $vinculo->dt_obtn_tit ), 'Y-m-d'); ?>" >
+          <input type="date" name="dt_obtn_tit" class="form-control" value="<?=date_format(new DateTime( $vinculo->dt_obtn_tit ), 'Y-m-d'); ?>" <?=$readonly; ?> >
           
         </div> 
       </div>
@@ -82,7 +88,7 @@ error_reporting(E_ALL);
       <div class="col">
         <div class="form-group">
           <label for="ca1">Tempo de docência nos componentes curriculares</label>
-          <input type="text" class="form-control" name="tempo_cc" value="<?=$vinculo->tempo_cc?>" maxlength="20">
+          <input type="text" class="form-control" name="tempo_cc" value="<?=$vinculo->tempo_cc?>" maxlength="20" <?=$readonly; ?> >
         </div>
       </div>
     </div>
@@ -91,7 +97,7 @@ error_reporting(E_ALL);
       <div class="col-7">
         <div class="form-group">
           <label >Área de concurso </label>
-          <input type="text" class="form-control" name="area_concurso" value="<?=$vinculo->area_concurso?>" maxlength="100">
+          <input type="text" class="form-control" name="area_concurso" value="<?=$vinculo->area_concurso?>" maxlength="100" <?=$readonly; ?> >
         </div>
       </div>
 
@@ -100,15 +106,20 @@ error_reporting(E_ALL);
       <div class="col">
         <div class="form-group">
           <label >Tempo efetivo de docência no ensino superior na UNESPAR</label>
-          <input type="text" class="form-control" name="tempo_esu" value="<?=$vinculo->tempo_esu?>" maxlength="20" >
+          <input type="text" class="form-control" name="tempo_esu" value="<?=$vinculo->tempo_esu?>" maxlength="20"  <?=$readonly; ?> >
         </div>
       </div>
     </div>
-
+<?php 
+if ($vinculo->anosedt == 1){  
+?>
     <div class="form-group">
       <button type="submit" class="btn btn-success">Enviar</button>
       <button type="reset" class="btn btn-success">Limpar</button>
     </div>
+<?php 
+} 
+?>
 
   </form>
 </main>

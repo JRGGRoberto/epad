@@ -13,5 +13,5 @@ $ano = $_GET["y"];
 $where = ' ano = '.$ano. ' and disponivel = 1 ';
 $order = '  campus, colegiado, nome ';
 
-$registros = Vinculo::gets($where,$order);
+$registros = Vinculo::gets($where, $order);
 echo json_encode($registros);

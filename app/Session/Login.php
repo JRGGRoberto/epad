@@ -4,6 +4,7 @@ namespace App\Session;
 
 class Login{
 
+
   /**
    * Método responsável por iniciar a sessão
    * @return 
@@ -38,24 +39,7 @@ class Login{
 
     //sessão de usuário
     $_SESSION['proecunespar'] =[
-      /*
-      'id'    => $obUsuario->id,
-      'nome'  => $obUsuario->nome,
-      'email' => $obUsuario->email,
-      'telefone' => $obUsuario->telefone,
-      'ca_id' => $obUsuario->ca_id,
-      'campus' => $obUsuario->campus,
-      'ce_id' => $obUsuario->ce_id,
-      'centros' => $obUsuario->centros,
-      'co_id' => $obUsuario->co_id,
-      'colegiado' => $obUsuario->colegiado,
-      'ativo' => $obUsuario->ativo,
-      'adm' => $obUsuario->adm,
-      'nivel' => $obUsuario->nivel,
-      'niveln' => $obUsuario->niveln,
-      'tpnivel' => $obUsuario->tpnivel
-      
-*/
+
       'id' => $obUsuario->id,
       'nome' => $obUsuario->nome,
       'email' => $obUsuario->email,
@@ -71,8 +55,11 @@ class Login{
       'ca_nome' => $obUsuario->ca_nome,
       'tipo' => $obUsuario->tipo,
       'adm' => $obUsuario->adm,
-      'ativo' => $obUsuario->ativo
+      'ativo' => $obUsuario->ativo, 
+      'year_sel' => '',
+      'id_coSel' => ''
       
+
     ];
 
     // redireciona usuário para Index

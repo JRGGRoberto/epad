@@ -66,6 +66,14 @@ class Vinculo {
     ]);
   }
 
+  public function assing_co_remove(){
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+      'aprov_co_id'   =>  null,
+      'aprov_co_data' =>  null
+    ]);
+  }
+
+
 
   public function assing_ce(){
     return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[

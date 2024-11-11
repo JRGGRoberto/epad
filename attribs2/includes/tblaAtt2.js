@@ -95,7 +95,7 @@ function insereTable(newDisc){
     let celDel   = newLinha.insertCell(6);
    
   celId.innerHTML    = newDisc.id;
-  celProf.innerHTML  = `${newDisc.orientador}<br>
+  celProf.innerHTML  = `${newDisc.orientador}<br><br>
     <sup>${newDisc.codcam_orientador.toUpperCase()}/${newDisc.codcentro_orientador} - ${newDisc.colegiado_orientador} 
     </sup>`;
   celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.vinculo +'" target="_blank">📄</a> ';
@@ -148,7 +148,9 @@ function fecharFormAddAtv(){
 }
  
 async function getDBMD(){
-  data22 = await fetch(`../api/ativ22attr.php?ca=${co_id}${tipo}`).then(resp => resp.json()).catch(error => false);
+  console.log('co: '+ co_id + '| ano: '+ ano+ '| tipo: '+ tipo);
+
+  data22 = await fetch(`../api/ativ22attr.php?ca=${co_id}${ano}${tipo}`).then(resp => resp.json()).catch(error => false);
   deleteAllRowsTable();
   data22.forEach(e => insereTable(e));
 }

@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         exit;
     }
     */
-    if(!$vinc->assing_co()){
+    if(!$vinc->assing_co_remove()){
         $response = array("status" => "error", "message" => "Erro ao assinar.");
         echo json_encode($response);
         exit;
