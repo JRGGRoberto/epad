@@ -17,7 +17,7 @@ SELECT
          ) AS percentual
  from 
     professores p
-    inner join vinculo v on v.id_prof = p.id
+    inner join vinculo v on v.id_prof = p.id and v.ano = ".$ano."
 where 
    p.id_colegiado  = '". $co_id. "'
  group by 1 order by 1 desc;
