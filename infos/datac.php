@@ -6,19 +6,13 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-if($user['config'] != 1){
+if(!(($user['config'] == 2)  or ($user['adm'] == 1))){
   header('location: ../');
   exit;
 }
 
-
-/*
 $co_id = substr($_GET["id"],0,36);
 $ano = substr($_GET["id"],36,4);
-*/
-$ano = $_SESSION['proecunespar']['year_sel'];
-$co_id =  $_SESSION['proecunespar']['id_coSel'];
-
 
 $sql = 
 "select 
