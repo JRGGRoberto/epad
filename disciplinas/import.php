@@ -25,7 +25,7 @@ $dados =  $_POST['import_json'];
     $dis->nome      = $data["Disciplinas"];
     $dis->ch        = str_replace("h","",$data["Cargahoraria"]);
     $dis->user      = $user;
-    $dis->serie     = 1; // $s[0];
+    $dis->serie     =  $s[0];
 
     $id = $dis->cadastrar();
     $chTotal += $dis->ch;

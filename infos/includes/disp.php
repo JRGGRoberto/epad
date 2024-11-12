@@ -14,6 +14,7 @@ from
   matriz_v m 
   inner join disciplinasv d on m.id = d.id_matriz 
 where m.id_curso = '". $co_id."'
+and m.ano = ".$ano."
 order by 
    6, 3";
 

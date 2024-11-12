@@ -9,7 +9,7 @@ from colegiados c
   inner join disciplinas d on d.id_matriz  = md.id 
   left join vinculov v on v.id = d.vinculo 
   left join horas h on h.horamatz = d.ch 
-where c.id  = '". $co_id."'
+where c.id  = '". $co_id."' and v.ano = ".$ano."
 ORDER BY serie, prof    ";
 $registros = Outros::qry($sql);
 $tbl_profes .= '<table class="table table-bordered table-sm" id="profess">

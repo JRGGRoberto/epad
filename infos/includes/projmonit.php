@@ -5,8 +5,9 @@ use \App\Entity\Outros;
 $sql = "
 SELECT atividade, nome_atividade, ch 
 FROM pad23v pv 
-where id_co = '". $co_id."'
+where id_co = '". $co_id."' and pv.ano = ".$ano." 
 ";
+// aqui não tem nada
 
 $registros = Outros::qry($sql);
 

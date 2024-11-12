@@ -8,6 +8,7 @@ FROM disciplinas d
 inner join matriz_v mv on d.id_matriz  = mv.id 
 where (d.vinculo is null or d.vinculo = '' )
 and (mv.id_curso = '".$co_id."')
+and mv.ano = ".$ano."
 ORDER by d.serie";
 
 $registros = Outros::qry($sql);

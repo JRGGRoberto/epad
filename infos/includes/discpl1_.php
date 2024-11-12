@@ -17,7 +17,7 @@ from
   left join  ca_ce_co ccc on m.id_curso = ccc.co_id
   left join horas h on h.horamatz = d.ch
 where 
-  v.co_id = '". $co_id."'
+  v.co_id = '". $co_id."' and  v.ano = ".$ano."
 order by v.nome, d.nome, ccc.colegiado, d.serie  ";
 
 $registros = Outros::qry($sql);

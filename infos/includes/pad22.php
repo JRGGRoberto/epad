@@ -4,11 +4,15 @@ require '../vendor/autoload.php';
 use \App\Entity\Outros;
 
 $sql = "
-select * 
-FROM pad22v p 
+select 
+    * 
+FROM 
+    pad22v p 
 where 
-   p.co_idvinc_orientador  = '". $co_id."'
-order by orientador, estudante, curso, serie";
+    p.co_idvinc_orientador  = '". $co_id."'
+    and ano = ".$ano."
+order
+    by orientador, estudante, curso, serie";
 
 $registros = Outros::qry($sql);
 $tbl_pad22 .= '<table class="table table-bordered table-sm" id="pad22a">

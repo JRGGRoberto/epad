@@ -4,16 +4,19 @@ use \App\Entity\Outros;
 
 //--
 $sql = 
-"select  
-CONCAT(
+"
+select  
+  CONCAT(
     CASE WHEN p.cat_func = 'c' THEN 't' ELSE p.cat_func END, 
     v.rt
-) AS camp, p.cat_func cfunc,  v.rt
+   ) AS camp, 
+   p.cat_func cfunc,  v.rt
 from 
-vinculov v inner join 
-professores p on p.id = v.id_prof 
+   vinculov v inner join 
+   professores p on p.id = v.id_prof 
 where 
-p.id_colegiado  = '". $co_id."'
+  p.id_colegiado  = '". $co_id."'
+  and v.ano = ".$ano."
 group by 1;";
 
 $registros = Outros::qry($sql);

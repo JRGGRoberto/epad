@@ -156,8 +156,8 @@ function Aprovar(ad){
     fecharModalDel();
   }
   
+  console.log('id: '+ ad + ' func: ' + tdo);
   
-  getDBMD();
   
 }
 

@@ -8,7 +8,7 @@ from
    professores p  
    inner join vinculov v on v.id_prof  = p.id 
    inner join pad4 p2 on p2.vinculo  = v.id 
-where p.id_colegiado ='". $co_id."'
+where p.id_colegiado ='". $co_id."' and v.ano = ".$ano."
 ";
 
 $registros = Outros::qry($sql);

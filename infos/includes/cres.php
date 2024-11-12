@@ -6,13 +6,18 @@ $sql = "
 select 
   ccc.campus, ccc.colegiado, p.nome, v.rt,  
   (ps.a21 + ps.a22 + ps.a23 + ps.a3 + ps.a4 ) tempo_usado, v.id
-from professores p 
-inner join ca_ce_co ccc on p.id_colegiado  = ccc.co_id 
-inner join vinculov v on v.id_prof = p.id 
-inner join pad_sucinto ps on ps.id = v.id 
-where p.cat_func = 'c' and p.id_colegiado ='". $co_id."'
+from 
+   professores p 
+   inner join ca_ce_co ccc on p.id_colegiado  = ccc.co_id 
+   inner join vinculov v on v.id_prof = p.id 
+   inner join pad_sucinto ps on ps.id = v.id 
+where 
+   p.cat_func = 'c' and 
+   p.id_colegiado = '". $co_id."' and
+   v.ano = ".$ano."
 order by 1, 2, 3
 ";
+
 
 $registros = Outros::qry($sql);
 

@@ -21,7 +21,7 @@ from
   vinculov v
   inner join pad_sucinto ps  on ps.id  = v.id  
   inner join professores p on v.id_prof = p.id 
-where p.id_colegiado = '". $co_id."' 
+where p.id_colegiado = '". $co_id."' and v.ano = ".$ano."
   order BY nome, contrato ";
 
 $registros = Outros::qry($sql);
