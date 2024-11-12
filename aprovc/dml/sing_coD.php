@@ -13,11 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $data = json_decode($json_data, true); 
 
-    $to_do = $data['to_do'];
     $id_vinc = $data['id_vin'];
-    $user_id = $data['id_user'];
-
- 
+    
     $vinc = new Vinculo();
     $vinc = Vinculo::get($id_vinc);
     
@@ -35,47 +32,19 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         exit;
     }
           
-    /*
-    // Verify se Coordenador é do curso do Vinculado
-    if($user['co_id'] <> $vinc['co_id']){
-        $response = array("status" => "error", "message" => "Curso diferente.");
+    if(!$vinc->assing_co_remove()){
+        $response = array("status" => "error", "message" => "Erro ao assinar.");
         echo json_encode($response);
         exit;
     }
-     */
-
-    $msg = '';
-
-    if($to_do === 'a'){
-        $vinc->aprov_co_id = $user_id;
-        if(!$vinc->assing_co()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-        $msg ='assinado';
-    } elseif ($to_do === 'd'){
-        if(!$vinc->assing_co_remove()){
-            $response = array("status" => "error", "message" => "Erro ao assinar.");
-            echo json_encode($response);
-            exit;
-        }
-        $msg ='removido assinatura';
-    } else {
-        $response = array("status" => "error", "message" => "Tipo não reconhecido");
-        echo json_encode($response);
-        exit;
-    }
-    
 
     $responseData = array( 
         "status" => "success",
         "message" => "Dados recebidos com sucesso.",
         "data" => array (
-            "preenchido"  => $msg ,
-            "status"      => 'Ok',
-            "to_do"       => $to_do
-            )
+            "preenchido"  => 'Assinatura removida' ,
+            "status"      => 'Ok'
+           )
         );
 
     header('Content-Type: application/json');

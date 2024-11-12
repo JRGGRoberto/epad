@@ -1,5 +1,5 @@
 let data = [];
-let noData = true;
+
 const icon = ["🔒", "🖋️❌",  "📄🖋️", "⏳"];
 
 
@@ -110,8 +110,64 @@ function insereTable(newDisc){
   }
 }
 
+function Assinar(){
+  const data = {
+    id_vin:  document.getElementById('vinc_idps').value,
+    id_user: document.getElementById('vinc_id_co').value
+  };
 
- 
+  fetch('./dml/sing_coA.php', {
+    method:'PUT',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then( res => res.json());
+//  .then( res => console.log(res))
+  window.location.reload();
+//  fecharModal(); maneira forçada de resolver um bug do Firefox
+//  return;
+}
+
+function removAssinatura(){
+  const data = {
+    id_vin  : document.getElementById('vinc_idpsd').value,
+  };
+
+  fetch('./dml/sing_coD.php', {
+    method:'PUT',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then( res => res.json());
+//  .then( res => console.log(res))
+  window.location.reload();
+//  fecharModalDel(); maneira forçada de resolver um bug do Firefox
+//  return;
+}
+
+function Aprovar(ad){
+   if(ad  == "a"){
+      Assinar();
+   } else if (ad  == "d"){
+      removAssinatura();
+   } else {
+     console.log('error ' + ad);
+     return;
+   }
+
+   deleteAllRows();
+   deleteAllRows();
+   getDBMD();
+
+}
+
+/*
 function Aprovar(ad){
   let vinc_idps;
   let vinc_id_co;
@@ -136,30 +192,39 @@ function Aprovar(ad){
 
   const data = datasing;
 
-  console.log(data);
-
-  fetch('./dml/sing_co.php', {
-    method:'PUT',
-    headers:{
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then( res => res.json())
-  // .then( res => console.log(res))
-  ;
-
   if(tdo  == 'a'){
+    fetch('./dml/sing_co.php', {
+      method:'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then( res => res.json());
+  //  .then( res => console.log(res))
     fecharModal();
+
   } else if (tdo  == 'd'){
+    fetch('./dml/sing_co0.php', {
+      method:'POST',
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then( res => res.json());
+  //.then( res => console.log(res))
+
     fecharModalDel();
   }
   
   console.log('id: '+ ad + ' func: ' + tdo);
   
-  
 }
+
+*/
 
 function frmAtivShow(id) {
   $('#modalAtv').modal('show');
