@@ -9,9 +9,19 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 
-if ($vinculo->anosedt == 0){ 
+if(($vinculo->aprov_co_id == null) or ($vinculo->aprov_co_id == '') ){
+  $readonly = '';
+} else {
   $readonly = ' readonly ';
-} else { $readonly = '';}
+}
+
+if($vinculo->anosedt == 0){
+  $readonly = ' readonly ';
+}
+
+
+
+
 
 ?>
 
