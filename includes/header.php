@@ -75,10 +75,44 @@ $scriptSel1opcao = '';
 
 if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0 ){
 
-  $scriptSel1opcao = "<script>
+  $scriptSel1opcao = 
+    "<script>
       chValueS(`".$anoCurso . $idCurso ."`);
-      
     </script>";
+}
+
+if ($qnty == 0 and $obUsuario['config'] == '2'){
+  $qry1 = "select * from anos a where a.edt =  1  order by a.ano desc  ";
+  $coodYY = Outros::qry($qry1);
+  $qntyCE = 0;
+  foreach($coodYY as $Ys){
+    $act = '';
+    $ck = '';
+  
+    if($obUsuario['year_sel'] == '' and $qntyCE == 0){
+      $act = 'active';
+      $ck = 'checked';
+    }
+  
+    $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
+    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $Ys->ano .'"  onclick="chValueS(`'.$Ys->ano .'`);"  >'. $Ys->ano.'
+    </label>';
+  
+    if($act == 'active') {
+      $anoCurso = $Ys->ano;
+    }
+  
+    $qntyCE++;
+  }
+  if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qntyCE > 0 ){
+
+    $scriptSel1opcao = 
+      "<script>
+        chValueS(`".$anoCurso ."`);
+      </script>";
+  }
+
+
 }
 
 /*
@@ -368,7 +402,8 @@ $galeraDoSuporte = [
     <div><!-- Fim botões menu -->
 
 <?php
-if ($obUsuario['config'] === '1') {
+//if ($obUsuario['config'] === '1') {
+if( in_array($obUsuario['config'],['1', '2']) ){
   echo '<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">';
   echo $btnCurs;
   echo '</div>';
