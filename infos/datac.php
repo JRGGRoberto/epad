@@ -28,10 +28,10 @@ order by campus, colegiado ";
 
 $q = Outros::q($sql);
 
+
 $col_nome    = $q->colegiado;
 $camp_nome   = $q->campus;
 $centro_nome = $q->codcentro;
-
 
 
 define('VOLTAR', '<a href="#voltar">Voltar</a>');
