@@ -1,4 +1,4 @@
-let data22 = [];
+let data = [];
 let noData22 = true;
 
 let DoubleClick = document.getElementById('DoubleClick');
@@ -11,7 +11,7 @@ function stripZeros(str) {
 }
 
 function deleteAllRows(){
-  data22 = [];
+  data = [];
   $("#tabelaPADS tbody tr").remove(); 
 }
 

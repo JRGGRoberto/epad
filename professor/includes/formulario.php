@@ -189,7 +189,6 @@ $user = Login::getUsuarioLogado();
      <div class="col">
 
         <div class="form-group">
-         <?php print_r($listvV); ?>
        </div>
      </div> 
       

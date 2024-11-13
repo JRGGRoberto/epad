@@ -36,6 +36,7 @@ $ce = $user['ce_id'];
 
 
 include '../includes/header.php';
+
 if ($user['config'] == 1){
    echo '<script>
          const ano = "'. $ano.'";

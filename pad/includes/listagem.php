@@ -6,13 +6,18 @@
         </div>
         <div class="col">
             <?php 
-               if(!$editavel){
+               if(!(($vinc->aprov_co_id == null) or ($vinc->aprov_co_id == '') )){
                 ?>
 
 <span id="inf_g" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; 
 border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coordenador(a) <?= $vinc->assing_co?></span>
                 <?php
 
+               } elseif($vinc->anosedt == 0){ 
+                ?>
+<span id="inf_AA" style="text-align: right; box-shadow: 3px 3px lightgray; border-radius: 5px; background-color: #c3e6cb; 
+border: 0px #8fd19e solid; padding: 5px; font-size:12px;">PAD <strong><?= $vinc->ano?></strong> fechado</span>
+<?php
                } else {
             ?>
 
@@ -244,8 +249,11 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
                     </div>
                 </div>
             </div>
+            
             <div id="outobs" class="collapse show" >
+                
                 <div class="card-body">
+                    <strong>Minhas observações</strong>
                     <div class="form-group">
                          <textarea 
                          <?php 
@@ -255,18 +263,24 @@ border: 0px #8fd19e solid; padding: 5px; font-size:12px;">Aprovado pelo(a) coord
                                 echo 'readonly';
                             }
                          ?>
-                         
-                         
                          maxlength="2000" name="vincobs" id="vincobs" cols="30" class="form-control" rows="8"><?= $vinc->obs ?></textarea>
                     </div>
                     <div class="form-group float-right">
                          
                          <?php 
                             if($editavel){
-                                echo '<input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();"hidden >';
+                                echo '<input id="updateObsBtn" type="button" value="Salvar observação" class="btn btn-primary btn-sm" value="" onclick="updateOBS();"hidden ><br>';
                             } 
                          ?> 
-                     </div>
+                    </div>
+                    <div>
+                        <strong>Observações - Coordenador</strong>
+                        <div class="form-group">
+                            <textarea readonly maxlength="2000" name="vincobs" id="vincobs" cols="30" class="form-control" rows="8"><?= $vinc->obscoord ?></textarea>
+                        </div>
+                    </div>
+                        
+
                 </div>
             </div>
         </div>

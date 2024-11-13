@@ -75,7 +75,7 @@ $scriptSel1opcao = '';
 
 if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0 ){
 
-  $scriptSel1opcao = "<hr>A<hr>    <script>
+  $scriptSel1opcao = "<script>
       chValueS(`".$anoCurso . $idCurso ."`);
       
     </script>";
@@ -87,6 +87,10 @@ echo 'id:   '. $idCurso .'<br>';
 echo 'curs: '. $nomeCurso .'<br>';
 echo 'ano:  '. $anoCurso .'<br>';
 echo '<hr>';
+
+echo '<pre>';
+print_r($obUsuario);
+echo '</pre>';
 */
 
 ?>
@@ -283,7 +287,7 @@ img.remover {
 
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
-                                  <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                               <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a> -->
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                 </div>

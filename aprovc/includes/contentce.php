@@ -1,6 +1,9 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-3"><h3>Homologação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do meu Centro de Área</sup></div>
+    <div class="col-7">
+      <h3>Homologação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do meu Centro de Área</sup>
+    </div>
+    
     <div class="col" style="text-align:left">
       <div>
         <span class="badge badge-pill badge-light"> </span>
@@ -16,6 +19,7 @@
           
   </div>
   <hr>
+
     <!-- TABLE -->
     <div class="form-group table-responsive-sm">
       <sub style="line-height: 12px;">

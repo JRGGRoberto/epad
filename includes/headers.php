@@ -26,10 +26,10 @@ $horas >= 12 ? (int)($horas -= 12) : (int)($horas -= 0);
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 -->
 
+<link rel="stylesheet" type="text/css" href="../includes/select2.min.css">
+<link rel="stylesheet" type="text/css" href="../includes/multi-select.css"> 
+<link rel="stylesheet" type="text/css" href="../includes/selectize.default.css">
     <!--multiselect CSS-->
-    <link rel="stylesheet" type="text/css" href="../includes/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="../includes/multi-select.css"> 
-    <link rel="stylesheet" type="text/css" href="../includes/selectize.default.css">
     <script type="text/javascript">
 
 $(function($) {
@@ -92,7 +92,7 @@ img.remover {
          <div class="container text-center p-3">
             <div class="row">
               <div>
-                <img src="https://sistemaproec.unespar.edu.br/sis/imgs/logo_unespar.png" class="d-inline-block align-top" alt="" loading="lazy" width="64" height="68">
+                <img src="../imgs/logo_unespar.png" class="d-inline-block align-top" alt="" loading="lazy" width="64" height="68">
               </div>
               <div class="col">
                   <div class="text-left">

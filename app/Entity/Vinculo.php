@@ -16,6 +16,7 @@ class Vinculo {
   public $tempo_cc;
   public $tempo_esu;
   public $obs;
+  public $obscoord;
   public $created_at;
   public $updated_at;
   public $aprov_co_id;
@@ -89,6 +90,12 @@ class Vinculo {
     ]);
   }
 
+
+  public function addObs(){
+    return (new Database('vinculo'))->update('id = "'.$this->id.'" ',[
+      'obscoord'   =>  $this->obscoord
+    ]);
+  }
 
 
   public function excluir(){

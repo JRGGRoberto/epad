@@ -30,25 +30,31 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
 
     $opcoes = '';
     $qnt = 0;
+    $yearss = 0;
     foreach( $retorno as $vinculo ){
 
+        $btnClass = '';
         if($vinculo->edt == 0){
-            $opcoes .= ' <a type="button" class="btn btn-info"  target="_blank"
-                     href="../padstoprn/index.php?id='. $vinculo->id 
-                    .'" style="text-align: center;">PAD '. $vinculo->ano 
-                    .' ['. $vinculo->rt .']</a><br><br> ' ;
+            $btnClass .= 'btn btn-info' ;
         } else {
-            $opcoes .= ' <a type="button" class="btn btn-primary"
+            $btnClass .= 'btn btn-primary';
+        }
+
+        $opcoes .= ' <a type="button" class="'.$btnClass.'"
                      href="../pad/index.php?ano='. $vinculo->ano.'"
                       style="text-align: center;">PAD '. $vinculo->ano 
                     .' ['. $vinculo->rt .']</a><br><br> ';
-        }
         $qnt++;
+        $yearss = $vinculo->ano;
     }
 
     if($qnt == 0){
         $opcoes = '<p>Não há PADs vinculados a esta conta.</p>';
         $opcoes .= '<p>Qualquer problema entre em contato com o seu coordenador de curso.</p>';
+    } 
+    elseif (($qnt == 1) and ($yearss > 0)){
+        header('location: ../pad/index.php?ano='.$yearss);
+        exit;
     }
 
 

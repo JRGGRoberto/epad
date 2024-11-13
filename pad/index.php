@@ -29,6 +29,10 @@ if(!$vinc == null){
         $editavel = false;
     }
 
+    if($vinc->anosedt == 0){
+        $editavel = false;
+    }
+
     include __DIR__.'/includes/listagem.php';
 
     

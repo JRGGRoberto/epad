@@ -25,12 +25,15 @@ PROGESP/PROEC/PROGRAD</td>
     </tbody>
 </table>
 <img src="../imgs/pdf.png" alt="PDF" class="float-right" height="20px" style= "opacity: 0.5; cursor: pointer" onclick="topdf();">
+<!-- ?php echo  $_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'<br>'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']; ?> -->
 
 <script>
 
 function topdf(){
     let urlParams = new URLSearchParams(window.location.search);
-    let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
+    // let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
+    let toGo =                                          '../padstopdf/index.php?';
+   // let toGo = 'http://localhost/epad/padstopdf/index.php?';
     window.location.href = toGo + urlParams;
 }
 

@@ -30,6 +30,8 @@ $retorno = Vinculo::gets('id_prof = "'.$obProfessor->id.'"');
 
 
 $opcoes = '';
+$qnt = 0;
+$yearss = 0;
 
 foreach( $retorno as $vinculo ){
 
@@ -40,7 +42,16 @@ foreach( $retorno as $vinculo ){
         $opcoes .= ' <a type="button" class="btn btn-primary"       href="./ano.php?a='. $vinculo->ano.'"
                   style="text-align: center;">PAD '. $vinculo->ano  .' ['. $vinculo->rt .']</a> <br><br>';
     }
-    
+    $qnt++;
+    $yearss = $vinculo->ano;
+}
+if($qnt == 0){
+  $opcoes = '<p>Não há PADs vinculados a esta conta.</p>';
+  $opcoes .= '<p>Qualquer problema entre em contato com o seu coordenador de curso.</p>';
+} 
+elseif (($qnt == 1) and ($yearss > 0)){
+  header('location: ./ano.php?a='.$yearss);
+  exit;
 }
 
 
