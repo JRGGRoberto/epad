@@ -2,7 +2,6 @@ let data = [];
 
 const icon = ["🔒", "🖋️❌",  "📄🖋️", "⏳"];
 
-
 let DoubleClick = document.getElementById('DoubleClick');
 
 function stripZeros(str) {
@@ -112,8 +111,7 @@ function insereTable(newDisc){
 
 function Assinar(){
   const data = {
-    id_vin:  document.getElementById('vinc_idps').value,
-    id_user: document.getElementById('vinc_id_co').value
+    id_vin:  document.getElementById('vinc_idps').value
   };
 
   fetch('./dml/sing_coA.php', {
@@ -125,6 +123,9 @@ function Assinar(){
     body: JSON.stringify(data)
   })
   .then( res => res.json());
+
+
+
 //  .then( res => console.log(res))
   window.location.reload();
 //  fecharModal(); maneira forçada de resolver um bug do Firefox
@@ -133,7 +134,7 @@ function Assinar(){
 
 function removAssinatura(){
   const data = {
-    id_vin  : document.getElementById('vinc_idpsd').value,
+    id_vin  : document.getElementById('vinc_idpsd').value
   };
 
   fetch('./dml/sing_coD.php', {
@@ -167,65 +168,6 @@ function Aprovar(ad){
 
 }
 
-/*
-function Aprovar(ad){
-  let vinc_idps;
-  let vinc_id_co;
-  let tdo = ad;
-
-  if(tdo  == 'a'){
-    vinc_idps  = document.getElementById('vinc_idps').value;
-    vinc_id_co = document.getElementById('vinc_id_co').value;
-  } else if (tdo  == 'd'){
-    vinc_idps  = document.getElementById('vinc_idpsd').value;
-    vinc_id_co = document.getElementById('vinc_id_cod').value;
-  } else {
-    console.log('error ' + tdo);
-    return;
-  }
-  
-  let datasing = {
-    to_do: tdo,
-    id_vin: vinc_idps,
-    id_user: vinc_id_co
-  };
-
-  const data = datasing;
-
-  if(tdo  == 'a'){
-    fetch('./dml/sing_co.php', {
-      method:'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then( res => res.json());
-  //  .then( res => console.log(res))
-    fecharModal();
-
-  } else if (tdo  == 'd'){
-    fetch('./dml/sing_co0.php', {
-      method:'POST',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-    .then( res => res.json());
-  //.then( res => console.log(res))
-
-    fecharModalDel();
-  }
-  
-  console.log('id: '+ ad + ' func: ' + tdo);
-  
-}
-
-*/
-
 function frmAtivShow(id) {
   $('#modalAtv').modal('show');
  
@@ -239,7 +181,6 @@ function frmAtivShow(id) {
  let txtData = new Date().toLocaleDateString('pt-br', { day:"numeric" , month:"long", year:"numeric"});
  document.getElementById('dataHoje').innerHTML = txtLocal +', ' + txtData + ".";
 }
-
 
 function frmmodalDel(id) {
   $('#modalDel').modal('show');
@@ -277,7 +218,5 @@ async function getDBMD() {
   } 
 
 }
-
-
 
 getDBMD();

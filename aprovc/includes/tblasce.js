@@ -1,8 +1,8 @@
 let data = [];
-let noData22 = true;
+
+const icon = ["✅", "🖋️❌",  "📄🖋️", "⏳"];
 
 let DoubleClick = document.getElementById('DoubleClick');
-
 
 function stripZeros(str) {
   return parseFloat(str.replace(',', '.'))
@@ -33,8 +33,7 @@ function insereTable(newDisc){
     let celAprovCoid = newLinha.insertCell(10);
     let celCnf  = newLinha.insertCell(11);
     
-    //let AssingCoorden =  typeof newLinha.aprov_co_id !== 'undefined' ? ( newLinha.aprov_co_id === 36 ? '✅' :  '⏳'): '⏳';
-    let AssingCoorden =  newDisc.aprov_co_id === null ? '⏳':  '✅' ;
+    let AssingCoorden =  newDisc.aprov_co_id === null ? icon[3]:  icon[0] ;
 
     
     let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a23) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
@@ -68,12 +67,12 @@ function insereTable(newDisc){
     if ((newDisc.aprov_ce_id === null) | (newDisc.aprov_ce_id === '')){
       celCnf.innerHTML  = 
          `<center>
-            <button type="button" class="btn btn-light btn-sm" title="Homologar PAD" onclick="frmAtivShow('${newDisc.id}')">🖋️</button>
+            <button type="button" class="btn btn-light btn-sm" title="Homologar PAD" onclick="frmAtivShow('${newDisc.id}')">${icon[2]}</button>
          </center>`;
     } else {
       celCnf.innerHTML  = 
          `<center>
-            <button type="button" class="btn btn-light btn-sm" title="Remover homologação" onclick="frmmodalDel('${newDisc.id}')">✏️</button>
+            <button type="button" class="btn btn-light btn-sm" title="Remover homologação" onclick="frmmodalDel('${newDisc.id}')">${icon[1]}</button>
          </center>`;
 
     }
@@ -106,53 +105,63 @@ function insereTable(newDisc){
     celAT.style.borderBlockColor = '#ed969e';
   }
 }
- 
-function Aprovar(ad){
-  let vinc_idps;
-  let vinc_id_ce;
-  let tdo = ad;
-  
-  if(tdo == 'a'){
-    vinc_idps  = document.getElementById('vinc_idps').value;
-    vinc_id_ce = document.getElementById('vinc_id_ce').value;
-  } else if (tdo == 'd'){
-    vinc_idps  = document.getElementById('vinc_idpsd').value;
-    vinc_id_ce = document.getElementById('vinc_id_ce').value;
-  } else {
-    console.log('error ' + tdo);
-    return;
-  }
-  
+
+function Assinar(){
   let datasing = {
-    to_do: tdo,
-    id_vin: vinc_idps,
-    id_user: vinc_id_ce
+    id_vin: document.getElementById('vinc_idps').value
   };
 
-  const data = datasing;
-  console.log(data);
-
-  fetch('./dml/sing_ce.php', {
-      method:'PUT',
-      headers:{
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+  fetch('./dml/sing_ceA.php', {
+    method:'PUT',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datasing)
   })
   .then( res => res.json())
-  .then( res => console.log(res)
-  );
+  //.then( res => console.log(res))
+  ;
+  window.location.reload();
+  // fecharModal();
+}
+ 
+function removAssinatura(){
+      
+  const data = {
+    id_vin  : document.getElementById('vinc_idpsd').value,
+  };
 
-  if(tdo == 'a'){ 
-    fecharModal();
-  } else {
-    fecharModalDel()
-  }
-
-  getDBMD();
+  fetch('./dml/sing_ceD.php', {
+    method:'PUT',
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then( res => res.json())
+  //.then( res => console.log(res))
+  ;
+   window.location.reload();
+  //fecharModalDel(); 
 }
 
+function Aprovar(ad){
+  if(ad  == "a"){
+     Assinar();
+  } else if (ad  == "d"){
+     removAssinatura();
+  } else {
+    console.log('error ' + ad);
+    return;
+  }
+
+  deleteAllRows();
+  deleteAllRows();
+  getDBMD();
+
+}
 
 async function getDBMD() {
   deleteAllRows();
@@ -199,8 +208,3 @@ function fecharModalDel(){
 function fecharModal(){
   $('#modalAtv').modal('hide');
 }
-
-
-
-
-
