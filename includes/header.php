@@ -365,8 +365,11 @@ $galeraDoSuporte = [
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Suporte</button>
                                 <div class="dropdown-menu dropdown-menu-right">
                                   <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPADs</a>
-                                  <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a>
+                            <!--       <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a>  -->
                                   <a class="dropdown-item btn-sm" href="../horas" >Relação de horas Matrizes/Semanal</a>
+                                  <div class="dropdown-divider"></div>
+                                  <a class="dropdown-item btn-sm" href="../infos/listaall.php">Dados</a>
+                                 
 
                                   
                              <!--      -->
