@@ -12,6 +12,8 @@ if(!($user['adm'] == 1)){
   exit;
 }
 
+
+
 $sql = "select UPPER(codcam) as ca, colegiado, co_id  from ca_ce_co ccc
 order by 1, 2";
 $lista = Outros::qry($sql);

@@ -37,10 +37,10 @@ foreach( $lista as $coleg){
   $tbl_dir .= '
       <tr>
         <td>'. $coleg->nome .'</td>';
-  foreach($anos as $y){
-    $tbl_dir .= '
-        <td><a href="./datac.php?id='.$coleg->id . $y->ano. '" class"btn-primary" > 📄'. $y->ano. '</a></td>' ;
-  }
+        foreach($anos as $y){
+          $tbl_dir .= '
+              <td><a href="./datac.php?id='.$coleg->id . $y->ano. '" class"btn-primary" > 📄'. $y->ano. '</a></td>' ;
+        }
   $tbl_dir .= '
       </tr>' ;
 }

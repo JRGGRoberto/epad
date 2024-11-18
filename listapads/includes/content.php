@@ -6,11 +6,11 @@
     <span style="color: #007F3D; text-shadow: 0 0 2px rgba(0,0,0,0.6);;">PAD</span></h1>
   
 <div class="container p-3 my-3 bg-white text-dark" style="padding : 25px">
-  <h2 id="hi"style="text-align: center; padding : 25px;"></h2>
+  
 
   
   <div style="text-align: justify; padding : 5px 30px; ">
-  <h3>Lista</h3>
+  <h3>Lista</h3> <?= $btnANOSy; ?>
   
   <table id="tabelaMatD" name="tabelaMatD" class="table table-bordered table-sm table-hover">
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">

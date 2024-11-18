@@ -3,6 +3,7 @@
 require '../vendor/autoload.php';
 
 use \App\Session\Login;
+use \App\Entity\Outros;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
@@ -17,9 +18,47 @@ if(!in_array($user['id'], $galeraDoSuporte)){
 }
 
 
+$qry1 = "select * from anos a order by a.ano desc  ";
+$coodYY = Outros::qry($qry1);
+$btnANOSy = '';
+$qnty = 0;
+foreach($coodYY as $Ys){
+  $act = '';
+  $ck = '';
+
+  if(($user['year_sel'] == '' or $user['year_sel'] == null) and $qnty > 0 ){
+    $act = 'active';
+    $ck = 'checked';
+  }
+
+  $btnANOSy .=  '<label class="btn btn-primary '.$act.' btn-sm">';
+  $btnANOSy .= '<input type="radio" name="radioAC" '.$ck.' value="'. $Ys->ano .'"  onclick="chValueS(`'.$Ys->ano .'`);"  >'. $Ys->ano.'
+  </label>';
+
+  if($act == 'active') {
+    $anoCurso = $Ys->ano;
+  }
+
+  $qnty++;
+}
+
+
+if(($user['year_sel'] == '' or $user['year_sel'] == null) and $qnty > 0 ){
+  $scriptSel1opcao = 
+    "<script>
+      chValueS(`".$anoCurso ."`);
+    </script>";
+}
+
+
+
+
+
 use \App\Entity\Vinculo;
 
-$where = ' 1 = 1 ';
+
+
+$where = ' ano  =  ' . $user['year_sel'];
 $order = ' campus, codcentro, colegiado, nome ';
 $vinc = Vinculo::gets($where, $order);
 $tab = '';
@@ -39,12 +78,13 @@ if($user['tipo'] == 'agente') {
   header('location: ../matrizes/');
   exit;
 } elseif($user['tipo'] == 'prof') {
-  // header('location: ../pad/');
-  include '../includes/header.php';
-  include __DIR__.'/includes/content.php';
 
+  include '../includes/header.php';
+  
+  include __DIR__.'/includes/content.php';
+  
   include '../includes/footer.php';
-   
+  echo $scriptSel1opcao; 
    
 } else {
    header('location: ../login/logout.php');

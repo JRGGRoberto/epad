@@ -316,7 +316,7 @@ img.remover {
                                     
                                   <div class="dropdown-divider"></div>
                                   
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções - Coord. Estágio/TCC[<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
@@ -357,6 +357,7 @@ img.remover {
 $galeraDoSuporte = [
   'b8fa555f-cedb-47cf-91cc-7581736aac88', // Roberto
   '8154fff1-becd-11ee-801b-0266ad9885af',   // Sérgio
+  'bc906e9c-bf9b-11ee-801b-0266ad9885af', // FERNANDO YUDI SAKAGUTI
   '81512d7d-becd-11ee-801b-0266ad9885af'];   // Dorigão
 
         if (in_array($obUsuario['id'], $galeraDoSuporte)) { ?>
