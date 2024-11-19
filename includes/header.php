@@ -319,6 +319,8 @@ img.remover {
                                   <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções - Coord. Estágio/TCC[<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
+                                  <a class="dropdown-item btn-sm" href="../obscoord" >Inserir/visualizar observações nos PAD's [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+
                                   <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
                                <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a> -->
