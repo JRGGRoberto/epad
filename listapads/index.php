@@ -29,6 +29,7 @@ foreach($coodYY as $Ys){
   if(($user['year_sel'] == '' or $user['year_sel'] == null) and $qnty > 0 ){
     $act = 'active';
     $ck = 'checked';
+    $user['year_sel'] =  $Ys->ano;
   }
 
   $btnANOSy .=  '<label class="btn btn-primary '.$act.' btn-sm">';
@@ -57,7 +58,7 @@ if(($user['year_sel'] == '' or $user['year_sel'] == null) and $qnty > 0 ){
 use \App\Entity\Vinculo;
 
 
-$user['year_sel'] = $user['year_sel'] ?? '2024';
+// $user['year_sel'] = $user['year_sel'] ?? 2024 ;
 $where = ' ano  =  '. $user['year_sel'] ; //. $user['year_sel'] . ' ';
 $order = ' campus, codcentro, colegiado, nome ';
 
