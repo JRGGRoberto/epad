@@ -1,7 +1,7 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-7">
-      <h3>Homologação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do meu Centro de Área</sup>
+      <h3>Homologação -  PAD [<?= $user['year_sel'] ?>]</h3><sup><?=$subTitle?> - Lista de professores do meu Centro de Área</sup>
       <div>✅ - Assinado pela coordenação<br>⏳ - Não assinado pelo coordenador pois o carga horária atribuida não corresponte ao RT</div> 
     </div>
     

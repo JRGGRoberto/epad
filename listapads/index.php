@@ -57,9 +57,11 @@ if(($user['year_sel'] == '' or $user['year_sel'] == null) and $qnty > 0 ){
 use \App\Entity\Vinculo;
 
 
-
-$where = ' ano  =  ' . $user['year_sel'];
+$user['year_sel'] = $user['year_sel'] ?? '2024';
+$where = ' ano  =  '. $user['year_sel'] ; //. $user['year_sel'] . ' ';
 $order = ' campus, codcentro, colegiado, nome ';
+
+
 $vinc = Vinculo::gets($where, $order);
 $tab = '';
 foreach($vinc as $v){
@@ -80,11 +82,16 @@ if($user['tipo'] == 'agente') {
 } elseif($user['tipo'] == 'prof') {
 
   include '../includes/header.php';
-  
+
+  echo $scriptSel1opcao; 
+
+
+
+
   include __DIR__.'/includes/content.php';
   
   include '../includes/footer.php';
-  echo $scriptSel1opcao; 
+  
    
 } else {
    header('location: ../login/logout.php');

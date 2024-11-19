@@ -10,7 +10,7 @@
 
   
   <div style="text-align: justify; padding : 5px 30px; ">
-  <h3>Lista</h3> <?= $btnANOSy; ?>
+  <h3>Lista <?= $user['year_sel'] ?></h3> <?= $btnANOSy; ?>
   
   <table id="tabelaMatD" name="tabelaMatD" class="table table-bordered table-sm table-hover">
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
