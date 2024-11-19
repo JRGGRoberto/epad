@@ -27,8 +27,9 @@ function adicionarObservacao() {
   })
   .then(res => res.json())
   .then(response => {
-    alert(response.message);
+    // alert(response.message);
     getDBMD();  // Atualizar a tabela após adicionar a observação
+    $('#modalOBS').modal('hide');
   })
   .catch(error => {
     console.error('Error:', error);
