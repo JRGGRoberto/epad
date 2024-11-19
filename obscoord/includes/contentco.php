@@ -1,11 +1,19 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
-    <div class="col-7">
-      <h3>Ver o que coloca aqui</h3><sup><?=$subTitle?> - Lista de professores do colegiado de <strong><?=  $nomeCurso .' ['. $anoCurso  .'] '?></strong></sup>
+    <div class="col-6">
+      <h3>Observações do coodenador no PAD do professor(ª)</h3><sup><?=$subTitle?> - Lista de professores do colegiado de <strong><?=  $nomeCurso .' ['. $anoCurso  .'] '?></strong></sup>
+    </div>
+    <div class="col-6">
+     <span style="font-weight: 400; font-size: 70%">
+       <ul>
+          <li>Clique em 🖊️ na tupla do professor para adicionar uma observação.</li>
+          <li>Ela não pode ser editada, se quiser manter copie o texto e cole-lo no na parte de edição, pois ela irá se sobrepor.</li>
+          <li>As informações ficaram na segunda parte do item <strong>6</strong> do PAD do professor</li>
+       </ul> 
+       </span>
     </div>
   </div>
   <hr>
-
   <!-- TABLE -->
   <div class="form-group table-responsive-sm">
     <div style="max-height: 600px; overflow: auto;">
@@ -13,13 +21,13 @@
         <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
           <tr>
             <th style="display: none;">ID</th>
-            <th class="align-top" style="text-align: center; width: 35px; padding: 15px 5px;">Professor(ª)</th>
+            <th class="align-top" style="text-align: left; width: 350px; ">Professor(ª)</th>
             <!-- Diminuir a largura da coluna PAD -->
-            <th class="align-top" style="text-align: center; width: 50px; padding: 15px 5px;">PAD</th> <!-- Reduzi para 50px -->
-            <th class="align-top" style="text-align: center; width: 90px; padding: 15px 5px;">Observações</th>
+            <th class="align-top" style="text-align: center; width: 15px; ">PAD</th> <!-- Reduzi para 50px -->
+            <th class="align-top" style="text-align: center; width: 650px; ">Observações</th>
             <!-- Diminuir a largura da coluna "🖊️" -->
-            <th class="align-top" style="text-align: center; width: 40px; padding: 15px 5px;">🖊️</th> <!-- Reduzi para 40px -->
-            <th style="display: none;">🖊️</th>
+            <th class="align-top" style="text-align: center; width: 15px; ">🖊️</th> <!-- Reduzi para 40px -->
+            
           </tr>
         </thead>
         <tbody></tbody>
