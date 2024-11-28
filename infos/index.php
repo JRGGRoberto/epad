@@ -16,6 +16,9 @@ if($user['config'] == 1 ){  // coordenador
 }  elseif ($user['config'] == 2 ){ // dir de centro
   header('location: ./lista.php');
   exit;
+} elseif ($user['admin'] == 1 ){ // dir de centro
+  header('location: ./listaall.php');
+  exit;
 } else {
   header('location: ../');
   exit;

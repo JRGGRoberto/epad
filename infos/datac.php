@@ -6,6 +6,11 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if(!(($user['config'] == 2)  or ($user['adm'] == 1))){
   header('location: ../');
   exit;
@@ -50,10 +55,14 @@ class Relatorios{
     }
 }
 
+
+
 $tbl_contrads = '';
 include __DIR__.'/includes/quad_prof.php';
 $item = new Relatorios("id1", "Quadro de professores atual do meu colegiado", $tbl_contrads);
 $itens [] = $item;
+
+
 
 $tbl_rt = '';
 include __DIR__.'/includes/rt.php';
@@ -104,6 +113,7 @@ $item = new Relatorios("id8", "Resumo por curso - Colegiado de", $tbl_resumo);
 $itens [] = $item;
 
 //********************* */
+
 $tbl_profes = '';
 include __DIR__.'/includes/profes.php';
 $item = new Relatorios("id9", "Disciplinas do colegiado de", $tbl_profes);

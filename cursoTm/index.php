@@ -40,6 +40,11 @@ $where = " id_curso  in (".  substr($ids_col, 0, -2) . " )";
 
 $reg = MatrizDisc::get($where, "ano desc, curso");
 
+
+echo '<pre>';
+print_r($reg);
+echo '</pre>';
+
 $turno = '';
 $tbody = '';
 $x = 0;
