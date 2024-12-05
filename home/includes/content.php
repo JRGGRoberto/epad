@@ -1,21 +1,23 @@
 
 <div class="container mt-3">
 
-  <h3 class="mt-3">PADs </h3>
+  <h3 class="mt-3">PAD </h3>
   
 <div class="container p-3 my-3 bg-white text-dark" style="padding : 25px">
+  <!--
   <p>Quando o ano está com está <span class="badge badge-primary" id="bca">cor</span> ele pode ser editável</p>
   <p>Quando o ano está com está <span class="badge badge-info">cor</span>, está apenas no modo de leitura</p>
+-->
+<p>Quando o ano aparece na <span class="badge badge-primary" id="bca">cor</span>, o pad pode ser editado.</p>
+<p>Quando o ano aparece na <span class="badge badge-info">cor</span>, o pad não pode ser editado.</p>
 <p>
 
-<pre>
   <?php 
-  echo $opcoes;
-
-  // print_r($user)
+    echo $opcoes;
+    echo '<pre>';
+    print_r($user)
   ?>
-  
-</pre>
+</pre>  
 
 </p>
 

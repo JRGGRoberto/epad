@@ -40,16 +40,16 @@ if($user['tipo'] == 'agente' &&  $user['adm'] == 1) {
             $btnClass .= 'btn btn-primary';
         }
 
-        $opcoes .= ' <a type="button" class="'.$btnClass.'"
+        $opcoes .= '<a type="button" class="'.$btnClass.'"
                      href="../pad/index.php?ano='. $vinculo->ano.'"
                       style="text-align: center;">PAD '. $vinculo->ano 
-                    .' ['. $vinculo->rt .']</a><br><br> ';
+                    .'</a><br><br>';
         $qnt++;
         $yearss = $vinculo->ano;
     }
 
     if($qnt == 0){
-        $opcoes = '<p>Não há PADs vinculados a esta conta.</p>';
+        $opcoes = '<p>Não há PAD vinculados a esta conta.</p>';
         $opcoes .= '<p>Qualquer problema entre em contato com o seu coordenador de curso.</p>';
     } 
     elseif (($qnt == 1) and ($yearss > 0)){

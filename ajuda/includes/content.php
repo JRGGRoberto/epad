@@ -18,56 +18,9 @@
     </div>
 
 
-
-
   <div style="text-align: justify; padding : 5px 30px;">
 
   <div id="accordion">
-
-<!--
-  <div class="card">
-      <div class="card-header">
-        <a class="card-link" data-toggle="collapse" href="#IDLINK">
-          TITULO
-        </a>
-      </div>
-        <div id="IDLINK" class="collapse" data-parent="#accordion">
-          <div class="col">
-            CONTEUDO
-          </div>
-        </div>
-      </div>
-    </div>
--->
-
-<!-- 
- 
-
-  <div class="card">
-      <div class="card-header">
-        <a class="card-link" data-toggle="collapse" href="#pqepad">
-          PAD - Justificativa
-        </a>
-      </div>
-        <div id="pqepad" class="collapse" data-parent="#accordion">
-          <div class="col">
-            <div class="card-body row">
-              <p>Acompanhando os avanços tecnológicos para garantir a eficiência, transparência e precisão das informações. Apresentamos o ePAD, um sistema intuitivo para o preenchimento do Plano de Atividades Docentes (PAD).</p>
-             
-              <p>O ePAD surge como uma resposta para dinamizar dos métodos utilizados até então. Ao migrar para uma plataforma digital, o ePAD oferece uma série de vantagens que agilizam a maneira como os docentes registram e gerenciam suas atividades como:</p>
-               <ul>
-                 <li>Automatização do cálculo de horas: Com o ePAD, o cálculo de horas dedicadas a cada atividade torna-se automático, eliminando erros manuais e economizando tempo precioso </li>
-                 <li>Integração de dados: O sistema permite o cruzamento de informações, facilitando o preenchimento do PAD ao oferecer sugestões baseadas em dados já registrados, garantindo consistência e coesão nos relatórios.</li>
-                 <li>Segurança e veracidade dos dados: Ao centralizar todas as informações em uma base de dados segura, o ePAD reduz o risco de perda ou extravio de documentos, além de garantir a integridade e veracidade das informações registradas.</li>
-               </ul>
-               
-              <p>Esperamos que o sistema possa auxilia-lo a fazer essa tarefa de maneira mais rápida.</p>
-          </div>
-        </div>
-      </div>
-    </div>
- -->
-
 
     <div class="card">
       <div class="card-header">
@@ -239,7 +192,7 @@
             <ul>
               <li><a class="card-link" data-toggle="collapse" href="#coord_aulas">Aulas</a> <sub>Montar a matriz, associar disciplinas aos professores</sub></li>
               <li>Atribuir funções <sub>Designar funções aos professores</sub></li>
-              <li>Assinar ver PADs <sub>Lista os professores pertencente ao coligiado suas informações de PAD, também nesta parte, é feita a aprovação do PAD</sub></li>
+              <li>Assinar ver PAD <sub>Lista os professores pertencente ao coligiado suas informações de PAD, também nesta parte, é feita a aprovação do PAD</sub></li>
               <li>Informações <sub>Informações gerais referentes aos dados do PAD no colegiado</sub></li>
             </ul>
 
@@ -449,7 +402,7 @@ Menu Atribuir :</p>
     <div class="card">
       <div class="card-header">
         <a class="card-link" data-toggle="collapse" href="#coord_vpads">
-          Coordenação - Assinar e ver PADs
+          Coordenação - Assinar e ver PAD
         </a>
       </div>
       <div id="coord_vpads" class="collapse" data-parent="#accordion">

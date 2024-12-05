@@ -53,7 +53,7 @@ $retorno = ValidaT::q($query);
 
 $data = '';
 if(!$retorno  instanceof ValidaT){
-    $data = 'Os dados informados não encontraram uma relação a uma conta';
+    $data = 'Os dados informados não correspondem a uma conta registrada. Por favor, tente novamente.';
 } else {
     $senha = date("sa");
 

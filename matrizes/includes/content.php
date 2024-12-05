@@ -120,6 +120,7 @@
                       <option value="a">Graduação</option>
                       <option value="b">Pós-graduação Lato Sensu gratuita</option>
                       <option value="c">Pós-graduação Stricto Sensu</option>
+                      <option value="d">Doutoramento</option>
                     </select>
                   </div>
                 </div>
@@ -139,6 +140,8 @@
                       <option value="">Selecione</option>
                       <option value="l">Licenciatura</option>
                       <option value="b">Bacharelado</option>
+                      <option value="e">Especialização</option>
+                      <option value="d">Doutoramento</option>
                     </select>
                   </div>
                 </div>

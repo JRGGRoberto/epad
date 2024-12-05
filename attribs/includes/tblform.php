@@ -29,7 +29,7 @@
 
       <div class="col-7">
         <div class="form-group">
-          <label for="co">Colegiado</label>
+          <label for=A>Colegiado</label>
           <select name="id_colegiado" id="co" class="form-control" required>
           </select>
         </div> 
@@ -43,7 +43,7 @@
     </div>
 
     <input type="hidden" name="ano" value="<?=$ano; ?>">
-    <input type="hidden" name="co" value="<?=$co; ?>">
+    <input type="hidden" name="coA" value="<?=$co; ?>">
     
 
     <center>

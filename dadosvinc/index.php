@@ -46,7 +46,7 @@ foreach( $retorno as $vinculo ){
     $yearss = $vinculo->ano;
 }
 if($qnt == 0){
-  $opcoes = '<p>Não há PADs vinculados a esta conta.</p>';
+  $opcoes = '<p>Não há PAD vinculados a esta conta.</p>';
   $opcoes .= '<p>Qualquer problema entre em contato com o seu coordenador de curso.</p>';
 } 
 elseif (($qnt == 1) and ($yearss > 0)){

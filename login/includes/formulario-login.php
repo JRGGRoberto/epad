@@ -41,7 +41,7 @@
           
 
       </form>
-      <a href="./recupera.php" class="btn btn-light btn-sm float-right">📑 Recuperar senha</a>
+      <a href="./recupera.php" class="btn btn-primary btn-sm float-right">📑 Recuperar senha</a>
       <br>
       <!--
       <a href="../projetostb/" class="btn btn-success" id="projEfet">📑 Propostas efetivadas</a>

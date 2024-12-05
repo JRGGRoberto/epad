@@ -2,13 +2,11 @@
 
 require '../vendor/autoload.php';
 
-
 use App\Session\Login;
 
 $obUsuario = Login::getUsuarioLogado();
 use App\Entity\Cargo;
 use \App\Entity\Outros;
-
 
 $clock = [
   '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
@@ -305,7 +303,7 @@ img.remover {
                                        echo '</div>';
                                    }
 
-                                   if ($obUsuario['config'] === '1' and $qnty > 0) {
+                                   if ($obUsuario['config'] == '1' and $qnty > 0) {
                                     ?> 
 
 
@@ -319,16 +317,21 @@ img.remover {
                                   <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções - Coord. Estágio/TCC[<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
-                                  <a class="dropdown-item btn-sm" href="../obscoord" >Inserir/visualizar observações nos PAD's [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <div class="dropdown-divider"></div>
+                                  
+                                  <a class="dropdown-item btn-sm" href="../afastamento" >Afastamentos [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
 
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PADs [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../obscoord" >Observações [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+
+
                                   <div class="dropdown-divider"></div>
-                               <!-- -->
-                                  <?php if($anoCurso == 2025){ ?>
-                                     <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a> 
-                                  <?php } ?>
-                                   <!--  -->
+
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PAD [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                   <div class="dropdown-divider"></div>
+                                  
+                               <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a> -->
+                                  <div class="dropdown-divider"></div>
+
                                   <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
                                 </div>
                               </div>
@@ -338,7 +341,7 @@ img.remover {
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Direção</button>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Homologar ver PADs</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Homologar ver PAD</a>
                            
                                   <a class="dropdown-item btn-sm" href="../infos">Relatórios</a> 
                                 </div>
@@ -371,7 +374,7 @@ $galeraDoSuporte = [
                               <div class="btn-group btn-group-sm">
                                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Suporte</button>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                  <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPADs</a>
+                                  <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPAD</a>
                             <!--       <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a>  -->
                                   <a class="dropdown-item btn-sm" href="../horas" >Relação de horas Matrizes/Semanal</a>
                                   <div class="dropdown-divider"></div>
@@ -398,8 +401,10 @@ $galeraDoSuporte = [
   <?php } ?> 
 
                        <div class="dropdown-divider"></div>
-                     <!--  <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
-                      <!--                        <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a> -->
+                      <!--  <a class="dropdown-item btn-sm" href="../faleconosc" >Fale conosco</a> -->
+                      <!--  <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/p8925m6eNxrard5aA" rel="noopener noreferrer">Fale conosco  </a> -->
+                      <a class="dropdown-item btn-sm" target="_blank" href="https://forms.gle/3Wf4YGy5d7wLZKAG6" rel="noopener noreferrer">Solicitações  </a> 
+
                        <div class="dropdown-divider"></div>
                        <a class="dropdown-item btn-sm" href="../login/logout.php">Sair</a>
                     </div>

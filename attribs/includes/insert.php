@@ -18,13 +18,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             echo 'erro tipo';
             exit;
         }
-        if($user['co_id']  !==   $_POST['co']){
+       /* if($user['co_id']  !==   $_POST['co']){
             echo 'erro colegiado ';
             exit;
-        }
+        }*/
 
         $vinc = $_POST['listaProf'];;
-        $co   = $_POST['co'];
+        $coA   = $_POST['coA'];
         $ano  = $_POST['ano'];
         $tipo = $_POST['listaFunc'];
 
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $func = new Cargo();
         $func->id_vinculo    = $vinc;
-        $func->id_colegiado  = $co;
+        $func->id_colegiado  = $coA;
         $func->ano           = $ano;
         $func->tipo          = $tipo;
         $func->user  = $user['id'];

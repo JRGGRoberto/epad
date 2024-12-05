@@ -18,7 +18,7 @@
 
 
 
-<h4>Gerar arquivo PDF dos PADs do colegiado</h4>
+<h4>Gerar arquivo PDF dos PAD do colegiado</h4>
 <h5><?=$col_nome ?> [<?=  $ano?>]</h5>
 
 Essa operação utiliza alguns segundos para ser processada 
