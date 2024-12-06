@@ -64,8 +64,9 @@ function insereTable(newDisc) {
 
 function openModalObservacao(id) {
   $('#modalOBS').modal('show'); // Exibe o modal
+  let idX = data.findIndex(e => e.id === id);
   document.getElementById('vinc_idps').value = id; // Define o ID no campo correspondente
-  document.getElementById('observacaoText').value = ""; // Limpa o campo de observação
+  document.getElementById('observacaoText').value = data[idX].obscoord;// ""; // Limpa o campo de observação
 }
 
 

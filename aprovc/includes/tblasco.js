@@ -109,9 +109,35 @@ function insereTable(newDisc){
   }
 }
 
+function chBtn(id, tp){
+  let idX = data.findIndex(e => e.id === id);
+  let tabela = document.getElementById("tabelaPADS"); 
+  let linha = tabela.rows[idX + 1];
+  let celBTN = linha.cells[10];
+  let conteudo = '';
+  switch(tp){
+    case "a":
+       conteudo = 
+                `<center>
+                   <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${id}')" >${icon[1]}</button>
+                 </center>`;
+      break;
+    case "r":
+      conteudo = `<center>
+                    <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD" onclick="frmAtivShow('${id}')" >${icon[2]}</button>
+                  </center>`; 
+      break;
+    default:
+      conteudo = '';
+  }
+  celBTN.innerHTML  =  conteudo;     
+
+}
+
 function Assinar(){
-  const data = {
-    id_vin:  document.getElementById('vinc_idps').value
+  const dataAssing = {
+    id_vin:  document.getElementById('vinc_idps').value,
+    id_user: document.getElementById('vinc_id_co').value
   };
 
   fetch('./dml/sing_coA.php', {
@@ -120,20 +146,22 @@ function Assinar(){
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(dataAssing)
   })
-  .then( res => res.json());
-
-
-
-//  .then( res => console.log(res))
-  window.location.reload();
-//  fecharModal(); maneira forçada de resolver um bug do Firefox
-//  return;
+  .then( res => res.json())
+  .then( res => {
+                    let idVinc = res.data.vinc_id;
+                    let tp     = res.data.tp;
+                    console.log(idVinc, tp);
+                    chBtn(idVinc, tp);
+                }
+        );
+   fecharModal(); 
+   return;
 }
 
 function removAssinatura(){
-  const data = {
+  const dataRemov = {
     id_vin  : document.getElementById('vinc_idpsd').value
   };
 
@@ -143,13 +171,18 @@ function removAssinatura(){
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(dataRemov)
   })
-  .then( res => res.json());
-//  .then( res => console.log(res))
-  window.location.reload();
-//  fecharModalDel(); maneira forçada de resolver um bug do Firefox
-//  return;
+  .then( res => res.json())
+  .then( res => {
+                    let idVinc = res.data.vinc_id;
+                    let tp     = res.data.tp;
+                    console.log(idVinc, tp);
+                    chBtn(idVinc, tp);
+                }
+  );
+  fecharModal(); 
+  return;
 }
 
 function Aprovar(ad){
@@ -161,11 +194,6 @@ function Aprovar(ad){
      console.log('error ' + ad);
      return;
    }
-
-   deleteAllRows();
-   deleteAllRows();
-   getDBMD();
-
 }
 
 function frmAtivShow(id) {

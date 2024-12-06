@@ -102,7 +102,7 @@ foreach($lista as $af){
 
 $qry = '
 select 
-  concat(v.id, v.disponivel) id, concat(v.nome, if(v.disponivel=0, " [assinado]","")) nome , v.disponivel 
+  concat(v.id, v.disponivel) id, concat(v.nome, " [ ", v.rt, " ] ",  if(v.disponivel=0, " [assinado]","")) nome , v.disponivel 
 from 
    vinculov v
 where 
@@ -114,8 +114,6 @@ $listaProfs = '';
 foreach($lista as $li){
    $listaProfs .= '<option value="'. $li->id .'">'. $li->nome .'</option>';
 }
-
-
 
 include __DIR__.'/includes/content.php';
 

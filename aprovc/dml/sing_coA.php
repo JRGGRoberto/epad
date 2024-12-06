@@ -7,6 +7,10 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: PUT");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $json_data = file_get_contents("php://input");
@@ -35,23 +39,27 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     }
           
     $vinc->aprov_co_id = $user_id;
-    if(!$vinc->assing_co()){
+    if(! $vinc->assing_co() ){
         $response = array("status" => "error", "message" => "Erro ao assinar.");
         echo json_encode($response);
         exit;
-    }
+    } else {
 
-    $responseData = array( 
-        "status" => "success",
-        "message" => "Dados recebidos com sucesso.",
-        "data" => array (
-            "preenchido"  => 'Assinado' ,
-            "status"      => 'Ok'
-           )
-        );
-
-    header('Content-Type: application/json');
-    echo json_encode($responseData);
+        $responseData = array( 
+            "status" => "success",
+            "message" => "Dados recebidos com sucesso.",
+            "data" => array (
+                "preenchido"  => 'Assinado' ,
+                "status"      => 'Ok',
+                "vinc_id" =>  $vinc->id,
+                "tp" => 'a'
+               )
+            );
+    
+        header('Content-Type: application/json');
+        echo json_encode($responseData);
+        exit;
+   }
 
 } else {
     

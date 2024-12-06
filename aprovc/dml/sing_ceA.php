@@ -7,6 +7,7 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+header('Access-Control-Allow-Origin: http://sis7.localhost/epad/aprovc/');
 if ($_SERVER["REQUEST_METHOD"] === "PUT") {
 
     $json_data = file_get_contents("php://input");
