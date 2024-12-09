@@ -2,10 +2,10 @@
 require '../../vendor/autoload.php';
 use \App\Entity\Vinculo;
 
-// use \App\Session\Login;
+use \App\Session\Login;
 
-// Login::requireLogin();
-// $user = Login::getUsuarioLogado();
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT");
@@ -18,8 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $data = json_decode($json_data, true); 
 
     $id_vinc = $data['id_vin'];
-   // $user_id = $data['id_user'];
-
  
     //  $vinc = new Vinculo();
     $vinc = Vinculo::get($id_vinc);
@@ -33,13 +31,13 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     }
 
     // Verify se usuário é coordenador 
-  /*
+  
     if($user['config'] != '1'){
         $response = array("status" => "error", "message" => "Não adm.");
         echo json_encode($response);
         exit;
     }
-    */ 
+  
     
     if(!$vinc->assing_co_remove()){
         $response = array("status" => "error", "message" => "Erro ao assinar.");

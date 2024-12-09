@@ -132,7 +132,6 @@ function chBtn(id, tp){
   }
   celBTN.innerHTML  =  conteudo; 
   return;    
-
 }
 
 function Assinar(){

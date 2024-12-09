@@ -106,6 +106,31 @@ function insereTable(newDisc){
   }
 }
 
+function chBtn(id, tp){
+  let idX = data.findIndex(e => e.id === id);
+  let tabela = document.getElementById("tabelaPADS"); 
+  let linha = tabela.rows[idX + 1];
+  let celBTN = linha.cells[10];
+  let conteudo = '';
+  switch(tp){
+    case "a":
+       conteudo = 
+                `<center>
+                   <button type="button" class="btn btn-light btn-sm" title="Assinado pelo coordenador, remover assinatura" onclick="frmmodalDel('${id}')" >${icon[1]}</button>
+                 </center>`;
+      break;
+    case "r":
+      conteudo = `<center>
+                    <button type="button" class="btn btn-light btn-sm" title="Aprovar PAD" onclick="frmAtivShow('${id}')" >${icon[2]}</button>
+                  </center>`; 
+      break;
+    default:
+      conteudo = '';
+  }
+  celBTN.innerHTML  =  conteudo; 
+  return;    
+}
+
 function Assinar(){
   let datasing = {
     id_vin: document.getElementById('vinc_idps').value

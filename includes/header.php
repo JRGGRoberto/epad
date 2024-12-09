@@ -274,7 +274,7 @@ img.remover {
                                    if (sizeof($cargos) > 0) {
                                        echo '<div class="btn-group btn-group-sm">';
                                        echo '   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Orientação</button>';
-                                       echo '   <div class="dropdown-menu dropdown-menu-left">';
+                                       echo '   <div class="dropdown-menu dropdown-menu-right">';
                                        $opcaoMenu = '';
                                        foreach ($cargos as $c) {
                                            switch ($c->tipocod) {

@@ -4,8 +4,8 @@ use \App\Entity\Vinculo;
 
 use \App\Session\Login;
 
-// Login::requireLogin();
-// $user = Login::getUsuarioLogado();
+Login::requireLogin();
+$user = Login::getUsuarioLogado();
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT");
@@ -32,14 +32,14 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     }
 
     // Verify se usuário é coordenador
-     /*
+
     if($user['config'] != '1'){
         $response = array("status" => "error", "message" => "Não adm.");
         echo json_encode($response);
         exit;
     }
-    */
-          
+
+
     $vinc->aprov_co_id = $user_id;
 
     if(! $vinc->assing_co() ){
@@ -51,10 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
             "status" => "success",
             "message" => "Dados recebidos com sucesso.",
             "data" => array (
-                "preenchido"  => 'Assinado' ,
-                "status"      => 'Ok',
-                "vinc_id" =>  $vinc->id,
-                "tp" => 'a'
+                    "preenchido" => 'Assinado' ,
+                    "status"     => 'Ok',
+                    "vinc_id"    =>  $vinc->id,
+                    "tp"         => 'a'
                )
             );
     
