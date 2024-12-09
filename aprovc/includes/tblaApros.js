@@ -130,7 +130,8 @@ function chBtn(id, tp){
     default:
       conteudo = '';
   }
-  celBTN.innerHTML  =  conteudo;     
+  celBTN.innerHTML  =  conteudo; 
+  return;    
 
 }
 
@@ -152,7 +153,7 @@ function Assinar(){
   .then( res => {
                     let idVinc = res.data.vinc_id;
                     let tp     = res.data.tp;
-                    console.log(idVinc, tp);
+                    console.log(idVinc, tp, res.data.preenchido);
                     chBtn(idVinc, tp);
                 }
         );
@@ -177,11 +178,11 @@ function removAssinatura(){
   .then( res => {
                     let idVinc = res.data.vinc_id;
                     let tp     = res.data.tp;
-                    console.log(idVinc, tp);
+                    console.log(idVinc, tp, res.data.preenchido);
                     chBtn(idVinc, tp);
                 }
-  );
-  fecharModal(); 
+        );
+  fecharModalDel();
   return;
 }
 

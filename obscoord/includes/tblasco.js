@@ -1,4 +1,4 @@
-let data = [];
+let datas = [];
 const icon = ["❌🖋️",  "📄🖋️"];
 
 // Função para adicionar uma nova observação
@@ -12,18 +12,18 @@ function adicionarObservacao() {
     return;
   }
 
-  const data = {
+  const dataObs = {
     vinc_idps: vinc_idps,
     observacao: observacaoText
   };
 
-  fetch('./dml/adicionarObservacao.php', {
+  fetch('./dml/editarObservacao.php', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(dataObs)
   })
   .then(res => res.json())
   .then(response => {
@@ -36,8 +36,38 @@ function adicionarObservacao() {
   });
 }
 
+// Função para remover uma observação
+function removerObservacao() {
+  const observacaoText = null;
+  const vinc_idps = document.getElementById('vinc_idps').value;
+
+  const dataObs = {
+    vinc_idps: vinc_idps,
+    observacao: observacaoText
+  };
+
+  fetch('./dml/editarObservacao.php', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(dataObs)
+  })
+  .then(res => res.json())
+  .then(response => {
+    // alert(response.message);
+    getDBMD();  // Atualizar a tabela após adicionar a observação
+    $('#modalOBS').modal('hide');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+
 function deleteAllRows(){
-  data = [];
+  datas = [];
   $("#tabelaOBSProfs tbody tr").remove(); 
 }
 
@@ -64,19 +94,19 @@ function insereTable(newDisc) {
 
 function openModalObservacao(id) {
   $('#modalOBS').modal('show'); // Exibe o modal
-  let idX = data.findIndex(e => e.id === id);
+  let idX = datas.findIndex(e => e.id === id);
   document.getElementById('vinc_idps').value = id; // Define o ID no campo correspondente
-  document.getElementById('observacaoText').value = data[idX].obscoord;// ""; // Limpa o campo de observação
+  document.getElementById('observacaoText').value = datas[idX].obscoord;
 }
 
 
 async function getDBMD() {
   deleteAllRows();
-  data = await fetch(`../api/padsobs.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
+  datas = await fetch(`../api/padsobs.php?md=${co}${ano}`).then(resp => resp.json()).catch(error => false);
   
-  if (data.length > 0) {
-    data.forEach(e => insereTable(e));
+  if (datas.length > 0) {
+    datas.forEach(e => insereTable(e));
   } 
 }
 
-getDBMD();
+ getDBMD();

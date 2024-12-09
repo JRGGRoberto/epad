@@ -4,8 +4,8 @@ use \App\Entity\Vinculo;
 
 use \App\Session\Login;
 
-Login::requireLogin();
-$user = Login::getUsuarioLogado();
+// Login::requireLogin();
+// $user = Login::getUsuarioLogado();
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: PUT");
@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
     $user_id = $data['id_user'];
 
  
-    $vinc = new Vinculo();
+    //  $vinc = new Vinculo();
     $vinc = Vinculo::get($id_vinc);
     
 
@@ -29,22 +29,24 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
         header("HTTP/1.1 500 Internal Server Error");
         echo json_encode(array("message" => "Objeto de uma instancia não esperada."));
         exit;
-      }
+    }
 
-    // Verify se usuário é coordenador 
+    // Verify se usuário é coordenador
+     /*
     if($user['config'] != '1'){
         $response = array("status" => "error", "message" => "Não adm.");
         echo json_encode($response);
         exit;
     }
+    */
           
     $vinc->aprov_co_id = $user_id;
+
     if(! $vinc->assing_co() ){
         $response = array("status" => "error", "message" => "Erro ao assinar.");
         echo json_encode($response);
         exit;
     } else {
-
         $responseData = array( 
             "status" => "success",
             "message" => "Dados recebidos com sucesso.",
@@ -62,11 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] === "PUT") {
    }
 
 } else {
-    
     $response = array("status" => "error", "message" => "Método de requisição inválido.");
     echo json_encode($response);
 }
-
-
 
 ?>

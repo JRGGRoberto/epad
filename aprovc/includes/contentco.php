@@ -115,7 +115,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
+       <!-- <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post"> -->
           <div class="form-group">
           <div  id="msgApagar">Tem certeza que deseja remover a aprovação?</div>
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
@@ -127,10 +127,10 @@
 
           <center>
             <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-            <button type="submit" class="btn btn-danger btn-sm"  onclick="Aprovar('d')">Apagar</button>
+            <button type="button" class="btn btn-danger btn-sm"  onclick="Aprovar('d')">Apagar</button>
           </center>
 
-        </form>
+        <!-- </form> -->
       </div>
     </div>
   </div>
@@ -140,6 +140,6 @@
 
 
 
-<script src="./includes/tblasco.js"></script>
+<script src="./includes/tblaApros.js"></script>
 
 

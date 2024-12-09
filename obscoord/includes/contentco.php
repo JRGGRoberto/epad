@@ -51,12 +51,20 @@
         <form class="form-group" id="frmObs" name="frmObs" method="post">
           <div class="form-group">
             <label for="observacaoText">Digite a observação:</label>
-            <textarea class="form-control" id="observacaoText" name="observacaoText" rows="4"></textarea>
+            <textarea 
+              class="form-control" 
+              id="observacaoText" 
+              name="observacaoText" 
+              rows="4" 
+              placeholder="Digite as observações..." 
+              >
+            </textarea>
             <input type="hidden" name="vinc_idps" id="vinc_idps">
           </div>
           <center>
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
             <button type="button" class="btn btn-primary btn-sm" onclick="adicionarObservacao()">Adicionar Observação</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="removerObservacao()">Remover Observação</button>
           </center>
         </form>
       </div>
