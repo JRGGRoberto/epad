@@ -1,3 +1,5 @@
+/*
+
 let data22 = [];
 
 
@@ -73,6 +75,7 @@ frmAtv.addEventListener('submit', e => {
     .then( data => updateAtividade3(data));
   }
   */
+ /*
   fecharFormAddAtv();
 
 });
@@ -121,13 +124,13 @@ function insereTable(newDisc){
   celCH.style.textAlign = 'center';
   celSerie.style.textAlign = 'center';
 }
-
+*/
 function formAddAtv(){
   $('#modalAtv').modal('show');
   const formMod = document.getElementById('modalAtv');
-  
-
 }
+
+/*
 function frmExcluirShow(id){
   let idx = data22.findIndex(d =>d.id === id);
   let myObj = data22[idx];
@@ -136,16 +139,18 @@ function frmExcluirShow(id){
   '<br><sup>Professor(a)</sup>'+ myObj.orientador + '<br /> <sup>Aluno(a)</sup>' + myObj.estudante;
   document.getElementById('idAtivDel').value = myObj.id;
 }
-
+*/
 
 function fecharModalDel(){            
   $('#modalDel').modal('hide');
 }
 
 function fecharFormAddAtv(){
-  $('#modalAtv').modal('hide');
+  $('#modalAtv').modal('show');
 
 }
+
+/*
  
 async function getDBMD(){
   console.log('co: '+ co_id + '| ano: '+ ano+ '| tipo: '+ tipo);
@@ -156,3 +161,5 @@ async function getDBMD(){
 }
 
 getDBMD();
+
+*/

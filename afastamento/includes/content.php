@@ -111,7 +111,51 @@
     </div>
     <!--  The Modal DELET Fim-->
 
+<script>
+
+var listaProfs = <?= $listaProfs; ?> ;
+var listaProfsAll = <?= $listaProfsAll; ?> ;
+
+function inserirListaProf(data){
+  optionProf = document.getElementById('vinculo');
+  optionProf.innerHTML = `<option value="">Selecione</option>`;
+  data.forEach(e => {
+   optionProf.innerHTML += `<option value="${e["id"]}">${e["nome"]}</option>`
+  });
+}
+
+function chListaProfs(){
+  const listaFunc = document.getElementById('listaFunc');
+  console.log(listaFunc.value);
+  if(listaFunc.value == '20' || 
+     listaFunc.value == '21' ||
+     listaFunc.value == '22' 
+  ){
+    inserirListaProf(listaProfs);
+  } else if (listaFunc.value == '10') {
+    inserirListaProf(listaProfsAll);
+  }  
+}
 
 
-<script src="./includes/tblaAtt2.js"></script>
-<script src="./includes/ccc.js"></script>
+function formAddAtv(){
+  $('#modalAtv').modal('show');
+  const formMod = document.getElementById('modalAtv');
+}
+
+function fecharModalDel(){            
+  $('#modalDel').modal('hide');
+}
+
+function frmExcluirShow(){
+  $('#modalDel').modal('show'); 
+}
+
+
+function fecharFormAddAtv(){
+  $('#modalAtv').modal('show');
+
+}
+
+</script>
+

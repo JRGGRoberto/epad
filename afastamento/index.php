@@ -79,7 +79,7 @@ foreach($lista as $af){
    $disponivel = '';
    switch($af->disponivel){
      case 1: 
-       $disponivel = '⛔';
+       $disponivel = '<button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('.$af->id.')">⛔</button>';
         break;
      case 0: 
        $disponivel = '🔒';
@@ -99,22 +99,32 @@ foreach($lista as $af){
    $listaAfastados .= '</tr>';
 }
 
+$qry = '
+select * 
+from vinculov v 
+where 
+  v.co_id = "'. $coleg.'"
+  and ano = '. $anoQ .'
+  and disponivel = 1
+order by nome ';
+$lista = Outros::qry($qry);
+$listaProfs = json_encode($lista);
+
 
 $qry = '
-select 
-  concat(v.id, v.disponivel) id, concat(v.nome, " [ ", v.rt, " ] ",  if(v.disponivel=0, " [assinado]","")) nome , v.disponivel 
-from 
-   vinculov v
+select * 
+from vinculov v 
 where 
-   v.co_id  = "'. $coleg.'" 
-   and v.ano = '. $anoQ .' ';
-
+  v.co_id = "'. $coleg.'"
+  and ano = '. $anoQ .'
+order by nome ';
 $lista = Outros::qry($qry);
-$listaProfs = '';
-foreach($lista as $li){
-   $listaProfs .= '<option value="'. $li->id .'">'. $li->nome .'</option>';
-}
+$listaProfsAll = json_encode($lista);
+
+
+
 
 include __DIR__.'/includes/content.php';
+
 
 include '../includes/footer.php';

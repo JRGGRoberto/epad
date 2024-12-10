@@ -89,7 +89,7 @@
                 <div class="col">
                   <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar('a')">Assinar 🖋️</button></p>
                   <p style="text-align: center; margin: 0;"><strong><?=$user['nome']?></strong></p>
-                  <p style="text-align: center; margin: 0;"><sup>Coordenador do Colegiado de <?=$user['co_nome']?></sup></p>
+                  <p style="text-align: center; margin: 0;"><sup>Diretor do Centro de Área de <?=$user['ce_nome']?></sup></p>
                 </div>
               </div>
               <input type="hidden" name="vinc_idps" id="vinc_idps">
