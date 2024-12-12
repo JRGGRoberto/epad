@@ -16,6 +16,7 @@ if($user['config'] != 1){
 $co_id = substr($_GET["id"],0,36);
 $ano = substr($_GET["id"],36,4);
 */
+
 $ano = $_SESSION['proecunespar']['year_sel'];
 $co_id =  $_SESSION['proecunespar']['id_coSel'];
 

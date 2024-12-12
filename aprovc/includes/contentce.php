@@ -25,8 +25,14 @@
     <!-- TABLE -->
     <div class="form-group table-responsive-sm">
       <sub style="line-height: 12px;">
-        <strong>Ativ. 2.1</strong>) Total de média semanal anual de carga horária didática;  <strong>Ativ. 2.2</strong>) Total de média semanal anual de carga horária supervisão e orientação;   <strong>Ativ. 2.3</strong>) Total de média semanal anual de carga horária projetos de ensino e monitoria <strong>Ativ. 2.4</strong>) Total de média semanal anual de carga horária de afastamentos      <strong>Ativ. 3</strong>) Total de carga horária semanal pesquisa/extensão/cultura/programas especiais; <strong>Ativ. 4</strong>)	Total de carga horária semanal de gestão institucional; 
-        <strong>Total att</strong>) Total de carga horária semanal; <strong>RT</strong>) Regime de trabalho. 
+        <strong>Ativ. 2.1</strong>) Total de média semanal anual de carga horária didática;  
+        <strong>Ativ. 2.2</strong>) Total de média semanal anual de carga horária supervisão e orientação;   
+        <strong>Ativ. 2.3</strong>) Total de média semanal anual de carga horária projetos de ensino e monitoria 
+        <strong>Ativ. 2.4</strong>) Total de média semanal anual de carga horária de afastamentos      
+        <strong>Ativ. 3</strong>) Total de carga horária semanal pesquisa/extensão/cultura/programas especiais; 
+        <strong>Ativ. 4</strong>)	Total de carga horária semanal de gestão institucional; 
+        <strong>Total att</strong>) Total de carga horária semanal; 
+        <strong>RT</strong>) Regime de trabalho. 
       </sub>
       <p>O coordenador do curso poderá outorgar os PAD que estiverem de acordo com a <a target="_blank"
         href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a></p>
