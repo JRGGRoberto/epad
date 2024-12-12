@@ -36,15 +36,18 @@ $anoQ =  $user['year_sel'] ;
 
 $qry = '
 select 
-  v.nome, v.id, p.modalidade, p.tipo, p.portaria, p.ch, p.dt_inicio, p.dt_fim, v.disponivel 
+  v.id as id_vinc, p.id id24, v.nome,  p.modalidade, p.tipo, p.portaria, p.ch, p.dt_inicio, p.dt_fim, v.disponivel 
 from 
-   vinculov v
-   inner join pad24 p on v.id  = p.vinculo  and v.ano = '. $anoQ .'
+   pad24 p 
+   inner join vinculov v on v.id  = p.vinculo  and v.ano = '. $anoQ .'
 where v.co_id  = "'. $coleg.'" ';
 
 $lista = Outros::qry($qry);
+$listaAfas = json_encode($lista);
+
 
 $listaAfastados = '';
+
 function formaData($dt){
    return substr($dt,8,2) .'/'.substr($dt,5,2) .'/'.substr($dt,0,4) ;
 }
@@ -61,7 +64,7 @@ foreach($lista as $af){
      case '21':
        $modalidade = 'Doutorado';
         break; 
-     case '21':
+     case '22':
       $modalidade = 'Pós-Doutorado';
        break; 
    }
@@ -79,7 +82,8 @@ foreach($lista as $af){
    $disponivel = '';
    switch($af->disponivel){
      case 1: 
-       $disponivel = '<button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow('.$af->id.')">⛔</button>';
+       $disponivel = '<button type="button" class="btn btn-light btn-sm" onclick="frmExcluirShow(\''.$af->id24.'\')">⛔</button>';
+       
         break;
      case 0: 
        $disponivel = '🔒';
@@ -88,9 +92,9 @@ foreach($lista as $af){
 
    $listaAfastados .= '<tr>';
       $listaAfastados .= '<td>'. $af->nome .'</td>';
-      $listaAfastados .= '<td> <a href="../padstoprn/index.php?id='. $af->id .'" target="_blank">📄</a></td>';
+      $listaAfastados .= '<td> <a href="../padstoprn/index.php?id='. $af->id_vinc .'" target="_blank">📄</a></td>';
       $listaAfastados .= '<td>'. $modalidade .'</td>';
-      $listaAfastados .= '<td></td>';
+      $listaAfastados .= '<td>'. $tipo.'</td>';
       $listaAfastados .= '<td>'. $af->portaria .'</td>';
       $listaAfastados .= '<td>'. $af->ch .'</td>';
       $listaAfastados .= '<td>'. formaData($af->dt_inicio) .'</td>';
@@ -111,20 +115,6 @@ $lista = Outros::qry($qry);
 $listaProfs = json_encode($lista);
 
 
-$qry = '
-select * 
-from vinculov v 
-where 
-  v.co_id = "'. $coleg.'"
-  and ano = '. $anoQ .'
-order by nome ';
-$lista = Outros::qry($qry);
-$listaProfsAll = json_encode($lista);
-
-
-
-
 include __DIR__.'/includes/content.php';
-
 
 include '../includes/footer.php';

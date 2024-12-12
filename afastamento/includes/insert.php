@@ -1,64 +1,43 @@
 <?php
 
 require '../../vendor/autoload.php';
-use \App\Entity\Cargo;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 use \App\Session\Login;
+use \App\Entity\PADAtiv24;
 
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
+$pd24 = new PADAtiv24();
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if(isset($_POST['listaFunc'])){
+    if($user['config']  !==  '1'){
+        echo 'erro config';
+        exit;
+    }
+    if($user['tipo']  !==  'prof'){
+        echo 'erro tipo';
+        exit;
+    }
+    
+    $pd24->vinculo    = $_POST['vinculo'];
+    $pd24->ano        = $_POST['ano'];   // aaaa
+    $pd24->modalidade = $_POST['modalidade'];
+    $pd24->ch         = $_POST['chAfasta'];
+    $pd24->tipo       = $_POST['tipo'];
+    $pd24->portaria   = $_POST['portaria'];
+    $pd24->dt_inicio  = $_POST['dt_inicio'];
+    $pd24->dt_fim     = $_POST['dt_fim'];
+    $pd24->user       = $user['id'];
 
-        if($user['config']  !==  '1'){
-            echo 'erro config';
-            exit;
-        }
-        if($user['tipo']  !==  'prof'){
-            echo 'erro tipo';
-            exit;
-        }
-        if($user['co_id']  !==   $_POST['co']){
-            echo 'erro colegiado ';
-            exit;
-        }
+    if($pd24->cadastrar()){
+        header('location: ..');
+        exit; 
+    } else {
+/** */
+    }
+}
 
-        $vinc = $_POST['listaProf'];;
-        $co   = $_POST['co'];
-        $ano  = $_POST['ano'];
-        $tipo = $_POST['listaFunc'];
-
-        $where = ("(ano, id_vinculo, tipo ) = ('".$ano."', '".$vinc."', '".$tipo."')");
-        $verif = Cargo::getQntd($where); 
-
-        
-        if($verif > 0 ){
-            // send a error message
-           header('location: ..');
-           exit;
-        } 
-
-        $func = new Cargo();
-        $func->id_vinculo    = $vinc;
-        $func->id_colegiado  = $co;
-        $func->ano           = $ano;
-        $func->tipo          = $tipo;
-        $func->user  = $user['id'];
-        if($func->cadastrar()){
-            header('location: ..');
-            exit; 
-        } else {
-           echo $_POST['listaFunc'];
-           echo '<br>';
-           echo $_POST['listaProf'];
-           echo '<br>';
-           echo $_POST['ano'];
-           echo '<br>';
-           echo $_POST['co'];
-           echo '<pre>';
-           print_r($user);
-           echo '</pre>';
-        }
-    } 
- }
 ?>

@@ -20,23 +20,23 @@ class PADAtiv24 {
   public $updated_at;
   public $user;
 
-  public function add(){
+  public function cadastrar(){
     $obDb = new Database('pad24');
     $newId = UuiuD::gera(); //exec('uuidgen -r');
 
     $obDb->insert([
         'id'           => $newId,
-        '$vinculo'     => $this->vinculo,
-        '$ano'         => $this->ano,
-        '$modalidade'  => $this->modalidade,
-        '$ch'          => $this->ch,
-        '$tipo'        => $this->tipo,
-        '$portaria'    => $this->portaria,
-        '$dt_inicio'   => $this->dt_inicio,
-        '$dt_fim'      => $this->dt_fim,
-        '$created_at'  => $this->created_at,
-        '$updated_at'  => $this->updated_at,
-        '$user'        => $this->user
+        'vinculo'     => $this->vinculo,
+        'ano'         => $this->ano,
+        'modalidade'  => $this->modalidade,
+        'ch'          => $this->ch,
+        'tipo'        => $this->tipo,
+        'portaria'    => $this->portaria,
+        'dt_inicio'   => $this->dt_inicio,
+        'dt_fim'      => $this->dt_fim,
+        'created_at'     => date("Y-m-d H:i:s"),
+        'updated_at'  => $this->updated_at,
+        'user'        => $this->user
     ]);
     return $newId;
   }
@@ -44,17 +44,16 @@ class PADAtiv24 {
 
   public function atualizar(){
     return ( new Database('pad24'))->update('id = "'.$this->id.'" ', [
-        '$vinculo'     => $this->vinculo,
-        '$ano'         => $this->ano,
-        '$modalidade'  => $this->modalidade,
-        '$ch'          => $this->ch,
-        '$tipo'        => $this->tipo,
-        '$portaria'    => $this->portaria,
-        '$dt_inicio'   => $this->dt_inicio,
-        '$dt_fim'      => $this->dt_fim,
-        '$created_at'  => $this->created_at,
-        '$updated_at'  => $this->updated_at,
-        '$user'        => $this->user
+        'vinculo'     => $this->vinculo,
+        'ano'         => $this->ano,
+        'modalidade'  => $this->modalidade,
+        'ch'          => $this->ch,
+        'tipo'        => $this->tipo,
+        'portaria'    => $this->portaria,
+        'dt_inicio'   => $this->dt_inicio,
+        'dt_fim'      => $this->dt_fim,
+        'updated_at'  => date("Y-m-d H:i:s"),
+        'user'        => $this->user
     ]);
   }
 

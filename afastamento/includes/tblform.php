@@ -1,9 +1,9 @@
-<form class="form-group" id="frmAtv" name="frmAtv" method="post">
+<form class="form-group" id="frmAddAfast" name="frmAddAfast" method="post" action="./includes/insert.php">
   <div class="row">
     <div class="form-group col-4" style="margin-bottom: 0;">
       <div class="form-group">
-        <label for="listaFunc">Tipo de afastamento</label>
-        <select name="listaFunc" id="listaFunc" class="form-control" required size="4" onchange="chListaProfs()">
+        <label for="modalidade">Tipo de afastamento</label>
+        <select name="modalidade" id="modalidade" class="form-control" required size="4" onchange="chListaProfs()">
           <option value="10">🏥 Médico</option>
           <option value="20">🎓 Doutorado</option>
           <option value="21">🎓 Mestrado</option>
@@ -13,14 +13,11 @@
     </div>
     <div class="form-group col-8"  style="margin-bottom: 0;">
       <div class="form-group" >
-        <label for="vinculo">Professor(ª)</label>  
+        <label for="vinculo">Professor(ª) <sub>Se o professor não estiver na lista, remova a aprovação do PAD dele</sub></label>  
         <select name="vinculo" id="vinculo" class="form-control" required >
-           
-           
         </select>
       </div>
 
-    
       <div class="row">
         <div class="col">
           <div class="form-group" >
@@ -30,13 +27,14 @@
                 <input type="radio" name="tipo" value="p" required > Parcial
               </div>
               <div class="col-3">
-                <input type="radio" name="tipo" value="t" required> Total
+                <input type="radio" name="tipo" value="t" required onclick="setTotalCH()"> Total
+                <input type="hidden" name="ano" value="<?= $anoQ;  ?> ">
               </div>
             </div>
           </div>
         </div>
         <div class="col form-group">
-           <label for="chAfasta">Carga horária</label>
+           <label for="chAfasta">Carga horária semanal</label>
            <input type="number" name="chAfasta"   id="chAfasta" class="form-control"  step="0.10" min="0.0" max="40" required>
         </div>
       </div>

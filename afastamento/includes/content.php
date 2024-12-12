@@ -85,15 +85,15 @@
     
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title" >Remover a orientação</h4>
+            <h4 class="modal-title" >Remover afastamento</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
     
           <!-- Modal body -->
           <div class="modal-body">
-            <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post">
+            <form class="form-group" id="frmDelAtiv" name="frmDelAtiv" method="post" action="./includes/delete.php">
               <div class="form-group">
-              <div  id="msgApagar">Tem certeza que deseja remover a orientação do professor(a) para o aluno(a)?</div>
+              <div  id="msgApagar">Tem certeza que deseja remover a informação de afastamento?</div>
                 <div class="justify-content-center mb-3 font-weight-bold" id="nomeRelacao">AAA</div>
                 <input hidden name="idAtivDel" id="idAtivDel">
                
@@ -101,7 +101,7 @@
     
               <center>
                 <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-                <button type="button" class="btn btn-danger btn-sm"  onclick="removVinc22()">Remover</button>
+                <button type="submit" class="btn btn-danger btn-sm">Remover</button>
               </center>
     
             </form>
@@ -111,20 +111,35 @@
     </div>
     <!--  The Modal DELET Fim-->
 
-<script>
+<script> 
+
 
 var listaProfs = <?= $listaProfs; ?> ;
-var listaProfsAll = <?= $listaProfsAll; ?> ;
+
+var listaAfastados = <?php echo $listaAfas; ?> ;
+
 
 function inserirListaProf(data){
+
   optionProf = document.getElementById('vinculo');
   optionProf.innerHTML = `<option value="">Selecione</option>`;
   data.forEach(e => {
-   optionProf.innerHTML += `<option value="${e["id"]}">${e["nome"]}</option>`
+    let aprovCO ='';
+    let aprovCE ='';
+    if(e["aprov_co_id"]){
+      aprovCO = 'Aprovado';
+    }
+
+    if(e["aprov_ce_id"]){
+      aprovCE = 'Homologado';
+    }
+
+    optionProf.innerHTML += `<option value="${e["id"]}">${e["nome"]} [${e["rt"]}] ${aprovCO} ${aprovCE}</option>`
   });
 }
 
 function chListaProfs(){
+  /*
   const listaFunc = document.getElementById('listaFunc');
   console.log(listaFunc.value);
   if(listaFunc.value == '20' || 
@@ -134,27 +149,73 @@ function chListaProfs(){
     inserirListaProf(listaProfs);
   } else if (listaFunc.value == '10') {
     inserirListaProf(listaProfsAll);
-  }  
+  } */
+  inserirListaProf(listaProfs); 
 }
 
 
 function formAddAtv(){
   $('#modalAtv').modal('show');
   const formMod = document.getElementById('modalAtv');
+  document.getElementById("frmAddAfast").reset();
+}
+
+function fecharFormAddAtv(){
+  $('#modalAtv').modal('show');
+
 }
 
 function fecharModalDel(){            
   $('#modalDel').modal('hide');
 }
 
-function frmExcluirShow(){
-  $('#modalDel').modal('show'); 
+function formaData(dt){
+   const dataString = dt;
+   return dataString.substr(8,2)  + '/' + dataString.substr(5,2)  + '/' + dataString.substr(0,4) ;
 }
 
+function modald(cod){
+  switch(cod){
+     case '10': 
+       return 'Médico';
+        break;
+     case '20':
+       return 'Mestrado';
+        break; 
+     case '21':
+       return 'Doutorado';
+        break; 
+     case '22':
+      return 'Pós-Doutorado';
+       break; 
+   }
 
-function fecharFormAddAtv(){
-  $('#modalAtv').modal('show');
+}
 
+function frmExcluirShow(id){
+  $('#modalDel').modal('show'); 
+  let nomeRelacao  = document.getElementById('nomeRelacao');
+  let idAtivDel = document.getElementById('idAtivDel');
+
+  let idx = listaAfastados.findIndex( e =>  e.id24 === id );
+  console.log(id + '  ' +  idx);
+  if(idx != -1) {
+    nomeRelacao.innerHTML = listaAfastados[idx].nome + '<br> Período: ' 
+                        + formaData(listaAfastados[idx].dt_inicio) + ' a ' 
+                        + formaData(listaAfastados[idx].dt_fim) + '<br>'
+                        + modald(listaAfastados[idx].modalidade);
+    idAtivDel.value = listaAfastados[idx].id24;
+  }
+}
+
+function setTotalCH(){
+  let vinculoSel = document.getElementById('vinculo');
+  let chAfasta = document.getElementById('chAfasta');
+  let idx = listaProfs.findIndex( e=> e.id = vinculoSel.value);
+  if(idx >= 0) {
+    chAfasta.value = listaProfs[idx].rt == 'TIDE'? 40 : listaProfs[idx].rt;
+  }
+  console.log(vinculoSel.value + '  '+ idx);
 }
 
 </script>
