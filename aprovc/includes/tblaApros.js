@@ -26,21 +26,23 @@ function insereTable(newDisc){
     let celA21  = newLinha.insertCell(3);
     let celA22  = newLinha.insertCell(4);
     let celA23  = newLinha.insertCell(5);
-    let celA3   = newLinha.insertCell(6);
-    let celA4   = newLinha.insertCell(7);
-    let celAT   = newLinha.insertCell(8);
-    let celRT   = newLinha.insertCell(9);
-    let celCnf  = newLinha.insertCell(10);
+    let celA24  = newLinha.insertCell(6);
+    let celA3   = newLinha.insertCell(7);
+    let celA4   = newLinha.insertCell(8);
+    let celAT   = newLinha.insertCell(9);
+    let celRT   = newLinha.insertCell(10);
+    let celCnf  = newLinha.insertCell(11);
 //    let celAprovCoid = newLinha.insertCell(9);
 //    let celAprovCeId = newLinha.insertCell(10);
     
-    let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a23) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
+    let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a23) +parseFloat(newDisc.a24) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
   celId.innerHTML   = newDisc.id;
   celNome.innerHTML = newDisc.nome; 
   celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.id +'" target="_blank">📄</a> ';
   celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
   celA22.innerHTML  = newDisc.a22 +'h ';
   celA23.innerHTML  = newDisc.a23 +'h ';
+  celA24.innerHTML  = newDisc.a24 +'h ';
   celA3.innerHTML   = newDisc.a3 +'h ';
   celA4.innerHTML   = newDisc.a4 +'h ';
   celAT.innerHTML   = totUsado +'h ';
@@ -88,6 +90,7 @@ function insereTable(newDisc){
   celA21.style.textAlign = 'right';
   celA22.style.textAlign = 'right';
   celA23.style.textAlign = 'right';
+  celA24.style.textAlign = 'right';
   celA3.style.textAlign = 'right';
   celA4.style.textAlign = 'right';
   celAT.style.textAlign = 'right';
