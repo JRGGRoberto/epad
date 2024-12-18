@@ -27,8 +27,6 @@ foreach($pad23 as $p){
       break;
   }
 
-
-
   echo "<tr>
   <td style='text-align: left;'>". $txtAtv ."</td>
   <td>". $p->nome_atividade ."</td>
@@ -36,6 +34,7 @@ foreach($pad23 as $p){
 </tr>
   ";
 }
+
 ?>
         <tr>
          <td colspan="2" style='text-align: right;'>MÉDIA SEMANAL ANUAL DA CARGA HORÁRIA DE ORIENTAÇÃO E SUPERVISÃO</td>
