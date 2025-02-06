@@ -36,12 +36,12 @@ function insereTable24(newData){
       modalidade = 'Médico';
        break;
     case '20':
-      modalidade = 'Mestrado';
-       break; 
-    case '21':
       modalidade = 'Doutorado';
        break; 
     case '21':
+      modalidade = 'Mestrado';
+       break; 
+    case '22':
      modalidade = 'Pós-Doutorado';
       break; 
   }

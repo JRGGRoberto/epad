@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Aqui você precisa adicionar a lógica para salvar a observação no banco de dados.
     // Por exemplo, adicionar a observação em uma coluna 'observacoes' na tabela 'vinculov'
     $vinc->obscoord = $observacao;
-    if($vinc->addObs()) {
+    if($vinc->edtObs()) {
         $response = array("status" => "success", "message" => "Observação adicionada com sucesso.");
         echo json_encode($response);
     } else {

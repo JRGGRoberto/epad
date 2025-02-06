@@ -28,10 +28,10 @@ function modal($mo){
       return 'Médico';
        break;
     case '20':
-      return 'Mestrado';
+      return 'Doutorado';
        break; 
     case '21':
-      return 'Doutorado';
+      return 'Mestrado';
        break; 
     case '22':
      return 'Pós-Doutorado';
