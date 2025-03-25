@@ -1,7 +1,7 @@
 <?php
 // print_r($pad24);
 ?>
-<h5>2.4. Afastamento</h5>
+<h5>2.4. Afastamentos</h5>
 
 <table class="table table-bordered table-sm">
 <thead class="thead-light">

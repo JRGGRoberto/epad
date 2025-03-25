@@ -367,7 +367,9 @@ $galeraDoSuporte = [
   'b8fa555f-cedb-47cf-91cc-7581736aac88', // Roberto
   '8154fff1-becd-11ee-801b-0266ad9885af',   // Sérgio
   'bc906e9c-bf9b-11ee-801b-0266ad9885af', // FERNANDO YUDI SAKAGUTI
-  '81512d7d-becd-11ee-801b-0266ad9885af'];   // Dorigão
+  '81512d7d-becd-11ee-801b-0266ad9885af',// Dorigão
+  '28f78f0c-3c9c-4701-b959-f15d12686446'];   // Vinicius PRoe
+  
 
         if (in_array($obUsuario['id'], $galeraDoSuporte)) { ?>
 

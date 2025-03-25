@@ -5,6 +5,7 @@ use \App\Entity\Vinculo;
 use \App\Entity\Outros;
 use \App\Entity\PADAtiv22;
 use \App\Entity\PADAtiv23;
+use \App\Entity\PADAtiv24;
 use \App\Entity\PADAtiv3;
 use \App\Entity\PADAtiv4;
 use \App\Session\Login;
@@ -13,6 +14,7 @@ Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
 $co = $_GET["co"];
+$ano = $_GET["a"];
 
 if(($user['co_id'] == $co ) || ($user['config'] = 2) ){
     echo 'Aguarde...';  
@@ -29,14 +31,20 @@ function gerarPad($id){
   $pad21 = Outros::qry($sql);
   $pad22 = PADAtiv22::get($where);
   $pad23 = PADAtiv23::get($where);
+  $pad24 = PADAtiv24::get($where);
   $pad3  = PADAtiv3::get($where);
   $pad4  = PADAtiv4::get($where);
 
   include __DIR__.'/includes/body1.php';
   include __DIR__.'/includes/pad1.php';
+  
   include __DIR__.'/includes/pad21.php';
   include __DIR__.'/includes/pad22.php';
   include __DIR__.'/includes/pad23.php';
+  if($pad24 instanceof PADAtiv24){
+    
+    include __DIR__.'/includes/pad24.php';
+  }
   include __DIR__.'/includes/pad3.php';
   include __DIR__.'/includes/pad4.php';
   include __DIR__.'/includes/pad5.php';
@@ -46,7 +54,7 @@ function gerarPad($id){
 }
 
 
-$w=  "co_id = '". $co ."'";
+$w=  "co_id = '". $co ."' and  ano = '".$ano .  "' ";
 $o = " nome ";
 $pads = Vinculo::gets($w, $o );
 

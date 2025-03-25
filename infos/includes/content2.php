@@ -22,7 +22,7 @@
 <h5><?=$col_nome ?> [<?=  $ano?>]</h5>
 
 Essa operação utiliza alguns segundos para ser processada 
-<a href="../padstopdf/book.php?co=<?= $co_id?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
+<a href="../padstopdf/book.php?co=<?= $co_id?>&a=<?= $ano?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Gerar arquivo</a>
 <hr>
 
 <?php
