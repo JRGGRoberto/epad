@@ -354,7 +354,7 @@ img.remover {
                                    }
                                    echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
                                }
-                               if (1 > 2) {
+                               if (1 > 2) { // Para nunca mostrar
                                    echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
                                }
         ?>
@@ -364,10 +364,11 @@ img.remover {
 
 // colocar via tabela de suporte!!!
 $galeraDoSuporte = [
-  'b8fa555f-cedb-47cf-91cc-7581736aac88', // Roberto
-  '8154fff1-becd-11ee-801b-0266ad9885af',   // Sérgio
-  'bc906e9c-bf9b-11ee-801b-0266ad9885af', // FERNANDO YUDI SAKAGUTI
-  '81512d7d-becd-11ee-801b-0266ad9885af',// Dorigão
+  'b8fa555f-cedb-47cf-91cc-7581736aac88',    // Roberto
+  '8154fff1-becd-11ee-801b-0266ad9885af',    // Sérgio
+  'bc906e9c-bf9b-11ee-801b-0266ad9885af',    // FERNANDO YUDI SAKAGUTI
+  '81512d7d-becd-11ee-801b-0266ad9885af',    // Dorigão
+  '06f560a1-bf9e-11ee-801b-0266ad9885af',    // MARCOS PAULO RODRIGUES DE SOUZA Paranavaí
   '28f78f0c-3c9c-4701-b959-f15d12686446'];   // Vinicius PRoe
   
 

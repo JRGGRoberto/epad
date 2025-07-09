@@ -30,12 +30,12 @@ PROGESP/PROEC/PROGRAD</td>
 <script>
 
 function topdf(){
- // window.print();
-    let urlParams = new URLSearchParams(window.location.search);
-     let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
+  window.print();
+ //   let urlParams = new URLSearchParams(window.location.search);
+    // let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
     //let toGo =                                          '../padstopdf/index.php?';
-   // let toGo = 'http://localhost/epad/padstopdf/index.php?';
-    window.location.href = toGo + urlParams;
+ //  let toGo = 'http://localhost/epad/padstopdf/index.php?';
+//    window.location.href = toGo + urlParams;
 }
 
 </script>

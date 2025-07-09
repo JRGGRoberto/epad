@@ -1,6 +1,6 @@
-<?php 
-  $alertaLogin  = strlen($alertaLogin) ? '<div class="alert alert-danger">'.$alertaLogin.'</div>': '';
-  $alertaCadastro = strlen($alertaCadastro) ? '<div class="alert alert-danger">'.$alertaCadastro.'</div>': '';
+<?php
+$alertaLogin = strlen($alertaLogin) ? '<div class="alert alert-danger">'.$alertaLogin.'</div>' : '';
+
 ?>
 <p></p>
 <div class="jumbotron text-dark">
@@ -20,10 +20,10 @@
 
     <div class="col">
 
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
 
         <h2>Login</h2>
-        <?=$alertaLogin?>
+        <?php echo $alertaLogin; ?>
 
         <div class="form-group">
           <label>E-mail</label>
@@ -36,14 +36,19 @@
         </div>
 
         <div class="form-group">
-          <button type="submit" name="acao" value="logar" class="btn btn-primary">🔑 Entrar</button>
-        </div> 
           
-
+            
+          <button type="submit"  class="btn btn-primary">🔑 Entrar</button>
+          <div>&nbsp;</div>
+          <div class="alert alert-info col">Para as contas @unespar.edu.br você pode utilizar sua senha de acesso ao email <strong>@unespar.edu.br</strong></div>
+        </div> 
+      
       </form>
-      <a href="./recupera.php" class="btn btn-primary btn-sm float-right">📑 Recuperar senha</a>
+      <a href="https://senha.unespar.edu.br/" class="btn btn-primary btn-sm float-right">📑 Recuperar senha</a>
+<!-- name="acao" value="logar"
+      
       <br>
-      <!--
+      
       <a href="../projetostb/" class="btn btn-success" id="projEfet">📑 Propostas efetivadas</a>
       <label for="projEfet">Acessar projetos que já passaram por todos os crivos estabelecidos</label>
 -->
