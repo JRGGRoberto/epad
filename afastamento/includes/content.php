@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-6">
       <h3>Afastamento</h3>
-      <?php 
-         echo '<h5>' . $colegiado->nome . '  ' . $user['year_sel']  . '</h5>';
+      <?php
+         echo '<h5>'.$colegiado->nome.'  '.$user['year_sel'].'</h5>';
       ?>
     </div>
     <div class="col" style="text-align:left">
       <div><p hidden style="text-align: justify;   text-justify: inter-word;">
-        O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
-        como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
-        <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
-        atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
-        Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
+        O(A) professor(a) <?php echo $cargoAttri->nome_tt; ?>, 
+        como coordenador(a) do curso de <?php echo $cargoAttri->colegiado_tt; ?> (
+        <?php echo strtoupper($cargoAttri->codcam_tt); ?>/<?php echo $cargoAttri->codcentro_tt; ?>), 
+        atribuiu a ti a função de coordenador do(a) <strong><?php echo $cargoAttri->tipo; ?></strong>. 
+        Deverás atender os alunos do curso <strong><?php echo $cargoAttri->colegiado_tt; ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
         </p>
         <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
@@ -40,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <?=$listaAfastados;?>
+            <?php echo $listaAfastados; ?>
           </tbody>
         </table>
       </div>
@@ -65,11 +65,10 @@
 
 <?php
 
-
-  $ca_nome = $user['ca_nome']; // ['lota_nome']; 
-  $co_nome = $user['co_nome'];
-  include './includes/tblform.php';
-?>
+  $ca_nome = $user['ca_nome']; // ['lota_nome'];
+      $co_nome = $user['co_nome'];
+      include './includes/tblform.php';
+      ?>
             
           </div>
         </div>
@@ -114,7 +113,7 @@
 <script> 
 
 
-var listaProfs = <?= $listaProfs; ?> ;
+var listaProfs = <?php echo $listaProfs; ?> ;
 
 var listaAfastados = <?php echo $listaAfas; ?> ;
 
