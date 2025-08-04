@@ -6,10 +6,10 @@ use App\Session\Login;
 
 $obUsuario = Login::getUsuarioLogado();
 use App\Entity\Cargo;
-use \App\Entity\Outros;
+use App\Entity\Outros;
 
 $clock = [
-  '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
+    '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚',
 ];
 
 $horas = date('H');
@@ -19,7 +19,7 @@ $nome = explode(' ', trim($obUsuario['nome']));
 $nome = $nome[0]; // will print Test
 
 $idu = $obUsuario['id'];
-  
+
 $qry1 = "
   select 
     c.id id , c.nome curso , a.ano ano , a.edt edt ,
@@ -28,89 +28,82 @@ $qry1 = "
     colegiados c,
     anos a
   where 
-     (c.coord_id, a.edt) = ('". $idu ."', 1)
+     (c.coord_id, a.edt) = ('".$idu."', 1)
   order by a.ano desc, c.nome
   ";
 $coodAnos = Outros::qry($qry1);
-
 
 $btnCurs = '';
 $idCurso = '';
 $nomeCurso = '';
 $anoCurso = '';
 
-
 $qnty = 0;
-foreach($coodAnos as $curs){
+foreach ($coodAnos as $curs) {
     $act = '';
     $ck = '';
-  
-    if($obUsuario['year_sel'] == '' and $qnty == 0){
-      $act = 'active';
-      $ck = 'checked';
+
+    if ($obUsuario['year_sel'] == '' and $qnty == 0) {
+        $act = 'active';
+        $ck = 'checked';
     }
-  
-    if($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel']  == $curs->id){
-      $act = 'active';
-      $ck = 'checked';
+
+    if ($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel'] == $curs->id) {
+        $act = 'active';
+        $ck = 'checked';
     }
-   
-  
-    $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
-    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $curs->ano . $curs->id .'"  onclick="chValueS(`'.$curs->ano . $curs->id .'`);"  >'. $curs->nomelongo.'
+
+    $btnCurs .= '<label class="btn btn-primary '.$act.' btn-sm">';
+    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'.$curs->ano.$curs->id.'"  onclick="chValueS(`'.$curs->ano.$curs->id.'`);"  >'.$curs->nomelongo.'
     </label>';
-  
-    if($act == 'active') {
-      $idCurso = $curs->id;
-      $nomeCurso = $curs->curso;
-      $anoCurso = $curs->ano;
+
+    if ($act == 'active') {
+        $idCurso = $curs->id;
+        $nomeCurso = $curs->curso;
+        $anoCurso = $curs->ano;
     }
-  
-    $qnty++;
+
+    ++$qnty;
 }
 
 $scriptSel1opcao = '';
 
-if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0 ){
-
-  $scriptSel1opcao = 
-    "<script>
-      chValueS(`".$anoCurso . $idCurso ."`);
-    </script>";
+if (($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qnty > 0) {
+    $scriptSel1opcao =
+      '<script>
+      chValueS(`'.$anoCurso.$idCurso.'`);
+    </script>';
 }
 
-if ($qnty == 0 and $obUsuario['config'] == '2'){
-  $qry1 = "select * from anos a where a.edt =  1  order by a.ano desc  ";
-  $coodYY = Outros::qry($qry1);
-  $qntyCE = 0;
-  foreach($coodYY as $Ys){
-    $act = '';
-    $ck = '';
-  
-    if($obUsuario['year_sel'] == '' and $qntyCE == 0){
-      $act = 'active';
-      $ck = 'checked';
-    }
-  
-    $btnCurs .=  '<label class="btn btn-primary '.$act.' btn-sm">';
-    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'. $Ys->ano .'"  onclick="chValueS(`'.$Ys->ano .'`);"  >'. $Ys->ano.'
+if ($qnty == 0 and $obUsuario['config'] == '2') {
+    $qry1 = 'select * from anos a where a.edt =  1  order by a.ano desc  ';
+    $coodYY = Outros::qry($qry1);
+    $qntyCE = 0;
+    foreach ($coodYY as $Ys) {
+        $act = '';
+        $ck = '';
+
+        if ($obUsuario['year_sel'] == '' and $qntyCE == 0) {
+            $act = 'active';
+            $ck = 'checked';
+        }
+
+        $btnCurs .= '<label class="btn btn-primary '.$act.' btn-sm">';
+        $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'.$Ys->ano.'"  onclick="chValueS(`'.$Ys->ano.'`);"  >'.$Ys->ano.'
     </label>';
-  
-    if($act == 'active') {
-      $anoCurso = $Ys->ano;
+
+        if ($act == 'active') {
+            $anoCurso = $Ys->ano;
+        }
+
+        ++$qntyCE;
     }
-  
-    $qntyCE++;
-  }
-  if(($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qntyCE > 0 ){
-
-    $scriptSel1opcao = 
-      "<script>
-        chValueS(`".$anoCurso ."`);
-      </script>";
-  }
-
-
+    if (($obUsuario['year_sel'] == '' or $obUsuario['year_sel'] == null) and $qntyCE > 0) {
+        $scriptSel1opcao =
+          '<script>
+        chValueS(`'.$anoCurso.'`);
+      </script>';
+    }
 }
 
 /*
@@ -250,10 +243,10 @@ img.remover {
         } elseif ($obUsuario['tipo'] == 'agente') {
             $tpuser = 'agente';
         } else {
-          header('location: ./branco.php');
-          exit;
+            header('location: ./branco.php');
+            exit;
         }
-      
+
         ?>
 <div> 
   <div>
@@ -304,7 +297,7 @@ img.remover {
                                    }
 
                                    if ($obUsuario['config'] == '1' and $qnty > 0) {
-                                    ?> 
+                                       ?> 
 
 
                               <div class="btn-group btn-group-sm">
@@ -314,25 +307,25 @@ img.remover {
                                     
                                   <div class="dropdown-divider"></div>
                                   
-                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções - Coord. Estágio/TCC[<?=$nomeCurso?> - <?=$anoCurso?>]</a>
-                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribs" >Atribuir Funções - Coord. Estágio/TCC[<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../attribspem" >Atribuir Projetos de ensino ou Monitorias [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
 
                                   <div class="dropdown-divider"></div>
                                   
-                                  <a class="dropdown-item btn-sm" href="../afastamento" >Afastamentos [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../afastamento" >Afastamentos [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
 
-                                  <a class="dropdown-item btn-sm" href="../obscoord" >Observações [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../obscoord" >Observações [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
 
 
                                   <div class="dropdown-divider"></div>
 
-                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PAD [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../aprovc" >Visualizar e Assinar PAD [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
                                   <div class="dropdown-divider"></div>
                                   
-                               <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?=$nomeCurso?> - <?=$anoCurso?>]</a> -->
+                               <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a> -->
                                   <div class="dropdown-divider"></div>
 
-                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?=$nomeCurso?> - <?=$anoCurso?>]</a>
+                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
                                 </div>
                               </div>
                           <?php
@@ -349,14 +342,14 @@ img.remover {
                           <?php
                                    }
                                } elseif ($obUsuario['tipo'] === 'agente') {
-                                   if($user['adm'] == 1 ) {
-                                     echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
+                                   if ($user['adm'] == 1) {
+                                       echo '<a type="button" class="btn btn-primary" href="../matrizes" style="text-align: center;">Matrizes</a>';
                                    }
                                    echo '<a type="button" class="btn btn-primary" href="../infos/listaall.php" style="text-align: center;">Dados</a>';
                                }
-                               if (1 > 2) { // Para nunca mostrar
-                                   echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
-                               }
+        if (1 > 2) { // Para nunca mostrar
+            echo '<a type="button" class="btn btn-primary" href="../vinculo" style="text-align: center;">Vinculos</a>';
+        }
         ?>
 
 
@@ -364,13 +357,12 @@ img.remover {
 
 // colocar via tabela de suporte!!!
 $galeraDoSuporte = [
-  'b8fa555f-cedb-47cf-91cc-7581736aac88',    // Roberto
-  '8154fff1-becd-11ee-801b-0266ad9885af',    // Sérgio
-  'bc906e9c-bf9b-11ee-801b-0266ad9885af',    // FERNANDO YUDI SAKAGUTI
-  '81512d7d-becd-11ee-801b-0266ad9885af',    // Dorigão
-  '06f560a1-bf9e-11ee-801b-0266ad9885af',    // MARCOS PAULO RODRIGUES DE SOUZA Paranavaí
-  '28f78f0c-3c9c-4701-b959-f15d12686446'];   // Vinicius PRoe
-  
+    'b8fa555f-cedb-47cf-91cc-7581736aac88',    // Roberto
+    '8154fff1-becd-11ee-801b-0266ad9885af',    // Sérgio
+    'bc906e9c-bf9b-11ee-801b-0266ad9885af',    // FERNANDO YUDI SAKAGUTI
+    '81512d7d-becd-11ee-801b-0266ad9885af',    // Dorigão
+    '06f560a1-bf9e-11ee-801b-0266ad9885af',    // MARCOS PAULO RODRIGUES DE SOUZA Paranavaí
+    '28f78f0c-3c9c-4701-b959-f15d12686446'];   // Vinicius PRoe
 
         if (in_array($obUsuario['id'], $galeraDoSuporte)) { ?>
 
@@ -380,6 +372,7 @@ $galeraDoSuporte = [
                                   <a class="dropdown-item btn-sm" href="../listapads" >Lista ProfPAD</a>
                             <!--       <a class="dropdown-item btn-sm" href="../mensagens" >Mensagens</a>  -->
                                   <a class="dropdown-item btn-sm" href="../horas" >Relação de horas Matrizes/Semanal</a>
+                                  <a class="dropdown-item btn-sm" href="../matrizes" >Matrizes</a>
                                   <div class="dropdown-divider"></div>
                                   <a class="dropdown-item btn-sm" href="../infos/listaall.php">Dados</a>
                                  
@@ -420,11 +413,11 @@ $galeraDoSuporte = [
     <div><!-- Fim botões menu -->
 
 <?php
-//if ($obUsuario['config'] === '1') {
-if( in_array($obUsuario['config'],['1', '2']) ){
-  echo '<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">';
-  echo $btnCurs;
-  echo '</div>';
+// if ($obUsuario['config'] === '1') {
+if (in_array($obUsuario['config'], ['1', '2'])) {
+    echo '<div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">';
+    echo $btnCurs;
+    echo '</div>';
 }
 ?>
 <script>
@@ -456,7 +449,7 @@ function chValueS(yearIDCO){
 
 </script>
 
-<?= $scriptSel1opcao ?>
+<?php echo $scriptSel1opcao; ?>
 
 </div>
 </div>
