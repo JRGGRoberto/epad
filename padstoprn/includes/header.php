@@ -32,9 +32,9 @@ PROGESP/PROEC/PROGRAD</td>
 function topdf(){
   window.print();
  //   let urlParams = new URLSearchParams(window.location.search);
-    // let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
+  //   let toGo = 'https://sistemaproec.unespar.edu.br/epad/padstopdf/index.php?';
     //let toGo =                                          '../padstopdf/index.php?';
- //  let toGo = 'http://localhost/epad/padstopdf/index.php?';
+   // let toGo = 'http://localhost/epad/padstopdf/index.php?';
 //    window.location.href = toGo + urlParams;
 }
 

@@ -1,2 +1,8 @@
-<?php 
-echo '</div></body></html>'; 
+<?php
+
+echo '</div></body>
+
+<script>
+   window.print();
+</script>
+</html>';
