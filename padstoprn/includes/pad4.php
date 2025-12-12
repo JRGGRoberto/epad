@@ -14,6 +14,7 @@
     <tbody>
     <?php
 $total4 = 0;
+
 foreach($pad4 as $p){
   $total4 += $p->ch;
   echo "<tr>
@@ -24,6 +25,7 @@ foreach($pad4 as $p){
 </tr>
   ";
 }
+
 ?>
        <tr>
          <td colspan="3" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL DE GESTÃO INSTITUCIONAL</td>

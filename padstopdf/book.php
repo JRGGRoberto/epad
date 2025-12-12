@@ -22,6 +22,7 @@ if (!(($user['co_id'] == $co) || ($user['config'] = 2))) {
     exit;
 }
 
+
 function gerarPad($id)
 {
     $vinc = Vinculo::get($id);
@@ -31,6 +32,8 @@ function gerarPad($id)
     $pad22 = PADAtiv22::get($where);
     $pad23 = PADAtiv23::get($where);
     $pad24 = PADAtiv24::get($where);
+    
+
     $pad3 = PADAtiv3::get($where);
     $pad4 = PADAtiv4::get($where);
 
@@ -40,15 +43,21 @@ function gerarPad($id)
     include __DIR__.'/includes/pad21.php';
     include __DIR__.'/includes/pad22.php';
     include __DIR__.'/includes/pad23.php';
-    if ($pad24 instanceof PADAtiv24) {
+    
+    
+    if(count($pad24) > 0){
         include __DIR__.'/includes/pad24.php';
+    } else {
+        $total24 = 0;
     }
+    
     include __DIR__.'/includes/pad3.php';
     include __DIR__.'/includes/pad4.php';
     include __DIR__.'/includes/pad5.php';
     include __DIR__.'/includes/pad6.php';
     include __DIR__.'/includes/pad7.php';
     include __DIR__.'/includes/footer1.php';
+    
 }
 
 $w = "co_id = '".$co."' and  ano = '".$ano."' ";

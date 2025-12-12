@@ -1,7 +1,7 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-7">
-      <h3>Homologação -  PAD [<?= $user['year_sel'] ?>]</h3><sup><?=$subTitle?> - Lista de professores do meu Centro de Área</sup>
+      <h3>Homologação -  PAD [<?php echo $user['year_sel']; ?>]</h3><sup><?php echo $subTitle; ?> - Lista de professores do meu Centro de Área</sup>
       <div>✅ - Assinado pela coordenação<br>⏳ - Não assinado pelo coordenador pois o carga horária atribuida não corresponte ao RT</div> 
     </div>
     
@@ -16,7 +16,7 @@
 
         <a class="card-link" href="../ajuda/?help=coord_vpads" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
-      <div><hr>🖋️❌ - Já assinado, clique para revomer a assinatura <br>📄🖋️ - Não assinado, clique para assinar  </div>
+      <div><hr>🖋️❌ - Já assinado, clique para remover a assinatura <br>📄🖋️ - Não assinado, clique para assinar  </div>
     </div>
           
   </div>
@@ -84,9 +84,9 @@
           <div class="modal-body"  style="padding-top: 0px;">
             
             <div style="max-height: 250px;" id="div_tbl">
-              <p style="padding: 20px 30px; text-align: justify;"><span class="badge"> &nbsp;  &nbsp; </span> Eu, <strong><?=$user['nome']?></strong>,
-               como diretor de centro de área do <strong><?=$user['ce_nome']?>
-              </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
+              <p style="padding: 20px 30px; text-align: justify;"><span class="badge"> &nbsp;  &nbsp; </span> Eu, <strong><?php echo $user['nome']; ?></strong>,
+               como diretor de centro de área do <strong><?php echo $user['ce_nome']; ?>
+              </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?php echo $ano; ?></strong>,
                confirmo que este plano está de acordo com a resolução atual, <a target="_blank"
         href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a>
               </p>
@@ -95,12 +95,12 @@
                 <div class="col-5" style="display: flex;"><p id="dataHoje" style="margin: 0;">, </p></div>
                 <div class="col">
                   <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar('a')">Assinar 🖋️</button></p>
-                  <p style="text-align: center; margin: 0;"><strong><?=$user['nome']?></strong></p>
-                  <p style="text-align: center; margin: 0;"><sup>Diretor do Centro de Área de <?=$user['ce_nome']?></sup></p>
+                  <p style="text-align: center; margin: 0;"><strong><?php echo $user['nome']; ?></strong></p>
+                  <p style="text-align: center; margin: 0;"><sup>Diretor do Centro de Área de <?php echo $user['ce_nome']; ?></sup></p>
                 </div>
               </div>
               <input type="hidden" name="vinc_idps" id="vinc_idps">
-              <input type="hidden" name="vinc_id_co" id="vinc_id_co" value="<?=$user['id']?>">
+              <input type="hidden" name="vinc_id_co" id="vinc_id_co" value="<?php echo $user['id']; ?>">
 
         
             
@@ -134,7 +134,7 @@
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
             
             <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">
-            <input type="hidden" name="vinc_id_ce" id="vinc_id_ce" value="<?=$user['id']?>">
+            <input type="hidden" name="vinc_id_ce" id="vinc_id_ce" value="<?php echo $user['id']; ?>">
            
           </div>
 

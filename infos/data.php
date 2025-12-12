@@ -77,8 +77,6 @@ include __DIR__.'/includes/disp.php';
 $item = new Relatorios("id4", "Matriz(es)/Disciplinas do curso", $tbl_disc);
 $itens [] = $item;
 
-
-
 $tbl_cres = '';
 include __DIR__.'/includes/cres.php';
 $item = new Relatorios("id55", "CRES", $tbl_cres);

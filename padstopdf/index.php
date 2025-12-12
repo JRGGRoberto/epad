@@ -12,6 +12,11 @@ use \App\Entity\PADAtiv4;
 
 $id = $_GET["id"];
 
+function formaData($dt){
+  return substr($dt,8,2) .'/'.substr($dt,5,2) .'/'.substr($dt,0,4) ;
+}
+
+
 $vinc = Vinculo::get($id);
 if(!$vinc instanceof Vinculo){
    echo 'O vinculo desta referência não foi realizada para o ano de '. $ano . '.';

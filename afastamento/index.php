@@ -48,9 +48,6 @@ $listaAfas = json_encode($lista);
 
 $listaAfastados = '';
 
-function formaData($dt){
-   return substr($dt,8,2) .'/'.substr($dt,5,2) .'/'.substr($dt,0,4) ;
-}
 
 foreach($lista as $af){
    $modalidade = '';

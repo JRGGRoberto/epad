@@ -54,17 +54,16 @@ function gerarPad($id){
   include __DIR__.'/includes/footer1.php';
 }
 
+
 $w=  "co_id = '". $co ."' and  ano = '".$ano .  "' ";
 $o = " nome ";
 $pads = Vinculo::gets($w, $o );
 
+
 ob_start();
 include __DIR__.'/includes/hea1.php';
 
-echo '<br>_';
-$x = 0;
 foreach($pads as $pa){
-    echo $x++;
     gerarPad($pa->id);
 }
 

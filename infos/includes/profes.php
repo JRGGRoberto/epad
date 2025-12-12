@@ -1,19 +1,23 @@
-<?php 
+<?php
+
 require '../vendor/autoload.php';
-use \App\Entity\Outros;
+use App\Entity\Outros;
 
 $sql = "
 select 
-  d.nome as disciplina, d.ch, h.horaexp as chsemanal, d.serie, v.nome prof, v.colegiado 
+  d.nome as disciplina, 
+  if( md.categ = 'c', d.ch * 1.5, d.ch) ch,
+  if( md.categ = 'c', h.horaexp * 1.5, h.horaexp) chsemanal,
+  d.serie, v.nome prof, v.colegiado 
 from colegiados c 
    inner join matriz_disc md on md.id_curso  = c.id 
    inner join disciplinas d on d.id_matriz  = md.id 
    left join vinculov v on v.id = d.vinculo 
    left join horas h on h.horamatz = d.ch 
 where 
-   c.id  = '". $co_id."' and v.ano = ".$ano."
+   c.id  = '".$co_id."' and v.ano = ".$ano.'
 ORDER BY 
-   serie, prof    ";
+   serie, prof    ';
 $registros = Outros::qry($sql);
 $tbl_profes .= '<table class="table table-bordered table-sm" id="profess">
 <thead class="thead-light">
@@ -27,9 +31,9 @@ $tbl_profes .= '<table class="table table-bordered table-sm" id="profess">
     </tr>
 </thead>
 <tbody>';
-foreach($registros as $reg){
-    $tbl_profes .= 
-    "<tr><td>" . $reg->colegiado . "</td><td>" . $reg->disciplina . "</td><td>" . $reg->prof . "</td><td>" . $reg->serie . "</td><td>" . $reg->chsemanal . "</td><td>" . $reg->ch . "</td></tr>" ;
+foreach ($registros as $reg) {
+    $tbl_profes .=
+    '<tr><td>'.$reg->colegiado.'</td><td>'.$reg->disciplina.'</td><td>'.$reg->prof.'</td><td>'.$reg->serie.'</td><td>'.$reg->chsemanal.'</td><td>'.$reg->ch.'</td></tr>';
 }
 $tbl_profes .= '</tbody></table> 
 <button class="btn btn-light btn-sm" onclick="exportToExcel(\'profess\')">📊</button>

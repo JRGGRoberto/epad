@@ -1,7 +1,7 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-7">
-      <h3>Aprovação -  PAD</h3><sup><?=$subTitle?> - Lista de professores do colegiado de <strong><?=  $nomeCurso .' ['. $anoCurso  .'] '?></strong></sup>
+      <h3>Aprovação -  PAD</h3><sup><?php echo $subTitle; ?> - Lista de professores do colegiado de <strong><?php echo $nomeCurso.' ['.$anoCurso.'] '; ?></strong></sup>
       <div>🔒 - Assinado pela coordenação e dir. centro de área <br>⏳ - Não pode ser assinado pois o carga horária atribuida não corresponte ao RT</div> 
     </div>
     <div class="col" style="text-align:left">
@@ -15,7 +15,7 @@
 
         <a class="card-link" href="../ajuda/?help=coord_vpads" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
-      <div><hr>🖋️❌ - Já assinado, clique para revomer a assinatura <br>📄🖋️ - Não assinado, clique para assinar  </div>
+      <div><hr>🖋️❌ - Já assinado, clique para remover a assinatura <br>📄🖋️ - Não assinado, clique para assinar  </div>
     </div>
           
   </div>
@@ -78,9 +78,9 @@
           <div class="modal-body"  style="padding-top: 0px;">
             
             <div style="max-height: 250px;" id="div_tbl">
-              <p style="padding: 20px 30px; text-align: justify;"><span class="badge"> &nbsp;  &nbsp; </span> Eu, <strong><?=$user['nome']?></strong>,
-               como coordenador(a) do curso de <strong><?=$user['co_nome']?>
-            </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?=$ano?></strong>,
+              <p style="padding: 20px 30px; text-align: justify;"><span class="badge"> &nbsp;  &nbsp; </span> Eu, <strong><?php echo $user['nome']; ?></strong>,
+               como coordenador(a) do curso de <strong><?php echo $user['co_nome']; ?>
+            </strong>, aprovo o <strong>PAD</strong> - Plano de Atividades do(a) Docente(a) <strong><span id="titleMotalProf"></span></strong> do ano de <strong><?php echo $ano; ?></strong>,
                confirmo que este plano está de acordo com a resolução atual, <a target="_blank"
         href="https://www.unespar.edu.br/a_reitoria/atos-oficiais/cou-1/resolucoes/2019/resolucao-no-007-regulamento-de-distribuicao-de-carga-horaria-ok.pdf">Resolução Nº 007/2019 - COU/UNESPAR</a> 
         e solicito que o Diretor de Centro de Área também outorgue para que seja feita a publicação.</p>
@@ -89,12 +89,12 @@
                 <div class="col-5" style="display: flex;"><p id="dataHoje" style="margin: 0;">, </p></div>
                 <div class="col">
                   <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar('a')">Assinar 🖋️</button></p>
-                  <p style="text-align: center; margin: 0;"><strong><?=$user['nome']?></strong></p>
-                  <p style="text-align: center; margin: 0;"><sup>Coordenador do Colegiado de <?=$user['co_nome']?></sup></p>
+                  <p style="text-align: center; margin: 0;"><strong><?php echo $user['nome']; ?></strong></p>
+                  <p style="text-align: center; margin: 0;"><sup>Coordenador do Colegiado de <?php echo $user['co_nome']; ?></sup></p>
                 </div>
               </div>
               <input type="hidden" name="vinc_idps" id="vinc_idps">
-              <input type="hidden" name="vinc_id_co" id="vinc_id_co" value="<?=$user['id']?>">
+              <input type="hidden" name="vinc_id_co" id="vinc_id_co" value="<?php echo $user['id']; ?>">
 
         
             
@@ -128,7 +128,7 @@
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
             
             <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">
-            <input type="hidden" name="vinc_id_cod" id="vinc_id_cod" value="<?=$user['id']?>">
+            <input type="hidden" name="vinc_id_cod" id="vinc_id_cod" value="<?php echo $user['id']; ?>">
            
           </div>
 

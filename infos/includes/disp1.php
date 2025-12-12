@@ -1,14 +1,15 @@
 <?php
 
 require '../vendor/autoload.php';
-use \App\Entity\Outros;
+use App\Entity\Outros;
 
 $sql = "
 select 
   v.nome professor,   
   CONCAT( if(p.cat_func = 'c' , 'CRES', 'Efet'), ' ', v.rt) as vinculo,
   d.nome as disciplina, d.serie,
-  d.ch cha, h.horaexp chs,
+  if( m.categ = 'c', d.ch * 1.5, d.ch) cha,
+  if( m.categ = 'c', h.horaexp * 1.5, h.horaexp) chs,
   ccc.colegiado, CONCAT(UPPER(ccc.codcam), '/',ccc.codcentro ) loc  
 from 
   vinculov v
@@ -18,9 +19,9 @@ from
   left join  ca_ce_co ccc on m.id_curso = ccc.co_id
   left join horas h on h.horamatz = d.ch
 where 
-  v.co_id = '". $co_id."' and v.ano = ".$ano."
+  v.co_id = '".$co_id."' and v.ano = ".$ano.'
 order 
-  by v.nome, d.nome, ccc.colegiado, d.serie  ";
+  by v.nome, d.nome, ccc.colegiado, d.serie  ';
 
 $registros = Outros::qry($sql);
 $tbl_disc1 .= '<table class="table table-bordered table-sm" id="disp1">
@@ -35,14 +36,14 @@ $tbl_disc1 .= '<table class="table table-bordered table-sm" id="disp1">
 </thead>
 <tbody>';
 $qnt = 0;
-foreach($registros as $reg){
+foreach ($registros as $reg) {
     $tbl_disc1 .=
-        "<tr>
-            <td>" . $reg->professor ."</td>
-            <td>" . $reg->vinculo ."</td>
-            <td>" . $reg->disciplina ."<br><sub>" .  $reg->colegiado . " - ". $reg->loc. "</sub></td>
-            <td>" . $reg->serie ."</td>
-            <td>" . $reg->cha ."<sub>anual</sub> / " . $reg->chs ."h<sub>sem</sub> </td>
-        </tr>" ;
+        '<tr>
+            <td>'.$reg->professor.'</td>
+            <td>'.$reg->vinculo.'</td>
+            <td>'.$reg->disciplina.'<br><sub>'.$reg->colegiado.' - '.$reg->loc.'</sub></td>
+            <td>'.$reg->serie.'</td>
+            <td>'.$reg->cha.'<sub>anual</sub> / '.$reg->chs.'h<sub>sem</sub> </td>
+        </tr>';
 }
 $tbl_disc1 .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'disp1\')">📊</button><hr>';

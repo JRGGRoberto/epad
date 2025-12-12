@@ -50,6 +50,9 @@ function tipo1($t){
   }
 }
 
+if( is_null($pad24) ){
+  goto fim;
+}
 foreach($pad24 as $p){
   $total24 += $p->ch;
   echo 
@@ -63,6 +66,7 @@ foreach($pad24 as $p){
   </tr>
   ";
 }
+fim:
 ?>
         <tr>
          <td colspan="5" style='text-align: right;'>MÉDIA SEMANAL ANUAL DA CARGA HORÁRIA DE AFASTAMENTO</td>

@@ -1,22 +1,23 @@
 <div class="container mt-3" style="margin-bottom: 0px;">
   <div class="row">
     <div class="col-4">
-      <h3>Orientação</h3>
-      <?= $tpOrientacao ?><br><br>
-      <?php if(in_array($cargoAttri->tipocod, ['a', 'b', 'c', 'd' ]))
-         echo '<sup>' . strtoupper($cargoAttri->codcam_tt) . '/' . $cargoAttri->codcentro_tt .' - ' .  $cargoAttri->colegiado_tt  . '</sup>';
-      
+      <h3>Orientação  [<?php echo $ano; ?>]</h3>
+      <?php echo $tpOrientacao; ?><br><br>
+      <?php if (in_array($cargoAttri->tipocod, ['a', 'b', 'c', 'd'])) {
+          echo '<sup>'.strtoupper($cargoAttri->codcam_tt).'/'.$cargoAttri->codcentro_tt.' - '.$cargoAttri->colegiado_tt.'</sup>';
+      }
+
       ?>
 
 
     </div>
     <div class="col" style="text-align:left">
       <div><p hidden style="text-align: justify;   text-justify: inter-word;">
-        O(A) professor(a) <?= $cargoAttri->nome_tt ?>, 
-        como coordenador(a) do curso de <?= $cargoAttri->colegiado_tt ?> (
-        <?= strtoupper($cargoAttri->codcam_tt) ?>/<?= $cargoAttri->codcentro_tt ?>), 
-        atribuiu a ti a função de coordenador do(a) <strong><?= $cargoAttri->tipo ?></strong>. 
-        Deverás atender os alunos do curso <strong><?= $cargoAttri->colegiado_tt ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
+        O(A) professor(a) <?php echo $cargoAttri->nome_tt; ?>, 
+        como coordenador(a) do curso de <?php echo $cargoAttri->colegiado_tt; ?> (
+        <?php echo strtoupper($cargoAttri->codcam_tt); ?>/<?php echo $cargoAttri->codcentro_tt; ?>), 
+        atribuiu a ti a função de coordenador do(a) <strong><?php echo $cargoAttri->tipo; ?></strong>. 
+        Deverás atender os alunos do curso <strong><?php echo $cargoAttri->colegiado_tt; ?></strong>, designando-os aos professores disponíveis e mais adequados para orientá-los.
         </p>
         <a class="card-link" href="../ajuda/?help=menu_orientar" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
       </div>
@@ -63,11 +64,10 @@
 
 <?php
 
-
-  $ca_nome = $user['ca_nome']; // ['lota_nome']; 
-  $co_nome = $user['co_nome'];
-  include './includes/tblform.php';
-?>
+  $ca_nome = $user['ca_nome']; // ['lota_nome'];
+      $co_nome = $user['co_nome'];
+      include './includes/tblform.php';
+      ?>
             
           </div>
         </div>
