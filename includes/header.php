@@ -23,12 +23,13 @@ $idu = $obUsuario['id'];
 $qry1 = "
   select 
     c.id id , c.nome curso , a.ano ano , a.edt edt ,
-    CONCAT(c.nome,  '[', a.ano, ']' ) nomelongo
+    CONCAT(c.nome,  ' [', a.ano, ']' ) nomelongo,
+    CONCAT(c.id,  a.ano ) codurl
   from 
     colegiados c,
     anos a
   where 
-     (c.coord_id, a.edt) = ('".$idu."', 1)
+     (c.coord_id) = ('".$idu."')
   order by a.ano desc, c.nome
   ";
 $coodAnos = Outros::qry($qry1);
@@ -40,6 +41,7 @@ $anoCurso = '';
 
 $qnty = 0;
 foreach ($coodAnos as $curs) {
+  if( $curs->edt == 1 ){
     $act = '';
     $ck = '';
 
@@ -64,6 +66,7 @@ foreach ($coodAnos as $curs) {
     }
 
     ++$qnty;
+  }
 }
 
 $scriptSel1opcao = '';
@@ -106,6 +109,18 @@ if ($qnty == 0 and $obUsuario['config'] == '2') {
     }
 }
 
+
+$menuRelatorios = '';
+if ($obUsuario['config'] == '1') {
+  foreach ($coodAnos as $relatoriosAnuais) {
+    $menuRelatorios .= 
+      '<a class="dropdown-item btn-sm" 
+       href="../infos/datac.php?id='. $relatoriosAnuais->codurl  .'">Relatórios 
+       '. $relatoriosAnuais->nomelongo .'
+       </a>';
+  }  
+}
+                                  
 /*
 
 echo 'id:   '. $idCurso .'<br>';
@@ -323,9 +338,14 @@ img.remover {
                                   <div class="dropdown-divider"></div>
                                   
                                <!--   <a class="dropdown-item btn-sm" href="../cursoTm/" rel="noopener noreferrer">Solicitações de inclusões ou alterações de disciplinas [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a> -->
-                                  <div class="dropdown-divider"></div>
+                                  <div class="dropdown-divider">Relatórios</div>
 
-                                  <a class="dropdown-item btn-sm" href="../infos">Relatórios [<?php echo $nomeCurso; ?> - <?php echo $anoCurso; ?>]</a>
+                                  
+                                     <?=  $menuRelatorios ?>
+                                     
+                                     
+
+                                <!-- --  !-->  
                                 </div>
                               </div>
                           <?php

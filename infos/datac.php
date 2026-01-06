@@ -6,12 +6,26 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-
+/*
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-if(!(($user['config'] == 2)  or ($user['adm'] == 1))){
+*/
+
+/*
+echo '<pre>';
+print_r($user);
+echo '</pre>';
+exit;
+$user['config'] =  1 co
+$user['config'] =  2 ce
+$user['config'] =  3 ca
+
+*/
+
+
+if(!  (in_array( $user['config'], [1, 2] )  or ($user['adm'] == 1)) ){
   header('location: ../');
   exit;
 }

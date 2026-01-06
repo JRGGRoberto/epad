@@ -9,10 +9,16 @@ use \App\Session\Login;
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
+if ($user['adm'] == 1 ){
+    goto byPass;
+}
+
 if($user['tipo'] != 'agente'){
   header('location: ../home/');
   exit;
 }
+
+byPass:
 
 $matriz = new MatrizDisc();
 $matriz = $matriz::getById($_GET['id']);
