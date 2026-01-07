@@ -40,7 +40,6 @@ include __DIR__.'/includes/pad24.php';
 include __DIR__.'/includes/pad3.php';
 include __DIR__.'/includes/pad4.php';
 include __DIR__.'/includes/pad5.php';
-include __DIR__.'/includes/pad7.php';
 include __DIR__.'/includes/pad6.php';
 echo '<hr><hr>';
 include __DIR__.'/includes/pad7.php';
