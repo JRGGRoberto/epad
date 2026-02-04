@@ -41,32 +41,32 @@ $anoCurso = '';
 
 $qnty = 0;
 foreach ($coodAnos as $curs) {
-  if( $curs->edt == 1 ){
-    $act = '';
-    $ck = '';
+    if ($curs->edt == 1) {
+        $act = '';
+        $ck = '';
 
-    if ($obUsuario['year_sel'] == '' and $qnty == 0) {
-        $act = 'active';
-        $ck = 'checked';
-    }
+        if ($obUsuario['year_sel'] == '' and $qnty == 0) {
+            $act = 'active';
+            $ck = 'checked';
+        }
 
-    if ($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel'] == $curs->id) {
-        $act = 'active';
-        $ck = 'checked';
-    }
+        if ($obUsuario['year_sel'] == $curs->ano and $obUsuario['id_coSel'] == $curs->id) {
+            $act = 'active';
+            $ck = 'checked';
+        }
 
-    $btnCurs .= '<label class="btn btn-primary '.$act.' btn-sm">';
-    $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'.$curs->ano.$curs->id.'"  onclick="chValueS(`'.$curs->ano.$curs->id.'`);"  >'.$curs->nomelongo.'
+        $btnCurs .= '<label class="btn btn-primary '.$act.' btn-sm">';
+        $btnCurs .= '<input type="radio" name="radioAC" '.$ck.' value="'.$curs->ano.$curs->id.'"  onclick="chValueS(`'.$curs->ano.$curs->id.'`);"  >'.$curs->nomelongo.'
     </label>';
 
-    if ($act == 'active') {
-        $idCurso = $curs->id;
-        $nomeCurso = $curs->curso;
-        $anoCurso = $curs->ano;
-    }
+        if ($act == 'active') {
+            $idCurso = $curs->id;
+            $nomeCurso = $curs->curso;
+            $anoCurso = $curs->ano;
+        }
 
-    ++$qnty;
-  }
+        ++$qnty;
+    }
 }
 
 $scriptSel1opcao = '';
@@ -109,18 +109,17 @@ if ($qnty == 0 and $obUsuario['config'] == '2') {
     }
 }
 
-
 $menuRelatorios = '';
 if ($obUsuario['config'] == '1') {
-  foreach ($coodAnos as $relatoriosAnuais) {
-    $menuRelatorios .= 
-      '<a class="dropdown-item btn-sm" 
-       href="../infos/datac.php?id='. $relatoriosAnuais->codurl  .'">Relatórios 
-       '. $relatoriosAnuais->nomelongo .'
+    foreach ($coodAnos as $relatoriosAnuais) {
+        $menuRelatorios .=
+          '<a class="dropdown-item btn-sm" 
+       href="../infos/datac.php?id='.$relatoriosAnuais->codurl.'">Relatórios 
+       '.$relatoriosAnuais->nomelongo.'
        </a>';
-  }  
+    }
 }
-                                  
+
 /*
 
 echo 'id:   '. $idCurso .'<br>';
@@ -341,7 +340,7 @@ img.remover {
                                   <div class="dropdown-divider">Relatórios</div>
 
                                   
-                                     <?=  $menuRelatorios ?>
+                                     <?php echo $menuRelatorios; ?>
                                      
                                      
 
@@ -381,6 +380,7 @@ $galeraDoSuporte = [
     '8154fff1-becd-11ee-801b-0266ad9885af',    // Sérgio
     'bc906e9c-bf9b-11ee-801b-0266ad9885af',    // FERNANDO YUDI SAKAGUTI
     '81512d7d-becd-11ee-801b-0266ad9885af',    // Dorigão
+    '8151fc77-becd-11ee-801b-0266ad9885af',    // ELIANE PAGANINI DA SILVA
     '06f560a1-bf9e-11ee-801b-0266ad9885af',    // MARCOS PAULO RODRIGUES DE SOUZA Paranavaí
     '28f78f0c-3c9c-4701-b959-f15d12686446'];   // Vinicius PRoe
 
