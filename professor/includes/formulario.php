@@ -1,5 +1,6 @@
 <?php
-use \App\Session\Login;
+use App\Session\Login;
+
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 ?>
@@ -7,20 +8,24 @@ $user = Login::getUsuarioLogado();
 <script src="./ccc.js"></script>
 <main>
 
-  <h2 class="mt-3"><?=TITLE?></h2>
-  <a class="card-link" href="../ajuda/?help=perfil" aria-expanded="true"><span class="badge badge-warning float-right" hidden>Ajuda</span></a>
-  <hr>
+  <section>
+    <a href="index.php">
+      <button class="btn btn-sm btn-success float-right">Voltar</button>
+    </a>
+  </section>
+
+  <h2 class="mt-3"><?php echo TITLE; ?></h2>
 
   <form method="post" id="formprof">
     
     <div class="row">
                           
-    <input id="idprf" name="idprf" type="text" hidden value="<?= $obProfessor->id ?>">
+    <input id="idprf" name="idprf" type="text" hidden value="<?php echo $obProfessor->id; ?>">
 
       <div class="col-8">
         <div class="form-group">
           <label>Nome</label>
-          <input type="text" class="form-control" name="nome" maxlength="60"  value="<?=$obProfessor->nome?>" required>
+          <input type="text" class="form-control" name="nome" maxlength="60"  value="<?php echo $obProfessor->nome; ?>" required>
         </div>
       </div>
 
@@ -28,7 +33,7 @@ $user = Login::getUsuarioLogado();
         <div class="form-group">
           <label>CPF</label>
           <a href="#" data-toggle="tooltip" title="Informe apenas os números" 
-          style="text-decoration:none;"><input type="text" class="form-control" name="cpf" id="cpf" maxlength="11" value="<?=$obProfessor->cpf?>" onfocusout="valCPF()" readonly></a>
+          style="text-decoration:none;"><input type="text" class="form-control" name="cpf" id="cpf" maxlength="11" value="<?php echo $obProfessor->cpf; ?>" onfocusout="valCPF()" ></a>
 
         </div>
       </div>
@@ -42,20 +47,13 @@ $user = Login::getUsuarioLogado();
           <label>Titulação</label>
           <!--<input type="text" class="form-control" name="titulacao" maxlength="65" value="< ?=$obProfessor->titulacao?>" >  -->
 
-          <select  class="form-control" name="titulacao" id="titulacao" maxlength="65">
-            <option value="Mestre"       <?=$obProfessor->titulacao == 'Mestre'      ?'selected':'' ?> >Mestre</option>
-            <option value="Doutor"       <?=$obProfessor->titulacao == 'Doutor'      ?'selected':'' ?> >Doutor</option>
-            <option value="Bacharel"     <?=$obProfessor->titulacao == 'Bacharel'    ?'selected':'' ?> >Bacharel</option>
-            <option value="Especialista" <?=$obProfessor->titulacao == 'Especialista'?'selected':'' ?> >Especialista</option>
-          </select>
-          <?php
-             echo '<script>',
-             "ti = document.getElementById('titulacao');" ,
-             "ti.value = ". $obProfessor->titulacao ,
-             '</script>';
-          ?>
           
-
+           <select  class="form-control" name="titulacao" id="titulacao" maxlength="65">
+            <option value="Mestre"       <?php echo $obProfessor->titulacao == 'Mestre' ? 'selected' : ''; ?> >Mestre</option>
+            <option value="Doutor"       <?php echo $obProfessor->titulacao == 'Doutor' ? 'selected' : ''; ?> >Doutor</option>
+            <option value="Bacharel"     <?php echo $obProfessor->titulacao == 'Bacharel' ? 'selected' : ''; ?> >Bacharel</option>
+            <option value="Especialista" <?php echo $obProfessor->titulacao == 'Especialista' ? 'selected' : ''; ?> >Especialista</option>
+          </select>
         </div>
 
       </div>
@@ -67,7 +65,7 @@ $user = Login::getUsuarioLogado();
       <div class="input-group-prepend">
         <span class="input-group-text">http://lattes.cnpq.br/</span>
       </div>
-      <input type="text" class="form-control" name="lattes" maxlength="36" value="<?=$obProfessor->lattes?>"></div>
+      <input type="text" class="form-control" name="lattes" maxlength="36" value="<?php echo $obProfessor->lattes; ?>"></div>
         </div>
       </div>
     </div>
@@ -76,8 +74,8 @@ $user = Login::getUsuarioLogado();
       <div class="col">
         
         <div class="form-group">
-          <label>E-mail</label>
-          <input type="email" class="form-control" name="email" id="email" maxlength="40" value="<?=$obProfessor->email?>" onfocusout="valEmail()" required>
+          <label>E-mail <?php echo $infoMail[0]; ?></label>
+          <input type="email" class="form-control" name="email" id="email" maxlength="40" value="<?php echo $obProfessor->email; ?>" onfocusout="valEmail()" required <?php echo $infoMail[1]; ?>>
         </div>
 
       </div>
@@ -87,7 +85,7 @@ $user = Login::getUsuarioLogado();
         
         <div class="form-group">
           <label>Telefone</label>
-          <input type="tel" class="form-control" name="telefone" maxlength="16" value="<?=$obProfessor->telefone?>">
+          <input type="tel" class="form-control" name="telefone" maxlength="16" value="<?php echo $obProfessor->telefone; ?>">
         </div>
 
       </div>
@@ -100,8 +98,8 @@ $user = Login::getUsuarioLogado();
           <label for="ca">Campus</label>
           <select name="id_campus" id="ca" class="form-control" required>
           <?php
-            echo $CAop; 
-          ?>
+            echo $CAop;
+?>
           </select>
         </div> 
       </div>
@@ -111,8 +109,8 @@ $user = Login::getUsuarioLogado();
           <label for="ce">Centro</label>
           <select name="id_centro"  id="ce" class="form-control" required>
           <?php
-            echo $CEop;
-          ?>
+  echo $CEop;
+?>
           </select>
         </div> 
       </div>
@@ -122,8 +120,8 @@ $user = Login::getUsuarioLogado();
           <label for="co">Colegiado</label>
           <select name="id_colegiado" id="co" class="form-control" required>
           <?php
-            echo $Coop;
-          ?>
+  echo $Coop;
+?>
           </select>
         </div> 
       </div>
@@ -131,65 +129,47 @@ $user = Login::getUsuarioLogado();
 
   
     <div class="row">
-      <div class="col">
-        
-        <div class="form-group">
-          <label>Categoria funcional</label>
-          <div>
-              <div class="form-check form-check-inline">
-                <label class="form-control">
-                  <input type="radio" name="cat_func" value="e" <?=$obProfessor->cat_func == 'e' ? 'checked' : ''?>> Efetivo
-                </label>
-              </div>
-    
-              <div class="form-check form-check-inline">
-                <label class="form-control">
-                  <input type="radio" name="cat_func" value="c" <?=$obProfessor->cat_func == 'c' ? 'checked' : ''?>> Colaborador
-                </label>
-              </div>
-          </div>
-        </div>
-      </div>
+
+       <?php echo $selectCat; ?>
 
       <div class="col-2">
         <div class="form-group">
 <?php
-  if($obProfessor->niveln> 0){
-     echo '<a href="#" title="Opção não permitida. Esta conta contém a atribuição de '.$obProfessor->nivel.'" data-toggle="popover" data-trigger="hover" data-content="Esta conta contém a atribuição de '.$obProfessor->nivel.' ">';
+  if ($obProfessor->niveln > 0) {
+      echo '<a href="#" title="Opção não permitida. Esta conta contém a atribuição de '.$obProfessor->nivel.'" data-toggle="popover" data-trigger="hover" data-content="Esta conta contém a atribuição de '.$obProfessor->nivel.' ">';
   }
 ?>
         <label>Estado da conta 
                     <label for="ativo" class="form-control">Ativa
                         <input type="checkbox" 
 <?php
-  if($obProfessor->niveln > 0){
-     echo 'disabled';
+  if ($obProfessor->niveln > 0) {
+      echo 'disabled';
   }
 ?>
-                        name="ativo" value="1" <?=($obProfessor->ativo==1) ? 'checked': '' ?> >
+                        name="ativo" value="1" <?php echo ($obProfessor->ativo == 1) ? 'checked' : ''; ?> >
                     </label>
                </label>
 <?php
-  if($obProfessor->niveln> 1){
-     echo '</a>';
+  if ($obProfessor->niveln > 1) {
+      echo '</a>';
   }
 ?>
         </div>
-      </div>
-
-      
-
-
+     </div>
      <div class="col">
        <div class="form-group">
-         <label>Senha <?= TITLE <> 'Cadastrar professor'? '<span class="badge badge-warning">Para alterar a senha digite uma nova</span>': null ?> </label>
+         <label>Senha <?php echo TITLE != 'Cadastrar professor' ? '<span class="badge badge-warning">Não mexa para não alterá-la</span>' : null; ?> </label>
          <input type="password" class="form-control" name="senha" >
        </div>
      </div>
      <div class="col">
-
+      <?php echo $padsv; ?>
+       <!--
         <div class="form-group">
-       </div>
+         <label>.</label>
+         <input type="password" class="form-control" name="csenha" disabled>
+       </div>-->
      </div> 
       
       
@@ -201,5 +181,5 @@ $user = Login::getUsuarioLogado();
     </div>
 
   </form>
-<?=$script?>
+<?php echo $script; ?>
 </main>

@@ -16,15 +16,14 @@ from
 where 
    co_id = '".$co_id."' and
    ano = '".$ano."' and
-   ps.catf = 'e'
+   ps.catf = 'd'
 order by ps.nome
 ";
 
 $registros = Outros::qry($sql);
 
-$tbl_efet .= '<table class="table table-bordered table-sm" id="atv_efetv">
+$tbl_DispFunc .= '<table class="table table-bordered table-sm" id="atv_dispfunc">
 <thead class="thead-light">
-    <tr>
     <tr>
         <th class="align-top">Colegiado</th>
         <th class="align-top">Professor</th>
@@ -38,11 +37,10 @@ $tbl_efet .= '<table class="table table-bordered table-sm" id="atv_efetv">
         <th class="align-top">Total</th>
         <th class="align-top">RT</th>
     </tr>
-    </tr>
 </thead>
 <tbody>';
 foreach ($registros as $reg) {
-    $tbl_efet .=
+    $tbl_DispFunc .=
     '<tr><td>'.$reg->colegiado.
     '</td><td>'.$reg->nome.
     '</td><td><a href="../padstoprn/index.php?id='.$reg->id.'" target="_blank">📄</a>'.
@@ -56,4 +54,4 @@ foreach ($registros as $reg) {
     '</td><td>'.$reg->rt.
     '</td></tr>';
 }
-$tbl_efet .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'atv_efetv\')">📊</button><hr>';
+$tbl_DispFunc .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'atv_dispfunc\')">📊</button><hr>';

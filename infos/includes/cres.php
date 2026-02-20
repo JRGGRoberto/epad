@@ -1,46 +1,57 @@
-<?php 
+<?php
+
 require '../vendor/autoload.php';
-use \App\Entity\Outros;
+use App\Entity\Outros;
 
 $sql = "
 select 
-  ccc.campus, ccc.colegiado, p.nome, v.rt,  
-  (ps.a21 + ps.a22 + ps.a23 + ps.a3 + ps.a4 ) tempo_usado, v.id
+   ps.id, concat(UPPER(ca.codigo) ,' - ', co.nome ) colegiado,
+   ps.nome,  
+   a21, a22, a23, a24, a3, a4, 
+   (ps.a21 + ps.a22 + ps.a23 + ps.a3 + ps.a4 ) tempo_usado, ps.rt
 from 
-   professores p 
-   inner join ca_ce_co ccc on p.id_colegiado  = ccc.co_id 
-   inner join vinculov v on v.id_prof = p.id 
-   inner join pad_sucinto ps on ps.id = v.id 
+   pad_sucinto ps
+   inner join campi ca on ca.id  = ps.ca_id 
+   inner join colegiados co on co.id  = ps.co_id 
 where 
-   p.cat_func = 'c' and 
-   p.id_colegiado = '". $co_id."' and
-   v.ano = ".$ano."
-order by 1, 2, 3
+   co_id = '".$co_id."' and
+   ano = '".$ano."' and
+   ps.catf = 'c'
+order by ps.nome
 ";
-
 
 $registros = Outros::qry($sql);
 
 $tbl_cres .= '<table class="table table-bordered table-sm" id="atv_cres">
 <thead class="thead-light">
     <tr>
-        <th class="align-top">Campus</th>
-        <th class="align-top">Colegiano</th>
+        <th class="align-top">Colegiado</th>
         <th class="align-top">Professor</th>
         <th style="text-align: center;">PAD</th>
+        <th class="align-top">a21</th>
+        <th class="align-top">a22</th>
+        <th class="align-top">a23</th>
+        <th class="align-top">a24</th>
+        <th class="align-top">a3</th>
+        <th class="align-top">a4</th>
+        <th class="align-top">Total</th>
         <th class="align-top">RT</th>
-        <th class="align-top">Tempo Usado</th>
     </tr>
 </thead>
 <tbody>';
-foreach($registros as $reg){
-    $tbl_cres .= 
-    "<tr><td>" . $reg->campus . 
-    "</td><td>" . $reg->colegiado . 
-    "</td><td>" . $reg->nome .
-    '</td><td><a href="../padstoprn/index.php?id='. $reg->id . '" target="_blank">📄</a>' . 
-    "</td><td>" . $reg->rt . 
-    "</td><td>" . $reg->tempo_usado . 
-    "</td></tr>" ;
+foreach ($registros as $reg) {
+    $tbl_cres .=
+    '<tr><td>'.$reg->colegiado.
+    '</td><td>'.$reg->nome.
+    '</td><td><a href="../padstoprn/index.php?id='.$reg->id.'" target="_blank">📄</a>'.
+    '</td><td>'.$reg->a21.
+    '</td><td>'.$reg->a22.
+    '</td><td>'.$reg->a23.
+    '</td><td>'.$reg->a24.
+    '</td><td>'.$reg->a3.
+    '</td><td>'.$reg->a4.
+    '</td><td>'.$reg->tempo_usado.
+    '</td><td>'.$reg->rt.
+    '</td></tr>';
 }
 $tbl_cres .= '</tbody></table><button class="btn btn-light btn-sm" onclick="exportToExcel(\'atv_cres\')">📊</button><hr>';

@@ -2,14 +2,17 @@
 
 require '../vendor/autoload.php';
 
+error_reporting(E_ALL);
+error_reporting(-1);
+ini_set('error_reporting', E_ALL);
+
 use App\Entity\Professor;
-use App\Entity\Vinculo;
 use App\Session\Login;
 
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
-
 use App\Entity\Diversos;
+use App\Entity\Outros;
 
 define('TITLE', 'Editar dados do Professor');
 
@@ -27,6 +30,36 @@ $obProfessor = $obProfessor::getProfessor($_GET['id']);
 if (!$obProfessor instanceof Professor) {
     header('location: ../index.php?status=error');
     exit;
+}
+
+$whereVinc =
+'select 
+   v.id, a.ano as ano, a.edt edt, v.id_prof, v.rt, v.aprov_co_id
+from 
+  anos a 
+  left join vinculo v on a.ano = v.ano and id_prof = "'.$obProfessor->id.'"
+where 
+  a.ano >=  YEAR(CURDATE());';
+
+$padsv = '';
+$vinculos = Outros::qry($whereVinc);
+
+foreach ($vinculos as $vinc) {
+    $padsv .= $vinc->ano;
+    if (is_null($vinc->id)) {
+        if ($user['adm'] == 1) {
+            $padsv .= '<a href="../vinc/add.php?id='.$vinc->ano.$obProfessor->id.'">➕</a> vinculo PAD ';
+        } else {
+            $padsv .= 'Sem vinculo';
+        }
+    } else {
+        if ($user['adm'] == 1) {
+            $padsv .= '  RT: '.$vinc->rt.' <a href="../vinc/editar.php?id='.$vinc->id.'">✏️</a> <a href="../vinc/del.php?id='.$vinc->id.'">⛔</a>';
+        } else {
+            $padsv .= 'Sem vinculo';
+        }
+    }
+    $padsv .= '<br>';
 }
 
 $qryAEO =
@@ -55,9 +88,62 @@ if (strcmp($user['id'], $_GET['id']) === 0) {
     $CAop = "<option value='".$Caeo->ca_id."' readonly class='xpto3'>".$Caeo->campus.'</option>';
     $CEop = "<option value='".$Caeo->ce_id."' readonly class='xpto3'>".$Caeo->centros.'</option>';
     $Coop = "<option value='".$Caeo->co_id."' readonly class='xpto3'>".$Caeo->colegiado.'</option>';
-}
+} elseif ($user['adm'] != 1) {
+    switch ($user['niveln']) {
+        case 1:
+            $CAop = "<option value='".$Caeo->ca_id."' readonly class='xpto1'>".$Caeo->campus.'</option>';
+            $script .= '
+      pegarCE("'.$Caeo->ca_id.'").then(
+        (onResolved) => {
+          selectOpt("ce","'.$Caeo->ce_id.'")
+        }, (onRejected) => { }
+      ).then(
+      (onResolved) => {
+            pegarCO("'.$Caeo->ce_id.'").then(
+              (onResolved) => {
+                selectOpt("co","'.$Caeo->co_id.'")
+              }, (onRejected) => { }
+            )
+        }, (onRejected) => { }
+      )
+      ';
 
-if ($user['adm'] == 1) {
+            if ($user['ca_id'] == $obProfessor->ca_id) {
+                $acessoOk = true;
+
+                $msg = 'CA';
+            }
+            break;
+        case 2:
+            $CAop = "<option value='".$Caeo->ca_id."' readonly class='xpto2'>".$Caeo->campus.'</option>';
+            $CEop = "<option value='".$Caeo->ce_id."' readonly class='xpto2'>".$Caeo->centros.'</option>';
+
+            $script .= '
+      pegarCO("'.$Caeo->ce_id.'").then(
+        (onResolved) => {
+          selectOpt("co","'.$Caeo->co_id.'")
+        }, (onRejected) => { }
+      )
+      ';
+
+            if ($user['ce_id'] == $obProfessor->ce_id) {
+                $acessoOk = true;
+
+                $msg = 'CE';
+            }
+            break;
+        case 3:
+            $CAop = "<option value='".$Caeo->ca_id."' readonly class='xpto3'>".$Caeo->campus.'</option>';
+            $CEop = "<option value='".$Caeo->ce_id."' readonly class='xpto3'>".$Caeo->centros.'</option>';
+            $Coop = "<option value='".$Caeo->co_id."' readonly class='xpto3'>".$Caeo->colegiado.'</option>';
+            if ($user['co_id'] == $obProfessor->co_id) {
+                $acessoOk = true;
+
+                $msg = 'CO';
+            }
+            break;
+    }
+} elseif ($user['adm'] == 1) {
     $acessoOk = true;
 
     $msg = 'ADM';
@@ -85,22 +171,22 @@ if ($user['adm'] == 1) {
       }, (onRejected) => { }
   )
   ';
+} else {
+    $acessoOk = false;
+    $msg = 'nada';
 }
 
 $script .= '</script>';
 
-$vinculoss = Vinculo::gets('   id_prof =  "'.$obProfessor->id.'" ');
-$listvV = '<ul title="Vínculos">';
-foreach ($vinculoss as $v) {
-    // $listvV .= '<a href="../dadosvinc/index.php?id="'. $v->id_prof.'">'. $v->ano .'</a> RT [ ' . $v->rt .' ]';
-    $listvV .= $v->ano.' RT [ '.$v->rt.' ]';
+if (!$acessoOk) {
+    header('location: ../home/index.php?status=error');
+    exit;
 }
-$listvV .= '</ul>';
 
 // VALIDAÇÃO DO POST
 if (isset($_POST['nome'])) {
     // $obProfessor->id = $_POST['id'];
-    // $obProfessor->nome = $_POST['nome'];
+    $obProfessor->nome = strtoupper($_POST['nome']);
     $obProfessor->cpf = $_POST['cpf'];
     $obProfessor->telefone = $_POST['telefone'];
     $obProfessor->lattes = $_POST['lattes'];
@@ -120,11 +206,61 @@ if (isset($_POST['nome'])) {
     }
     $obProfessor->atualizar();
 
-    // header('location: ../index.php?status=success');
-    header('location: ./../index.php?status=success');
-
+    header('location: index.php?status=success');
     exit;
 }
+function validaMail1($email)
+{
+    $conta = explode('@', $email);
+
+    return $conta[1] == 'unespar.edu.br' ? ['✅', 'readonly'] : ['<span class="badge badge-danger">Deve ser uma conta <strong>@unespar.edu.br</strong></span>', ''];
+}
+$infoMail = validaMail1($obProfessor->email);
+
+$selectCat =
+       '<div class="col-2">
+          <div class="form-group">
+            <label for="cat_func">Categoria funcional</label>
+            <select name="cat_func" id="cat_func" class="form-control" required="">';
+if ($user['adm'] == 1) {
+    switch ($obProfessor->cat_func) {
+        case 'e':
+            $selectCat .= '<option value="e" selected>Efetivo</option>
+                           <option value="c">Colaborador</option>
+                           <option value="d">Definir</option>';
+            break;
+        case 'c':
+            $selectCat .= '<option value="e">Efetivo</option>
+                           <option value="c" selected>Colaborador</option>
+                           <option value="d">Definir</option>';
+
+            break;
+        case 'd':
+            $selectCat .= '
+                            <option value="e">Efetivo</option>
+                            <option value="c">Colaborador</option>
+                            <option value="d" selected>Definir</option>';
+            break;
+    }
+} else {
+    switch ($obProfessor->cat_func) {
+        case 'e':
+            $selectCat .= '<option value="e" selected>Efetivo</option>';
+            break;
+        case 'c':
+            $selectCat .= '<option value="c" selected>Colaborador</option>';
+
+            break;
+        case 'd':
+            $selectCat .= '<option value="d" selected>Definir</option>';
+            break;
+    }
+}
+
+$selectCat .=
+    '	</select>
+          </div> 
+        </div>';
 
 include '../includes/header.php';
 include __DIR__.'/includes/formulario.php';

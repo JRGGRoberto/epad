@@ -1,11 +1,15 @@
 <?php
 
 require '../vendor/autoload.php';
-use \App\Entity\Outros;
+use App\Entity\Outros;
 
 $sql = "
 SELECT  
-    if(cat_func='c','cres','efetivos') contrato,
+    CASE cat_func
+        WHEN 'c' THEN 'cres'
+        WHEN 'e' THEN 'efetivos'
+        WHEN 'd' THEN 'disp_func'
+    END AS contrato,
     count(1) qnt,
     CONCAT(ROUND((COUNT(1) / 
        (
@@ -13,8 +17,8 @@ SELECT
                  FROM professores p2
                  inner join vinculov v2 on v2.id_prof = p2.id
                where
-                 p2.id_colegiado  = '". $co_id. "' and
-                 cat_func in ('c', 'e') and 
+                 p2.id_colegiado  = '".$co_id."' and
+                 cat_func in ('c', 'e', 'd') and 
                  v2.ano = ".$ano.")  
         ) * 100, 2), '%'
     ) AS percentual
@@ -22,10 +26,9 @@ SELECT
     professores p
     inner join vinculo v on v.id_prof = p.id and v.ano = ".$ano." 
 where 
-   p.id_colegiado  = '". $co_id. "'
+   p.id_colegiado  = '".$co_id."'
  group by 1 order by 1 desc;
-" ;
-
+";
 
 $registros = Outros::qry($sql);
 
@@ -39,8 +42,7 @@ $tbl_contrads .= '
     </tr>
 </thead>
 <tbody>';
-foreach($registros as $reg){
-    $tbl_contrads .= "<tr><td>" . $reg->contrato . "</td><td>" . $reg->qnt . "</td><td>" . $reg->percentual . "</td></tr>" ;
+foreach ($registros as $reg) {
+    $tbl_contrads .= '<tr><td>'.$reg->contrato.'</td><td>'.$reg->qnt.'</td><td>'.$reg->percentual.'</td></tr>';
 }
 $tbl_contrads .= '</tbody></table> <button class="btn btn-light btn-sm" onclick="exportToExcel(\'quad_f\')">📊</button><hr>';
-
