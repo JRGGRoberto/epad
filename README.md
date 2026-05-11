@@ -25,4 +25,14 @@ Este projeto esta sendo desenvolvido com as seguintes tecnologias:
 Este projeto tem como objetivo gerir as proposta dos projetos extensionistas da PROEC UNESPAR.
 
 
-## Níveis de acesso
+## Necessário
+Adicione um arquivo .env no raiz do projeto com as seguintes informações
+<pre>
+HOST=host_name
+NAME=nome_Database
+USER=userDatabase
+PASS=senha
+MAILUSERNAME=email_para@comunicacao.com
+MAILPASSWD=senha_do_Email
+MAILPORT=587
+</pre>
