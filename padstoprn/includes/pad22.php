@@ -16,24 +16,23 @@
     <tbody>
 <?php
 $total22 = 0;
-foreach($pad22 as $p){
-  $total22 += $p->ch;
-  echo "<tr>
-  <td style='text-align: center;'>". $p->atividade ."</td>
-  <td>". $p->estudante ."</td>
-  <td>". $p->curso ."</td>
-  <td style='text-align: center;'>". $p->serie ."</td>
-  <td style='text-align: center;'>". $p->ch ."</td>
+foreach ($pad22 as $p) {
+    $total22 += $p->ch;
+    echo "<tr>
+  <td style='text-align: center;'>".$p->atividade.'</td>
+  <td>'.$p->estudante.'</td>
+  <td>'.$p->curso."</td>
+  <td style='text-align: center;'>".$p->serie."</td>
+  <td style='text-align: center;'>".$p->ch.'</td>
 </tr>
-  ";
+  ';
 }
 ?>
         <tr>
          <td colspan="4" style='text-align: right;'>MÉDIA SEMANAL ANUAL DA CARGA HORÁRIA DE ORIENTAÇÃO E SUPERVISÃO</td>
-         <td colspan="2" style='text-align: center;'><?= $total22 ?></td>
+         <td colspan="2" style='text-align: center;'><?php echo $total22; ?></td>
        </tr>
     </tbody>
 </table><sup style="line-height: 12px;"><strong>a</strong>) Estágio Curricular Supervisionado Obrigatório para os cursos de Graduação e Estágio Docência para Pós-graduação Stricto Sensu. ; 
 <strong>b</strong>) Atividades de aulas práticas em
-instituições da área de saúde; <strong>c</strong>) Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses); <strong>d</strong>)
-Orientação de Monitoria.</sup>
+instituições da área de saúde; <strong>c</strong>) Orientação de Trabalhos Acadêmicos Obrigatórios (TCCs, dissertações e teses);</sup>

@@ -25,37 +25,29 @@ function insereTable3(newDisc){
     
     let tipo = '';
     switch (newDisc.atividade) {
-      case '1':
-        tipo = 'Pesquisa';
+      case '1': tipo = 'Pesquisa';
         break;
-      case '2':
-        tipo = 'Extensão e cultura';
+      case '2': tipo = 'Extensão e cultura';
         break;
-      case '3':
-        tipo = 'Outro - informar em observações';
+      case '3': tipo = 'Outro - informar em observações';
         break;
-      default:
+      default: 
         tipo = 'Não definido';
     };
 
     let func = '';
-    switch (newDisc.funcao) {
-      case '1':
-        func = 'Coordenador';
-      case '2':
-        func = 'Membro';
+    switch (String(newDisc.funcao)) {
+      case '1': func = 'Coordenador';
         break;
-      case '3':
-        func = 'Programas especiais';
+      case '2': func = 'Membro';
         break;
-      case '4':
-        tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
+      case '3': func = 'Programas especiais';
         break;
-      case '5':
-        tipo = 'PIBEX e PIBIS';
+      case '4': tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
         break;
-      default:
-        func = 'Não definido';
+      case '5': tipo = 'PIBEX e PIBIS';
+        break; 
+      default: func = 'Não definido';
     };
   
   celId.innerHTML         = newDisc.id;
@@ -87,17 +79,18 @@ function updateAtividade3(receiveData){
 
   let tipo;
   switch (data.atividade) {
-    case '1':
-      tipo = 'Pesquisa';
+    case '1':tipo = 'Pesquisa';
       break;
-    case '2':
-      tipo = 'Extensão e cultura';
+    case '2': tipo = 'Extensão e cultura';
       break;
-    case '3':
-      tipo = 'Outro(s) - informar em observações';
+    case '3': tipo = 'Outro - informar em observações';
       break;
-    default:
-      tipo = 'Não definido';
+    case '4': tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
+      break;
+    case '5': tipo = 'PIBEX e PIBIS';
+        break;
+     default:
+        tipo = 'Não definido';
   };
 
   let func = '';

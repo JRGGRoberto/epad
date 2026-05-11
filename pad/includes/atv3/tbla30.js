@@ -27,35 +27,27 @@ function insereTable3(newDisc){
     
     let tipo = '';
     switch (newDisc.atividade) {
-      case '1':
-        tipo = 'Pesquisa';
+      case '1': tipo = 'Pesquisa';
         break;
-      case '2':
-        tipo = 'Extensão e cultura';
+      case '2': tipo = 'Extensão e cultura';
         break;
-      case '3':
-        tipo = 'Outro - informar em observações';
+      case '3': tipo = 'Outro - informar em observações';
         break;
-
-      case '4':
-        tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
+      case '4': tipo = 'PIC, PIBIC, PIBIC-Af, PIBIC-EM, PITI e PIBITI';
         break;
-
       case '5':
           tipo = 'PIBEX e PIBIS';
           break;
-  
-
-      default:
+       default:
         tipo = 'Não definido';
     };
 
     let func = '';
 
     if(String(newDisc.funcao) === '1'){
-        func = 'Membro';
+        func = 'Coordenador';
     } else if (String(newDisc.funcao) === '2') {
-      func = 'Coordenador';
+      func = 'Membro';
     } else if (String(newDisc.funcao) === '3') {
       func = 'Programas especiais';
     } else {

@@ -18,67 +18,61 @@ echo '</pre>'; */
     <tbody>
 <?php
 $total3 = 0;
-foreach($pad3 as $p){
-  $total3 += $p->ch;
-  switch ($p->atividade) {
-    case '1':
-      $tipo = 'Pesquisa';
-      break;
-    case '2':
-      $tipo = 'Extensão e cultura';
-      break;
-    case '3':
-      $tipo = 'Outro - informar em observações';
-      break;
-    case '4':
-       $tipo = 'PIC';
-        break;
-    case '5':
-        $tipo = 'PIBEX';
-        break;
-    default:
-      $tipo = 'Não definido';
-  };
+foreach ($pad3 as $p) {
+    $total3 += $p->ch;
+    switch ($p->atividade) {
+        case '1': $tipo = 'Pesquisa';
+            break;
+        case '2': $tipo = 'Extensão e cultura';
+            break;
+        case '3':  $tipo = 'Outro - informar em observações';
+            break;
+        case '4':  $tipo = 'PIC';
+            break;
+        case '5':  $tipo = 'PIBEX';
+            break;
+        default:
+            $tipo = 'Não definido';
+    }
 
-  $func ='';
-  if((int)$p->funcao == 1){
-    $func = 'Coordenador';
-  } elseif ((int)$p->funcao == 2){
-    $func = 'Membro';
-  } elseif ((int)$p->funcao == 3){
-    $func = 'Programas especiais';
-  } else {
-    $func = 'Não definido';
-  }
-  /*
-  switch ( (int)$p->funcao) {
-    case 1:
-      $func = 'Coordenador';
-    case 2:
-      $func = 'Membro';
-      break;
-    case 3:
-      $func = 'Programas especiais';
-      break;
-    default:
-      $func = 'Não definido';
-  };
+    $func = '';
+    if ((int) $p->funcao == 1) {
+        $func = 'Coordenador';
+    } elseif ((int) $p->funcao == 2) {
+        $func = 'Membro';
+    } elseif ((int) $p->funcao == 3) {
+        $func = 'Programas especiais';
+    } else {
+        $func = 'Não definido';
+    }
+    /*
+    switch ( (int)$p->funcao) {
+      case 1:
+        $func = 'Coordenador';
+      case 2:
+        $func = 'Membro';
+        break;
+      case 3:
+        $func = 'Programas especiais';
+        break;
+      default:
+        $func = 'Não definido';
+    };
 */
 
-
-  echo "<tr>
-  <td style='text-align: left;'>". $tipo ."</td>
-  <td style='text-align: center;'>". $func ."</td>
-  <td >". $p->nome ."</td>
-  <td>". $p->orientandos ."</td>
-  <td style='text-align: center;'>". $p->ch ."</td>
+    echo "<tr>
+  <td style='text-align: left;'>".$tipo."</td>
+  <td style='text-align: center;'>".$func.'</td>
+  <td >'.$p->nome.'</td>
+  <td>'.$p->orientandos."</td>
+  <td style='text-align: center;'>".$p->ch.'</td>
 </tr>
-  ";
+  ';
 }
 ?>
        <tr>
          <td colspan="4" style='text-align: right;'>TOTAL DE CARGA HORÁRIA SEMANAL PESQUISA/EXTENSÃO/CULTURA/PROGRAMAS ESPECIAIS</td>
-         <td colspan="1" style='text-align: center;'><?= $total3 ?></td>
+         <td colspan="1" style='text-align: center;'><?php echo $total3; ?></td>
        </tr>
     </tbody>
 </table>

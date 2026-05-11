@@ -1,7 +1,5 @@
-app/Db/config.php
-app/Db/Database.php
 teste.php
-
+.env
 # Ignore os arquivos de sistema do Mac
 .DS_store
 /bck
