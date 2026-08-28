@@ -78,24 +78,21 @@ include __DIR__.'/includes/pad7.php';
 include __DIR__.'/includes/footer.php';
 $html = ob_get_clean();
 
+$nomeArquivo = date('Y_m_d_').$vinc->id_prof.'.html';
 
-$nome = date('Y_m_') . $vinc->id_prof . '.html';
-$nomeArquivo = $nome;
+$dir = __DIR__.'/../../sistema/upload/uploads/pads/';
 
-// Salva o conteúdo no arquivo
-if (file_put_contents('../../sistema/upload/uploads/pads/'.$nomeArquivo, $html) !== false) {
-    header('location: ../../sistema/upload/uploads/pads/'.$nomeArquivo);
+$path = $dir.$nomeArquivo;
+
+if (file_put_contents($path, $html)) {
+    echo json_encode([
+        'status' => 'ok',
+    ]);
     exit;
 } else {
-    echo 'Erro ao salvar o arquivo.';
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'Erro ao salvar arquivo',
+    ]);
+    exit;
 }
-/*
-
-use Dompdf\Dompdf;
-
-$dompdf = new Dompdf(['enable_remote' => true]);
-
-$dompdf->loadHtml($html);
-$dompdf->setPaper('A4', 'portrait');
-$dompdf->render();
-$dompdf->stream('meu_pad.pdf');

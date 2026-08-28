@@ -40,8 +40,21 @@ $alertaLogin = strlen($alertaLogin) ? '<div class="alert alert-danger">'.$alerta
             
           <button type="submit"  class="btn btn-primary">🔑 Entrar</button>
           <div>&nbsp;</div>
-          <div class="alert alert-info col">Para as contas @unespar.edu.br você pode utilizar sua senha de acesso ao email <strong>@unespar.edu.br</strong></div>
+          <div class="alert alert-info col">Usuário = <strong>nome.sobrenome + @unespar.edu.br</strong><br>
+          Senha = (senha do Domínio da Rede Local)</div>
+
         </div> 
+        <input type="hidden" name="ipaddress" id="ipaddress" value="<?php
+                                                                        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+                                                                            $ip = $_SERVER['HTTP_CLIENT_IP'];
+                                                                        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+                                                                            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+                                                                        } else {
+                                                                            $ip = $_SERVER['REMOTE_ADDR'];
+                                                                        }
+echo $ip; ?>" 
+                                                                      >
+        <input type="hidden" name="moreInformations" id="moreInformations" value="">
       
       </form>
       <a href="https://senha.unespar.edu.br/" class="btn btn-primary btn-sm float-right">📑 Recuperar senha</a>
@@ -54,6 +67,63 @@ $alertaLogin = strlen($alertaLogin) ? '<div class="alert alert-danger">'.$alerta
 -->
 
     </div>
+    <script>
+  function capturarDadosCliente() {
+    const ua = navigator.userAgent;
+    
+    // 1. Identificar o Navegador
+    let navegador = "Desconhecido";
+    if (ua.includes("Firefox")) navegador = "Mozilla Firefox";
+    else if (ua.includes("SamsungBrowser")) navegador = "Samsung Internet";
+    else if (ua.includes("Opera") || ua.includes("OPR")) navegador = "Opera";
+    else if (ua.includes("Trident")) navegador = "Internet Explorer";
+    else if (ua.includes("Edge") || ua.includes("Edg")) navegador = "Microsoft Edge";
+    else if (ua.includes("Chrome")) navegador = "Google Chrome";
+    else if (ua.includes("Safari")) navegador = "Apple Safari";
+
+    // 2. Identificar o Sistema Operacional
+    let so = "Desconhecido";
+    if (ua.includes("Windows NT 10.0")) so = "Windows 10/11";
+    else if (ua.includes("Windows NT 6.2")) so = "Windows 8";
+    else if (ua.includes("Windows NT 6.1")) so = "Windows 7";
+    else if (ua.includes("Android")) so = "Android";
+    else if (ua.includes("iPhone") || ua.includes("iPad")) so = "iOS";
+    else if (ua.includes("Macintosh")) so = "macOS";
+    else if (ua.includes("Linux")) so = "Linux";
+
+    // 3. Coletar outras informações úteis da máquina
+    const dadosLog = {
+        navegador: navegador,
+        sistemaOperacional: so,
+        userAgentCompleto: ua,
+        idioma: navigator.language || navigator.userLanguage,
+        plataformaHardware: navigator.platform, // Arquitetura antiga/base (ex: Win32, MacIntel)
+        resolucaoTela: `${window.screen.width}x${window.screen.height}`,
+        janelaNavegador: `${window.innerWidth}x${window.innerHeight}`,
+        fusoHorario: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        cookiesAtivos: navigator.cookieEnabled ? "Sim" : "Não",
+        totalCoresProcessador: navigator.hardwareConcurrency || "Não disponível",
+        memoriaAproximadaGB: navigator.deviceMemory || "Não disponível",
+        dataHoraAcesso: new Date().toISOString()
+    };
+
+    return dadosLog;
+}
+
+const logConexao = capturarDadosCliente();
+const txtData = document.getElementById('moreInformations');
+txtData.value = JSON.stringify(logConexao);
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('keydown', event => {
+    if (event.key === 'F12' || 
+        (event.ctrlKey && event.shiftKey && ['I', 'C', 'J'].includes(event.key)) || 
+        (event.ctrlKey && event.key === 'U') || (event.ctrlKey && event.key === 'u')) {
+        event.preventDefault();
+    }
+});
+
+</script>
 
   </div>
 

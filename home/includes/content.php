@@ -52,7 +52,7 @@ if ($conta[1] == 'unespar.edu.br') {
        
       </div>
       <div class="col">
-        <?php echo $infoMail; ?>
+        <?php // echo $infoMail;?>
 
       </div>
     </div>

@@ -6,6 +6,14 @@ use \App\Db\Database;
 use \PDO;
 use \App\Entity\UuiuD;
 
+
+use \App\Entity\PADAtiv22;
+use \App\Entity\PADAtiv23;
+use \App\Entity\PADAtiv24;
+use \App\Entity\PADAtiv3;
+use \App\Entity\PADAtiv4;
+
+
 class Vinculo {
   public $id;
   public $ano;
@@ -99,8 +107,27 @@ class Vinculo {
 
 
   public function excluir(){
-    return (new Database('vinculo'))->delete('id = "'.$this->id .'"');
+    // C:\Users\Roberto\Dev\dockersist\www\php7\epad\padstopdf\indexHtml.php
 
+
+    $PADAtiv22 = new PADAtiv22();
+    $PADAtiv22->get('vinculo = "'.$this->id. '"');
+
+    $PADAtiv22[0];
+    
+    foreach($PADAtiv22 as $p22){
+      
+      
+    }
+    
+/*
+    $PADAtiv23 = new PADAtiv23::getById($this->id);
+    $PADAtiv24 = new PADAtiv24::getById($this->id);
+    $PADAtiv3 = new PADAtiv3::getById($this->id);
+    $PADAtiv4 = new PADAtiv4::getById($this->id);
+    
+    return (new Database('vinculo'))->delete('id = "'.$this->id .'"');
+*/
   }
 
   public static function getByAnoProf($idprof, $ano){

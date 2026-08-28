@@ -78,11 +78,14 @@ include __DIR__.'/includes/pad7.php';
 include __DIR__.'/includes/footer.php';
 $html = ob_get_clean();
 
-use Dompdf\Dompdf;
-
+// use Dompdf\Dompdf;
+/*
 $dompdf = new Dompdf(['enable_remote' => true]);
 
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 $dompdf->stream('meu_pad.pdf');
+*/
+
+echo $html;
