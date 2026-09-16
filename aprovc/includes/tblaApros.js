@@ -32,20 +32,18 @@ function insereTable(newDisc){
     let celAT   = newLinha.insertCell(9);
     let celRT   = newLinha.insertCell(10);
     let celCnf  = newLinha.insertCell(11);
-//    let celAprovCoid = newLinha.insertCell(9);
-//    let celAprovCeId = newLinha.insertCell(10);
     
     let totUsado = parseFloat(newDisc.a21) + parseFloat(newDisc.a22) +parseFloat(newDisc.a23) +parseFloat(newDisc.a24) +parseFloat(newDisc.a3) + parseFloat(newDisc.a4);
-  celId.innerHTML   = newDisc.id;
-  celNome.innerHTML = newDisc.nome; 
-  celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.id +'" target="_blank">📄</a> ';
-  celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
-  celA22.innerHTML  = newDisc.a22 +'h ';
-  celA23.innerHTML  = newDisc.a23 +'h ';
-  celA24.innerHTML  = newDisc.a24 +'h ';
-  celA3.innerHTML   = newDisc.a3 +'h ';
-  celA4.innerHTML   = newDisc.a4 +'h ';
-  celAT.innerHTML   = totUsado +'h ';
+    celId.innerHTML   = newDisc.id;
+    celNome.innerHTML = newDisc.nome; 
+    celLink.innerHTML = '<a href="../padstoprn/index.php?id='+ newDisc.id +'" target="_blank">📄</a> ';
+    celA21.innerHTML  = stripZeros(newDisc.a21) +'h ';
+    celA22.innerHTML  = newDisc.a22 +'h ';
+    celA23.innerHTML  = newDisc.a23 +'h ';
+    celA24.innerHTML  = newDisc.a24 +'h ';
+    celA3.innerHTML   = newDisc.a3 +'h ';
+    celA4.innerHTML   = newDisc.a4 +'h ';
+    celAT.innerHTML   = totUsado +'h ';
 
   if(newDisc.rt === 'TIDE'){
     celRT.innerHTML   = newDisc.rt;
@@ -53,15 +51,12 @@ function insereTable(newDisc){
     celRT.innerHTML   = newDisc.rt +'h ';
   }
   celCnf.innerHTML  = '';
-  /*`<center>
-    <button type="button" class="btn btn-light btn-sm" title="??">?</button>
-  </center>`;*/
 
   if(newDisc.rt == 'TIDE'){
     newDisc.rt = 40;
   }
 
-  if(!(newDisc.aprov_ce_id === null) ){
+  if(!(newDisc.aprov_ce_id == null) ){
     celCnf.innerHTML  = 
        `<center>
          <button type="button" class="btn btn-light btn-sm" title="Assinado pelo Diretor de Centro">${icon[0]}</button>
@@ -116,7 +111,7 @@ function chBtn(id, tp){
   let idX = data.findIndex(e => e.id === id);
   let tabela = document.getElementById("tabelaPADS"); 
   let linha = tabela.rows[idX + 1];
-  let celBTN = linha.cells[10];
+  let celBTN = linha.cells[11];
   let conteudo = '';
   switch(tp){
     case "a":
@@ -163,12 +158,21 @@ function Assinar(){
    return;
 }
 
+async function verificarSeCaminhoExiste(url) {
+  try {
+    const resposta = await fetch(url, { method: 'HEAD' });
+    return resposta.ok; 
+  } catch (erro) {
+    return false;
+  }
+}
+
 function removAssinatura(){
   const dataRemov = {
     id_vin  : document.getElementById('vinc_idpsd').value
   };
 
-  fetch('./dml/sing_coD.php', {
+  fetch(urle, {
     method:'PUT',
     headers:{
       'Accept': 'application/json',

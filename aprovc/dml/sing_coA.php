@@ -1,71 +1,63 @@
 <?php
-require '../../vendor/autoload.php';
-use \App\Entity\Vinculo;
 
-use \App\Session\Login;
+require '../../vendor/autoload.php';
+use App\Entity\Vinculo;
+use App\Session\Login;
 
 Login::requireLogin();
 $user = Login::getUsuarioLogado();
 
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: PUT");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: PUT');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
-if ($_SERVER["REQUEST_METHOD"] === "PUT") {
+if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $json_data = file_get_contents('php://input');
 
-    $json_data = file_get_contents("php://input");
-
-    $data = json_decode($json_data, true); 
+    $data = json_decode($json_data, true);
 
     $id_vinc = $data['id_vin'];
     $user_id = $data['id_user'];
 
- 
     //  $vinc = new Vinculo();
     $vinc = Vinculo::get($id_vinc);
-    
 
-    if(!$vinc instanceof Vinculo){
-        header("HTTP/1.1 500 Internal Server Error");
-        echo json_encode(array("message" => "Objeto de uma instancia não esperada."));
+    if (!$vinc instanceof Vinculo) {
+        header('HTTP/1.1 500 Internal Server Error');
+        echo json_encode(['message' => 'Objeto de uma instancia não esperada.']);
         exit;
     }
 
     // Verify se usuário é coordenador
-
-    if($user['config'] != '1'){
-        $response = array("status" => "error", "message" => "Não adm.");
+    if ($user['config'] != '1') {
+        $response = ['status' => 'error', 'message' => 'Não adm.'];
         echo json_encode($response);
         exit;
     }
 
-
     $vinc->aprov_co_id = $user_id;
 
-    if(! $vinc->assing_co() ){
-        $response = array("status" => "error", "message" => "Erro ao assinar.");
+    if (!$vinc->assing_co()) {
+        $response = ['status' => 'error', 'message' => 'Erro ao assinar.'];
         echo json_encode($response);
         exit;
     } else {
-        $responseData = array( 
-            "status" => "success",
-            "message" => "Dados recebidos com sucesso.",
-            "data" => array (
-                    "preenchido" => 'Assinado' ,
-                    "status"     => 'Ok',
-                    "vinc_id"    =>  $vinc->id,
-                    "tp"         => 'a'
-               )
-            );
-    
+        $responseData = [
+            'status' => 'success',
+            'message' => 'Dados recebidos com sucesso.',
+            'data' => [
+                'preenchido' => 'Assinado',
+                'status' => 'Ok',
+                'vinc_id' => $vinc->id,
+                'tp' => 'a',
+            ],
+        ];
+
         header('Content-Type: application/json');
         echo json_encode($responseData);
         exit;
-   }
-
+    }
 } else {
-    $response = array("status" => "error", "message" => "Método de requisição inválido.");
+    $response = ['status' => 'error', 'message' => 'Método de requisição inválido.'];
     echo json_encode($response);
 }
-
-?>

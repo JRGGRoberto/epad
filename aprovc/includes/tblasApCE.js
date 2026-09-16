@@ -112,9 +112,10 @@ function insereTable(newDisc){
 function chBtn(id, tp){
   let idX = data.findIndex(e => e.id === id);
   let tabela = document.getElementById("tabelaPADS"); 
-  let linha = tabela.rows[idX + 1];
-  let celBTN = linha.cells[10];
+  let linha = tabela.rows[idX + 2];
+  let celBTN = linha.cells[12]; 
   let conteudo = '';
+  console.log(tp);
   switch(tp){
     case "a":
        conteudo = 
@@ -134,61 +135,35 @@ function chBtn(id, tp){
   return;    
 }
 
-function Assinar(){
+function AssinarRemover(valor){
   let datasing = {
-    id_vin: document.getElementById('vinc_idps').value
+    id_vin: document.getElementById('vinID_a').value,
+    id_user: document.getElementById('vinc_id_ce').value,
+    tpTodo : valor 
   };
 
   fetch('./dml/sing_ceA.php', {
-    method:'PUT',
-    headers:{
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(datasing)
-  })
-  .then( res => res.json())
-  //.then( res => console.log(res))
-  ;
-  window.location.reload();
-  // fecharModal();
-}
- 
-function removAssinatura(){
-      
-  const data = {
-    id_vin  : document.getElementById('vinc_idpsd').value,
-  };
-
-  fetch('./dml/sing_ceD.php', {
-    method:'PUT',
-    headers:{
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then( res => res.json())
-  //.then( res => console.log(res))
-  ;
-   window.location.reload();
-  //fecharModalDel(); 
-}
-
-function Aprovar(ad){
-  if(ad  == "a"){
-     Assinar();
-  } else if (ad  == "d"){
-     removAssinatura();
-  } else {
-    console.log('error ' + ad);
-    return;
-  }
-
-  deleteAllRows();
-  deleteAllRows();
-  getDBMD();
-
+            method:'PUT',
+            headers:{
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datasing)
+          })
+          .then( res => res.json())
+          .then( res => {
+                          let idVinc = res.data.vinc_id;
+                          tipoT     = res.data.tp;
+                          // console.log(idVinc, tp, res.data.preenchido);
+                         // console.table(res.data)
+                          chBtn(idVinc, tipoT);
+                        } 
+              );
+          if(valor == 'a'){
+            fecharModal();
+          } else {
+            fecharModalDel();
+          }
 }
 
 async function getDBMD() {
@@ -199,32 +174,26 @@ async function getDBMD() {
    } 
 }
 
-getDBMD();
-
 
 function frmAtivShow(id) {
   $('#modalAtv').modal('show');
  
-  document.getElementById('vinc_idps').value = id;
-
   let index = data.findIndex(e => e.id === id);
   let myObj = data[index];
   
- document.getElementById('titleMotalProf').innerHTML = myObj.nome;
- let txtLocal = document.getElementById('bce').innerHTML;
- let txtData = new Date().toLocaleDateString('pt-br', { day:"numeric" , month:"long", year:"numeric"});
- document.getElementById('dataHoje').innerHTML = txtLocal +', ' + txtData + ".";
+  document.getElementById('vinID_a').value = id;
+  document.getElementById('titleMotalProf').innerHTML = myObj.nome;
+  let txtLocal = document.getElementById('bce').innerHTML;
+  let txtData = new Date().toLocaleDateString('pt-br', { day:"numeric" , month:"long", year:"numeric"});
+  document.getElementById('dataHoje').innerHTML = txtLocal +', ' + txtData + ".";
 }
 
 
 function frmmodalDel(id) {
-
   $('#modalDel').modal('show');
-
-  document.getElementById('vinc_idpsd').value = id;
-
   let index = data.findIndex(e => e.id === id);
   let myObj = data[index];
+  document.getElementById('vinID_a').value = id;
   document.getElementById('nomeAtivDel').innerHTML = myObj.nome;
  
 }
@@ -236,3 +205,5 @@ function fecharModalDel(){
 function fecharModal(){
   $('#modalAtv').modal('hide');
 }
+
+getDBMD();

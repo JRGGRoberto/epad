@@ -42,6 +42,7 @@
           <thead class="thead-light" style="background: white; position: sticky; top: 0; z-index: 10;">
             <tr>
               <th colspan="11"><input class="form-control" id="impBuscarDis" type="text" placeholder="Localizar"></th>
+              <th> </th>
             </tr>
             <tr>
               <th style="display: none;">ID</th>
@@ -94,7 +95,7 @@
               <div class="row" style="padding: 20px 30px;">
                 <div class="col-5" style="display: flex;"><p id="dataHoje" style="margin: 0;">, </p></div>
                 <div class="col">
-                  <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="Aprovar('a')">Assinar 🖋️</button></p>
+                  <p style="text-align: center; margin: 0;"><button type="button" class="btn btn-light btn-sm" onclick="AssinarRemover('a')">Assinar 🖋️</button></p>
                   <p style="text-align: center; margin: 0;"><strong><?php echo $user['nome']; ?></strong></p>
                   <p style="text-align: center; margin: 0;"><sup>Diretor do Centro de Área de <?php echo $user['ce_nome']; ?></sup></p>
                 </div>
@@ -133,14 +134,14 @@
           <div  id="msgApagar">Tem certeza que deseja remover a aprovação?</div>
             <div class="d-flex justify-content-center mb-3 font-weight-bold" id="nomeAtivDel">AAA</div>
             
-            <input type="hidden" name="vinc_idpsd" id="vinc_idpsd">
+            <input type="hidden" name="vinID_a" id="vinID_a">
             <input type="hidden" name="vinc_id_ce" id="vinc_id_ce" value="<?php echo $user['id']; ?>">
            
           </div>
 
           <center>
             <button type="button" class="btn btn-secondary btn-sm" onclick="fecharModalDel()">Fechar</button>
-            <button type="submit" class="btn btn-danger btn-sm"  onclick="Aprovar('d')">Apagar</button>
+            <button type="submit" class="btn btn-danger btn-sm"  onclick="AssinarRemover('r')">Apagar</button>
           </center>
 
         </form>
@@ -164,6 +165,6 @@ $(document).ready(function(){
 </script>
 
 
-<script src="./includes/tblasApCE.js"></script>
+<script src="./includes/tblasapce.js"></script>
 
 

@@ -120,18 +120,6 @@ if ($obUsuario['config'] == '1') {
     }
 }
 
-/*
-
-echo 'id:   '. $idCurso .'<br>';
-echo 'curs: '. $nomeCurso .'<br>';
-echo 'ano:  '. $anoCurso .'<br>';
-echo '<hr>';
-
-echo '<pre>';
-print_r($obUsuario);
-echo '</pre>';
-*/
-
 ?>
 
 <!doctype html>
@@ -145,14 +133,15 @@ echo '</pre>';
   <!--   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">-->
   <link rel="stylesheet" href="../includes/bootstrap.min.css">
 
-  <!-- 
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
--->
-  <script src="../includes/jquery.min.js"></script>
-  <script src="../includes/popper.min.js"></script>
-  <script src="../includes/bootstrap.bundle.min.js"></script>
+  <!-- 
+    <script src="../includes/jquery.min.js"></script>
+    <script src="../includes/popper.min.js"></script>
+    <script src="../includes/bootstrap.bundle.min.js"></script>
+    -->
   
   
     <!--multiselect CSS-->

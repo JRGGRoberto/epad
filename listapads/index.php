@@ -14,6 +14,7 @@ $galeraDoSuporte = [
     '28f78f0c-3c9c-4701-b959-f15d12686446', // Vinicius
     '81512d7d-becd-11ee-801b-0266ad9885af', // Dorigão
     '8151fc77-becd-11ee-801b-0266ad9885af',    // ELIANE PAGANINI DA SILVA
+    'bc906e9c-bf9b-11ee-801b-0266ad9885af', // FERNANDO YUDI SAKAGUTI
     '06f560a1-bf9e-11ee-801b-0266ad9885af'];  // MARCOS PAULO RODRIGUES DE SOUZA Paranavaí
 
 if (!in_array($user['id'], $galeraDoSuporte)) {
